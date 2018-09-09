@@ -51,7 +51,7 @@ module.exports = {
 ],
     module: {
         rules: [
-            // настраиваем обработку js-файлов
+            // настраиваем обработку js-файлов в babel
             {
                 // шаблон для обрабатываемых файлов
                 test: /\.js$/,
@@ -64,18 +64,28 @@ module.exports = {
                     }
                 }
             },
+            // настраиваем проверку js-файлов в eslint
+            {
+                enforce: "pre",
+                test: /\.js$/,
+                exclude: /node_modules/,
+                loader: "eslint-loader"
+            },
             // настраиваем обработку scss-файлов
             {
                 test: /\.scss$/,
                 use: [
+                    // Добавляем экспорт модуля в качестве стиля в DOM
                     'style-loader',
+                    // Разбираем файлы CSS
                     MiniCssExtractPlugin.loader,
+                    // Загружаем файл CSS с разрешенным импортом и возвращает код CSS
                     'css-loader',
                     // оптимизируем css
                     'clean-css-loader',
                     // добавляем префиксы
                     'postcss-loader',
-                    // преобразуем из scss в css
+                    // загружает и преобразует scss-файлы в css
                     'sass-loader'
                 ]
             }
