@@ -22,6 +22,8 @@
     "@babel/core": "^7.0.0",
     "@babel/preset-env": "^7.0.0",
     "babel-loader": "^8.0.2",
+    "browser-sync": "^2.24.7",
+    "browser-sync-webpack-plugin": "^2.2.2",
     "clean-css-loader": "^1.0.1",
     "clean-webpack-plugin": "^0.1.19",
     "css-loader": "^1.0.0",

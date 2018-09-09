@@ -8,6 +8,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WebpackMd5Hash = require('webpack-md5-hash');
 // Плагин для чистки папки dist
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+// Плагин автообновления страницы
+const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 
 module.exports = {
     entry: {
@@ -32,7 +34,14 @@ module.exports = {
             // имя файла в конечной сборке
             filename: 'index.html'
         }),
-        new WebpackMd5Hash()
+        new WebpackMd5Hash(),
+        new BrowserSyncPlugin({
+            // browse to http://localhost:3000/ during development,
+            // ./public directory is being served
+            host: 'localhost',
+            port: 3000,
+            server: { baseDir: ['dist'] }
+        })
     ],
     module: {
         rules: [
