@@ -10,6 +10,8 @@ const WebpackMd5Hash = require('webpack-md5-hash');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 // Плагин автообновления страницы
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
+// Доступ к плагинам webpack
+const webpack = require('webpack');
 
 module.exports = {
     // точки входа
@@ -22,6 +24,7 @@ module.exports = {
         path: path.resolve(__dirname, 'dist'),
         filename: 'app.[chunkhash].js'
     },
+    devtool: false,
     plugins: [
         new CleanWebpackPlugin(path.resolve(__dirname, 'dist'), {} ),
         new MiniCssExtractPlugin({
@@ -42,8 +45,10 @@ module.exports = {
             host: 'localhost',
             port: 3000,
             server: { baseDir: ['dist'] }
-        })
-    ],
+        }),
+        // создаем карты исходников
+        new webpack.SourceMapDevToolPlugin()
+],
     module: {
         rules: [
             // настраиваем обработку js-файлов
