@@ -12,6 +12,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 
 module.exports = {
+    // точки входа
     entry: {
         // путь к точке входа - исходнику
         main: path.resolve(__dirname, 'src', 'index.js')
@@ -67,6 +68,8 @@ module.exports = {
                     'css-loader',
                     // оптимизируем css
                     'clean-css-loader',
+                    // добавляем префиксы
+                    'postcss-loader',
                     // преобразуем из scss в css
                     'sass-loader'
                 ]
