@@ -8,4 +8,11 @@ export class Developer {
     getFullName() {
         return `${this.lastName} ${this.firstName} ${this.patronymic}`;
     }
+
+    render() {
+        let dev = document.createElement('div');
+        dev.classList.add('developer');
+        dev.innerText = this.getFullName();
+        return dev;
+    }
 }
