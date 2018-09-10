@@ -1,4 +1,4 @@
-import './user.scss';
+import '../scss/user.scss';
 
 export default class Human {
     constructor(firstName, lastName) {

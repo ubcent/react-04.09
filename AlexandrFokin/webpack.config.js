@@ -1,5 +1,7 @@
 // Работа с файловой системой
 const path = require('path');
+// Плагин для проверки SASS
+const SassLintPlugin = require('sass-lint-webpack');
 // Плагин для извлечения css в отдельные файлы
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 // Плагин для использования html-шаблонов
@@ -17,7 +19,7 @@ module.exports = {
     // точки входа
     entry: {
         // путь к точке входа - исходнику
-        main: path.resolve(__dirname, 'src', 'index.js')
+        main: path.resolve(__dirname, 'src', 'js', 'index.js')
     },
     output: {
         // папка для выгрузки результатов сборки
@@ -47,7 +49,9 @@ module.exports = {
             server: { baseDir: ['dist'] }
         }),
         // создаем карты исходников
-        new webpack.SourceMapDevToolPlugin()
+        new webpack.SourceMapDevToolPlugin(),
+        // проверяем SASS
+        new SassLintPlugin()
 ],
     module: {
         rules: [
@@ -87,6 +91,18 @@ module.exports = {
                     'postcss-loader',
                     // загружает и преобразует scss-файлы в css
                     'sass-loader'
+                ]
+            },
+            // настраиваем обработку изображений
+            {
+                test: /\.(png|jpg|gif)$/,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            name: 'img/[name].[ext]'
+                        }
+                    }
                 ]
             }
         ]
