@@ -13,6 +13,10 @@ export class Developer {
         let dev = document.createElement('div');
         dev.classList.add('developer');
         dev.innerText = this.getFullName();
+        dev.addEventListener('click', () => {
+            let now = new Date();
+            alert(now);
+        });
         return dev;
     }
 }
