@@ -1,5 +1,5 @@
-import { User } from './User';
+import { Developer } from './Developer';
 
-const user1 = new User('Obi', 'Wan');
+const dev1 = new Developer('Pavlenko', 'Vitaly', 'Alekseevich');
 
-console.log(user1.sayHi());
+console.log(dev1.getFullName());
