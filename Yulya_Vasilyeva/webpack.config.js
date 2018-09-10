@@ -1,5 +1,5 @@
 const path = require('path');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const ExtractCSS = require('extract-text-webpack-plugin');
 const HtmlPlugin = require('html-webpack-plugin');
 const CleanPlugin = require('clean-webpack-plugin');
 
@@ -26,9 +26,9 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                use: ExtractTextPlugin.extract({
+                use: ExtractCSS.extract({
                     fallback: 'style-loader',
-                    use: ['css-loader']
+                    use: ['css-loader'],
                 })
             },
             {
@@ -40,17 +40,17 @@ module.exports = {
                     }
                 }  
             }
-        ]
+        ],
     },
     devServer: {
         contentBase: './dist'
     },
     plugins:[
-        new ExtractTextPlugin({filename: 'css/style.css'}),
+        new ExtractCSS({filename: 'css/style.css'}),
         new HtmlPlugin({
             template: path.resolve(__dirname, 'src','index.html'),
             filename: 'index.html'
         }),
-        new CleanPlugin(['dist'])
+        new CleanPlugin(['dist']),
     ]  
 }
