@@ -1,3 +1,3 @@
-export default sayHello = () => {
+export const sayHello = () => {
     return 'Hello World';
 }
