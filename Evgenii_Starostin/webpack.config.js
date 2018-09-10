@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const PUBLIC_PATH = require('path').join(__dirname, 'build');
 
 let config = {
-    entry: './app/index.js',
+    entry: './src/index.js',
     output: { 
         path: PUBLIC_PATH,
         filename: 'bundle.js'
@@ -41,7 +41,7 @@ let config = {
           filename: 'style.css'
         }),
         new HtmlWebpackPlugin({
-            template: 'app/index.html'
+            template: 'public/index.html'
         })
     ],
 };
