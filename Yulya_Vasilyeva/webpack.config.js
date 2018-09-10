@@ -4,6 +4,7 @@ const HtmlPlugin = require('html-webpack-plugin');
 const CleanPlugin = require('clean-webpack-plugin');
 
 module.exports = {
+    mode: 'development',
     entry:{
         app: path.resolve(__dirname, 'src', 'js/_index.js')
     },
@@ -29,8 +30,20 @@ module.exports = {
                     fallback: 'style-loader',
                     use: ['css-loader']
                 })
+            },
+            {
+                test: /\.(woff|woff2|eot|ttf|otf)$/,
+                use: {
+                    loader: 'file-loader',
+                    options: {
+                        name: 'fonts/[name].[ext]'
+                    }
+                }  
             }
         ]
+    },
+    devServer: {
+        contentBase: './dist'
     },
     plugins:[
         new ExtractTextPlugin({filename: 'css/style.css'}),
