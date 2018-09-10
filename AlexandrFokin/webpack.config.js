@@ -42,10 +42,10 @@ module.exports = {
         }),
         new WebpackMd5Hash(),
         new BrowserSyncPlugin({
-            // browse to http://localhost:3000/ during development,
-            // ./public directory is being served
+            // локальный сервер находится по адресу http://localhost:3000/
             host: 'localhost',
             port: 3000,
+            // папка со сборкой, используемая в качестве корневой для сервера
             server: { baseDir: ['dist'] }
         }),
         // создаем карты исходников
