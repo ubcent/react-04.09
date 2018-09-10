@@ -1,0 +1,7 @@
+body {
+  background: #ccc;
+  & .test {
+    color: deeppink;
+    font-size: 24px;
+  }
+}
