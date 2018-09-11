@@ -12,8 +12,7 @@ module.exports = {
   },
   mode: 'production',
   module: {
-    rules: [
-      {
+    rules: [{
         test: /\.js$/,
         exclude: /node_modules/,
         use: {
@@ -22,14 +21,12 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: [
-          {
+        use: [{
             loader: MiniCssExtractPlugin.loader,
-            options: {
-              publicPath: path.resolve(__dirname, '/dist', '/css')
-            }
           },
-          { loader: 'css-loader' }
+          {
+            loader: 'css-loader'
+          }
         ]
       }
     ]
