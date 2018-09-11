@@ -1,0 +1,48 @@
+
+$bgColor: #fff;
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: $bgColor;
+    padding: 20px;
+}
+
+#app {
+    width: 800px;
+    margin: 0 auto;
+}
+
+#app > div {
+    position: relative;
+    margin: 10px 0;
+    padding: 20px;
+    border: 1px solid gainsboro;
+    border-radius: 10px;
+}
+
+#app > div > p {
+    line-height: 24px;
+    font-size: 18px;
+}
+
+#app > div {
+    cursor: pointer;
+}
+
+#app > div > .date-time {
+    display: none;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    width: 200px;
+    height: 50px;
+    border: 2px solid green;
+    border-radius: 25px;
+    line-height: 50px;
+    text-align: center;
+    font-size: 24px;
+}
