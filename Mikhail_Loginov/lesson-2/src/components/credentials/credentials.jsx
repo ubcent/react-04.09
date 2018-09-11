@@ -5,16 +5,21 @@ export default class Credentials extends Component {
     state = {
       firstName: 'Mikhail',
       lastName: 'Loginov',
+      date: '',
     };
 
+    getCurrentDate = () => this.setState({ date: `Current Time is ${(new Date).toString()}`});
+
+    clickHandler = e => {
+      e.preventDefault();
+      this.getCurrentDate();
+    }
+
     render() {
-      function clickHandler(e) {
-        e.preventDefault();
-        console.log("123");
-      }
       return (
-        <div href="#" className="credentials" onClick={clickHandler}>
+        <div href="#" className="credentials" onClick={this.clickHandler}>
           <p>Developer: {this.state.firstName} {this.state.lastName}</p>
+          <p>{this.state.date}</p>
         </div>
       );
     }
