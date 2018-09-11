@@ -62,4 +62,3 @@ typings/
 
 # custom ignore
 .idea/
-dist/
