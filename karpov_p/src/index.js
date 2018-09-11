@@ -1,5 +1,3 @@
-import Human from './user';
+import newComponent from './user'
 
-const vasya = new Human('Vasya', 'Vasin');
-
-alert(vasya.sayHi())
+newComponent('Карпов Павел, lesson2')
