@@ -55,17 +55,14 @@ module.exports = {
 ],
     module: {
         rules: [
-            // настраиваем обработку js-файлов в babel
+            // настраиваем обработку jsx-файлов в babel
             {
                 // шаблон для обрабатываемых файлов
                 test: /\.js$/,
                 // файлы, исключенные из обработки
                 exclude: /node_modules/,
                 use: {
-                    loader: 'babel-loader',
-                    options: {
-                        presets: ['@babel/preset-env']
-                    }
+                    loader: 'babel-loader'
                 }
             },
             // настраиваем проверку js-файлов в eslint
