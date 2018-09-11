@@ -10,6 +10,14 @@ module.exports = {
         path: path.resolve(__dirname, 'dist'),
         filename: 'bundle.js',
     },
+    devtool: 'source-map',
+    devServer: {
+        contentBase: path.join(__dirname, 'dist'),
+        port: 9000,
+        stats: 'errors-only',  
+        compress: true,      
+        open: true,
+    },
     module: {
         rules: [
             {
