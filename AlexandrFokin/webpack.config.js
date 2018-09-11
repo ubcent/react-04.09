@@ -18,8 +18,8 @@ const webpack = require('webpack');
 module.exports = {
     // точки входа
     entry: {
-        // путь к точке входа - исходнику
-        main: path.resolve(__dirname, 'src', 'js', 'index.js')
+        // путь к точке входа - исходнику с добавлением необходимых полифиллов
+        main: ["@babel/polyfill", path.resolve(__dirname, 'src', 'js', 'index.js')]
     },
     output: {
         // папка для выгрузки результатов сборки
