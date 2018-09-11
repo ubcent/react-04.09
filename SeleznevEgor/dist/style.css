@@ -1,0 +1,29 @@
+body {
+  background-color: green; }
+
+.container {
+  max-width: 1024px;
+  margin: auto;
+  text-align: center; }
+  .container h3 {
+    font-family: "open-sans", sans-serif;
+    font-size: 2em;
+    font-style: italic;
+    color: orange; }
+  .container img {
+    width: 200px;
+    height: auto;
+    margin-bottom: 20px; }
+  .container .date {
+    min-height: 2em;
+    width: 100%;
+    font-family: "open-sans", sans-serif;
+    font-weight: 600;
+    color: orange;
+    font-size: 1.5em; }
+  .container #get-time {
+    padding: 5px 15px;
+    background-color: orange;
+    transition: background-color, 0.5s, ease; }
+    .container #get-time:hover {
+      background-color: red; }
