@@ -17,7 +17,7 @@ export default class Credentials extends Component {
 
     render() {
       return (
-        <div href="#" className="credentials" onClick={this.clickHandler}>
+        <div className="credentials" onClick={this.clickHandler}>
           <p>Developer: {this.state.firstName} {this.state.lastName}</p>
           <p>{this.state.date}</p>
         </div>
