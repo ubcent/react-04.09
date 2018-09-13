@@ -1,0 +1,11 @@
+.header {
+    background-color: turquoise;
+}
+
+.header-small {
+    height: 200px;
+}
+
+.header-big {
+    height: 400px;
+}
