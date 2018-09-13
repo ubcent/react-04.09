@@ -5,7 +5,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 module.exports = {
 	entry:{
-		main: path.resolve(__dirname, 'src', 'index.js'),
+		main: path.resolve(__dirname, 'src', 'index.jsx'),
 	}, 
 	output: {
 		path: path.resolve(__dirname, 'dist'), 
@@ -14,7 +14,7 @@ module.exports = {
 	module:{
 		rules :[
 			{
-				test:/\.js$/,
+				test:/\.jsx?$/,
 				exclude: /node_modules/,
 				use:{
 					loader:'babel-loader'
@@ -28,16 +28,21 @@ module.exports = {
 						{
 							loader: 'css-loader',
 							options: {
-								sourceMap: true
+								sourceMap: true,
+								url: false
 							}
 						},
 						{
 							loader: 'postcss-loader'
 						},
 						{
+							loader: 'resolve-url-loader'
+						},
+						{
 							loader: 'sass-loader',
 							options: {
 								sourceMap: true
+
 							}
 						}
 					]
@@ -45,6 +50,13 @@ module.exports = {
 			}
 
 		]
+	},
+	resolve: {
+		extensions: ['.js', '.jsx'],
+		alias:{
+			components: path.resolve(__dirname, 'src', 'Components'),
+			bootstrap: path.resolve(__dirname, 'node_modules', 'bootstrap', 'scss'),
+		}
 	},
 	plugins :[
 		new ExtractTextPlugin({filename: 'style.css'}),
