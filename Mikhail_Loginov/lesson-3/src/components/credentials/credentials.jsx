@@ -1,10 +1,9 @@
+import './Credentials.css';
+
 import React, { Component } from 'react';
-import './credentials.css';
 
 export default class Credentials extends Component {
     state = {
-      firstName: 'Mikhail',
-      lastName: 'Loginov',
       date: '',
     };
 
@@ -16,9 +15,12 @@ export default class Credentials extends Component {
     }
 
     render() {
+      const firstName = 'Mikhail';
+      const lastName = 'Loginov';
+      
       return (
         <div className="credentials" onClick={this.clickHandler}>
-          <p>Developer: {this.state.firstName} {this.state.lastName}</p>
+          <p>Developer: {firstName} {lastName}</p>
           <p>{this.state.date}</p>
         </div>
       );
