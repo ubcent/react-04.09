@@ -1,22 +1,24 @@
 const path = require('path');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const HtmlPlugin = require('html-webpack-plugin')
+const HtmlPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin')
 
-module.exports = {
+const conf = {
 	entry: {
         main: path.resolve(__dirname, 'src', 'index.js'),        
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'bundle.js',
+        // publicPath: 'dist/'
     },
-    devtool: 'source-map',
+
     devServer: {
-        contentBase: path.join(__dirname, 'dist'),
-        port: 9000,
+        contentBase: path.join(__dirname, 'src'),
+        overlay: true,
+        port: 3000,
         stats: 'errors-only',  
-        compress: true,      
-        open: true,
+        compress: true, 
     },
     module: {
         rules: [
@@ -25,20 +27,17 @@ module.exports = {
                exclude: /node_modules/,
                use: {
                    loader: 'babel-loader',
-               },
-                
+               },                
             },               
             {
-                test: /\.css$/,
-                use: ExtractTextPlugin.extract({
-                    fallback: 'style-loader',
-                    use: ['css-loader']
-                }),
+                test: /\.(sa|sc|c)ss$/,
+                use: [ 'style-loader', MiniCssExtractPlugin.loader, 'css-loader', {loader: 'postcss-loader'}, 'sass-loader']
             },
         ]
     },
     plugins: [
-        new ExtractTextPlugin({
+        new CleanWebpackPlugin('dist', {}),
+        new MiniCssExtractPlugin({
             filename: 'bundle.css'
         }),
         new HtmlPlugin({
@@ -47,5 +46,35 @@ module.exports = {
         }),
     ]
 }
+module.exports = (env, options) => {
+    const production = options.mode !== 'production';
+    conf.devtool = production ? 'eval-source-map' : false ;
+    conf.module = {
+        rules: [
+            {
+               test: /\.js$/,
+               exclude: /node_modules/,
+               use: {
+                   loader: 'babel-loader',
+               },                
+            },               
+            {
+                test: /\.(sa|sc|c)ss$/,
+                use: [ 'style-loader', MiniCssExtractPlugin.loader, 'css-loader', 
+                {
+                    loader: 'postcss-loader',
+                    options: {
+                      ident: 'postcss',
+                      plugins: (loader) => [                     
+                        production ? require('autoprefixer')() : require('cssnano')(), 
+                        require('autoprefixer')()                                          
+                      ]
+                    }
+                  }, 'sass-loader']
+            },
+        ]
+    }
+    return conf;
+};
 
 
