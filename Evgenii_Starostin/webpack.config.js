@@ -1,11 +1,11 @@
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const PUBLIC_PATH = require('path').join(__dirname, 'build');
+const path = require('path');
 
-let config = {
-    entry: './src/index.js',
+const config = {
+    entry: './src/index.jsx',
     output: { 
-        path: PUBLIC_PATH,
+        path: path.resolve(__dirname, 'build'),
         filename: 'bundle.js'
     },
     devServer: {
@@ -14,7 +14,7 @@ let config = {
     module: {
         rules: [
             {
-                test: /\.js$/,
+                test: /\.jsx?$/,
                 exclude: /(node_modules)/,
                 use: {
                     loader: 'babel-loader',
@@ -44,29 +44,33 @@ let config = {
             template: 'public/index.html'
         })
     ],
+    resolve: {
+        alias: {
+            Components: path.resolve(__dirname, 'src/components/'),
+            Mocks: path.resolve(__dirname, 'mocks/'),
+        },
+        extensions: ['.js', '.jsx']
+    }
 };
 
 module.exports = (env, argv) => {
-
-    if (argv.mode === 'development') {
-        config.devtool = 'source-map';
-        config.module.rules.push(
-            {
-                test: /\.css$/,
-                use: [
-                    { loader: 'style-loader' },
-                    { loader: 'css-loader' }
-                ]
-            }
-        );
-    }
-
     if (argv.mode === 'production') {
         config.module.rules.push(
             {
                 test: /\.css$/,
                 use: [
-                    { loader: MiniCssExtractPlugin.loader },
+                    MiniCssExtractPlugin.loader,
+                    { loader: 'css-loader' }
+                ]
+            }
+        );
+    } else {
+        config.devtool = 'cheap-module-source-map';
+        config.module.rules.push(
+            {
+                test: /\.css$/,
+                use: [
+                    { loader: 'style-loader' },
                     { loader: 'css-loader' }
                 ]
             }
