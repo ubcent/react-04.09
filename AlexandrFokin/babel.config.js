@@ -14,8 +14,12 @@ module.exports = function (api) {
       development: process.env.BABEL_ENV === "development"
     }]
   ];
+  const plugins = [
+    ["transform-class-properties"]
+  ];
 
   return {
-    presets
+    presets,
+    plugins
   };
 };

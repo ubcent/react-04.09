@@ -80,9 +80,9 @@ module.exports = {
         exclude: /node_modules/,
         loader: 'eslint-loader'
       },
-      // настраиваем обработку scss-файлов
+      // настраиваем обработку (s)css-файлов
       {
-        test: /\.scss$/,
+        test: /\.(css|scss)$/,
         use: [
           // Добавляем экспорт модуля в качестве стиля в DOM
           'style-loader',
