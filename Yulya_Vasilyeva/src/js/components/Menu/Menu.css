@@ -1,0 +1,22 @@
+.logo:hover{
+    text-decoration: none;
+    color: rgb(70, 70, 70);
+    
+}
+.logo img{
+    transition: all 0.2s ease-in-out;
+}
+.logo:hover img{
+    transform: rotateZ(90deg);
+}
+.logo span{
+    padding-left: 10px;
+    color: #6e230e;
+}
+.navbar-light .navbar-nav .nav-link{
+    color: #000;
+    text-transform: uppercase;
+}
+.navbar-light .navbar-nav .nav-link:hover{
+    color: #fa4e1e;
+}
