@@ -4,17 +4,23 @@ const HtmlPlugin = require('html-webpack-plugin');
 
 module.exports = {
     entry: {
-        main: path.resolve(__dirname, 'src', 'index.js'), // по умолчанию src/index.js
+        main: path.resolve(__dirname, 'src', 'index.jsx'), // по умолчанию src/index.jsx
     },
     output: {
         /* по умолчанию dist/main.js */
         path: path.resolve(__dirname, 'dist'),
         filename: 'bundle.js',
     },
+    resolve: {
+        extensions: ['.js', '.jsx'],
+        alias: {
+            components: path.resolve(__dirname, 'src', 'components'),
+        }
+    },
     module: {
         rules: [
             {
-                test: /\.js$/,
+                test: /\.jsx?$/,
                 exclude: /node_modules/,
                 use: {
                     loader: 'babel-loader',
@@ -25,6 +31,13 @@ module.exports = {
                 use: ExtractTextPlugin.extract({
                     fallback: 'style-loader',
                     use: ['css-loader', 'sass-loader'],
+                }),
+            },
+            {
+                test: /\.css$/,
+                use: ExtractTextPlugin.extract({
+                    fallback: 'style-loader',
+                    use: ['css-loader'],
                 }),
             }
         ]

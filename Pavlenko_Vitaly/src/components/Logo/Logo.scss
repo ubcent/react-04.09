@@ -1,0 +1,15 @@
+.logo {
+  font-size: 36px;
+  color: #fff;
+  font-family: 'Anton', sans-serif;
+  text-decoration: none;
+  display: block;
+  transition: opacity .2s;
+  line-height: 1;
+  padding-top: 4px;
+  &:hover {
+    text-decoration: none;
+    color: #fff;
+    opacity: 0.85;
+  }
+}
