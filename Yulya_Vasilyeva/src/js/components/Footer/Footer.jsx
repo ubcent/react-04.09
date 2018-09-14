@@ -8,7 +8,9 @@ export default class Footer extends Component{
     render(){
         return(
            <footer>
-              Статьи, переводы изображения и торговые марки принадлежат их авторам и владельцам. Copyright &copy; 3dblog.by, 2002-2018. 
+              Статьи, переводы изображения и торговые марки принадлежат их авторам и владельцам.
+              <br/>
+              Copyright &copy; 3dblog.by, 2002-2018. 
            </footer>
         );
     }
