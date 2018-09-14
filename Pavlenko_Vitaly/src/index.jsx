@@ -4,16 +4,11 @@ import './styles/main.scss';
 import React, {Component} from 'react';
 import ReactDom from 'react-dom';
 
-import Layout from './layouts/Layout';
+import Layout from 'layouts/Layout';
+import MainPage from 'pages/MainPage';
 
-class App extends Component {
-    render() {
-        return (
-            <Layout>
-                <div className="container">Здесь будет контент сайта</div>
-            </Layout>
-        );
-    };
-}
-
-ReactDom.render(<App/>, document.querySelector('#app'));
+ReactDom.render(
+    <Layout>
+        <MainPage/>
+    </Layout>,
+    document.querySelector('#app'));

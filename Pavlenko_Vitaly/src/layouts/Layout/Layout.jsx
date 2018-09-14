@@ -5,6 +5,7 @@ import Header from 'components/Header';
 export default class Layout extends Component {
 
     render() {
+
         return (
             <Fragment>
                 <Header size="small"/>

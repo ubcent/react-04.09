@@ -20,16 +20,12 @@ const items = [
 ];
 
 export default class Header extends Component {
+
     // static propTypes = {
     //     size: PropTypes.oneOf(['small', 'big']),
     // };
-    //
-    // static defaultProps = {
-    //     size: 'small',
-    // };
 
     render() {
-        // const { size } = this.props;
 
         return (
             <header className="header">

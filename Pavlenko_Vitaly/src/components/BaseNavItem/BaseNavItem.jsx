@@ -4,6 +4,12 @@ import React, {Component} from 'react';
 
 export default class BaseNavItem extends Component {
 
+    static defaultProps = {
+        id: null,
+        title: '',
+        href: '#',
+    };
+
     render() {
         const { id, title, href } = this.props;
 

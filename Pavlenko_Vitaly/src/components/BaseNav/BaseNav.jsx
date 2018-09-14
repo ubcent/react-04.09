@@ -8,6 +8,7 @@ import Login from 'components/Login';
 export default class BaseNav extends Component {
 
     render() {
+
         const { items } = this.props;
 
         return (

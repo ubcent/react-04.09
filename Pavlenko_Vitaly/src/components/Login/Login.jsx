@@ -14,6 +14,7 @@ export default class Login extends Component {
     }
 
     render() {
+
         const popupClasses = classNames('login__popup', {
             'login__popup_active': this.state.showPopup,
         });
