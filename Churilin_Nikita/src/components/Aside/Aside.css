@@ -1,0 +1,16 @@
+aside {
+    border: 1px solid #000;
+    border-radius: 20px;
+    box-sizing: border-box;
+    margin-right: 20px;
+    padding: 25px;
+}
+
+aside li {
+    list-style-type: none;
+}
+
+aside li a {
+    color: #000;
+    text-decoration: none;
+}

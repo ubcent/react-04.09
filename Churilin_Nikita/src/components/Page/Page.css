@@ -1,0 +1,19 @@
+.container {
+    display: grid;
+    grid-template-areas: 'a a a'
+                         'b c c';
+    margin: 0 auto;
+    width: 1200px;
+}
+
+header {
+    grid-area: a;
+}
+
+aside {
+    grid-area: b;
+}
+
+main {
+    grid-area: c;
+}
