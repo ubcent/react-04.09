@@ -8,7 +8,7 @@ export default class Layout extends Component {
 
         return (
             <Fragment>
-                <Header size="small"/>
+                <Header/>
                 <main className="main-content">
                     {this.props.children}
                 </main>
