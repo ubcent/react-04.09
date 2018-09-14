@@ -3,7 +3,7 @@ import './Footer.css';
 import React, {Component} from 'react';
 import {Nav, NavItem, NavLink, Container} from 'reactstrap';
 
-export default class Header extends Component {
+export default class Footer extends Component {
 
   render() {
     const menu = [
@@ -19,14 +19,16 @@ export default class Header extends Component {
       }
     ];
 
+    const navMenu = <Nav>
+      {menu.map(item => <NavItem>
+        <NavLink href={item.href}>{item.title}</NavLink>
+      </NavItem>)}
+    </Nav>
+
     return (
       <footer className="footer">
         <Container>
-          <Nav>
-            {menu.map(item => <NavItem>
-              <NavLink href={item.href}>{item.title}</NavLink>
-            </NavItem>)}
-          </Nav>
+          {navMenu}
         </Container>
       </footer>
     );

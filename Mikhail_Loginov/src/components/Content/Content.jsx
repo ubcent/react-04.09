@@ -3,7 +3,7 @@ import './Content.css';
 import React, {Component} from 'react';
 import {Container} from 'reactstrap';
 
-export default class Credentials extends Component {
+export default class Content extends Component {
   state = {
     date: ''
   };
