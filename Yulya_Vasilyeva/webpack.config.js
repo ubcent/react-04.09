@@ -6,16 +6,22 @@ const CleanPlugin = require('clean-webpack-plugin');
 module.exports = {
     mode: 'development',
     entry:{
-        app: path.resolve(__dirname, 'src', 'js/_index.js')
+        entry: path.resolve(__dirname, 'src', 'js/_index.jsx')
     },
     output:{
         path: path.resolve(__dirname,'dist'),
-        filename: 'js/[name].index.js'
+        filename: 'js/index.js'
+    },
+    resolve: {
+        extensions: ['.js','.jsx'],
+        alias: {
+            components: path.resolve(__dirname, 'src', 'js/components')
+        }
     },
     module:{
         rules:[
             {
-                test:/\.js$/,
+                test:/\.jsx?$/,
                 exclude: /(node_modules)/,
                 use:{
                     loader: 'babel-loader',
@@ -38,9 +44,6 @@ module.exports = {
                 }  
             }
         ],
-    },
-    devServer: {
-        contentBase: './dist'
     },
     plugins:[
         new ExtractCSS({filename: 'css/style.css'}),
