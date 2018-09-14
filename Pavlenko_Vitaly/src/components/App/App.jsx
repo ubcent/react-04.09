@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import ReactDom from 'react-dom';
 
-import Layout from 'layouts/Layout';
-import MainPage from 'pages/MainPage';
+import Layout from 'Pavlenko_Vitaly/src/layouts/Layout/index';
+import MainPage from 'Pavlenko_Vitaly/src/pages/MainPage/index';
 
 export default class App extends Component {
 
