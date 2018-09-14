@@ -4,20 +4,22 @@
   "description": "",
   "scripts": {
     "build": "webpack --mode production",
-    "dev": "webpack --mode development",
-    "start": "webpack-dev-server --open",
+    "dev": "webpack-dev-server --mode development",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "react": "^16.5.0"
+    "react": "^16.5.0",
+    "react-dom": "^16.5.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.0.0",
-    "@babel/preset-env": "^7.0.0",
     "autoprefixer": "^9.1.5",
-    "babel-loader": "^8.0.2",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
     "clean-webpack-plugin": "^0.1.19",
     "css-loader": "^1.0.0",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
