@@ -1,7 +1,13 @@
 @import "vars";
 @import "fonts";
-@import "../../node_modules/bootstrap/scss/bootstrap-grid";
+@import "libs";
 
+body {
+	background-color: rgba(green, .2);
+	font-family:$default-font;
+	font-size: 16px;
+
+}
 
 
 @import "media";

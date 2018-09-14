@@ -1,14 +1,20 @@
 /********************************************************************
-* incude libraries                                                  *
-********************************************************************/
+* Includes															*
+*********************************************************************/
+
+/*Include styles*/
+import './sass/main.scss';
+
+/*Incude libraries*/ 
 import  React, {Component, Fragment} from 'react';
 import ReactDom from 'react-dom';
 
-/********************************************************************
-* import components                                                 *
-********************************************************************/
+/*Import user components*/
 import Header from 'components/Header/'
-import './sass/main.scss';
+
+/********************************************************************
+* Main															*
+*********************************************************************/
 
 class Layout extends Component{
     render(){
@@ -22,3 +28,5 @@ class Layout extends Component{
 }
 
 ReactDom.render(<Layout/>, document.getElementById('Main-page'));
+
+
