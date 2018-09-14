@@ -1,0 +1,8 @@
+body {
+  background: #ccc;
+  & .developer {
+    color: chocolate;
+    font-size: 24px;
+    cursor: pointer;
+  }
+}
