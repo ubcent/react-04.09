@@ -12,6 +12,8 @@ import {//импортируем компоненты для навигации 
     NavItem,
     NavLink
 } from 'reactstrap';
+//проверка свойств
+import PropTypes from 'prop-types';
 
 export default class Menu extends Component {
     constructor(props) {
@@ -27,7 +29,13 @@ export default class Menu extends Component {
             isOpen: !this.state.isOpen
         });
     }
+    static propTypes = {
+        //пункты меню должны быть строкой
+        menu: PropTypes.arrayOf(PropTypes.string),
+    }
     render() {
+        const { menu } = this.props;//получаем массив меню
+        //строим навигацию на сайте (главная)
         return (
             <Navbar light expand="md">
                 <NavbarBrand href="/" className="logo">
@@ -36,19 +44,15 @@ export default class Menu extends Component {
                 </NavbarBrand>
                 <NavbarToggler onClick={this.toggle} />
                 <Collapse isOpen={this.state.isOpen} navbar>
-                    <Nav className="ml-auto" navbar>
-                        <NavItem>
-                            <NavLink href="./">Главная</NavLink>
-                        </NavItem>
-                        <NavItem>
-                            <NavLink href="#">3D Графика</NavLink>
-                        </NavItem>
-                        <NavItem>
-                            <NavLink href="#">2D Графика</NavLink>
-                        </NavItem>
-                        <NavItem>
-                            <NavLink href="#">Контакты</NavLink>
-                        </NavItem>
+                    <Nav className="mr-auto" navbar>
+                        {menu.map( (item, indx)=>{
+                            //элементы главного меню
+                            return(
+                                <NavItem key={"mainMenu" + indx}>
+                                    <NavLink href="#">{item}</NavLink>
+                                </NavItem>
+                            );
+                        })}
                     </Nav>
                 </Collapse>
             </Navbar>
