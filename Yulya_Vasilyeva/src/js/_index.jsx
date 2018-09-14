@@ -17,19 +17,21 @@ import Article from 'components/Article/Article';
 import SignIn from 'components/SignIn/SignIn';
 import Footer from 'components/Footer/Footer';
 
+//импортируем данные
+import { mainMenu, article } from './data';
+
 //Главный компонет
 class App extends Component{
     render(){
-        //const {color} = this.props;
         //Собираем компонтенты: меню + авторизация + список статей + футер
         return(
             <Fragment>
                <Container>
-                   <Menu/>
+                   <Menu menu={mainMenu}/>
                     <Row>
-                        <Col md="8">
+                        <Col md="9">
                             <Descr/>
-                            <Article/>
+                            <Article text={article}/>
                         </Col>
                         <Col md="auto">
                             <SignIn/>
