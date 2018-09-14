@@ -1,0 +1,9 @@
+.article{
+    margin: 20px 0;
+}
+.read-more{
+    float: right;
+}
+.read-more:after{
+    clear: both;
+}
