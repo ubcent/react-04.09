@@ -1,0 +1,20 @@
+.info {
+  padding: 15px 20px;
+  background-color: #ffe4c4;
+  cursor: pointer;
+}
+
+.info:hover {
+  background-color: #f5d7b2;
+}
+
+.info-name {
+  font-size: 18px;
+}
+
+.hint {
+  font-size: 10px;
+}
+
+.btn-date {
+}
