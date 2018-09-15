@@ -35,17 +35,19 @@ export default class Header extends Component {
   render() {
     return (
       <Fragment>
-        <div className="row">
-          <div className="col-10">
-            {/* Меню навигации */}
-            <HorizontalMenu menu={menu}>
-            </HorizontalMenu>
+        <header>
+          <div className="row">
+            <div className="col-10">
+              {/* Меню навигации */}
+              <HorizontalMenu menu={menu}>
+              </HorizontalMenu>
+            </div>
+            <div className="col-2">
+              <BlogButton item={{id: "login", name: "Log in"}}>
+              </BlogButton>
+            </div>
           </div>
-          <div className="col-2">
-            <BlogButton item={{id: "login", name: "Log in"}}>
-            </BlogButton>
-          </div>
-        </div>
+        </header>
       </Fragment>
     );
   }
