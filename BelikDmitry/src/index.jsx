@@ -1,17 +1,14 @@
 import React, { Component, Fragment } from 'react';
 import ReactDom from 'react-dom';
 
-import Header from 'components/Header';
+import Layout from 'components/Layout';
 
-const creators = [
-  'vasya', 'opas', 'kira'
-];
 
 class App extends Component {
   render() {
     return (
       <Fragment>
-        <Header size="small" creators={creators}/>
+        <Layout />
       </Fragment>
     );
   }

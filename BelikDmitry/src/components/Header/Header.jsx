@@ -1,30 +1,12 @@
 import './Header.css'
 
 import React, { Component } from 'react';
-import classNames from 'classnames';
-import PropTypes from 'prop-types';
 
-export default class Header extends Component {
-  static propTypes = {
-    size: PropTypes.oneOf(['small', 'big']),
-    creators: PropTypes.arrayOf(PropTypes.string),
 
-  }
-  static defaultProps = {
-    size: 'small',
-    creators: []
-  };
+export class Header extends Component {
   render() {
-    const { size, creators} = this.props;
-    const headerClasses = classNames('header', {
-      'header-small': size === 'small',
-      'header-big': size === 'big',
-    });
-    return (
-      <header className={headerClasses}>
-        Hello from header
-        {creators.map((creator, idx) => <li key={idx}>{creator}</li>)}
-      </header>
-    );
+     return (
+
+     );
   }
 }
