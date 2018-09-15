@@ -1,7 +1,7 @@
 module.exports = {
   'env': {
     'browser': true,
-    'es6': true
+    'es6': true,
   },
   'extends': [ 'eslint:recommended', 'plugin:react/recommended' ],
   'parserOptions': {
@@ -9,23 +9,23 @@ module.exports = {
       'jsx': true
     },
     'ecmaVersion': 2018,
-    'sourceType': 'module'
+    'sourceType': 'module',
   },
   'plugins': [
-    'react'
+    'react',
   ],
   'rules': {
     'linebreak-style': [
       'error',
-      'unix'
+      'unix',
     ],
     'quotes': [
       'error',
-      'single'
+      'single',
     ],
     'semi': [
       'error',
-      'always'
+      'always',
     ]
   }
 };

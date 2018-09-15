@@ -1,6 +1,6 @@
 {
   "name": "ru.fokin.alexandr",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "ReactJS homework",
   "main": "index.jsx",
   "scripts": {
@@ -9,12 +9,14 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
-    "ReactJS"
+    "ReactJS",
+    "Blog template"
   ],
   "author": "Alexandr Fokin",
   "license": "MIT",
   "dependencies": {
     "@babel/polyfill": "^7.0.0",
+    "autoprefixer": "^9.1.5",
     "bootstrap": "^4.1.3",
     "classnames": "^2.2.6",
     "prop-types": "^15.6.2",
@@ -27,7 +29,6 @@
     "@babel/core": "^7.0.0",
     "@babel/preset-env": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
-    "autoprefixer": "^9.1.5",
     "babel-loader": "^8.0.2",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "browser-sync": "^2.24.7",

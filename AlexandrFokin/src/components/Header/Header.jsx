@@ -12,23 +12,23 @@ import BlogButton from 'components/BlogButton/BlogButton';
 const menu = [
   {
     id: 'main',
-    name: 'Home'
+    name: 'Home',
   },
   {
     id: 'new_feature,',
-    name: 'New features'
+    name: 'New features',
   },
   {
     id: 'press',
-    name: 'Press'
+    name: 'Press',
   },
   {
     id: 'new_hires',
-    name: 'New hires'
+    name: 'New hires',
   },
   {
     id: 'about',
-    name: 'About'
+    name: 'About',
   }
 ];
 

@@ -19,26 +19,26 @@ module.exports = {
   // точки входа
   entry: {
     // путь к точке входа - исходнику с добавлением необходимых полифиллов
-    main: ['@babel/polyfill', path.resolve(__dirname, 'src', 'index.jsx')]
+    main: ['@babel/polyfill', path.resolve(__dirname, 'src', 'index.jsx')],
   },
   output: {
     // папка для выгрузки результатов сборки
     path: path.resolve(__dirname, 'dist'),
-    filename: 'app.[chunkhash].js'
+    filename: 'app.[chunkhash].js',
   },
   resolve: {
     // очередность выбора расширения файла, если расширение файла не указано
     extensions: ['.js', '.jsx'],
     alias: {
       // адрес папки components
-      components: path.resolve(__dirname, 'src', 'components')
+      components: path.resolve(__dirname, 'src', 'components'),
     }
   },
   devtool: false,
   plugins: [
     new CleanWebpackPlugin(path.resolve(__dirname, 'dist'), {} ),
     new MiniCssExtractPlugin({
-      filename: 'app.[hash].css'
+      filename: 'app.[hash].css',
     }),
     new HtmlWebpackPlugin({
       inject: false,
@@ -46,7 +46,7 @@ module.exports = {
       // путь к шаблону html файла index.html
       template: path.resolve(__dirname, 'src', 'index.html'),
       // имя файла в конечной сборке
-      filename: 'index.html'
+      filename: 'index.html',
     }),
     new WebpackMd5Hash(),
     new BrowserSyncPlugin({
@@ -54,12 +54,12 @@ module.exports = {
       host: 'localhost',
       port: 3000,
       // папка со сборкой, используемая в качестве корневой для сервера
-      server: { baseDir: ['dist'] }
+      server: { baseDir: ['dist'] },
     }),
     // создаем карты исходников
     new webpack.SourceMapDevToolPlugin(),
     // проверяем SASS
-    new SassLintPlugin()
+    new SassLintPlugin(),
 ],
   module: {
     rules: [
@@ -70,7 +70,7 @@ module.exports = {
         // файлы, исключенные из обработки
         exclude: /node_modules/,
         use: {
-          loader: 'babel-loader'
+          loader: 'babel-loader',
         }
       },
       // настраиваем проверку jsx-файлов в eslint
@@ -78,7 +78,7 @@ module.exports = {
         enforce: 'pre',
         test: /\.js$/,
         exclude: /node_modules/,
-        loader: 'eslint-loader'
+        loader: 'eslint-loader',
       },
       // настраиваем обработку (s)css-файлов
       {
@@ -95,7 +95,7 @@ module.exports = {
           // добавляем префиксы
           'postcss-loader',
           // загружает и преобразует scss-файлы в css
-          'sass-loader'
+          'sass-loader',
         ]
       },
       // настраиваем обработку изображений
@@ -105,7 +105,7 @@ module.exports = {
           {
             loader: 'file-loader',
             options: {
-              name: 'imgs/[name].[ext]'
+              name: 'imgs/[name].[ext]',
             }
           }
         ]

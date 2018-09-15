@@ -21,7 +21,7 @@ export default class HorizontalMenu extends Component {
       // id пункта
       id:  PropTypes.string,
       // название пункта
-      name: PropTypes.string
+      name: PropTypes.string,
     }))
   };
 

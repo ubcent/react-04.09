@@ -16,7 +16,7 @@ export default class BlogButton extends Component {
       // id кнопки
       id:  PropTypes.string,
       // название кнопки
-      name: PropTypes.string
+      name: PropTypes.string,
     })
   };
 

@@ -19,7 +19,7 @@ export default class MainPage extends Component {
   // значения атрибутов по умолчанию
   static defaultProps = {
     // аттрибут size
-    size: 'small'
+    size: 'small',
   };
 
   render() {
@@ -29,12 +29,18 @@ export default class MainPage extends Component {
     const mainClasses = classNames('main', {
       // присваиваем элементу дополнительный класс в зависимости от значения аттрибута size этого элемента
       'main-small': size === 'small',
-      'main-big': size === 'big'
+      'main-big': size === 'big',
     });
 
     // Отображаем main и его измененного потомка
     return (
       <main className={mainClasses}>
+        <h1>
+          The Bootstrap Blog
+        </h1>
+        <p>
+          The official example template of creating a blog with Bootstrap.
+        </p>
         This is MainPage with size {size}
         <div>
           Hi! I'm children - {children}

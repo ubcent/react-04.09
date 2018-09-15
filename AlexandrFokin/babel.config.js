@@ -6,16 +6,16 @@ module.exports = function (api) {
         edge: '17',
         firefox: '62',
         chrome: '69',
-        safari: '11.1'
+        safari: '11.1',
       },
-      useBuiltIns: 'usage'
+      useBuiltIns: 'usage',
     }],
     ['@babel/preset-react', {
-      development: process.env.BABEL_ENV === 'development'
+      development: process.env.BABEL_ENV === 'development',
     }]
   ];
   const plugins = [
-    ['transform-class-properties']
+    ['transform-class-properties'],
   ];
 
   return {

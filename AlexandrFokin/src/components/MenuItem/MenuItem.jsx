@@ -16,7 +16,7 @@ export default class MenuItem extends Component {
       // id пункта
       id:  PropTypes.string,
       // название пункта
-      name: PropTypes.string
+      name: PropTypes.string,
     })
   };
 
