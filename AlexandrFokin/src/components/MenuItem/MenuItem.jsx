@@ -27,12 +27,14 @@ export default class MenuItem extends Component {
   };
 
   render() {
+    {/* получаем переданные свойства пункта меню */}
+    const {id, name} = this.props.item;
     return (
       <NavItem>
         {/* Присваиваем пункту меню id */}
-        <NavLink id={this.props.item.id} href='#'>
+        <NavLink id={id} href='#'>
           {/* Отображаем название пункта меню */}
-          {this.props.item.name}
+          {name}
         </NavLink>
       </NavItem>
     );

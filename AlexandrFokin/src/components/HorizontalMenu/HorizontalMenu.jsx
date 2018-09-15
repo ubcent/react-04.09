@@ -32,12 +32,14 @@ export default class HorizontalMenu extends Component {
   };
 
   render() {
-    // получаем текущие значения атрибутов этого элемента
+    // получаем переданные свойства меню
     const { menu } = this.props;
     return (
       <Nav>
         {menu.map( (item, idx) => {
-          return (<MenuItem item={item} key={idx}></MenuItem>);
+          return (
+            <MenuItem item={item} key={idx}></MenuItem>
+          );
         })}
       </Nav>
     );

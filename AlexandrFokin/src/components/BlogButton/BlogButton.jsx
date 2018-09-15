@@ -27,9 +27,11 @@ export default class BlogButton extends Component {
   };
 
   render() {
+    {/* получаем переданные свойства кнопки */}
+    const {id, name} = this.props.item;
     return (
-      <Button outline color='primary' id={this.props.item.id}>
-        {this.props.item.name}
+      <Button outline color='primary' id={id}>
+        {name}
       </Button>
     );
   }

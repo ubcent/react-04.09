@@ -32,6 +32,9 @@ const menu = [
   }
 ];
 
+// Данные для кнопки логина
+const loginButton = {id: 'login', name: 'Log in'};
+
 /**
  * Класс Header - компонент, отображающий хидер страницы
  */
@@ -47,7 +50,7 @@ export default class Header extends Component {
               </HorizontalMenu>
             </div>
             <div className='col-2'>
-              <BlogButton item={{id: 'login', name: 'Log in'}}>
+              <BlogButton item={loginButton}>
               </BlogButton>
             </div>
           </div>

@@ -23,7 +23,7 @@ export default class MainPage extends Component {
   };
 
   render() {
-    // получаем текущие значения атрибутов этого элемента и значение потомка внутри этого элемента
+    // получаем переданные свойства главной страницы и содержимое контента
     const { size, children } = this.props;
     // присваиваем элементу класс main
     const mainClasses = classNames('main', {
