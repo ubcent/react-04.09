@@ -46,12 +46,10 @@ export default class Header extends Component {
           <div className='row'>
             <div className='col-10'>
               {/* Меню навигации */}
-              <HorizontalMenu menu={menu}>
-              </HorizontalMenu>
+              <HorizontalMenu menu={menu}/>
             </div>
             <div className='col-2'>
-              <BlogButton item={loginButton}>
-              </BlogButton>
+              <BlogButton item={loginButton}/>
             </div>
           </div>
         </header>

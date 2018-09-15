@@ -38,7 +38,7 @@ export default class HorizontalMenu extends Component {
       <Nav>
         {menu.map( (item, idx) => {
           return (
-            <MenuItem item={item} key={idx}></MenuItem>
+            <MenuItem item={item} key={idx}/>
           );
         })}
       </Nav>
