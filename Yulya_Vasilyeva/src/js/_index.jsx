@@ -16,15 +16,16 @@ import Descr from 'components/Descr/Descr';
 import Article from 'components/Article/Article';
 import SignIn from 'components/SignIn/SignIn';
 import Submenu from 'components/Submenu/Submenu';
+import Subscr from 'components/Subscr/Subscr';
 import Footer from 'components/Footer/Footer';
 
-//импортируем данные
+//импортируем данные из файла
 import { mainMenu, subMenu, article } from './data';
 
 //Главный компонет
 class App extends Component{
     render(){
-        //Собираем компонтенты: меню + авторизация + список статей + футер
+        //Собираем компонтенты: меню + авторизация + подписка + список статей + футер
         return(
             <Fragment>
                <Container>
@@ -37,6 +38,7 @@ class App extends Component{
                         <Col md="3">
                             <SignIn/>
                             <Submenu submenu={subMenu}/>
+                            <Subscr/>
                         </Col>
                     </Row>
                     <Footer/>
