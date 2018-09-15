@@ -1,8 +1,11 @@
 import './Header.scss';
 
 import React, {Component, Fragment} from 'react';
-import HorizontalMenu from "components/HorizontalMenu";
-import BlogButton from "components/BlogButton/BlogButton";
+// Работа с классами
+import classNames from 'classnames';
+
+import HorizontalMenu from 'components/HorizontalMenu';
+import BlogButton from 'components/BlogButton/BlogButton';
 
 // Список пунктов меню
 const menu = [
@@ -36,14 +39,14 @@ export default class Header extends Component {
     return (
       <Fragment>
         <header>
-          <div className="row">
-            <div className="col-10">
+          <div className='row'>
+            <div className='col-10'>
               {/* Меню навигации */}
               <HorizontalMenu menu={menu}>
               </HorizontalMenu>
             </div>
-            <div className="col-2">
-              <BlogButton item={{id: "login", name: "Log in"}}>
+            <div className='col-2'>
+              <BlogButton item={{id: 'login', name: 'Log in'}}>
               </BlogButton>
             </div>
           </div>
