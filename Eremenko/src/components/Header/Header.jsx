@@ -9,16 +9,16 @@ import PropTypes from 'prop-types';
 export default class Header extends Component {
   // Uncaught TypeError: _propTypes2.default.string.oneOf is not a function
   
-  /*
+  
   static propTypes = {
-    size: PropTypes.string.oneOf(['small', 'big']),
+    size: PropTypes.oneOf(['small', 'big']),
     categories: PropTypes.arrayOf(PropTypes.string),
   }
-  */
+  
   
   // передаваемые значения по умолчанию
   static defaultProps = {
-    sizee: 'small',
+    size: 'small',
     categories: [],
   }
   

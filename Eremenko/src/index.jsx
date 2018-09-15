@@ -21,4 +21,4 @@ class App extends Component {
   }
 }
 
-ReactDom.render(<App />, document.getElementById('body'));
+ReactDom.render(<App />, document.getElementById('wrapper'));
