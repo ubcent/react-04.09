@@ -22,7 +22,7 @@ export default class BlogButton extends Component {
 
   // значения атрибутов по умолчанию
   static defaultProps = {
-    // аттрибут menu устанавливаем объект с пустыми полями
+    // аттрибут item устанавливаем объект с пустыми полями
     item: {id: '', name: ''}
   };
 
