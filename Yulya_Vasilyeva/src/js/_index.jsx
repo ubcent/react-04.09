@@ -15,10 +15,11 @@ import Menu from 'components/Menu/Menu';
 import Descr from 'components/Descr/Descr';
 import Article from 'components/Article/Article';
 import SignIn from 'components/SignIn/SignIn';
+import Submenu from 'components/Submenu/Submenu';
 import Footer from 'components/Footer/Footer';
 
 //импортируем данные
-import { mainMenu, article } from './data';
+import { mainMenu, subMenu, article } from './data';
 
 //Главный компонет
 class App extends Component{
@@ -33,8 +34,9 @@ class App extends Component{
                             <Descr/>
                             <Article text={article}/>
                         </Col>
-                        <Col md="auto">
+                        <Col md="3">
                             <SignIn/>
+                            <Submenu submenu={subMenu}/>
                         </Col>
                     </Row>
                     <Footer/>
