@@ -1,16 +1,25 @@
 const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const HtmlPlugin = require('html-webpack-plugin');
+
 module.exports = {
-  entry: { main: './src/index.js' },
+  entry: { 
+    main: path.resolve(__dirname, 'src', 'index.jsx')
+   },
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'main.js'
   },
+  resolve: {
+    extensions: ['.js', '.jsx'],
+    alias: {
+      components: path.resolve(__dirname, 'src', 'components')
+    }
+  },
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.jsx?$/,
         exclude: /node_modules/,
         use: {
           loader: "babel-loader"
@@ -27,6 +36,10 @@ module.exports = {
     ]
   },
   plugins: [ 
-    new ExtractTextPlugin({filename: 'style.css'})
+    new ExtractTextPlugin({filename: 'style.css'}),
+    new HtmlPlugin({
+      template: path.resolve(__dirname, 'src', 'index.html'),
+      filename: 'index.html'
+    })
   ]
 }
