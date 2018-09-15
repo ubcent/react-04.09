@@ -20,7 +20,7 @@ class Layout extends Component{
     render(){
         return(
             <Fragment>
-            <Header />
+            <Header items={['All','Category 1','Category 2','Category 3']} />
             <div>Hello World!!</div>
             </Fragment>
         );
