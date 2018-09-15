@@ -66,7 +66,7 @@ module.exports = {
       // настраиваем обработку jsx-файлов в babel
       {
         // шаблон для обрабатываемых файлов
-        test: /\.(js|jsx)$/,
+        test: /\.jsx?$/,
         // файлы, исключенные из обработки
         exclude: /node_modules/,
         use: {
@@ -82,7 +82,7 @@ module.exports = {
       },
       // настраиваем обработку (s)css-файлов
       {
-        test: /\.(css|scss)$/,
+        test: /\.s?css$/,
         use: [
           // Добавляем экспорт модуля в качестве стиля в DOM
           'style-loader',
