@@ -28,7 +28,7 @@ export default class BlogButton extends Component {
 
   render() {
     return (
-      <Button outline color="primary" id={this.props.item.id}>
+      <Button outline color='primary' id={this.props.item.id}>
         {this.props.item.name}
       </Button>
     );

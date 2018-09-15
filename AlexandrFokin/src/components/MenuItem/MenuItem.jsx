@@ -29,7 +29,9 @@ export default class MenuItem extends Component {
   render() {
     return (
       <NavItem>
-        <NavLink id={this.props.item.id} href="#">
+        {/* Присваиваем пункту меню id */}
+        <NavLink id={this.props.item.id} href='#'>
+          {/* Отображаем название пункта меню */}
           {this.props.item.name}
         </NavLink>
       </NavItem>
