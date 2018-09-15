@@ -1,0 +1,20 @@
+.header {
+  background-color : chocolate;
+}
+.header-small {
+  height : 200px;
+}
+.header-big {
+  height : 400px;
+}
+.menuContainer {
+  padding-top : 20px;
+  display : flex;
+  justify-content : flex-end;
+}
+
+.loginContainer {
+  margin-top : 20px;
+  display : flex;
+  justify-content : flex-end;
+}

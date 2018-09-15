@@ -1,0 +1,22 @@
+.menu {
+  display : inline-flex;
+  justify-content : space-between;
+  width : 250px;
+  list-style-type : none;
+  text-align : right;
+  padding-right : 30px;
+}
+
+.menu--item {
+  border : 1px solid brown;
+  text-align : center;
+}
+
+.menu--item--a {
+  text-decoration : none;
+  font-size : 1em;
+  color : brown;
+  display : inline-block;
+  height : 30px;
+  width : 100px;
+}
