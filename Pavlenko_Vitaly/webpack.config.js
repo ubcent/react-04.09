@@ -4,7 +4,7 @@ const HtmlPlugin = require('html-webpack-plugin');
 
 module.exports = {
     entry: {
-        main: path.resolve(__dirname, 'src', 'index.jsx'), // по умолчанию src/index.jsx
+        main: path.resolve(__dirname, 'src', 'index.js'),
     },
     output: {
         /* по умолчанию dist/main.js */
