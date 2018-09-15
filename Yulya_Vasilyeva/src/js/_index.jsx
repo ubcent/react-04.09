@@ -11,13 +11,13 @@ import ReactDOM from 'react-dom';
 import {Container, Row, Col} from 'reactstrap';
 
 //компоненты страницы
-import Menu from 'components/Menu/Menu';
-import Descr from 'components/Descr/Descr';
-import Article from 'components/Article/Article';
-import SignIn from 'components/SignIn/SignIn';
-import Submenu from 'components/Submenu/Submenu';
-import Subscr from 'components/Subscr/Subscr';
-import Footer from 'components/Footer/Footer';
+import Menu from 'components/Menu/Menu'; // главное верхнее меню
+import Descr from 'components/Descr/Descr'; // блок с описанием и заголовком сайта
+import Article from 'components/Article/Article'; // список статей
+import SignIn from 'components/SignIn/SignIn'; // форма авторизации
+import Submenu from 'components/Submenu/Submenu'; // дополнительное боковое меню
+import Subscr from 'components/Subscr/Subscr'; // кнопка подписки и модальное окно
+import Footer from 'components/Footer/Footer'; // подвал сайта
 
 //импортируем данные из файла
 import { mainMenu, subMenu, article } from './data';
