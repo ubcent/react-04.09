@@ -3,12 +3,11 @@ import './Submenu.css';
 
 //импортируем React
 import React, { Component } from 'react';
-//импорт компонентов Bootstrap для отрисовки меню
+//импорт компонентов Bootstrap для отрисовки бокового меню
 import { 
     Nav, 
     NavItem, 
-    NavLink, 
-    Button } from 'reactstrap';
+    NavLink} from 'reactstrap';
 
 //проверка свойств
 import PropTypes from 'prop-types';
@@ -33,7 +32,6 @@ export default class Submenu extends Component{
                         );
                     })} 
                 </Nav>
-                <Button color="warning" className="subscr">Подписаться на новости</Button>
             </div>
         );
     }
