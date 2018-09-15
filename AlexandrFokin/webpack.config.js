@@ -19,7 +19,7 @@ module.exports = {
   // точки входа
   entry: {
     // путь к точке входа - исходнику с добавлением необходимых полифиллов
-    main: ['@babel/polyfill', path.resolve(__dirname, 'src', 'jsx', 'index.jsx')]
+    main: ['@babel/polyfill', path.resolve(__dirname, 'src', 'index.jsx')]
   },
   output: {
     // папка для выгрузки результатов сборки
@@ -31,7 +31,7 @@ module.exports = {
     extensions: ['.js', '.jsx'],
     alias: {
       // адрес папки components
-      components: path.resolve(__dirname, 'src', 'jsx', 'components')
+      components: path.resolve(__dirname, 'src', 'components')
     }
   },
   devtool: false,
@@ -105,7 +105,7 @@ module.exports = {
           {
             loader: 'file-loader',
             options: {
-              name: 'img/[name].[ext]'
+              name: 'imgs/[name].[ext]'
             }
           }
         ]
