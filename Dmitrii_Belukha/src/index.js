@@ -1,17 +1,20 @@
-import Developer from './Developer';
-import DateInfo from './DateInfo';
-import styles from './css/styles.css';
+import './scss/main.scss';
+import bootstrap from 'bootstrap';
 
-const infoField = document.querySelector('.info');
-const nameField = document.querySelector('.info-name');
-const dateField = document.querySelector('.info-date');
+import React, { Component, Fragment } from 'react';
+import ReactDOM from 'react-dom';
+import Layout from './components/Layout/Layout';
+import Login from './components/Login/Login';
 
-const buttonDate = document.querySelector('.btn-date');
+class App extends Component {
+  render() {
+    return (
+      <Fragment>
+        <Layout />
+        <Login />
+      </Fragment>
+    );
+  }
+}
 
-infoField.addEventListener('click', () => {
-  dateField.innerText = DateInfo.getCurrentDate();
-});
-
-const dev = new Developer('Иван', 'Иванов', 'Иванович');
-
-nameField.innerHTML = `${dev.getInfo()} <span class="hint">(Клик, чтобы узнать дату)</span>`;
+ReactDOM.render(<App />, document.getElementById('app'));
