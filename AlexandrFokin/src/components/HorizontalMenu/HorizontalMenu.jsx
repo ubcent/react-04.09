@@ -2,8 +2,6 @@ import './HorizontalMenu.scss';
 
 import React, { Component } from 'react';
 import { Nav } from 'reactstrap';
-// Работа с классами
-import classNames from 'classnames';
 // Проверка свойств
 import PropTypes from 'prop-types';
 
