@@ -1,32 +1,50 @@
 const path = require('path');
-const ExtractTextWebpackPlugin = require('extract-text-webpack-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
-    entry: path.resolve(__dirname, 'src', 'index.js'),
+    entry: path.resolve(__dirname, 'src', 'index.jsx'),
     output: {
         filename: 'bundle.js',
         path: path.resolve(__dirname, 'dist'),
     },
-    module:{
+    resolve: {
+        extensions: ['.js', '.jsx'],
+        alias: {
+            components: path.resolve(__dirname, 'src', 'components'),
+            pages: path.resolve(__dirname, 'src', 'pages'),
+        }
+    },
+    module: {
         rules: [
             {
-                test: /\.js/,
+                test: /\.jsx?/,
                 exclude: /node_modules/,
                 use: ['babel-loader'],
 
             },
             {
-                test: /\.css/,
-                use: ExtractTextWebpackPlugin.extract({
-                    fallback: 'style-loader',
-                    use: ['css-loader'],
-                }),
+                test: /\.s?css/,
+                use: ['style-loader', 
+                    MiniCssExtractPlugin.loader, 
+                    'css-loader',
+                    {
+                        loader: 'postcss-loader',
+                        options: {
+                            ident: 'postcss',
+                            plugins: [
+                                require('autoprefixer')(),
+                            ]
+                        }
+                    },
+                    'sass-loader'],
             },
         ]
     },
     plugins: [
-        new ExtractTextWebpackPlugin({filename:'style.css'}),
+        new CleanWebpackPlugin(['dist']),
+        new MiniCssExtractPlugin({filename:'style.css'}),
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, 'src', 'index.html'),
             filename: 'index.html',
