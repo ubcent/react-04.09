@@ -37,9 +37,6 @@ module.exports = {
                 use: [
                     {
                         loader: MiniCssExtract.loader,
-                        options: {
-                            publicPath: 'css/'
-                        }
                     },
                     'css-loader'
                 ]
