@@ -8,6 +8,7 @@ import HorizontalMenu from 'components/HorizontalMenu';
 import BlogButton from 'components/BlogButton/BlogButton';
 
 // Список пунктов меню
+// TODO передать из json
 const menu = [
   {
     id: 'main',
