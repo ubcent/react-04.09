@@ -6,7 +6,7 @@ import Header from 'components/Header';
 import MainPage from 'components/MainPage';
 
 /**
- * Класс корневой компонент страницы сайта
+ * Класс App - корневой компонент, отображающий страницы сайта
  */
 export default class App extends Component {
   render() {

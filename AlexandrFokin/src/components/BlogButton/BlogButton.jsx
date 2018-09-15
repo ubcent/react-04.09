@@ -6,7 +6,7 @@ import { Button } from 'reactstrap';
 import PropTypes from 'prop-types';
 
 /**
- * Класс компонент BlogButton отображает кнопку
+ * Класс BlogButton - компонент, отображающий кнопку на странице
  */
 export default class BlogButton extends Component {
   // Проверка свойств
@@ -22,7 +22,7 @@ export default class BlogButton extends Component {
 
   // значения атрибутов по умолчанию
   static defaultProps = {
-    // аттрибут item устанавливаем объект с пустыми полями
+    // аттрибут item инициализируем объектом с пустыми полями
     item: {id: '', name: ''}
   };
 

@@ -10,7 +10,7 @@ import PropTypes from 'prop-types';
 import MenuItem from 'components/MenuItem';
 
 /**
- * Класс компонент HorizontalMenu отображает горизонтальное меню
+ * Класс HorizontalMenu - компонент, отображающий горизонтальное меню
  * TODO добавить выделение активного пункта меню
  */
 export default class HorizontalMenu extends Component {
@@ -27,7 +27,7 @@ export default class HorizontalMenu extends Component {
 
   // значения атрибутов по умолчанию
   static defaultProps = {
-    // аттрибут menu устанавливаем массив с одним объектом с пустыми полями
+    // аттрибут menu инициализируем массивом из одного объекта с пустыми полями
     menu: [{id: '', name: ''}]
   };
 

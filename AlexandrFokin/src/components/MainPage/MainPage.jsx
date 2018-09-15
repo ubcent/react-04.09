@@ -7,7 +7,7 @@ import classNames from 'classnames';
 import PropTypes from 'prop-types';
 
 /**
- * Класс компонент MainPage
+ * Класс MainPage - компонент, отображающий main (контент) страницы
  */
 export default class MainPage extends Component {
   // Проверка свойств

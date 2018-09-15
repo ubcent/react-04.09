@@ -6,7 +6,7 @@ import { NavItem, NavLink } from 'reactstrap';
 import PropTypes from 'prop-types';
 
 /**
- * Класс компонент MenuItem отображает пункт меню
+ * Класс MenuItem - компонент, отображающий пункт меню
  */
 export default class MenuItem extends Component {
   // Проверка свойств
@@ -22,7 +22,7 @@ export default class MenuItem extends Component {
 
   // значения атрибутов по умолчанию
   static defaultProps = {
-    // аттрибут menu устанавливаем объект с пустыми полями
+    // аттрибут menu инициализируем объектом с пустыми полями
     item: {id: '', name: ''}
   };
 

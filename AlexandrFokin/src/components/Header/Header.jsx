@@ -29,7 +29,7 @@ const menu = [
 ];
 
 /**
- * Класс компонент Header
+ * Класс Header - компонент, отображающий хидер страницы
  */
 export default class Header extends Component {
   render() {
