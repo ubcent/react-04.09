@@ -23,7 +23,7 @@ export default class MenuItem extends Component {
   // значения атрибутов по умолчанию
   static defaultProps = {
     // аттрибут menu инициализируем объектом с пустыми полями
-    item: {id: '', name: ''}
+    item: {}
   };
 
   render() {
