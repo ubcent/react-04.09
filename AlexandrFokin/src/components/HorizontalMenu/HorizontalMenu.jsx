@@ -27,7 +27,7 @@ export default class HorizontalMenu extends Component {
 
   // значения атрибутов по умолчанию
   static defaultProps = {
-    // аттрибут menu инициализируем массивом из одного объекта с пустыми полями
+    // аттрибут menu инициализируем пустым массивом
     menu: []
   };
 
