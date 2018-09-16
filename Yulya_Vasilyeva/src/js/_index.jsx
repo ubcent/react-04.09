@@ -1,7 +1,7 @@
 //Имортируем стили для BOOTSTRAP
 import 'bootstrap/dist/css/bootstrap.min.css';
 //Пользовательские стили
-import './_index.css';
+import './_index.scss';
 
 //компоненты React
 import React, {Component, Fragment} from 'react';
@@ -11,13 +11,13 @@ import ReactDOM from 'react-dom';
 import {Container, Row, Col} from 'reactstrap';
 
 //компоненты страницы
-import Menu from 'components/Menu/Menu'; // главное верхнее меню
-import Descr from 'components/Descr/Descr'; // блок с описанием и заголовком сайта
-import Article from 'components/Article/Article'; // список статей
-import SignIn from 'components/SignIn/SignIn'; // форма авторизации
-import Submenu from 'components/Submenu/Submenu'; // дополнительное боковое меню
-import Subscr from 'components/Subscr/Subscr'; // кнопка подписки и модальное окно
-import Footer from 'components/Footer/Footer'; // подвал сайта
+import Menu from 'components/Menu/'; // главное верхнее меню
+import Descr from 'components/Descr/'; // блок с описанием и заголовком сайта
+import Article from 'components/Article/'; // список статей
+import SignIn from 'components/SignIn/'; // форма авторизации
+import Submenu from 'components/Submenu/'; // дополнительное боковое меню
+import Subscr from 'components/Subscr/'; // кнопка подписки и модальное окно
+import Footer from 'components/Footer/'; // подвал сайта
 
 //импортируем данные из файла
 import { mainMenu, subMenu, article } from './data';
@@ -30,9 +30,11 @@ class App extends Component{
             <Fragment>
                <Container>
                    <Menu menu={mainMenu}/>
+                </Container>
+                <Descr/>
+                <Container>
                     <Row>
                         <Col md="9">
-                            <Descr/>
                             <Article text={article}/>
                         </Col>
                         <Col md="3">
@@ -41,8 +43,8 @@ class App extends Component{
                             <Subscr/>
                         </Col>
                     </Row>
-                    <Footer/>
                </Container>
+               <Footer/>
             </Fragment>
         );
     }
