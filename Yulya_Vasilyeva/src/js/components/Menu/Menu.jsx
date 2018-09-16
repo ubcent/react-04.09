@@ -19,14 +19,16 @@ export default class Menu extends Component {
     constructor(props) {
         super(props);
 
-        this.toggle = this.toggle.bind(this);
         this.state = {
-            isOpen: false
+            isOpen: false,
         };
     }
-    toggle() {
+
+    //появление / скрытие коллапс меню
+    toggle = () => {
+        const { isOpen } = this.state;
         this.setState({
-            isOpen: !this.state.isOpen
+            isOpen: !isOpen,
         });
     }
     static propTypes = {
@@ -34,16 +36,17 @@ export default class Menu extends Component {
         menu: PropTypes.arrayOf(PropTypes.string),
     }
     render() {
+        const { isOpen } = this.state;//состояние открытового меню (сжатая версия)
         const { menu } = this.props;//получаем массив меню
         //строим навигацию на сайте (главная)
         return (
-            <Navbar light expand="md">
+            <Navbar dark expand="md">
                 <NavbarBrand href="/" className="logo">
                     <img src={logoImg} alt="Блог о 3D и 2D" width="60" />
                     <span>Блог о 3D и 2D</span>
                 </NavbarBrand>
                 <NavbarToggler onClick={this.toggle} />
-                <Collapse isOpen={this.state.isOpen} navbar>
+                <Collapse isOpen={isOpen} navbar>
                     <Nav className="mr-auto" navbar>
                         {menu.map( (item, indx)=>{
                             //элементы главного меню

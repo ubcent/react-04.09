@@ -19,26 +19,28 @@ import {
 export default class Subscr extends Component {
     constructor(props) {
         super(props);
+
         this.state = {
-          modal: false
+            modal: false
         };
-    
-        this.toggle = this.toggle.bind(this);
-      }
-    
-      toggle() {
+    }
+    //появление / скрытие модального окна
+    toggle = () => {
+        const { modal } = this.state;
         this.setState({
-          modal: !this.state.modal
+            modal: !modal,
         });
-      }
-    
+    }
+
     render() {
         //по нажатию на кнопку появлятеся модальное окно с формой для ввода email
+        const { modal } = this.state;//состояние модального окна
+        const { className } = this.props;
         return (
             <div>
                 <Button onClick={this.toggle} color="warning" className="subscr">Подписаться на новости</Button>
-                <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
-                    <ModalBody>      
+                <Modal isOpen={modal} toggle={this.toggle} className={className}>
+                    <ModalBody>
                         <Form>
                             <Label for="email">Введите свой электронный адрес и получайте свежие новости раз в неделю.</Label>
                             <Input type="email" name="user-email" id="email" placeholder="vasya@mail.ru" />
