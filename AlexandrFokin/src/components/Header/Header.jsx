@@ -1,8 +1,6 @@
 import './Header.scss';
 
 import React, {Component, Fragment} from 'react';
-// Работа с классами
-import classNames from 'classnames';
 
 import HorizontalMenu from 'components/HorizontalMenu';
 import BlogButton from 'components/BlogButton/BlogButton';

@@ -63,22 +63,18 @@ module.exports = {
 ],
   module: {
     rules: [
-      // настраиваем обработку jsx-файлов в babel
+      // настраиваем обработку jsx-файлов
       {
         // шаблон для обрабатываемых файлов
         test: /\.jsx?$/,
         // файлы, исключенные из обработки
         exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-        }
-      },
-      // настраиваем проверку jsx-файлов в eslint
-      {
-        enforce: 'pre',
-        test: /\.js$/,
-        exclude: /node_modules/,
-        loader: 'eslint-loader',
+        use: [
+          // компиляция в babel
+          'babel-loader',
+          // проверка в eslint
+          'eslint-loader',
+          ]
       },
       // настраиваем обработку (s)css-файлов
       {
