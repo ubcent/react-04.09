@@ -5,23 +5,22 @@ import PropTypes from 'prop-types';
 
 export default class Content extends Component {
 
-    static propTypes = {
-        text: PropTypes.string,
-    };
+  static propTypes = {
+    text: PropTypes.string,
+  };
 
-    static defaultProps = {
-        text: ''
-    };
+  static defaultProps = {
+    text: '',
+  };
 
-    render() {
+  render() {
+    const {text} = this.props;
+    return (
+        <article className="content">
+          {text}
+        </article>
+    );
+  }
 
-        const {text} = this.props;
-        
-        return (
-                <article className="content">
-                    {text}
-                </article>
-                );
-    }
 }
 
