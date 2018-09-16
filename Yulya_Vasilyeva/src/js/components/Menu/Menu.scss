@@ -28,3 +28,11 @@
     color: $orangeColor;
     transform: translateY(4px);
 }
+.active-menu{
+    color: $orangeColor!important;
+}
+.active-menu:after{
+    content: '';
+    display: block;
+    border-bottom: 1px solid $orangeColor;
+}

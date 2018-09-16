@@ -21,7 +21,16 @@ export default class Menu extends Component {
 
         this.state = {
             isOpen: false,
+            activeMenu: 0,
         };
+    }
+
+    //при клике на пункт меню, он становится активным
+    clickMenu = (indx) => {
+        const { activeMenu } = this.state;
+        this.setState({
+            activeMenu: indx,
+        });
     }
 
     //появление / скрытие коллапс меню
@@ -36,7 +45,7 @@ export default class Menu extends Component {
         menu: PropTypes.arrayOf(PropTypes.string),
     }
     render() {
-        const { isOpen } = this.state;//состояние открытового меню (сжатая версия)
+        const { isOpen, activeMenu } = this.state;//состояние открытового меню (сжатая версия)
         const { menu } = this.props;//получаем массив меню
         //строим навигацию на сайте (главная)
         return (
@@ -49,10 +58,11 @@ export default class Menu extends Component {
                 <Collapse isOpen={isOpen} navbar>
                     <Nav className="mr-auto" navbar>
                         {menu.map( (item, indx)=>{
+                            const activeClass = activeMenu === indx ? 'active-menu' : '';
                             //элементы главного меню
                             return(
-                                <NavItem key={"mainMenu" + indx}>
-                                    <NavLink href="#">{item}</NavLink>
+                                <NavItem key={"mainMenu" + indx} >
+                                    <NavLink key={"mainMenuLink"+ indx} onClick={() => this.clickMenu(indx)} className={activeClass}  href="#" >{item}</NavLink>
                                 </NavItem>
                             );
                         })}
