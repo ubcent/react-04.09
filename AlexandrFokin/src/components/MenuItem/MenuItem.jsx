@@ -27,7 +27,7 @@ export default class MenuItem extends Component {
   };
 
   render() {
-    {/* получаем переданные свойства пункта меню */}
+    // получаем переданные свойства пункта меню
     const {id, name} = this.props.item;
     return (
       <NavItem>

@@ -27,7 +27,7 @@ export default class BlogButton extends Component {
   };
 
   render() {
-    {/* получаем переданные свойства кнопки */}
+    // получаем переданные свойства кнопки
     const {id, name} = this.props.item;
     return (
       <Button outline color='primary' id={id}>

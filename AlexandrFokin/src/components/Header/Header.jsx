@@ -43,13 +43,15 @@ export default class Header extends Component {
     return (
       <Fragment>
         <header>
-          <div className='row'>
-            <div className='col-10'>
-              {/* Меню навигации */}
-              <HorizontalMenu menu={menu}/>
-            </div>
-            <div className='col-2'>
-              <BlogButton item={loginButton}/>
+          <div className="container">
+            <div className='row menu'>
+              <div className='col-10'>
+                {/* Меню навигации */}
+                <HorizontalMenu menu={menu}/>
+              </div>
+              <div className='col-2'>
+                <BlogButton item={loginButton}/>
+              </div>
             </div>
           </div>
         </header>

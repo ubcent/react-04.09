@@ -15,7 +15,7 @@ export default class App extends Component {
         {/* Header */}
         <Header/>
         {/* Контент главной страницы блога */}
-        <MainPage size='small'>
+        <MainPage>
           Контент блога
         </MainPage>
       </Fragment>

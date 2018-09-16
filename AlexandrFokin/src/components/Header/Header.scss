@@ -1,6 +1,13 @@
+// Коэффициент перевода в em
+$k: 16;
+
 header {
   background-color: #428bca;
-  -webkit-box-shadow: inset 0 -2px 5px rgba(0,0,0,.1);
   box-shadow: inset 0 -2px 5px rgba(0,0,0,.1);
   padding-right: 1em;
+}
+
+.menu {
+  padding: 10em/$k;
+  font-weight: 500;
 }
