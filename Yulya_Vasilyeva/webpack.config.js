@@ -3,6 +3,8 @@ const path = require('path');
 
 //объединяет css файлы в один
 const MiniCssExtract = require('mini-css-extract-plugin');
+//автоматически ставит префикты в css
+const AutoPrefixer = require('autoprefixer');
 //добавляем в HTML файл необходимые пути для css и js
 const HtmlPlugin = require('html-webpack-plugin');
 //чистим папку dist
@@ -11,17 +13,17 @@ const CleanPlugin = require('clean-webpack-plugin');
 module.exports = {
     mode: 'development',
     entry: {
-        entry: path.resolve(__dirname, 'src', 'js/_index.jsx')
+        entry: path.resolve(__dirname, 'src', 'js/_index.jsx'),
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: 'js/index.js'
+        filename: 'js/index.js',
     },
     resolve: {
         extensions: ['.js', '.jsx'],
         alias: {
-            components: path.resolve(__dirname, 'src', 'js/components')
-        }
+            components: path.resolve(__dirname, 'src', 'js/components'),
+        },
     },
     module: {
         rules: [
@@ -33,13 +35,23 @@ module.exports = {
                 }
             },
             {
-                test: /\.css$/,
+                test: /\.s?css$/,
                 use: [
-                    {
-                        loader: MiniCssExtract.loader,
-                    },
-                    'css-loader'
-                ]
+                        { loader: 'style-loader'},
+                        { loader: MiniCssExtract.loader},
+                        { loader: 'css-loader'},
+                        { loader: 'postcss-loader',
+                            options: {
+                                plugins: [
+                                    AutoPrefixer({
+                                        browsers:['ie >= 8', 'last 4 version']
+                                    })
+                                ],
+                            }
+                        },
+                        { loader: 'clean-css-loader'},
+                        { loader: 'sass-loader'},
+                    ]
             },
             {
                 test: /\.(woff|woff2|eot|ttf|otf)$/,
@@ -58,15 +70,15 @@ module.exports = {
                         loader: 'file-loader',
                         options:{
                             name: '[name].[ext]',
-                            outputPath: 'img/'
-                        }
-                    }
+                            outputPath: 'img/',
+                        },
+                    },
                 ]
-            }
+            },
         ],
     },
     plugins: [
-        new MiniCssExtract({ filename: 'css/style.css' }),
+        new MiniCssExtract({filename: 'css/min.style.css'}),
         new HtmlPlugin({
             template: path.resolve(__dirname, 'src', 'index.html'),
             filename: 'index.html'
