@@ -1,0 +1,11 @@
+@import '../../variables';
+.submenu{
+    padding-top: 50px;
+}
+.submenu-link{
+    color: $darkText;
+    text-decoration: underline;
+}
+.submenu-link:hover{
+    color: $orangeColor;
+}

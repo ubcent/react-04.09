@@ -1,9 +1,11 @@
+@import '../../variables';
+
 .navbar{
     margin-bottom: 30px;
 }
-.logo:hover{
+.logo span:hover{
     text-decoration: none;
-    color: rgb(70, 70, 70);
+    color: $lightText;
     
 }
 .logo img{
@@ -14,15 +16,15 @@
 }
 .logo span{
     padding:0 20px;
-    color: #6e230e;
+    color: $orangeColor;
     border-right: 1px solid #ccc;
 }
 .navbar-light .navbar-nav .nav-link{
-    color: #000;
+    color: $lightText;
     text-transform: uppercase;
     transition: all 0.2s ease-in-out;
 }
 .navbar-light .navbar-nav .nav-link:hover{
-    color: #fa4e1e;
+    color: $orangeColor;
     transform: translateY(4px);
 }
