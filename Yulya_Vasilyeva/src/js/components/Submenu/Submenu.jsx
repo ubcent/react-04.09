@@ -1,5 +1,5 @@
 //импортируем пользовательские стили
-import './Submenu.css';
+import './Submenu.scss';
 
 //импортируем React
 import React, { Component } from 'react';
@@ -27,7 +27,7 @@ export default class Submenu extends Component{
                     {submenu.map( (item, indx)=>{
                         return(
                             <NavItem key={"submenu" + indx}>
-                                <NavLink href="#">{item}</NavLink>
+                                <NavLink className="submenu-link" href="#">{item}</NavLink>
                             </NavItem>
                         );
                     })} 

@@ -1,5 +1,5 @@
 //импорт пользовательских стилей для редактирования статей
-import './Article.css';
+import './Article.scss';
 
 //импорт React
 import React, { Component } from 'react';
@@ -13,6 +13,7 @@ import {
     CardText,
     CardBody,
     CardTitle,
+    CardSubtitle,
     Button,
     Row, Col // layout
 } from 'reactstrap';
@@ -37,9 +38,10 @@ export default class Article extends Component {
                     <Card className="article">
                         <CardImg top width="100%" src={"img/article-" + item.id + ".jpeg"}/>
                         <CardBody>
-                            <CardTitle>{item.title}</CardTitle>
+                            <CardTitle className='blog-title'>{item.title}</CardTitle>
+                            <CardSubtitle className='blog-data'>Дата публикации: {item.data}</CardSubtitle>
                             <CardText>{item.text}</CardText>
-                            <Button color="danger" className="read-more">Подробнее</Button>
+                            <Button color="warning" className="read-more">Подробнее</Button>
                         </CardBody>
                     </Card>
                     </Col>

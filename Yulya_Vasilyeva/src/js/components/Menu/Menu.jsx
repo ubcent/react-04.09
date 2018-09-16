@@ -1,5 +1,5 @@
 //Импортируем стили для форматирования меню
-import './Menu.css';
+import './Menu.scss';
 import logoImg from './img/3d-logo.svg';
 
 import React, { Component } from 'react';
