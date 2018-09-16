@@ -27,13 +27,13 @@ const text = 'Давно выяснено, что при оценке дизай
 class App extends Component {
     render() {
         return (
-                <Fragment>
-                    <Menu links={menuLinks}/>
-                    <Login authLink={authLink}/>
-                    <Content text={text}/>
-                    <Footer links={footerLinks}/>
-                </Fragment>
-                );
+            <Fragment>
+                <Menu links={menuLinks}/>
+                <Login authLink={authLink}/>
+                <Content text={text}/>
+                <Footer links={footerLinks}/>
+            </Fragment>
+            );
     }
 }
 
