@@ -1,0 +1,33 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.userCard {
+    padding: 10px;
+    margin: 10px;
+    box-shadow: 1px 1px 4px;
+    width: 150px;
+}
+
+.clickable {
+    cursor: pointer;
+}
+
+.popup {
+    position: absolute;
+    background: #fff;
+    box-shadow: 1px 1px 4px;
+    text-align: center;
+    margin: 15px;
+    padding: 7px;
+}
+
+.popup::before {
+    content: 'current date: ';
+}

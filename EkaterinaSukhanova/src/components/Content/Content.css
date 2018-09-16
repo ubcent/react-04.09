@@ -1,0 +1,17 @@
+.content {
+    background-color: lightyellow;
+    padding: 20px;
+    font-size: 20px;
+}
+
+.content-small {
+    height: 300px;
+}
+
+.content-middle {
+    height: 400px;
+}
+
+.content-big {
+    height: 500px;
+}
