@@ -68,8 +68,8 @@ class Layout extends Component {
     render(){
         const { header, main } = this.props;
         return <div>
-            <Header brand={header.brand} items={header.items}/>
-            <Main navItems={main.navItems} content={main.content}/>
+            <Header />
+            <Main />
             <Footer/>
         </div>
     }

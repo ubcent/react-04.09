@@ -21,7 +21,7 @@ export default class CommentForm extends Component{
         return <div className="card my-4">
             <h5 className="card-header">Leave a Comment:</h5>
             <div className="card-body">
-                <form onSubmit={}>
+                <form onSubmit={this.handleSubmit}>
                     <div className="form-group">
                         <textarea onChange={this.handleChange} className="form-control" rows="3"></textarea>
                     </div>

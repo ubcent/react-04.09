@@ -1,66 +1,55 @@
 import './Comment.css';
 
 import React, {Component, Fragment} from 'react';
+import PropTypes from 'prop-types';
 
+// Компонент принимает 
+  //image - аватар автора, 
+  //author - автор, 
+  //text - сам комментарий,
+  //subComments - массив подкомментариев
 export default class Comment extends Component{
     constructor(props){
         super(props);
 
+    }
 
+    static defaultProps = {
+        image: '', 
+        author: '', 
+        text: '',
+        subComments: [],
+    }
+
+    static propTypes = {
+        image: PropTypes.string, 
+        author: PropTypes.string, 
+        text: PropTypes.string,
+        subComments: PropTypes.array,
     }
 
     render(){
-        return <Fragment>
-            {/*<!-- Single Comment -->*/}
-            <div className="media mb-4">
+        const { image, author, text,subComments } = this.props;
+        const sublist = subComments.map( (item, index) => {
+            return <div key={index} className="media mt-4">
                 <img className="d-flex mr-3 rounded-circle"
-                     src="./Blog Post - Start Bootstrap Template_files/50x50" alt="" />
-                <div className="media-body">
-                    <h5 className="mt-0">Commenter Name</h5>
-                    Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque
-                    ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus
-                    viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec
-                    lacinia congue felis in faucibus.
+                        src={image} alt="" />
+                    <div className="media-body">
+                        <h5 className="mt-0">{author}</h5>
+                        {text}
                 </div>
             </div>
-
-            {/*<!-- Comment with nested comments -->*/}
+        });
+        return <Fragment>
             <div className="media mb-4">
                 <img className="d-flex mr-3 rounded-circle"
-                     src="./Blog Post - Start Bootstrap Template_files/50x50" alt="" />
+                     src={image} alt="" />
                 <div className="media-body">
-                    <h5 className="mt-0">Commenter Name</h5>
-                    Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque
-                    ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus
-                    viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec
-                    lacinia congue felis in faucibus.
-
-                    <div className="media mt-4">
-                        <img className="d-flex mr-3 rounded-circle"
-                             src="./Blog Post - Start Bootstrap Template_files/50x50" alt="" />
-                        <div className="media-body">
-                            <h5 className="mt-0">Commenter Name</h5>
-                            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus
-                            scelerisque ante sollicitudin. Cras purus odio, vestibulum in
-                            vulputate at, tempus viverra turpis. Fusce condimentum nunc ac
-                            nisi vulputate fringilla. Donec lacinia congue felis in
-                            faucibus.
-                        </div>
-                    </div>
-
-                    <div className="media mt-4">
-                        <img className="d-flex mr-3 rounded-circle"
-                             src="./Blog Post - Start Bootstrap Template_files/50x50" alt="" />
-                        <div className="media-body">
-                            <h5 className="mt-0">Commenter Name</h5>
-                            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus
-                            scelerisque ante sollicitudin. Cras purus odio, vestibulum in
-                            vulputate at, tempus viverra turpis. Fusce condimentum nunc ac
-                            nisi vulputate fringilla. Donec lacinia congue felis in
-                            faucibus.
-                        </div>
-                    </div>
-
+                    <h5 className="mt-0">{author}</h5>
+                    {text}
+                    // подкомментарии
+                    {sublist}
+                    
                 </div>
             </div>
         </Fragment>

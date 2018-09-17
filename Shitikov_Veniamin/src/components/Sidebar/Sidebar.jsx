@@ -1,30 +1,34 @@
 import React, { Component } from 'react';
+import Search from '../Search/Search';
+import Categories from '../Categories/Categories';
+import Side from '../Side/Side';
 
 // Компонент принимает объект со свойствами:
-// items - массив объектов бокового меню
-//      title - заголовок и
-//      href - ссылка
+// categories - массив объектов категорий
+// side - объект бокового виджета
 export default class Sidebar extends Component {
 
     static defaultProps = {
-        items: []
+        categories: [],
+        side: {},
     };
 
     render(){
-        const { items } = this.props;
-        return <nav className="col-md-2 d-md-block bg-secondary sidebar">
-            <div className="sidebar-sticky">
-                <ul className="nav flex-column">
-                    {items.map( (item) => {
-                        return <li className="nav-item">
-                            <a className="nav-link text-light" href={item.href}>
-                                {item.title}
-                            </a>
-                        </li>
-                    })}
-                </ul>
-            </div>
-        </nav>
+        return <div className='col-md-4'>
+
+        {/*<!-- Search Widget -->*/}
+        <Search />
+
+        {/*<!-- Categories Widget -->*/}
+        <Categories categories={[]} />
+
+
+        {/*<!-- Side Widget -->*/}
+        <Side />
+
+
+
+    </div>
     }
 }
 

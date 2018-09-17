@@ -33,6 +33,8 @@ export default class BlogPost extends Component {
         date: '',
     };
 
+    togglePost = () => this.setState({ isOpened: !this.state.isOpened});
+
     render(){
         const { images, title, subtitle, content, author, href, date } = this.props;
         const preview = <div className='card mb-4'>
@@ -41,7 +43,7 @@ export default class BlogPost extends Component {
             <div className='card-body'>
                 <h2 className='card-title'>{title}</h2>
                 <p className='card-text'>{subtitle}</p>
-                <a href='#'
+                <a href='#' onClick={this.togglePost}
                    className='btn btn-primary'>Read More →</a>
             </div>
             <div className='card-footer text-muted'>

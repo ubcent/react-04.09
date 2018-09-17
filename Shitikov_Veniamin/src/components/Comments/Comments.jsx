@@ -1,17 +1,10 @@
 import './Comments.css';
 
 import React, { Component } from 'react';
+import CommentForm from '../CommentForm/CommentForm';
 
 
-// Компонент принимает объект со свойствами:
-//
-//      img[] - [preview, full]
-//      title - заголовок
-//      subtitle - текст, показываемый в превью.
-//      content - полный текст статьи
-//      author - автор статьи
-//      href - ссылка на автора
-//      date - дата публикации
+// Компонент принимает массив объектов комментариев
 export default class Comments extends Component {
     constructor(props) {
         super(props);
@@ -19,15 +12,16 @@ export default class Comments extends Component {
     }
 
     render(){
+        const { comments } = this.props;
         return <div>
             {/*<!-- Comments Form -->*/}
+            <CommentForm />
 
-
-            {/*<!-- Single Comment -->*/}
-
-
-            {/*<!-- Comment with nested comments -->*/}
-
+            {/*<!-- Comments -->*/}
+            {comments.map( (item, index) => {
+                const { image, author, text,subComments } = item;
+                return <Comment key={index} image={image} author={author} text={text} subComments={subComments}/>
+            })}
 
         </div>
     }
