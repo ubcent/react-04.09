@@ -64,6 +64,13 @@ module.exports = {
 
             },
             {
+                test: /\.json$/,
+                use: {
+                    loader: 'json-loader',
+                }
+
+            },
+            {
                 test: /\.(svg|gif|jpe?g|png)$/i,
                 use: [
                     {
