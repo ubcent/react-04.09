@@ -32,7 +32,11 @@ export default class Login extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    this.setState({ show: false, isLoggedIn: true });
+    if (this.state.login !== '' && this.state.password !== '') {
+      this.setState({ show: false, isLoggedIn: true });
+    } else {
+      alert('Введите логин и пароль');
+    }
   }
 
   logOut = () => {
