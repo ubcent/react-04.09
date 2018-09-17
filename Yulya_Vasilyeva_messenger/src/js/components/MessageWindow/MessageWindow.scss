@@ -1,0 +1,14 @@
+@import '../../variables';
+@import '../../extended';
+
+.message-window{
+    width: 100%*8/12;
+    background-color: $whiteColorTr;
+    @extend %flex-column;
+    justify-content: space-between;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    box-sizing: border-box;
+    overflow: scroll;
+    align-items: flex-start;
+}
