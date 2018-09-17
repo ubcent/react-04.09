@@ -1,0 +1,39 @@
+@import '../../../variables';
+@import '../../../extended';
+
+.open-user{
+    background-color: $extraWhite;
+    width: 100%;
+    @extend %flex-row-nowrap;
+    justify-content: center;
+    padding: 10px 0;
+    position: relative;
+}
+.user-pic{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    display: block;
+}
+.user-name{
+    display: block;
+    text-align: center;
+    font-size: 1.2em;
+}
+.arrow-back{
+    position: absolute;
+    top:50%;
+    transform: translateY(-50%);
+    left: 10px;
+}
+.arrow-back-img{
+    display: block;
+    padding: 10px;
+    width: 20px;
+    transition: all 0.4s ease-in-out;
+}
+.arrow-back-img:hover{
+    opacity: 0.6;
+    cursor: pointer;
+    transform: translateX(-4px);
+}
