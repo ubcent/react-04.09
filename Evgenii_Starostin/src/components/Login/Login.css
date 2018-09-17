@@ -1,4 +1,4 @@
-.login-btn {
+.login-btn, .logout-btn {
   background: none;
   color: #fff;
   border: none;
@@ -6,7 +6,7 @@
   text-transform: uppercase;
 }
 
-.login-btn:hover {
+.login-btn:hover, .logout-btn:hover {
   color: #829399;
 }
 

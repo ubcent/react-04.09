@@ -27,6 +27,7 @@
 .nav-menu__item a:hover {
   color: #0E799D;
   text-decoration: none;
+  cursor: pointer;
 }
 
 .nav-menu__item a:focus {

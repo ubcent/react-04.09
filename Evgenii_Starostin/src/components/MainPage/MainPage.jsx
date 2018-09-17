@@ -3,7 +3,23 @@ import './MainPage.css';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-class MainPage extends Component {
+export default class MainPage extends Component {
+  static propTypes = {
+    articles: PropTypes.arrayOf(PropTypes.shape({
+      id: PropTypes.number,
+      title: PropTypes.string,
+      date: PropTypes.string,
+      categoryId: PropTypes.number,
+      paragraphs: PropTypes.arrayOf(PropTypes.string)
+    })),
+    focused: PropTypes.number
+  }
+
+  static defaultProps = {
+    articles: [],
+    focused: 0
+  }
+
   render() {
     const { articles, focused } = this.props;
     let filteredArticles = [];
@@ -40,21 +56,3 @@ class MainPage extends Component {
     );
   }
 }
-
-MainPage.propTypes = {
-  articles: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number,
-    title: PropTypes.string,
-    date: PropTypes.string,
-    categoryId: PropTypes.number,
-    paragraphs: PropTypes.arrayOf(PropTypes.string)
-  })),
-  focused: PropTypes.number
-}
-
-MainPage.defaultProps = {
-  articles: [],
-  focused: 0
-}
-
-export default MainPage;

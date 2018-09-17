@@ -9,7 +9,7 @@ import Footer from 'Components/Footer';
 import categories from 'Mocks/categories.json';
 import articles from 'Mocks/articles.json';
 
-class Layout extends Component {
+export default class Layout extends Component {
   constructor(props) {
     super(props);
 
@@ -18,7 +18,16 @@ class Layout extends Component {
     this.state = {focused: 0};
   }
 
-  handleClick(index, e){
+  showAlert = () => {
+    alert('Добро пожаловать!');
+  }
+
+  componentDidMount = () => {
+    setTimeout(this.showAlert, 0);
+  }
+
+  handleClick = (e) => {
+    const index = +e.target.name;
     e.preventDefault();
     this.setState({focused: index});
   }
@@ -38,5 +47,3 @@ class Layout extends Component {
     );
   }
 }
-
-export default Layout;

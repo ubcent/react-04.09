@@ -3,7 +3,21 @@ import './Menu.css';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-class Menu extends Component {
+export default class Menu extends Component {
+  static propTypes = {
+    handleClick: PropTypes.func,
+    items: PropTypes.arrayOf(PropTypes.shape({
+      id: PropTypes.number,
+      name: PropTypes.string
+    })),
+    focused: PropTypes.number
+  }
+
+  static defaultProps = {
+    items: [],
+    focused: 0
+  }
+
   render() {
     const { handleClick, items, focused } = this.props;
     return (
@@ -18,7 +32,7 @@ class Menu extends Component {
                 }
                 return (
                   <li className={style} key={index}>
-                    <a href="#" onClick={handleClick.bind(null, item.id)}>
+                    <a name={item.id} onClick={handleClick}>
                       {item.name}
                     </a>
                   </li>
@@ -31,19 +45,3 @@ class Menu extends Component {
     );
   }
 }
-
-Menu.propTypes = {
-  handleClick: PropTypes.func,
-  items: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number,
-    name: PropTypes.string
-  })),
-  focused: PropTypes.number
-}
-
-Menu.defaultProps = {
-  items: [],
-  focused: 0
-}
-
-export default Menu;

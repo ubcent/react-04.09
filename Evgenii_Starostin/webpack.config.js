@@ -19,7 +19,8 @@ const config = {
                 use: {
                     loader: 'babel-loader',
                     options: {
-                        presets: ['@babel/preset-env', '@babel/preset-react']
+                        presets: ['@babel/preset-env', '@babel/preset-react'],
+                        plugins: ['@babel/plugin-proposal-class-properties']
                     }
                 }
             },
@@ -47,7 +48,7 @@ const config = {
     resolve: {
         alias: {
             Components: path.resolve(__dirname, 'src/components/'),
-            Mocks: path.resolve(__dirname, 'mocks/'),
+            Mocks: path.resolve(__dirname, 'mocks/')
         },
         extensions: ['.js', '.jsx']
     }
