@@ -50,8 +50,8 @@ export default class Header extends Component {
     ];
 
     const navMenu = <Nav>
-      {menu.map(item => <NavItem>
-        <NavLink href={item.href} key={item.id}>{item.title}</NavLink>
+      {menu.map((item, index) => <NavItem>
+        <NavLink href={item.href} key={index}>{item.title}</NavLink>
       </NavItem>)}
     </Nav>
 

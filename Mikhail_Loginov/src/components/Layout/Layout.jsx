@@ -3,8 +3,9 @@ import './Layout.css';
 import React, {Component, Fragment} from 'react';
 
 import Header from 'components/Header';
-import Content from 'components/Content';
+import BlogPosts from 'components/BlogPosts';
 import Footer from 'components/Footer';
+import WelcomeModal from 'components/WelcomeModal';
 
 export default class Layout extends Component {
 
@@ -12,8 +13,9 @@ export default class Layout extends Component {
 
     return (
       <Fragment>
+        <WelcomeModal/>
         <Header/>
-        <Content/>
+        <BlogPosts/>
         <Footer/>
       </Fragment>
     );
