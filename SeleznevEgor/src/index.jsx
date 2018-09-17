@@ -10,23 +10,33 @@ import  React, {Component, Fragment} from 'react';
 import ReactDom from 'react-dom';
 
 /*Import user components*/
-import Header from 'components/Header/'
+import Header from 'components/Header/';
+import Main from 'components/Main/';
+import Footer from 'components/Footer/';
 
 /********************************************************************
 * Main															*
 *********************************************************************/
 
+/**
+  * @brief  Общая структура для всего блога.
+  * Включает в себя header, content-part и footer
+  * @param  None
+  * @retval None
+  */
 class Layout extends Component{
     render(){
         return(
             <Fragment>
-            <Header items={['All','Category 1','Category 2','Category 3']} />
-            <div>Hello World!!</div>
+            <Header isMain={true}/>
+            <Main categories={['All','Category 1','Category 2','Category 3']}/>
+            <Footer />
             </Fragment>
         );
     }
 }
 
-ReactDom.render(<Layout/>, document.getElementById('Main-page'));
+/*Запуск отрисовки*/
+ReactDom.render(<Layout/>, document.getElementById('webPage'));
 
 
