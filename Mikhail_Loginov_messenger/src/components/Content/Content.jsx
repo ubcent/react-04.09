@@ -11,24 +11,17 @@ import {
 } from 'reactstrap';
 
 import comments from '../../data/comments';
+import Message from 'components/Message';
 
 export default class Content extends Component {
 
   render() {
-
-    const commentsSection = comments.map(item => <div className="comment">
-      <div className="comment__text">
-        {item.text}
-      </div>
-      <div className="comment__name">
-        {item.userName}
-      </div>
-    </div>);
+    const messagesSection = comments.map(message => <Message message={message}/>);
     return (
       <main>
         <Container>
           <div className="chat-wrapper">
-            {commentsSection}
+            {messagesSection}
           </div >
           <Form>
             <div className="name-input-group">

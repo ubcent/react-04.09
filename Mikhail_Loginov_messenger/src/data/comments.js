@@ -1,17 +1,17 @@
 export default [
   {
     text: 'My awesome comment',
-    userName: 'John',
+    author: 'John',
     time: '9/14/2018'
   },
   {
     text: 'Another awesome comment',
-    userName: 'Mike',
+    author: 'Mike',
     time: '8/14/2018'
   },
   {
     text: 'This chat is working!',
-    userName: 'Cool guy',
+    author: 'Cool guy',
     time: '7/14/2018'
   }
 ]
