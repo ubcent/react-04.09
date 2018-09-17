@@ -48,5 +48,9 @@ class App extends Component{
             </Fragment>
         );
     }
+    componentDidMount(){
+        //вызваем после визуализации всех компонентов
+        console.log("Отрисовалось");
+    }
 }
 ReactDOM.render(<App/>, document.querySelector('#root'));
