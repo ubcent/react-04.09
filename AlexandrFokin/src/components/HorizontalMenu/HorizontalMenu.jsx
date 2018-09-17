@@ -26,7 +26,7 @@ export default class HorizontalMenu extends Component {
   // значения атрибутов по умолчанию
   static defaultProps = {
     // аттрибут menu инициализируем пустым массивом
-    menu: []
+    menu: [],
   };
 
   render() {
