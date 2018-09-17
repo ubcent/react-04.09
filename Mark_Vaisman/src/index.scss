@@ -1,0 +1,23 @@
+$baseFontSize: 18px;
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-size: $baseFontSize
+}
+
+a {
+    text-decoration: none;
+    color: blue;
+}
+
+a:active {
+    color: blue;
+}
+
+.hidden {
+    display: none;
+}
