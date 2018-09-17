@@ -29,15 +29,7 @@ module.exports = {
                 use: ['style-loader', 
                     MiniCssExtractPlugin.loader, 
                     'css-loader',
-                    {
-                        loader: 'postcss-loader',
-                        options: {
-                            ident: 'postcss',
-                            plugins: [
-                                require('autoprefixer')(),
-                            ]
-                        }
-                    },
+                    'postcss-loader',
                     'sass-loader'],
             },
         ]
