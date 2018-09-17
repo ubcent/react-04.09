@@ -1,13 +1,5 @@
 import React, { Component } from 'react';
-import {
-    Navbar,
-    NavbarBrand,
-    Nav,
-    NavItem,
-    NavLink,
-} from 'reactstrap';
 
-import Modal from "components/Modal";
 
 // Компонент принимает объект со свойствами:
 // brand - объект заголовка навбара со свойствами
@@ -26,17 +18,27 @@ export default class Header extends Component {
 
     render(){
         const { brand, items } = this.props;
-        return <Navbar color="light" light expand="md">
-            <NavbarBrand href={brand.href}>{brand.title}</NavbarBrand>
-            <Nav className="ml-auto" navbar>
-                {items.map( (item) => {
-                    return <NavItem>
-                        <NavLink key={item} href={item.href}>{item.title}</NavLink>
-                    </NavItem>
-                })}
-
-            </Nav>
-            <Modal/>
-        </Navbar>
+        const list = items.map( (item, index) => {
+            const liClass = (index === 0) ? 'nav-item active' : 'nav-item';
+            return <li className={liClass}>
+                <a className='nav-link'
+                   href={item.href}>{item.title}
+                </a>
+            </li>
+        });
+        return <nav className='navbar navbar-expand-lg navbar-dark bg-dark fixed-top'>
+            <div className='container'>
+                <a className='navbar-brand' href={brand.href}>{brand.title}</a>
+                <button className='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarResponsive'
+                        aria-controls='navbarResponsive' aria-expanded='false' aria-label='Toggle navigation'>
+                    <span className='navbar-toggler-icon'></span>
+                </button>
+                <div className='collapse navbar-collapse' id='navbarResponsive'>
+                    <ul className='navbar-nav ml-auto'>
+                        {list}
+                    </ul>
+                </div>
+            </div>
+        </nav>
     }
 }

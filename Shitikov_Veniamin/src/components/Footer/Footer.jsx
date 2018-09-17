@@ -6,13 +6,13 @@ import React, { Component } from 'react';
 // content - контент для футора
 export default class Footer extends Component{
     static defaultProps = {
-        content: '© ' + new Date().getFullYear()
+        content: 'Copyright © Your Website 2018',
     };
 
     render(){
-        return <footer className="footer">
-            <div className="container">
-                <span className="text-muted">{this.props.content}</span>
+        return <footer className='py-5 bg-dark'>
+            <div className='container'>
+                <p className='m-0 text-center text-white'>{this.props.content}</p>
             </div>
         </footer>
     }
