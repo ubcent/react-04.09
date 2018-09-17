@@ -10,20 +10,30 @@ export default class SendForm extends Component {
 
         this.state = {
             userMessage: '',
+            valueText: '',
         }
     }
 
-    sendMessage = () => {
+    //изменение формы с сообщением
+    changeInput = (ev) => {
         const { userMessage } = this.state;
         this.setState({
-            userMessage: userMessage,
+            [ev.target.name]: ev.target.value,
+        });
+    }
+
+    sendMessage = () => {
+        const { userMessage, valueText } = this.state;
+        this.setState({
+            valueText: '',
         });
     }
 
     render() {
+        const { dataMsg } = this.props;
         return (
             <form action="#" className="send-form">
-                <textarea id="message" className="send-message"></textarea>
+                <textarea id="message" name="userMessage" className="send-message" value={this.valueText}></textarea>
                 <input onClick={this.sendMessage} type="submit" className="send-button" value="Отправить"/>
             </form>
         );
