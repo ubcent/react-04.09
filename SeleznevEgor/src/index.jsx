@@ -17,7 +17,6 @@ import Footer from 'components/Footer/';
 /********************************************************************
 * Main															*
 *********************************************************************/
-
 /**
   * @brief  Общая структура для всего блога.
   * Включает в себя header, content-part и footer
@@ -29,7 +28,7 @@ class Layout extends Component{
         return(
             <Fragment>
             <Header isMain={true}/>
-            <Main categories={['All','Category 1','Category 2','Category 3']}/>
+            <Main/>
             <Footer />
             </Fragment>
         );

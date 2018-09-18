@@ -76,6 +76,22 @@
 		
 		position: relative;
 		text-align: right;
+		.userpic{
+			display: inline-block;
+			width: 40px;
+			height: 40px;
+			border-radius: 50%;
+			background-color: grey;
+			margin-right: 5px;
+		}
+		.user-greating{
+			text-align: center;
+			display: inline-block;
+			font-size: 0.8em;
+			span{
+				font-style: italic;
+			}
+		}
 		.user-not-logged{
 			font-size: 0.9em;
 			.user-auth{

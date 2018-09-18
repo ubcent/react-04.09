@@ -1,16 +1,12 @@
 /********************************************************************
  * Includes                                                          *
  ********************************************************************/
-
 /*import styles*/
 import './header.scss';
 
 /*import libs*/
 import  React, {Component} from 'react';
 import  PropTypes from 'prop-types';
-
-/*User input*/
-import NavCategories from 'components/categories/'
 
 /********************************************************************
  * Code                                                             *
@@ -23,16 +19,20 @@ import NavCategories from 'components/categories/'
   * logo *      Приветственное сообщение           * ****************
   *      *                                         * User login     *
   *******************************************************************
-  *                  nav bar                                        *
-  *******************************************************************
   * Приветственное сообщение и social_links отрисовываются только для
   * главной страницы. 
-  * @param  categories - массив категорий
   * @param  isMain - bool значение является страница главной страницей
   * приложения
   * @retval  Отрисованный header
   */
 export default class Header extends Component{
+    constructor(props){
+        super(props);
+        this.state = {
+            login : false,
+        };
+    }
+
     static propertyTypes = {
         isMain: PropTypes.bool,
     };
@@ -40,10 +40,38 @@ export default class Header extends Component{
     static defaultProps = {
         isMain: false, 
     };
+    /*На данный момент делает пользователя зарегистрированным, без какой-либо обработки*/
+    loginClicked = () =>{
+         this.setState({
+             login: true,
+         });
+     };
+
+    /*Возвращает в зависимости от состояния пользователя предложение зарегистрироваться, или аватар + логин*/
+    getUserDisplay(){
+        if (this.state.login){
+            return (
+                <div className={"user-logged"}>
+                    <div className="userpic"></div>
+                    <div className="user-greating">
+                        <p>Приветсвуем вас <br/> <span>Username</span></p>
+                    </div>
+                </div>
+            );
+        } else {
+            return(
+                <p className="user-not-logged">
+                    <span className="user-auth" id="login-link" onClick={this.loginClicked}>Войдите</span> или
+                    <span className="user-auth" id="reg-link"> Зарегистрируйтесь</span>
+                </p>
+            );
+        }
+    }
 
     render(){
-        const {categories, isMain} = this.props;
+        const {isMain} = this.props;
         const isMainClass = isMain ? '':' hidden';
+        const userLogin =  this.getUserDisplay();
 
         return (
             <header className="container page-header ">
@@ -66,14 +94,10 @@ export default class Header extends Component{
                             </ul>
                         </div>
                         <div className="user">
-                            <p className="user-not-logged">
-                                <span className="user-auth" id="login-link">Войдите</span> или 
-                                <span className="user-auth" id="login-link"> Зарегистрируйтесь</span>
-                            </p>
+                            {userLogin}
                         </div>
                     </div>
                 </div>
-                <NavCategories categories = {categories} />
             </header>
         )
     }
