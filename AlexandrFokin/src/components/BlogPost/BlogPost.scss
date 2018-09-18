@@ -1,0 +1,20 @@
+// Коэффициент перевода в em
+$k: 16;
+
+.post {
+
+}
+
+h2 {
+  margin-bottom: 5em/$k;
+  font-size: 40em/$k;
+}
+
+.date {
+}
+
+.author {
+}
+
+.message {
+}
