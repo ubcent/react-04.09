@@ -1,14 +1,25 @@
+@import url('https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i');
+
 .header {
-  background-color: aquamarine;
-  border-radius: 20px;
-  margin-bottom: 50px;
+  background: gray;
+  font-family: 'Lora', serif;
+  padding: 20px 300px;
+}
+
+.menu {
+  display: flex;
+  justify-content: space-between;
+}
+
+.logo {
+  color: #fff;
+  font-size: 1.25em;
+  font-weight: 800;
+  text-decoration: none;
 }
 
 .header ul {
-  align-items: center;
   display: flex;
-  justify-content: space-around;
-  height: 100%;
 }
 
 .header li {
@@ -20,18 +31,25 @@
 }
 
 .header li a {
-  color: #000;
+  color: #fff;
   display: inline-block;
-  font-size: 1.3em;
-  padding: 20px;
+  font-size: 12px;
+  font-weight: 800;
+  padding: 0 20px;
   text-decoration: none;
   transition: all .5s;
 }
-  
-.header-small {
-  height: 200px;
+
+.heading {
+  color: #fff;
+  padding: 180px 0;
+  text-align: center;
 }
 
-.header-big {
-  height: 400px;
+.heading h1 {
+  font-size: 5em;
+}
+
+.heading h2 {
+  font-weight: normal;
 }
