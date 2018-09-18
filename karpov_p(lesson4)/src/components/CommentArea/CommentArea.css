@@ -1,0 +1,7 @@
+.comment-area {       
+    background-color: rgb(255, 255, 255);
+    min-height: 300px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 1rem;
+}
