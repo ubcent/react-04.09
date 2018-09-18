@@ -1,0 +1,14 @@
+.post__title {
+    margin: 200px 0 50px 0;
+    font-weight: 800;
+    font-size: 2.5rem;
+}
+
+.post__subtitle {
+    font-size: 1.5rem;
+}
+
+.post__creds {
+    margin-bottom: 150px;
+    font-style: italic;
+}

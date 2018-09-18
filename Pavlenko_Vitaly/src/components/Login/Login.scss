@@ -1,0 +1,44 @@
+.login {
+  position: relative;
+  border-bottom: none;
+  &__button {
+    border: solid 2px #fff;
+    padding: 5px 8px;
+    border-radius: 2px;
+    color: #f45900;
+    background: #fff;
+    transition: all .2s;
+    cursor: pointer;
+    font-size: 12px;
+    line-height: 23px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    &:hover {
+      background: #f45900;
+      color: #fff;
+    }
+  }
+  &__popup {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    margin-top: 10px;
+    padding: 15px;
+    background: #fff;
+    border-radius: 2px;
+    border: 1px solid #f7f7f7;
+    width: 250px;
+    display: none;
+    z-index: 1;
+    &_active {
+      display: block;
+    }
+  }
+  &__input {
+    margin-bottom: 15px;
+    width: 100%;
+  }
+  &__submit {
+    width: 100%;
+  }
+}

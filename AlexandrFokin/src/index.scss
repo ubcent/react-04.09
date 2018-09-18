@@ -1,0 +1,8 @@
+// Коэффициент перевода в em
+$k: 16;
+
+body {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 14em/$k;
+  color: #555;
+}
