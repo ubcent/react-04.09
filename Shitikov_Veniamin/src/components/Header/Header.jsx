@@ -1,5 +1,7 @@
-import React, { Component } from 'react';
+import './Header.css';
 
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 // Компонент принимает объект со свойствами:
 // brand - объект заголовка навбара со свойствами
@@ -7,13 +9,20 @@ import React, { Component } from 'react';
 //      href - ссылка
 // items - массив объектов меню
 export default class Header extends Component {
-
     static defaultProps = {
         brand: {
             href: '#',
             title: 'title'
         },
         items: []
+    };
+
+    static propTypes = {
+        brand: PropTypes.shape({
+            href: PropTypes.string,
+            title: PropTypes.string,
+        }),
+        items: PropTypes.arrayOf(PropTypes.string),
     };
 
     render(){

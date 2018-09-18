@@ -15,7 +15,7 @@ export default class CommentForm extends Component{
     handleSubmit = () => {
         console.log(this.state.value);
         //здесь должна быть отправка комментария на сервер
-    }
+    };
 
     render(){
         return <div className="card my-4">

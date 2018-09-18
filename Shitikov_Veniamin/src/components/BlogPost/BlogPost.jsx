@@ -1,6 +1,7 @@
 import './BlogPost.css';
 
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 
 // Компонент принимает объект со свойствами:
@@ -31,6 +32,16 @@ export default class BlogPost extends Component {
         author: '',
         href: '#',
         date: '',
+    };
+
+    static propTypes = {
+        images: PropTypes.arrayOf(PropTypes.string),
+        title: PropTypes.string,
+        subtitle: PropTypes.string,
+        content: PropTypes.any,
+        author: PropTypes.string,
+        href: PropTypes.string,
+        date: PropTypes.string,
     };
 
     togglePost = () => this.setState({ isOpened: !this.state.isOpened});

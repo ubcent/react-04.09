@@ -13,11 +13,11 @@ export default class Categories extends Component {
 
     static defaultProps = {
         categories: [],
-    }
+    };
 
     static propTypes = {
         categories: PropTypes.array,
-    }
+    };
 
     render(){
         const { categories } = this.props;
@@ -25,7 +25,7 @@ export default class Categories extends Component {
             return <li key={item.title}>
             <a href={item.href}>{item.title}</a>
         </li>
-        })
+        });
         return <div className='card my-4'>
         <h5 className='card-header'>Categories</h5>
         <div className='card-body'>

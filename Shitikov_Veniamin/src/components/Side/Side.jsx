@@ -1,7 +1,11 @@
 import './Side.css';
 
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
+//Компонент принимает на вход
+//  title - заголовок
+//  content - контент виджета
 export default class Side extends Component {
     constructor(props) {
         super(props);
@@ -11,7 +15,12 @@ export default class Side extends Component {
     static defaultProps = {
         title: 'Side',
         content: 'Side content',
-    }
+    };
+
+    static propTypes = {
+        title: PropTypes.string,
+        content: PropTypes.any,
+    };
 
     render() {
         const { title, content } = this.props;

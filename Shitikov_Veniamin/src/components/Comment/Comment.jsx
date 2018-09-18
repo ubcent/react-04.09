@@ -19,14 +19,14 @@ export default class Comment extends Component{
         author: '', 
         text: '',
         subComments: [],
-    }
+    };
 
     static propTypes = {
         image: PropTypes.string, 
         author: PropTypes.string, 
         text: PropTypes.string,
         subComments: PropTypes.array,
-    }
+    };
 
     render(){
         const { image, author, text,subComments } = this.props;

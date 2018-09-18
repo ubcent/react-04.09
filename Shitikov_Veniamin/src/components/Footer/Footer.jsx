@@ -1,6 +1,7 @@
 import './Footer.css';
 
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 // Компонент принимает объект со свойствами:
 // content - контент для футора

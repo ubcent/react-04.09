@@ -13,12 +13,14 @@ export default class Search extends Component {
 
     handleChange = (event) => {
         this.setState({ value: event.target.value});
-    }
+    };
 
     handleSubmit = () => {
         console.log(this.state.value);
         //здесь должна быть функция поиска
-    }
+        //очистка формы
+        this.setState({ value: ''});
+    };
 
     render(){
         return <div className='card my-4'>

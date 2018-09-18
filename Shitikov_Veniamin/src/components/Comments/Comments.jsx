@@ -1,7 +1,9 @@
 import './Comments.css';
 
 import React, { Component } from 'react';
-import CommentForm from '../CommentForm/CommentForm';
+import PropTypes from 'prop-types';
+
+import CommentForm from '../CommentForm';
 
 
 // Компонент принимает массив объектов комментариев
@@ -10,6 +12,14 @@ export default class Comments extends Component {
         super(props);
 
     }
+
+    static defaultProps = {
+        comments: [],
+    };
+
+    static propTypes = {
+        comments: PropTypes.array,
+    };
 
     render(){
         const { comments } = this.props;
