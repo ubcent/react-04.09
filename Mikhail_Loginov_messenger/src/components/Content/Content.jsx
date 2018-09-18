@@ -10,34 +10,57 @@ import {
   Container
 } from 'reactstrap';
 
-import comments from '../../data/comments';
+import messages from '../../data/messages';
 import Message from 'components/Message';
 
 export default class Content extends Component {
+  state = {
+    messageAuthor: '',
+    messageText: ''
+  }
+
+  handleNameInputChange = (e) => {
+    this.setState({messageText: e.target.value});
+  }
+
+  handleMessageInputChange = (e) => {
+    this.setState({messageAuthor: e.target.value});
+  }
+
+  handleSubmitClick = () => {
+    let message = {
+      text: this.state.messageText,
+      author: this.state.messageAuthor
+    }
+    messages.push(message);
+    this.forceUpdate();
+  }
 
   render() {
-    const messagesSection = comments.map(message => <Message message={message}/>);
+    const renderedMessages = messages.map(message => <Message message={message}/>);
     return (
       <main>
         <Container>
           <div className="chat-wrapper">
-            {messagesSection}
+            {renderedMessages}
           </div >
           <Form>
             <div className="name-input-group">
               <FormGroup>
                 <Label for="userName" hidden>Name</Label>
-                <Input type="text" name="name" id="userName" placeholder="Enter your name"/>
+                <Input type="text" name="name" id="userName" placeholder="Enter your name"
+                onChange={this.handleNameInputChange}/>
               </FormGroup>
-              <Button>Submit</Button>
+              <Button onClick={this.handleSubmitClick}>Submit</Button>
             </div>
             <FormGroup>
-              <Label for="commentInput" hidden>Comment</Label>
+              <Label for="commentInput" hidden>Message</Label>
               <Input
                 type="textarea"
                 name="text"
                 id="commentInput"
-                placeholder="Your comment"/>
+                placeholder="Your message"
+                onChange={this.handleMessageInputChange}/>
             </FormGroup>
           </Form>
         </Container>
