@@ -4,7 +4,8 @@
 body {
   margin: 0;
   font-family: 'Open Sans', sans-serif;
-  font-size: 16px;
+  font-size: 14px;
+  line-height: 1.5;
   background: #f7f7f7;
 }
 
@@ -29,4 +30,13 @@ body {
 
 .main-content {
   margin: 30px 0;
+}
+
+.link {
+  color: #0054a6;
+  text-decoration: none;
+  &:hover {
+    color: #0054a6;
+    text-decoration: none;
+  }
 }
