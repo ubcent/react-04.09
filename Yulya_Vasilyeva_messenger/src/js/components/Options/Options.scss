@@ -1,0 +1,11 @@
+@import '../../variables';
+//@import '../../extended';
+
+.message-options{
+    color: $whiteText;
+    //margin-left: 20px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.082);
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
