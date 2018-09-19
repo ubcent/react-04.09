@@ -5,27 +5,22 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 
 module.exports = {
+
     entry: {
-        main: path.resolve(__dirname, 'src', 'index.jsx')
+        'resources/js/bundle.js': path.resolve(__dirname, 'src/resources/js')
     },
+
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: 'resources/js/bundle.js'
+        filename: "[name]"
     },
-    resolve: {
-        extensions: ['.js', '.jsx'],
-        alias: {
-            components: path.resolve(__dirname, 'src', 'components'),
-        }
-    },
+
     module: {
         rules: [
             {
-                test: /\.jsx?$/,
+                test: /\.js$/,
                 exclude: /node_modules/,
-                use: {
-                    loader: 'babel-loader',
-                }
+                use: {loader: 'babel-loader'}
             },
             {
                 test: /\.scss$/,
@@ -49,7 +44,7 @@ module.exports = {
 
     plugins: [
         new HtmlPlugin({
-            title: 'ReactJS - lesson 03',
+            title: 'ReactJS - lesson 02',
             template: path.resolve(__dirname, 'src', 'index.html'),
             filename: 'index.html'
         }),
