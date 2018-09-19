@@ -1,6 +1,6 @@
 import './BlogButton.scss';
 
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { Button } from 'reactstrap';
 // Проверка свойств
 import PropTypes from 'prop-types';
@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 /**
  * Класс BlogButton - компонент, отображающий кнопку на странице
  */
-export default class BlogButton extends Component {
+export default class BlogButton extends PureComponent {
   // Проверка свойств
   static propTypes = {
     // Кнопка - объект

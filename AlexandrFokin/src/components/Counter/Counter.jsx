@@ -1,11 +1,11 @@
 import './Counter.scss';
 
-import React, {Component, Fragment} from 'react';
+import React, {PureComponent, Fragment} from 'react';
 
 /**
  * Класс Counter - компонент, отображающий счетчик на странице
  */
-export default class Counter extends Component {
+export default class Counter extends PureComponent {
   constructor(props) {
     super(props);
 
@@ -45,7 +45,7 @@ export default class Counter extends Component {
     this.setState({
       // подставляем переменную в ключ объекта
       [event.target.name]: parseInt(event.target.value),
-    })
+    });
   };
 
   render() {

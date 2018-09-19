@@ -1,6 +1,6 @@
 import './Header.scss';
 
-import React, {Component, Fragment} from 'react';
+import React, {PureComponent, Fragment} from 'react';
 
 import HorizontalMenu from 'components/HorizontalMenu';
 import BlogButton from 'components/BlogButton/BlogButton';
@@ -14,15 +14,15 @@ const menu = [
   },
   {
     id: 'new_feature,',
-    name: 'New features',
+    name: 'Blog',
   },
   {
     id: 'press',
-    name: 'Press',
+    name: 'Comments',
   },
   {
     id: 'new_hires',
-    name: 'New hires',
+    name: 'Users',
   },
   {
     id: 'about',
@@ -36,7 +36,7 @@ const loginButton = {id: 'login', name: 'Log in'};
 /**
  * Класс Header - компонент, отображающий хидер страницы
  */
-export default class Header extends Component {
+export default class Header extends PureComponent {
   render() {
     return (
       <Fragment>

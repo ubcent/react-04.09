@@ -1,13 +1,13 @@
 import './BlogPost.scss';
 
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 // Проверка свойств
 import PropTypes from 'prop-types';
 
 /**
  * Класс BlogPost - компонент, отображающий блог на странице
  */
-export default class BlogPost extends Component {
+export default class BlogPost extends PureComponent {
   // Проверка свойств
   static propTypes = {
     // Пост - объект

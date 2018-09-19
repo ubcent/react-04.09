@@ -1,6 +1,6 @@
 import './MainPage.scss';
 
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 
 import Counter from 'components/Counter';
 import BlogPost from 'components/BlogPost';
@@ -75,7 +75,7 @@ const posts = [
 /**
  * Класс MainPage - компонент, отображающий main (контент) страницы
  */
-export default class MainPage extends Component {
+export default class MainPage extends PureComponent {
   render() {
     // Отображаем main
     return (
@@ -99,7 +99,7 @@ export default class MainPage extends Component {
             })}
             </div>
           </div>
-          <div className="col"></div>
+          <div className="col"/>
           <div className="col-4">
             <Counter/>
           </div>

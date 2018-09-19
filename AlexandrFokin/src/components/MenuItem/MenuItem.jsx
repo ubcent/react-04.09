@@ -1,6 +1,6 @@
 import './MenuItem.scss';
 
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { NavItem, NavLink } from 'reactstrap';
 // Проверка свойств
 import PropTypes from 'prop-types';
@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 /**
  * Класс MenuItem - компонент, отображающий пункт меню
  */
-export default class MenuItem extends Component {
+export default class MenuItem extends PureComponent {
   // Проверка свойств
   static propTypes = {
     // Пункт меню - объект
