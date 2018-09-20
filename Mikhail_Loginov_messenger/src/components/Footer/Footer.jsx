@@ -19,7 +19,7 @@ export default class Footer extends Component {
     ];
 
     const navMenu = <Nav>
-      {menu.map(item => <NavItem>
+      {menu.map((item, index) => <NavItem key={index}>
         <NavLink href={item.href}>{item.title}</NavLink>
       </NavItem>)}
     </Nav>

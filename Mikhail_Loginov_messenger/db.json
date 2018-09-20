@@ -1,0 +1,34 @@
+{
+  "messages": [
+    {
+      "id": 1,
+      "text": "My awesome comment",
+      "author": "John"
+    },
+    {
+      "id": 2,
+      "text": "Another awesome comment",
+      "author": "Mike"
+    },
+    {
+      "id": 3,
+      "text": "This chat is working!",
+      "author": "Cool guy"
+    },
+    {
+      "id": 4
+    },
+    {
+      "id": 5
+    },
+    {
+      "id": 6
+    },
+    {
+      "id": 7
+    },
+    {
+      "id": 8
+    }
+  ]
+}

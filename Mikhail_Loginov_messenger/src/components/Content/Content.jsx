@@ -10,13 +10,24 @@ import {
   Container
 } from 'reactstrap';
 
-import messages from '../../data/messages';
+import { SERVER_ADDRESS, SERVER_PORT } from '../../config/server.js';
 import Message from 'components/Message';
 
 export default class Content extends Component {
   state = {
     messageAuthor: '',
-    messageText: ''
+    messageText: '',
+    messages: []
+  }
+
+  componentDidMount() {
+    fetch(`${SERVER_ADDRESS}:${SERVER_PORT}/messages`).then(res => {
+      console.log(res);
+      res.json().then(res => {
+        console.log(res);
+        this.setState({messages: res});
+      })
+    })
   }
 
   handleNameInputChange = (e) => {
@@ -32,12 +43,21 @@ export default class Content extends Component {
       text: this.state.messageText,
       author: this.state.messageAuthor
     }
-    messages.push(message);
+    fetch(`${SERVER_ADDRESS}:${SERVER_PORT}/messages`, {
+      method: "POST",
+      body: message
+    }).then(res => {
+      console.log(res);
+      res.json().then(res => {
+        console.log(res);
+        this.setState({messages: res});
+      })
+    })
     this.forceUpdate();
   }
 
   render() {
-    const renderedMessages = messages.map(message => <Message message={message}/>);
+    const renderedMessages = this.state.messages.map((message, index) => <Message key={index} message={message}/>);
     return (
       <main>
         <Container>

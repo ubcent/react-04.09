@@ -6,7 +6,9 @@
   "scripts": {
     "build": "webpack --mode production",
     "dev": "webpack-dev-server --mode development",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "json-server --watch db.json",
+    "server-install": "npm i -g json-server"
   },
   "author": "",
   "license": "ISC",
