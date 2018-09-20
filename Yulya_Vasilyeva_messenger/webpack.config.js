@@ -13,7 +13,7 @@ const CleanPlugin = require('clean-webpack-plugin');
 module.exports = {
     mode: 'development',
     entry: {
-        entry: path.resolve(__dirname, 'src', 'js/_index.jsx'),
+        entry: path.resolve(__dirname, 'src', './_index.jsx'),
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
@@ -22,7 +22,7 @@ module.exports = {
     resolve: {
         extensions: ['.js', '.jsx'],
         alias: {
-            components: path.resolve(__dirname, 'src', 'js/components'),
+            components: path.resolve(__dirname, 'src', './components'),
         },
     },
     module: {
@@ -60,13 +60,6 @@ module.exports = {
                     options: {
                         name: 'fonts/[name].[ext]',
                     }
-                }
-
-            },
-            {
-                test: /\.json$/,
-                use: {
-                    loader: 'json-loader',
                 }
 
             },

@@ -1,10 +1,7 @@
-//Имортируем стили для BOOTSTRAP
-import 'bootstrap/dist/css/bootstrap.min.css';
-//Пользовательские стили
-import './_index.scss';
+import './_index.scss'; //Пользовательские стили
 
 //компоненты React
-import React, {Component, Fragment} from 'react';
+import React, {PureComponent, Fragment} from 'react';
 import ReactDOM from 'react-dom';
 
 //компоненты Bootstrap
@@ -23,7 +20,7 @@ import Footer from 'components/Footer/'; // подвал сайта
 import { mainMenu, subMenu, article } from './data';
 
 //Главный компонет
-class App extends Component{
+class App extends PureComponent{
     render(){
         //Собираем компонтенты: меню + авторизация + подписка + список статей + футер
         return(
@@ -47,10 +44,6 @@ class App extends Component{
                <Footer/>
             </Fragment>
         );
-    }
-    componentDidMount(){
-        //вызваем после визуализации всех компонентов
-        console.log("Отрисовалось");
     }
 }
 ReactDOM.render(<App/>, document.querySelector('#root'));

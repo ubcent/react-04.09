@@ -1,8 +1,7 @@
 //Импортируем стили для форматирования меню
 import './Menu.scss';
-import logoImg from './img/3d-logo.svg';
 
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import {//импортируем компоненты для навигации Bootstrap
     Collapse,
     Navbar,
@@ -15,7 +14,7 @@ import {//импортируем компоненты для навигации 
 //проверка свойств
 import PropTypes from 'prop-types';
 
-export default class Menu extends Component {
+export default class Menu extends PureComponent {
     constructor(props) {
         super(props);
 
@@ -26,10 +25,9 @@ export default class Menu extends Component {
     }
 
     //при клике на пункт меню, он становится активным
-    clickMenu = (indx) => {
-        const { activeMenu } = this.state;
+    clickMenu = (ev) => {
         this.setState({
-            activeMenu: indx,
+            activeMenu: +ev.target.name,
         });
     }
 
@@ -46,12 +44,12 @@ export default class Menu extends Component {
     }
     render() {
         const { isOpen, activeMenu } = this.state;//состояние открытового меню (сжатая версия)
-        const { menu } = this.props;//получаем массив меню
+        const { menu } = this.props;//получаем объект меню
         //строим навигацию на сайте (главная)
         return (
             <Navbar dark expand="md">
                 <NavbarBrand href="/" className="logo">
-                    <img src={logoImg} alt="Блог о 3D и 2D" width="60" />
+                    <img src="./img/3d-logo.svg" alt="Блог о 3D и 2D" width="60" />
                     <span>Блог о 3D и 2D</span>
                 </NavbarBrand>
                 <NavbarToggler onClick={this.toggle} />
@@ -61,8 +59,8 @@ export default class Menu extends Component {
                             const activeClass = activeMenu === indx ? 'active-menu' : '';
                             //элементы главного меню
                             return(
-                                <NavItem key={"mainMenu" + indx} >
-                                    <NavLink key={"mainMenuLink"+ indx} onClick={() => this.clickMenu(indx)} className={activeClass}  href="#" >{item}</NavLink>
+                                <NavItem key={`mainMenu${indx}`} >
+                                    <NavLink name={indx} onClick={this.clickMenu} className={activeClass}  href={item.link} >{item.title}</NavLink>
                                 </NavItem>
                             );
                         })}

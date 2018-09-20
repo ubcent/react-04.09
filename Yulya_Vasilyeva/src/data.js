@@ -1,5 +1,17 @@
 //главное меню
-export const mainMenu = ['Главная','3D графика', '2D графика', 'Контакты'];
+export const mainMenu = [
+    {
+        title: "Главная",
+        link: "/" 
+    }, 
+    {
+        title: "Комментарии",
+        link: "/comments.html" 
+    },
+    {
+        title: "Пользователи",
+        link: "/users.html" 
+    }];
 
 //доп меню
 export const subMenu = ['Предложить статью', 'График вебинаров', 'Записать на вебинар', 'Сообщить об ошибке'];

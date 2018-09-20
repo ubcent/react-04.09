@@ -2,7 +2,7 @@
 import './Subscr.scss';
 
 //импортируем React
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 //импорт компонентов Bootstrap для отрисовки кнопок и модального окна
 import {
     Modal,
@@ -16,7 +16,7 @@ import {
 
 /*компонент для окна подписки на новости, при нажати на кнопку
 отображается модальное окно*/
-export default class Subscr extends Component {
+export default class Subscr extends PureComponent {
     constructor(props) {
         super(props);
 
