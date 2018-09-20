@@ -19,8 +19,21 @@ import {
 } from 'reactstrap';
 
 export default class Article extends PureComponent {
+    constructor(props){
+       super(props);
+       
+        this.state = {
+            postId: 0,
+        }
+    }
     static propTypes = {
         text: PropTypes.arrayOf(PropTypes.object),
+    }
+    //передаем id поста главному компоненту
+    openPost = (ev) => {
+        const { onSend} = this.props;
+        this.postId = +ev.target.name;
+        onSend(this.postId);
     }
 
     render() {
@@ -35,8 +48,8 @@ export default class Article extends PureComponent {
                         <CardBody>
                             <CardTitle className='blog-title'>{item.title}</CardTitle>
                             <CardSubtitle className='blog-data'>Дата публикации: {item.data}</CardSubtitle>
-                            <CardText>{item.text}</CardText>
-                            <Button color="warning" className="read-more">Подробнее</Button>
+                            <CardText>{item.descr}</CardText>
+                            <Button name={item.id} onClick={this.openPost} color="warning" className="read-more">Подробнее</Button>
                         </CardBody>
                     </Card>
                     </Col>
