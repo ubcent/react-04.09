@@ -1,7 +1,9 @@
-.comment-area {       
-    background-color: rgb(255, 255, 255);
+.comment-area {   
+    max-height: 350px;
+    overflow-y: auto;  
+    background-color: rgba(255, 255, 255, 0.8);
     min-height: 300px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    padding: 1rem;
+    padding: 1.5rem;
 }
