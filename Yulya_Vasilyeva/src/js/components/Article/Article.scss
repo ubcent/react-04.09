@@ -1,0 +1,20 @@
+@import '../../variables';
+
+.article{
+    margin: 20px 0;
+    background-color: $darkBgOpacity;
+}
+.blog-title{
+    text-transform: uppercase;
+}
+.blog-data{
+    font-size: 0.9em;
+    margin: 10px 0;
+    color: $darkText;
+}
+.read-more{
+    float: right;
+}
+.read-more:after{
+    clear: both;
+}

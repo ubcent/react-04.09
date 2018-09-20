@@ -1,0 +1,31 @@
+.message {
+    margin: 25px 0;
+    width: 80%;
+}
+
+.message__text {
+    padding: 20px;
+    border-radius: 10px;
+    margin: 5px 0;
+}
+
+.message:nth-child(3n) .message__text {
+    background: rgb(108, 108, 233);
+}
+
+.message:nth-child(3n-1) .message__text {
+    background: rgb(111, 206, 209);
+}
+
+.message:nth-child(3n-2) .message__text {
+    background: rgb(200, 129, 209);
+}
+
+.message:nth-child(2n) {
+    margin-left: 20%;
+}
+
+.message__name {
+    display: flex;
+    justify-content: flex-end;
+}

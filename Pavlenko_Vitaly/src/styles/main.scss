@@ -1,8 +1,42 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700&subset=cyrillic');
+@import url('https://fonts.googleapis.com/css?family=Anton');
+
 body {
-  background: #ccc;
-  & .developer {
-    color: chocolate;
-    font-size: 24px;
-    cursor: pointer;
+  margin: 0;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  background: #f7f7f7;
+}
+
+.input-dfl {
+  font-size: 14px;
+  line-height: 1.5;
+  padding: 6px 17px 7px;
+  border: 1px solid #e2e2e2;
+  border-radius: 2px;
+}
+
+.button-dfl {
+  background: #f45900;
+  border: none;
+  color: #fff;
+  font-size: 14px;
+  line-height: 1.5;
+  padding: 6px 17px 7px;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.main-content {
+  margin: 30px 0;
+}
+
+.link {
+  color: #0054a6;
+  text-decoration: none;
+  &:hover {
+    color: #0054a6;
+    text-decoration: none;
   }
 }

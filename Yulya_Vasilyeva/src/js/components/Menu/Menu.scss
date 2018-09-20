@@ -1,0 +1,38 @@
+@import '../../variables';
+
+.navbar{
+    margin-bottom: 30px;
+}
+.logo span:hover{
+    text-decoration: none;
+    color: $lightText;
+    
+}
+.logo img{
+    transition: all 0.2s ease-in-out;
+}
+.logo:hover img{
+    transform: rotateZ(90deg);
+}
+.logo span{
+    padding:0 20px;
+    color: $orangeColor;
+    border-right: 1px solid #ccc;
+}
+.navbar-dark .navbar-nav .nav-link{
+    color: $lightText;
+    text-transform: uppercase;
+    transition: all 0.2s ease-in-out;
+}
+.navbar-dark .navbar-nav .nav-link:hover{
+    color: $orangeColor;
+    transform: translateY(4px);
+}
+.active-menu{
+    color: $orangeColor!important;
+}
+.active-menu:after{
+    content: '';
+    display: block;
+    border-bottom: 1px solid $orangeColor;
+}
