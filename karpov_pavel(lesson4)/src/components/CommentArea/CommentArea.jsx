@@ -15,7 +15,9 @@ class CommentArea extends Component {
         });
         return(            
             <div className={comAreaStyles}>
-                {messageRend}               
+            <div>
+                {messageRend} 
+                </div>              
             </div>
         )
     }
