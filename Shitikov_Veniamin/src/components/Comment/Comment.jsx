@@ -7,7 +7,6 @@ import PropTypes from 'prop-types';
   //image - аватар автора, 
   //author - автор, 
   //text - сам комментарий,
-  //subComments - массив подкомментариев
 export default class Comment extends Component{
     constructor(props){
         super(props);
@@ -15,40 +14,35 @@ export default class Comment extends Component{
     }
 
     static defaultProps = {
-        image: '', 
-        author: '', 
+        author: {name: '', href: '',}, 
         text: '',
-        subComments: [],
+        blog:{name: '', href: '',}, 
     };
 
     static propTypes = {
-        image: PropTypes.string, 
-        author: PropTypes.string, 
+        author: PropTypes.shape({
+            name: PropTypes.string, 
+            href: PropTypes.string,
+        }), 
+        blog: PropTypes.shape({
+            name: PropTypes.string, 
+            href: PropTypes.string,
+        }), 
         text: PropTypes.string,
-        subComments: PropTypes.array,
     };
 
     render(){
-        const { image, author, text,subComments } = this.props;
-        const sublist = subComments.map( (item, index) => {
-            return <div key={index} className="media mt-4">
-                <img className="d-flex mr-3 rounded-circle"
-                        src={image} alt="" />
-                    <div className="media-body">
-                        <h5 className="mt-0">{author}</h5>
-                        {text}
-                </div>
-            </div>
-        });
+        const { author, blog, text } = this.props;
         return <Fragment>
             <div className="media mb-4">
-                <img className="d-flex mr-3 rounded-circle"
-                     src={image} alt="" />
                 <div className="media-body">
-                    <h5 className="mt-0">{author}</h5>
+                    <h5 className="mt-0">
+                        <a href={author.href}>{author.name}</a>
+                    </h5>
                     {text}
-                    // подкомментарии
-                    {sublist}
+                    <h5 className="mt-0">
+                        <a href={blog.href}>{blog.name}</a>
+                    </h5>
                     
                 </div>
             </div>

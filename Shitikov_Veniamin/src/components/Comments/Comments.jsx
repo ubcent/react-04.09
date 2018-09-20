@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import CommentForm from '../CommentForm';
+import Comment from 'components/Comment';
 
 
 // Компонент принимает массив объектов комментариев
@@ -29,8 +30,8 @@ export default class Comments extends Component {
 
             {/*<!-- Comments -->*/}
             {comments.map( (item, index) => {
-                const { image, author, text,subComments } = item;
-                return <Comment key={index} image={image} author={author} text={text} subComments={subComments}/>
+                const { author, text, blog } = item;
+                return <Comment key={index} author={author} text={text} blog={blog}/>
             })}
 
         </div>

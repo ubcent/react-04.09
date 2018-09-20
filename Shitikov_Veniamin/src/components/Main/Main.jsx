@@ -3,7 +3,6 @@ import './Main.css';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import Sidebar from '../Sidebar';
 import BlogPost from '../BlogPost';
 
 export default class Main extends Component {
@@ -15,31 +14,22 @@ export default class Main extends Component {
         heading: '',
         secondary: '', 
         blogposts: [], 
-        categories: [], 
-        side: {},
     };
 
     static propTypes = {
         heading: PropTypes.string,
         secondary: PropTypes.string,
         blogposts: PropTypes.array,
-        categories: PropTypes.array,
-        side: PropTypes.object,
     };
 
     render() {
-        const { heading, secondary, blogposts, categories, side } = this.props;
+        const { heading, secondary, blogposts } = this.props;
         const list = blogposts.map( (item) => {
-            const { images, title, subtitle, content, author, href, date } = item;
-            return <BlogPost key={date} images={images} title={title} subtitle={subtitle} content={content} author={author} href={href} date={date} />
+            const { title, subtitle, href } = item;
+            return <BlogPost key={title} title={title} subtitle={subtitle} href={href} />
         });
         return (
-            <div className='container'>
-
-                <div className='row'>
-
-                    {/*<!-- Blog Entries Column -->*/}
-                    <div className='col-md-8'>
+            <div className='col-md-8'>
 
                         <h1 className='my-4'>{heading}
                             <small>{secondary}</small>
@@ -61,13 +51,6 @@ export default class Main extends Component {
                             </li>
                         </ul>
 
-                    </div>
-
-                    {/*<!-- Sidebar Widgets Column -->*/}
-                    <Sidebar categories={categories} side={side}/>
-
-                </div>
-
-            </div>)
+                    </div>)
     }
 }

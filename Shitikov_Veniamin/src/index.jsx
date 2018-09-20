@@ -4,28 +4,10 @@ import './style.css'
 import React, {Component, Fragment} from 'react';
 import ReactDom from 'react-dom';
 
-import Header from 'components/Header';
-import Footer from 'components/Footer';
-import Main from 'components/Main';
+import MainPage from 'components/MainPage';
+import CommentPage from 'components/CommentPage';
+import Blog from './components/Blog/Blog';
 
-const blogPost = <Fragment>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, tenetur natus doloremque
-    laborum quos iste ipsum rerum obcaecati impedit odit illo dolorum ab tempora nihil dicta earum fugiat. Temporibus,
-    voluptatibus.</p>
-
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos, doloribus, dolorem iusto blanditiis unde eius
-        illum consequuntur neque dicta incidunt ullam ea hic porro optio ratione repellat perspiciatis. Enim, iure!</p>
-
-    <blockquote className="blockquote">
-        <p className="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-        <footer className="blockquote-footer">Someone famous in
-            <cite title="Source Title">Source Title</cite>
-        </footer>
-    </blockquote>
-
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error, nostrum, aliquid, animi, ut quas placeat totam
-        sunt tempora commodi nihil ullam alias modi dicta saepe minima ab quo voluptatem obcaecati?</p>
-</Fragment>;
 const mySite = {
     header: {
         brand: {
@@ -38,13 +20,17 @@ const mySite = {
                 href: '#'
             },
             {
-                title: 'Features',
+                title: 'Blog',
                 href: '#'
             },
             {
-                title: 'Contacts',
+                title: 'Comments',
                 href: '#'
-            }
+            },
+            {
+                title: 'Users',
+                href: '#'
+            },
         ]
     },
     main: {
@@ -52,74 +38,120 @@ const mySite = {
         secondary: 'Secondary Text',
         blogposts: [
             {
-                images: [],
                 title: 'Post Title',
                 subtitle: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.\n' +
                 '                    Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta\n' +
                 '                    expedita corporis animi vero voluptate voluptatibus possimus, veniam magni\n' +
                 '                    quis!',
-                content: blogPost,
                 author: 'Anonim',
                 href: '#',
                 date: '04/01/14',
             },
             {
-                images: [],
                 title: 'Post Title',
                 subtitle: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.\n' +
                 '                    Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta\n' +
                 '                    expedita corporis animi vero voluptate voluptatibus possimus, veniam magni\n' +
                 '                    quis!',
-                content: blogPost,
                 author: 'Anonim',
                 href: '#',
                 date: '01/01/14',
             },
             {
-                images: [],
                 title: 'Post Title',
                 subtitle: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.\n' +
                 '                    Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta\n' +
                 '                    expedita corporis animi vero voluptate voluptatibus possimus, veniam magni\n' +
                 '                    quis!',
-                content: blogPost,
                 author: 'Anonim',
                 href: '#',
                 date: '02/01/14',
             },
 
         ],
-        categories: [
-            {
-                href: '#',
-                title: 'Front',
-            },
-            {
-                href: '#',
-                title: 'Back',
-            },
-            {
-                href: '#',
-                title: 'Humor',
-            },
-        ],
-        side: {
-            title: 'Side',
-            content: 'Side content',
+        
+    },
+    categories: [
+        {
+            href: '#',
+            title: 'Front',
         },
+        {
+            href: '#',
+            title: 'Back',
+        },
+        {
+            href: '#',
+            title: 'Humor',
+        },
+    ],
+    side: {
+        title: 'Side',
+        content: 'Side content',
     },
 
 };
 
-class Layout extends Component {
+const comments = [
+    {
+        author: {
+            name: 'Commenter Name', 
+            href: '#',}, 
+        text: `Cras sit amet nibh libero, in gravida nulla. Nulla vel 
+        metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in 
+        vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi 
+        vulputate fringilla. Donec lacinia congue felis in faucibus.`,
+        blog:{
+            name: 'Some Blog', 
+            href: '#',}, 
+    },
+    {
+        author: {
+            name: 'Commenter Name', 
+            href: '#',}, 
+        text: `Cras sit amet nibh libero, in gravida nulla. Nulla vel 
+        metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in 
+        vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi 
+        vulputate fringilla. Donec lacinia congue felis in faucibus.`,
+        blog:{
+            name: 'Some Blog', 
+            href: '#',}, 
+    },
+    {
+        author: {
+            name: 'Commenter Name', 
+            href: '#',}, 
+        text: `Cras sit amet nibh libero, in gravida nulla. Nulla vel 
+        metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in 
+        vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi 
+        vulputate fringilla. Donec lacinia congue felis in faucibus.`,
+        blog:{
+            name: 'Some Blog', 
+            href: '#',}, 
+    },
+    {
+        author: {
+            name: 'Commenter Name', 
+            href: '#',}, 
+        text: `Cras sit amet nibh libero, in gravida nulla. Nulla vel 
+        metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in 
+        vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi 
+        vulputate fringilla. Donec lacinia congue felis in faucibus.`,
+        blog:{
+            name: 'Some Blog', 
+            href: '#',}, 
+    },
+
+];
+
+class App extends Component {
     render(){
-        const { header, main } = this.props;
         return <div>
-            <Header brand={header.brand} items={header.items}/>
-            <Main heading={main.heading} secondary={main.secondary} side={main.side} categories={main.categories} blogposts={main.blogposts}/>
-            <Footer/>
+                       <Blog header={mySite.header} main={mySite.main} categories={mySite.categories} side={mySite.side} />
+
+{/* <CommentPage comments={comments} header={mySite.header} categories={mySite.categories} side={mySite.side} /> */}
         </div>
     }
 }
 
-ReactDom.render(<Layout header={ mySite.header} main={mySite.main} />, document.getElementById('root'));
+ReactDom.render(<App />, document.getElementById('root'));

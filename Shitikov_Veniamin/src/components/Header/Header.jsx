@@ -14,7 +14,8 @@ export default class Header extends Component {
             href: '#',
             title: 'title'
         },
-        items: []
+        items: [],
+        active: 0,
     };
 
     static propTypes = {
@@ -23,12 +24,13 @@ export default class Header extends Component {
             title: PropTypes.string,
         }),
         items: PropTypes.arrayOf(PropTypes.string),
+        active: PropTypes.number,
     };
 
     render(){
-        const { brand, items } = this.props;
+        const { brand, items, active } = this.props;
         const list = items.map( (item, index) => {
-            const liClass = (index === 0) ? 'nav-item active' : 'nav-item';
+            const liClass = (index === active) ? 'nav-item active' : 'nav-item';
             return <li className={liClass}>
                 <a className='nav-link'
                    href={item.href}>{item.title}
