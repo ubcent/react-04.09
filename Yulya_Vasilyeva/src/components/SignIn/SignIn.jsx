@@ -2,7 +2,7 @@
 import './SignIn.scss';
 
 //импорт React
-import React, { Component, Fragment } from 'react';
+import React, { PureComponent, Fragment } from 'react';
 import { //импорт формы из Bootstrap
     Button,
     Form,
@@ -14,7 +14,7 @@ import { //импорт формы из Bootstrap
     Alert,
 } from 'reactstrap';
 
-export default class SignIn extends Component {
+export default class SignIn extends PureComponent {
     constructor(props) {
         super(props);
 
@@ -69,6 +69,7 @@ export default class SignIn extends Component {
                     </FormGroup>
                     <Button onClick={this.toggle} color="secondary" block className="btn-signin">Войти</Button>
                 </Form>
+                <Button color="info" block >Регистрация</Button>
                 <Modal isOpen={modal} toggle={this.toggle} className={className} backdrop={backdrop}>
                     <ModalBody>
                         <Alert color={checkUser.classAlert}>
