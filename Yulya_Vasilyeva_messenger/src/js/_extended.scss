@@ -1,0 +1,10 @@
+//набор для контейнеров
+%flex-column{
+    display: flex;
+    flex-flow: column;
+}
+
+%flex-row-nowrap{
+    display: flex;
+    flex-flow: row nowrap;
+}

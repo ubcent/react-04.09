@@ -1,28 +1,12 @@
 import './Footer.scss';
 
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
 
-export default class Menu extends Component {
-
-    static propTypes = {
-        links: PropTypes.arrayOf(PropTypes.object),
-    };
-
-    static defaultProps = {
-        links: []
-    };
-
-    render() {
-
-        const {links} = this.props;
-
-        return (
-                <div className="footer-menu">
-                    <ul>
-                        {links.map((link) => <li key={link.id}><a href={link.url} title={link.title}>{link.title}</a></li>)}
-                    </ul>
-                </div>
-                );
-    }
+export default function Footer() {
+    return (
+      <footer className="blog-footer">
+        <p>Blog template built for <a href="http://getbootstrap.com">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+        <p><a href="#">Back to top</a></p>
+      </footer>
+    );
 }

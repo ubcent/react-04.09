@@ -1,0 +1,37 @@
+@import '../../../variables';
+@import '../../../extended';
+
+%styleForm{
+    height: 50px;
+    border: none;
+    outline: none;
+}
+
+.send-form{
+    width: 100%;
+    @extend %flex-row-nowrap;
+}
+.send-message{
+    width: 100%*9/12;
+    @extend %styleForm;
+    padding: 16px;
+    resize: none;
+    box-sizing: border-box;
+    font-size: 0.9em;
+}
+.send-button{
+    width: 100%*3/12;
+    @extend %styleForm;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: all 0.3s ease-in-out;
+    background-color: $lightGrey;
+    font-size: 0.9em;
+}
+.send-button:hover{
+    color: $whiteText;
+    background-color: $blueColor;
+}
+.send-button:active{
+    border: 1px solid #fff;
+}
