@@ -1,6 +1,17 @@
 .send-group {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
   background: #f5f1ee;
   border-top: 1px solid rgba(0, 0, 0, 0.08);
   padding: 15px 25px;
   box-sizing: border-box;
+  margin: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .send-group {
+    padding: 10px 15px;
+  }
 }

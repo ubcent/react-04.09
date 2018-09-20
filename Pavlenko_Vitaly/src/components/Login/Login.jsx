@@ -1,12 +1,12 @@
 import './Login.scss';
 
-import React, {Component} from 'react';
+import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 
-export default class Login extends Component {
+export default class Login extends PureComponent {
 
-    constructor() {
-        super(...arguments);
+    constructor(props) {
+        super(props);
 
         this.state = {
             showPopup: false

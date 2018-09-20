@@ -1,71 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700&subset=cyrillic');
 @import url('https://fonts.googleapis.com/css?family=Anton');
 
-body {
+.page {
   margin: 0;
   font-family: 'Open Sans', sans-serif;
   font-size: 14px;
   line-height: 1.5;
   background: #f7f7f7;
-  min-width: 960px;
-}
-
-form {
-  margin-bottom: 0;
-}
-
-.messager-app {
-  display: flex;
-}
-
-.send-input {
-  background-color: #ffffff;
-  border-color: #fff;
-  border-radius: 21px;
-  border-style: solid;
-  border-width: 1px;
-  padding: 10px 15px;
-  font-size: 15px;
-  line-height: 20px;
-  min-height: 20px;
-  width: 100%;
-  outline: none;
-  &:focus {
-    &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-      color: transparent;
-    }
-    &::-moz-placeholder { /* Firefox 19+ */
-      color: transparent;
-    }
-    &:-ms-input-placeholder { /* IE 10+ */
-      color: transparent;
-    }
-    &:-moz-placeholder { /* Firefox 18- */
-      color: transparent;
-    }
-  }
-}
-
-.button-send {
-  background: #2860FF;
-  color: #fff;
-  border-radius: 21px;
-  padding: 10px 15px;
-  font-size: 15px;
-  min-height: 20px;
-  outline: none;
-  line-height: 20px;
-  cursor: pointer;
-  opacity: 0.8;
-  transition: opacity 0.2s;
-  &:hover {
-    opacity: 1;
-  }
-}
-
-.input-group {
-  display: flex;
-  &__input {
-    margin-right: 15px;
-  }
 }

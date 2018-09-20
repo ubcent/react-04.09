@@ -1,0 +1,7 @@
+.messenger-container {
+  $self: &;
+  background: #e2dad2;
+  border-right: 1px solid rgba(0, 0, 0, 0.08);
+  position: relative;
+  min-height: 100vh;
+}

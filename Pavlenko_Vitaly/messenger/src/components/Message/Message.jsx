@@ -1,9 +1,9 @@
 import './Message.scss';
 
-import React, {Component} from 'react';
+import React, { PureComponent } from 'react';
 import classNames from "classnames";
 
-export default class Message extends Component {
+export default class Message extends PureComponent {
 
     render() {
         const { body, self } = this.props;

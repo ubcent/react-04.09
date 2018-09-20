@@ -1,13 +1,14 @@
 import './Logo.scss';
 
-import React, {Component} from 'react';
+import React, { PureComponent } from 'react';
+import { Link } from 'react-router-dom';
 
-export default class Logo extends Component {
+export default class Logo extends PureComponent {
 
     render() {
 
         return (
-            <a href="#" className="logo header__logo">MY BLOG</a>
+            <Link to="/" className="logo header__logo">MY BLOG</Link>
         );
     }
 }

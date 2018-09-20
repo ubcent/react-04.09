@@ -1,21 +1,22 @@
 import './Posts.scss';
 
-import React, {Component, Fragment} from 'react';
+import React, { PureComponent, Fragment } from 'react';
 
 import PostCard from 'components/PostCard';
 
-export default class Posts extends Component {
+export default class Posts extends PureComponent {
 
     render() {
         const { articles } = this.props;
+
 
         const posts = articles.map((article) =>
             <PostCard
                 key={article.id}
                 title={article.title}
                 body={article.body}
-                categories={article.categories}
-                link={article.link}
+                categories={['category 1', 'category 2']}
+                link={`/blog`}
             />
         );
 

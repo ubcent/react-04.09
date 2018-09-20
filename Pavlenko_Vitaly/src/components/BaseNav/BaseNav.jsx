@@ -2,7 +2,7 @@ import './BaseNav.scss';
 
 import React, {Component} from 'react';
 
-import BaseNavItem from 'components/BaseNavItem';
+import BaseNavItem from './BaseNavItem';
 import Login from 'components/Login';
 
 export default class BaseNav extends Component {

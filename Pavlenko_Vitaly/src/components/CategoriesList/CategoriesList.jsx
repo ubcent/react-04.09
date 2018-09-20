@@ -1,8 +1,8 @@
 import './CategoriesList.scss';
 
-import React, {Component} from 'react';
+import React, { PureComponent } from 'react';
 
-export default class Posts extends Component {
+export default class Posts extends PureComponent {
 
     render() {
         const { list } = this.props;

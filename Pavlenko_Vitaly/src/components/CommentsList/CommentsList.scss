@@ -1,0 +1,14 @@
+.comments-list {
+}
+
+.comment {
+  padding: 25px 15px;
+  &__title {
+    margin-top: 0;
+    margin-bottom: 10px;
+  }
+  &__email {
+    color: #989898;
+    margin-bottom: 10px;
+  }
+}

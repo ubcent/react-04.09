@@ -1,6 +1,6 @@
 import './Header.scss';
 
-import React, {Component} from 'react';
+import React, { PureComponent } from 'react';
 //import PropTypes from 'prop-types';
 
 import Logo from 'components/Logo';
@@ -8,18 +8,23 @@ import BaseNav from 'components/BaseNav';
 
 const items = [
     {
-        "id": "blog",
-        "title": "Блог",
-        "href": "#",
+        "id": "home",
+        "title": "Главная",
+        "href": "/",
     },
     {
-        "id": "store",
-        "title": "Магазин",
-        "href": "#",
+        "id": "blog",
+        "title": "Блог",
+        "href": "/blog",
+    },
+    {
+        "id": "comments",
+        "title": "Комментарии",
+        "href": "/comments",
     },
 ];
 
-export default class Header extends Component {
+export default class Header extends PureComponent {
 
     // static propTypes = {
     //     size: PropTypes.oneOf(['small', 'big']),
