@@ -1,0 +1,42 @@
+.post-card {
+  background: #fff;
+  padding: 10px;
+  margin-bottom: 30px;
+  border-radius: 3px;
+  box-shadow: 0 0 1px 1px rgba(0,0,0,0.05);
+  &__img-link {
+    display: block;
+    min-height: 320px;
+    background: #ccc;
+    margin-bottom: 10px;
+  }
+  &__body {
+    padding: 15px 15px 15px;
+  }
+  &__title {
+    font-size: 28px;
+    line-height: 1.25;
+    margin-top: 0;
+    margin-bottom: 10px;
+  }
+  &__title-link {
+    color: #000;
+    transition: color .2s;
+    text-decoration: none;
+    display: inline-block;
+    &:hover {
+      color: #f45900;
+    }
+  }
+  &__cat {
+    margin-bottom: 7px;
+  }
+  &__text {
+    margin-bottom: 10px;
+  }
+  &__read-more {
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 700;
+  }
+}

@@ -1,28 +1,37 @@
 {
   "name": "ru.fokin.alexandr",
-  "version": "1.2.0",
+  "version": "1.4.0",
   "description": "ReactJS homework",
-  "main": "index.js",
+  "main": "index.jsx",
   "scripts": {
     "build": "webpack --mode production --watch",
     "dev": "webpack --mode development --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
-    "ReactJS"
+    "ReactJS",
+    "Blog template"
   ],
   "author": "Alexandr Fokin",
   "license": "MIT",
   "dependencies": {
     "@babel/polyfill": "^7.0.0",
-    "react": "^16.5.0"
+    "autoprefixer": "^9.1.5",
+    "bootstrap": "^4.1.3",
+    "classnames": "^2.2.6",
+    "prop-types": "^15.6.2",
+    "react": "^16.5.0",
+    "react-dom": "^16.5.0",
+    "reactstrap": "^6.4.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.0.0",
     "@babel/core": "^7.0.0",
     "@babel/preset-env": "^7.0.0",
-    "autoprefixer": "^9.1.5",
+    "@babel/preset-react": "^7.0.0",
+    "babel-eslint": "^9.0.0",
     "babel-loader": "^8.0.2",
+    "babel-plugin-transform-class-properties": "^6.24.1",
     "browser-sync": "^2.24.7",
     "browser-sync-webpack-plugin": "^2.2.2",
     "clean-css-loader": "^1.0.1",
