@@ -2,9 +2,9 @@
 import './SendForm.scss';
 
 //импорт React
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 
-export default class SendForm extends Component {
+export default class SendForm extends PureComponent {
     constructor(props){
         super(props);
 

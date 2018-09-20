@@ -4,9 +4,9 @@ import UserPic from './img/user-0987.png';
 import ArrowBack from './img/arrow-back.svg';
 
 //импорт React
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 
-export default class OpenUserChat extends Component {
+export default class OpenUserChat extends PureComponent {
     render() {
         return (
             <div className="open-user">
