@@ -40,7 +40,7 @@ export default class Menu extends PureComponent {
     }
     static propTypes = {
         //пункты меню должны быть строкой
-        menu: PropTypes.arrayOf(PropTypes.string),
+        menu: PropTypes.arrayOf(PropTypes.object),
     }
     render() {
         const { isOpen, activeMenu } = this.state;//состояние открытового меню (сжатая версия)
