@@ -1,0 +1,8 @@
+@import "mixin/font-face";
+
+
+@include font-face("open-sans", "../fonts/open_sans/opensans-regular");
+@include font-face("open-sans", "../fonts/open_sans/opensans-bold",700);
+@include font-face("open-sans", "../fonts/open_sans/opensans-extrabold", 800);
+@include font-face("open-sans", "../fonts/open_sans/opensans-semibold", 600);
+@include font-face("open-sans", "../fonts/open_sans/opensans-italic", 400, italic);
