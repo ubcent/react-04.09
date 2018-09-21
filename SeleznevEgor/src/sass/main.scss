@@ -3,11 +3,12 @@
 @import "libs";
 
 body {
-	background-color: rgba(green, .2);
-	font-family:$default-font;
+	font-family: $default-font;
 	font-size: 16px;
-
+	color: $text-color;
 }
+
+
 
 
 @import "media";

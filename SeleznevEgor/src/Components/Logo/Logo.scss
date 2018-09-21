@@ -1,0 +1,14 @@
+@import "../../sass/vars";
+
+.header-logo a{
+    color: $decoration;
+    font-size: 30px;
+    display: inline-block;
+    img{
+        margin-right: 20px;
+    }
+    &:hover{
+         text-decoration: none;
+     }
+}
+  

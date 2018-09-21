@@ -8,7 +8,8 @@
     "dev": "webpack --mode development",
     "start": "webpack-dev-server --mode development --open",
     "watch": "webpack --mode development --watch",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "cc": "node cli/cli.js --name"
   },
   "author": "seleznev egor",
   "license": "ISC",
@@ -22,7 +23,9 @@
     "copy-webpack-plugin": "^4.5.2",
     "css-loader": "^1.0.0",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
+    "file-loader": "^2.0.0",
     "html-webpack-plugin": "^3.2.0",
+    "minimist": "^1.2.0",
     "node-sass": "^4.9.3",
     "postcss-loader": "^3.0.0",
     "sass-loader": "^7.1.0",
@@ -33,8 +36,10 @@
   },
   "dependencies": {
     "bootstrap": "^4.1.3",
+    "jquery": "^3.3.1",
     "prop-types": "^15.6.2",
     "react": "^16.5.0",
-    "react-dom": "^16.5.0"
+    "react-dom": "^16.5.0",
+    "react-router-dom": "^4.3.1"
   }
 }
