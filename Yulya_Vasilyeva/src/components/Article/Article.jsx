@@ -31,7 +31,7 @@ export default class Article extends PureComponent {
     }
     //передаем id поста главному компоненту
     openPost = (ev) => {
-        const { onSend} = this.props;
+        const { onSend } = this.props;
         this.postId = +ev.target.name;
         onSend(this.postId);
     }

@@ -35,16 +35,13 @@ class App extends PureComponent{
     getPostId = (postIdFrom) => {
         this.setState( {
             postId: postIdFrom,
-            //postText: getTextPostById(article, this.postId),
         });
-    }
-
-    componentDidMount() {
     }
 
     render(){
         const { postId} = this.state;
         const postText = getTextPostById(article, postId);
+        
         //Собираем компонтенты: меню + авторизация + подписка + список статей + футер
         return(
             <Fragment>
