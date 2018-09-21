@@ -24,10 +24,38 @@ import Footer from 'components/Footer/';
   * @retval None
   */
 class Layout extends Component{
+    constructor(props){
+        super(props);
+        this.state = {
+            user:{
+                logined: false,
+                username: '',
+                userpic: '',
+            },
+            active: 'home',
+        }
+    }
+
+    loginClick = (username) =>{
+        this.setState({
+            user:{
+                logined:true,
+                username:username,
+                userpic: 'content/avatar.png'
+            }
+        })
+    };
+
+    changeMenu = (newItem) =>{
+        this.setState({
+            active: newItem,
+        })
+    };
+
     render(){
         return(
             <Fragment>
-            <Header isMain={true}/>
+            <Header user={this.state.user} active={this.state.active} loginActive = {this.loginClick} menuChange={this.changeMenu}/>
             <Main/>
             <Footer />
             </Fragment>
