@@ -1,9 +1,9 @@
 import './Footer.css';
 
-import React, {Component} from 'react';
+import React, {PureComponent} from 'react';
 import {Nav, NavItem, NavLink, Container} from 'reactstrap';
 
-export default class Footer extends Component {
+export default class Footer extends PureComponent {
   render() {
     const menu = [
       {

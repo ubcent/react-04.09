@@ -1,6 +1,6 @@
 import './Content.css';
 
-import React, {Component} from 'react';
+import React, {PureComponent} from 'react';
 import {
   Form,
   FormGroup,
@@ -13,7 +13,7 @@ import {
 import {SERVER_ADDRESS, SERVER_PORT} from '../../config/server.js';
 import Message from 'components/Message';
 
-export default class Content extends Component {
+export default class Content extends PureComponent {
   state = {
     messageAuthor: '',
     messageText: '',
