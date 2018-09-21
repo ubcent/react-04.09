@@ -1,7 +1,10 @@
+/* eslint react/prop-types: 0 */
+
 import './WelcomeModal.css';
 
 import React, {PureComponent} from 'react';
 import {Button, Modal, ModalHeader, ModalBody, ModalFooter} from 'reactstrap';
+import propTypes from 'prop-types';
 
 export default class WelcomeModal extends PureComponent {
   constructor(props) {
@@ -11,6 +14,10 @@ export default class WelcomeModal extends PureComponent {
     };
 
     this.toggle = this.toggle.bind(this);
+  }
+
+  static propTypes = {
+    className: propTypes.string,
   }
 
   toggle() {
@@ -26,7 +33,7 @@ export default class WelcomeModal extends PureComponent {
         <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
           <ModalHeader toggle={this.toggle}>Welcome</ModalHeader>
           <ModalBody>
-            My blog is awesome, init? You can freely move between blog posts, and it's all working on ReactJS! Have a good day!
+            My blog is awesome, init? You can freely move between blog posts, and it&apos;s all working on ReactJS! Have a good day!
           </ModalBody>
           <ModalFooter>
             <Button color="secondary" onClick={this.toggle}>Close</Button>

@@ -3,10 +3,15 @@ import './BlogPost.css';
 import React, {PureComponent} from 'react';
 import {Link} from 'react-router-dom';
 import {Container} from 'reactstrap';
+import propTypes from 'prop-types';
 
 import authors from '../../data/users';
 
 export default class BlogPost extends PureComponent {
+  static propTypes = {
+    post: propTypes.object
+  }
+
   render() {
     let author = authors[this.props.post.authorID];
     return (

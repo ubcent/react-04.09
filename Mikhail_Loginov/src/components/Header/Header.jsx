@@ -4,7 +4,6 @@ import React, {PureComponent} from 'react';
 import {
   Nav,
   NavItem,
-  NavLink,
   Button,
   Modal,
   ModalHeader,
@@ -18,6 +17,7 @@ import {
 } from 'reactstrap';
 import {Link} from 'react-router-dom';
 import classNames from 'classnames';
+import propTypes from 'prop-types';
 
 export default class Header extends PureComponent {
   constructor(props) {
@@ -29,6 +29,11 @@ export default class Header extends PureComponent {
     this.toggle = this.toggle.bind(this);
   }
 
+  static propTypes = {
+    className: propTypes.string,
+    buttonLabel: propTypes.string,
+  }
+
   toggle() {
     this.setState({
       modal: !this.state.modal
@@ -37,7 +42,7 @@ export default class Header extends PureComponent {
 
   handleNavItemClick = e => {
     // Cutting last part of a web address
-    let href = e.target.href.replace(/^https?:\/\/[^\/]+/i, "");
+    let href = e.target.href.replace(/^https?:\/\/[^/]+/i, "");
     this.setState({activeLink: href});
   }
 

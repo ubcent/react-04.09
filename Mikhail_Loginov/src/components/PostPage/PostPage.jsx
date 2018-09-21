@@ -2,11 +2,16 @@ import './PostPage.css';
 
 import React, {PureComponent} from 'react';
 import {Container} from 'reactstrap';
+import propTypes from 'prop-types';
 
 import blogPosts from '../../data/blog-posts';
 import authors from '../../data/users';
 
 export default class PostPage extends PureComponent {
+  static propTypes = {
+    id: propTypes.string,
+  }
+
   render() {
     let post = {};
 
