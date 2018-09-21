@@ -1,0 +1,10 @@
+.pagination-bar{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    margin-top: 50px;
+    width: 200px;
+}
+.pagination-bar__button{
+    padding: 10px 20px;
+}

@@ -1,29 +1,19 @@
 import './Header.css'
 
-import React, {Component} from 'react';
-import classNames from 'classnames';
-import {Navbar, NavbarBrand, Nav, NavItem, NavLink} from 'reactstrap';
+import React, { PureComponent } from 'react';
 
-export default class Header extends Component{
+import Menu from 'components/Menu';
+
+export default class Header extends PureComponent{
+
+    onSend = (value) =>{
+        this.props.updatePage(value);
+    };
+
     render(){
-        const headerClasses = classNames('header');
-
         return(
-            <header className={headerClasses}>
-                <div className="contaier">
-                    <Navbar className="navbar navbar-expand-lg navbar-dark">
-                        <NavbarBrand className="navbar-brand" href="#">Brand</NavbarBrand>
-                        <Nav className="ml-auto" navbar>
-                            <NavItem>
-                                <NavLink href="#">Main page</NavLink>
-                            </NavItem>
-                            <NavItem>
-                                <NavLink href="#">Contacts</NavLink>
-                            </NavItem>
-                        </Nav>
-                    </Navbar>
-                </div>
-
+            <header className="header">
+                <Menu onSend = { this.onSend } />
             </header>
         )
     }

@@ -15,6 +15,7 @@ module.exports = {
         extensions: ['.js','.jsx'],
         alias: {
             components: path.resolve(__dirname, 'src', 'components'),
+            images: path.resolve(__dirname, 'src', 'img'),
         }
     },
     module: {
@@ -32,6 +33,13 @@ module.exports = {
                     fallback: 'style-loader',
                     use: ['css-loader']
                 }),
+            },
+            {
+                test: /\.(jpe?g|png|gif|svg)$/i,
+                use: [
+                    'url-loader?limit=10000',
+                    'img-loader'
+                ]
             },
         ]
     },

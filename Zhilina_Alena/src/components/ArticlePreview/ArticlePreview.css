@@ -1,0 +1,35 @@
+.link{
+    text-decoration: none;
+    color: #000000;
+    transition: .4s;
+}
+
+.link_main:hover{
+    color: #d1061f;
+    text-decoration: none;
+}
+
+.link_sub:hover{
+    color: #000000;
+    text-decoration: underline;
+}
+
+.article-preview{
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+.article-preview:nth-of-type(n+2){
+    margin-top: 30px;
+}
+
+.article-preview__image-block{
+    margin-right: 30px;
+}
+
+.article-preview__title{
+    font-weight: bold;
+    border-bottom: 2px solid black;
+    line-height: 2rem;
+}
+

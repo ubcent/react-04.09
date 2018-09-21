@@ -1,22 +1,20 @@
 import './Search.css'
 
-import React, { Component } from 'react';
-import { Card, CardHeader, CardBody, Form, Input, Button  } from 'reactstrap';
+import React, { PureComponent} from 'react';
 
-export default class Search extends Component{
+export default class Search extends PureComponent{
     render(){
-
         return(
-            <Card className="my-4">
-                <CardHeader>Search</CardHeader>
-                <CardBody>
-                    <Form inline>
-                        <Input type="text" name="search" placeholder="Search for..."></Input>
-                        <Button>Go!</Button>
-                    </Form>
-                </CardBody>
+            <div className="aside-block-wrap">
+                <span className="block-title">Search</span>
+                <div className="form-box">
+                    <form className="form-search" action="#" method="post">
+                        <input className="form-search__input" type="text"/>
+                        <button className="button">Go!</button>
+                    </form>
+                </div>
+            </div>
 
-            </Card>
         )
     }
 }

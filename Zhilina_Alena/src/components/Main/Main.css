@@ -1,0 +1,18 @@
+.main-content{
+    width: 70%;
+    position: relative;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
+
+.main-content:before{
+    content: "";
+    display: block;
+    width: 10px;
+    background-color: #eeeeee;
+    top: 0px;
+    position: absolute;
+    bottom: 0px;
+    right: -3%;
+}

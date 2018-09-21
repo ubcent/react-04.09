@@ -1,0 +1,13 @@
+.list-wrap{}
+.list{
+    padding: 0;
+    list-style: none;
+    margin: 0;
+}
+.list__item{
+    border-bottom: 1px dashed #eeeeee;
+}
+
+.list__item:nth-of-type(1n+2){
+    margin-top: 20px;
+}

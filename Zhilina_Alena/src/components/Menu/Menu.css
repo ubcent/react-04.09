@@ -1,0 +1,24 @@
+.menu-block {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center
+}
+
+.menu {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+.menu__item {
+
+}
+
+.menu__item:nth-of-type(1n+2) {
+    margin-left: 30px;
+}
+.menu__link {
+    text-decoration: none;
+    transition: .4s;
+}

@@ -1,0 +1,18 @@
+.user{
+    display: flex;
+    flex-flow: row;
+}
+
+.user__img-block{}
+
+.user__img{
+    width: 60px;
+}
+.user__text-block{}
+
+.user__info{
+    display: flex;
+    flex-flow: column;
+}
+
+.user__name{}

@@ -1,34 +1,22 @@
 import './Categories.css'
 
-import React, {Component} from 'react';
-import { Card, CardHeader, CardBody, Row, Col, ListGroup, ListGroupItem } from 'reactstrap';
+import React, { PureComponent} from 'react';
 
-export default class Categories extends Component{
+export default class Categories extends PureComponent{
     render(){
-
         return(
-            <Card className="my-4">
-                <CardHeader>Categories</CardHeader>
-                <CardBody>
-                    <Row>
-                        <Col lg="6">
-                            <ListGroup flush>
-                                <ListGroupItem tag="a" href="#" className="">Web Design</ListGroupItem>
-                                <ListGroupItem tag="a" href="#">HTML</ListGroupItem>
-                                <ListGroupItem tag="a" href="#">Freebies</ListGroupItem>
-                            </ListGroup>
-                        </Col>
-                        <Col lg="6">
-                            <ListGroup flush>
-                                <ListGroupItem tag="a" href="#">JavaScript</ListGroupItem>
-                                <ListGroupItem tag="a" href="#">CSS</ListGroupItem>
-                                <ListGroupItem tag="a" href="#">Tutorials</ListGroupItem>
-                            </ListGroup>
-                        </Col>
-                    </Row>
-                </CardBody>
-            </Card>
-
+            <div className="aside-block-wrap">
+                <span className="block-title">Categories</span>
+                <div className="category-box">
+                    <ul className="category-list">
+                        <li className="category-list__item"><a className="link link_main" href="#">SPOTLIGHT</a></li>
+                        <li className="category-list__item"><a className="link link_main" href="#">LOREM</a></li>
+                        <li className="category-list__item"><a className="link link_main" href="#">REVIEW</a></li>
+                        <li className="category-list__item"><a className="link link_main" href="#">SKY</a></li>
+                        <li className="category-list__item"><a className="link link_main" href="#">BLUE</a></li>
+                    </ul>
+                </div>
+            </div>
         )
     }
 }

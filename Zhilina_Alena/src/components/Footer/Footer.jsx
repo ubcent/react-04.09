@@ -1,13 +1,12 @@
 import './Footer.css'
 
-import React, { Component } from 'react';
-import classNames from 'classnames';
+import React, { PureComponent} from 'react';
 
-export default class Footer extends Component{
+export default class Footer extends PureComponent{
     render(){
         return(
             <footer className="footer">
-                <p className="py-2 text-center text-light">Copyright © Your Website 2018</p>
+                <p className="footer__text">ALL RIGHTS RESERVED.</p>
             </footer>
         )
     }
