@@ -7,97 +7,52 @@ import './header.scss';
 /*import libs*/
 import  React, {Component} from 'react';
 import  PropTypes from 'prop-types';
+import 'bootstrap/modal';
+import $ from 'jquery';
 
-/********************************************************************
- * Code                                                             *
- ********************************************************************/
+import UserNotLogin from 'components/UserNotLogin/';
+import UserIsLogin from 'components/UserIsLogin/';
 
- /**
-  * @brief  Отрисовака header.
-  *******************************************************************
-  *      *                                         *  social_links  *
-  * logo *      Приветственное сообщение           * ****************
-  *      *                                         * User login     *
-  *******************************************************************
-  * Приветственное сообщение и social_links отрисовываются только для
-  * главной страницы. 
-  * @param  isMain - bool значение является страница главной страницей
-  * приложения
-  * @retval  Отрисованный header
-  */
+
 export default class Header extends Component{
-    constructor(props){
-        super(props);
-        this.state = {
-            login : false,
-        };
-    }
 
-    static propertyTypes = {
-        isMain: PropTypes.bool,
+    static propTypes = {
+        active: PropTypes.oneOf(['home', 'blog', 'comments', 'users']).isRequired,
+        user: PropTypes.object,
+        loginActive: PropTypes.func.isRequired,
+        menuChange: PropTypes.func.isRequired,
     };
 
-    static defaultProps = {
-        isMain: false, 
+    navClicked =(event)=>{
+        this.props.menuChange(event.currentTarget.id);
     };
-    /*На данный момент делает пользователя зарегистрированным, без какой-либо обработки*/
-    loginClicked = () =>{
-         this.setState({
-             login: true,
-         });
-     };
-
-    /*Возвращает в зависимости от состояния пользователя предложение зарегистрироваться, или аватар + логин*/
-    getUserDisplay(){
-        if (this.state.login){
-            return (
-                <div className={"user-logged"}>
-                    <div className="userpic"></div>
-                    <div className="user-greating">
-                        <p>Приветсвуем вас <br/> <span>Username</span></p>
-                    </div>
-                </div>
-            );
-        } else {
-            return(
-                <p className="user-not-logged">
-                    <span className="user-auth" id="login-link" onClick={this.loginClicked}>Войдите</span> или
-                    <span className="user-auth" id="reg-link"> Зарегистрируйтесь</span>
-                </p>
-            );
-        }
-    }
 
     render(){
-        const {isMain} = this.props;
-        const isMainClass = isMain ? '':' hidden';
-        const userLogin =  this.getUserDisplay();
+        const {user, loginActive, active} = this.props;
 
         return (
-            <header className="container page-header ">
-                <div className="row justify-content-between">
-                    <div className="col-2 logo" >
-                        <a href="index.html">
-                            <img src="image/logo.png" alt="Blog" className="logo-image"/>
-                        </a>
-                    </div>
-                    <div className={ "col greating" + isMainClass}>
-                        <p className="header-greating"><span>добро пожаловать в </span></p>
-                        <h1>Блог</h1>
-                    </div>
-                    <div className="col-3 user-and-social-wraper align-self-center" >
-                        <div className={"social" + isMainClass}>
-                            <ul>
-                                <li className="social-link"><a href="#"><i className="fa fa-facebook"></i></a></li>
-                                <li className="social-link"><a href="#"><i className="fa fa-twitter"></i></a></li>
-                                <li className="social-link"><a href="#"><i className="fa fa-vk"></i></a></li>
-                            </ul>
+            <header className="page-header ">
+                <div className="upper-line"></div>
+                <div className="container header-panel">
+                    <div className="row align-items-center" >
+                        <div className="col-md-2 logo">
+                            <a href="index.html"><img src="image/logo.svg" alt="Блог"/>Блог</a>
                         </div>
-                        <div className="user">
-                            {userLogin}
+                        <nav className="col main-menu">
+                            <ul>
+                                <li id={'home'} className={'home' === active ? "active":''} onClick={this.navClicked}><i className="fa fa-home"></i>Home</li>
+                                <li id={'blog'} className={'blog' === active ? "active":''} onClick={this.navClicked}><i className="fa fa-book"></i>Blog</li>
+                                <li id={'comments'} className={'comments' === active ? "active":''} onClick={this.navClicked}><i className="fa fa-comments-o"></i>Comments</li>
+                                <li id={'users'} className={'users' === active ? "active":''} onClick={this.navClicked}><i className="fa fa-users"></i>Users</li>
+                            </ul>
+                        </nav>
+                        <div className="col-md-2 user">
+                            {user.logined ? <UserIsLogin user={user}/> :<UserNotLogin onSend={loginActive}/>}
                         </div>
                     </div>
                 </div>
+
+
             </header>
         )
     }

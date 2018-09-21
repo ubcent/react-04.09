@@ -1,115 +1,136 @@
+@import "../../sass/vars";
+
 .page-header{
-	background-color: rgba(grey, 0.3);
-	padding: 0;
-}
-
-
-
-.logo{
-	margin: 10px;
-	text-align: center;
-	a{
-		display:inline-block;
-		.logo-image {
-			width: 125px;
+	.upper-line{
+		background-color: $decoration;
+		width: 100%;
+		height: 8px;
+	}
+	.header-panel{
+		padding: 30px 0;
+		.logo a{
+			color: $decoration;
+			font-size: 30px;
+			display: inline-block;
+			img{
+				margin-right: 20px;
+			}
+			&:hover{
+				text-decoration: none;
+			}
 		}
-	}
-}
-
-.logo-image {
-	width: 125px;
-}
-
-.greating{
-	text-align: center;
-	color: green;
-	padding: 20px;
-	p{
-		margin: 15px 20px 5px;
-		font-size: 1.2em;
-		font-weight: 600;
-		position: relative;
-		overflow:hiden;
-	}
-	h1{
-		font-size: 3em;
-		margin: 5px;
-		letter-spacing: 5px;
-	}
-}
-
-.user-and-social-wraper{
-	margin-right:10px;
-	.social{
-
-		text-align:right;
-		ul{
-			padding: 0;
-			list-style-type: none;
-			li{
-				display:inline-block;
-				margin: 20px 5px 0;
-				
-				a{
-					text-decoration: none;
-					color: white;
-					display:inline-block;
-					width: 48px;
-					height: 48px;
-					border-radius:50%;
-					background-color: grey;
-					line-height: 48px;
-					text-align: center;
-					font-size: 1.5em;
-					transition: color 0.5s ease;
+		.main-menu{
+			ul{
+				list-style-type: none;
+				padding: 0;
+				margin: 0;
+				li{
+					display: inline-block;
+					font-size: 19px;
+					margin-right: 25px;
+					.fa{
+						color: $decoration;
+						font-size: 25px;
+						margin-right: 7px;
+					}
 					&:hover{
-						color: orange;
+						color:$active;
+						cursor: pointer;
+						.fa{
+							color: $active;
+						}
+					}
+				}
+				.active{
+					text-decoration: underline;
+				}
+			}
+		}
+		.user{
+			.user-ask-login{
+				text-align: right;
+				margin: 0;
+				span{
+					font-style: italic;
+					color: $decoration;
+					&:hover{
+						text-decoration: underline;
+						cursor: pointer;
+					}
+				}
+			}
+			.user-greating{
+				display: flex;
+				align-items: center;
+				justify-content: flex-end;
+				img{
+					width: 30px;
+					height: 30px;
+					border-radius: 50%;
+					display: inline-block;
+				}
 
+				.user-logined{
+					text-align: left;
+					margin: 0 10px;
+					font-size: 0.8em;
+					font-style: italic;
+					display: inline-block;
+					color: $decoration;
+					span{
+						font-style: normal;
+						font-size: 1rem;
+						color: $text-color;
 					}
 				}
 			}
 		}
 	}
-
-	.user {
-		margin-top: 30px;
-		
-		position: relative;
-		text-align: right;
-		.userpic{
-			display: inline-block;
-			width: 40px;
-			height: 40px;
-			border-radius: 50%;
-			background-color: grey;
-			margin-right: 5px;
-		}
-		.user-greating{
-			text-align: center;
-			display: inline-block;
-			font-size: 0.8em;
-			span{
-				font-style: italic;
-			}
-		}
-		.user-not-logged{
-			font-size: 0.9em;
-			.user-auth{
-				font-weight: bold;
-				font-style: italic;
-				&:hover{
-					color:orange;
-					cursor:pointer;
-					text-decoration: underline;
-					text-shadow: orange 2px;
+	.modal{
+		text-align: center;
+		.modal-content{
+			border-top-left-radius: 25px;
+			border-top-right-radius: 25px;
+			.modal-header{
+				border-top-left-radius: 20px;
+				border-top-right-radius: 20px;
+				background-color: $decoration;
+				color: white;
+				.fa{
+					margin-right: 20px;
+					font-size: 25px;
 				}
 			}
-			
+			.modal-body{
+				label{
+					margin: 0;
+				}
+				input{
+					margin: 10px;
+				}
+				.fa{
+					font-size: 25px;
+					color: $decoration;
+				}
+				.input-submit{
+					color: white;
+					font-size: 20px;
+					padding: 10px 40px;
+					background-color: $decoration;
+					border-radius: 15px;
+					&:hover{
+						background-color: $active;
+					}
+				}
+			}
+			.modal-footer a{
+				color: $text-color;
+				justify-content: center;
+				&:hover{
+					color: $active;
+				}
+			}
 		}
-		
-	}
-}
 
-.hidden{
-	display: none;
+	}
 }
