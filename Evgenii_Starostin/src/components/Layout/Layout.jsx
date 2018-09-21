@@ -1,47 +1,54 @@
 import './Layout.css';
 
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 
 import Header from 'Components/Header';
-import Menu from 'Components/Menu';
+import NavMenu from 'Components/NavMenu';
 import MainPage from 'Components/MainPage';
 import Footer from 'Components/Footer';
-import categories from 'Mocks/categories.json';
-import articles from 'Mocks/articles.json';
+import PostsContainer from 'Containers/PostsContainer';
+import CommentsContainer from 'Containers/CommentsContainer';
+import UsersContainer from 'Containers/UsersContainer';
 
-export default class Layout extends Component {
+export default class Layout extends PureComponent {
   constructor(props) {
     super(props);
 
-    this.handleClick = this.handleClick.bind(this);
-    
-    this.state = {focused: 0};
+    this.state = { focused: 1 };
   }
 
-  showAlert = () => {
-    alert('Добро пожаловать!');
-  }
-
-  componentDidMount = () => {
-    setTimeout(this.showAlert, 0);
-  }
-
-  handleClick = (e) => {
-    const index = +e.target.name;
+  handleNavMenuClick = (e) => {
     e.preventDefault();
-    this.setState({focused: index});
+    const focused = +e.target.dataset.id;
+    this.setState({ focused });
   }
 
   render() {
     const { focused } = this.state;
-    const menuItems = [{id: 0, name: 'Главная'}].concat(categories);
+    const menuItems = [
+      { id: 1, name: 'Главная' },
+      { id: 2, name: 'Блог' },
+      { id: 3, name: 'Комментарии' },
+      { id: 4, name: 'Пользователи' },
+    ];
+
     return (
       <div className="Layout">
         <div className="wrapper">
           <Header />
-          <Menu items={menuItems} handleClick={this.handleClick} focused={focused} />
-          <MainPage articles={articles} focused={focused} />
+
+          <div className="container">
+            <NavMenu items={menuItems} handleClick={this.handleNavMenuClick} focused={focused} />
+
+            <main className="main">
+              {focused === 1 && <MainPage />}
+              {focused === 2 && <PostsContainer />}
+              {focused === 3 && <CommentsContainer />}
+              {focused === 4 && <UsersContainer />}
+            </main>
+          </div>
         </div>
+
         <Footer />
       </div>
     );

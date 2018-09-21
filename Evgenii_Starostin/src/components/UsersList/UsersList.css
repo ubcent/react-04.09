@@ -1,0 +1,4 @@
+.userlist__user:hover,
+.userlist__user:focus {
+  text-decoration: none;
+}
