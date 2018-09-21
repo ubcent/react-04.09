@@ -1,14 +1,12 @@
 import './PostPage.css';
 
-import React, {Component, Fragment} from 'react';
+import React, {PureComponent} from 'react';
 import {Container} from 'reactstrap';
 
-import blogPosts from '../../data/blog-posts.js';
-import Header from 'components/Header';
-import Footer from 'components/Footer';
+import blogPosts from '../../data/blog-posts';
+import authors from '../../data/users';
 
-export default class PostPage extends Component {
-
+export default class PostPage extends PureComponent {
   render() {
     let post = {};
 
@@ -18,23 +16,19 @@ export default class PostPage extends Component {
       }
     });
 
-    console.log(blogPosts, post);
+    let author = authors[post.authorID];
 
     return (
-      <Fragment>
-        <Header/>
         <main>
           <Container>
             <div className="post">
               <h1 className="post__title">{post.title}</h1>
               <h3 className="post__subtitle">{post.shortDescription}</h3>
-              <p className="post__creds">Posted by {post.author} on {post.date}</p>
+              <p className="post__creds">Posted by {author.firstName} {author.lastName} on {post.date}</p>
               <p className="post__text">{post.text}</p>
             </div>
           </Container>
         </main>
-        <Footer/>
-      </Fragment>
     );
   }
 }

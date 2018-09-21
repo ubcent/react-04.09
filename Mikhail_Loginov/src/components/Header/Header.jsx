@@ -1,6 +1,6 @@
 import './Header.css';
 
-import React, {Component} from 'react';
+import React, {PureComponent} from 'react';
 import {
   Nav,
   NavItem,
@@ -16,17 +16,17 @@ import {
   Input,
   Container
 } from 'reactstrap';
+import {Link} from 'react-router-dom';
+import classNames from 'classnames';
 
-export default class Header extends Component {
+export default class Header extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      modal: false
+      modal: false,
+      activeLink: '/',
     };
-
-    this.toggle = this
-      .toggle
-      .bind(this);
+    this.toggle = this.toggle.bind(this);
   }
 
   toggle() {
@@ -35,24 +35,43 @@ export default class Header extends Component {
     });
   }
 
+  handleNavItemClick = e => {
+    // Cutting last part of a web address
+    let href = e.target.href.replace(/^https?:\/\/[^\/]+/i, "");
+    this.setState({activeLink: href});
+  }
+
   render() {
     const menu = [
       {
-        title: 'MainPage',
+        title: 'Main Page',
         href: '/'
       }, {
-        title: 'About',
-        href: '#'
+        title: 'Blog',
+        href: '/blog/'
       }, {
-        title: 'Contacts',
-        href: '#'
+        title: 'Comments',
+        href: '/comments/'
+      }, {
+        title: 'Users',
+        href: '/users/'
       }
     ];
 
     const navMenu = <Nav>
-      {menu.map((item, index) => <NavItem>
-        <NavLink href={item.href} key={index}>{item.title}</NavLink>
-      </NavItem>)}
+      {menu.map((item, index) => 
+        {
+          let linkClass = classNames({
+            'nav-link': true,
+            'active': item.href === this.state.activeLink,
+          });
+          return <NavItem key={index}> 
+            <Link to={{pathname: item.href}} className={linkClass}
+              onClick={this.handleNavItemClick}>{item.title}
+            </Link>
+          </NavItem>
+        }
+      )}
     </Nav>
 
     const modalWindow = <Modal

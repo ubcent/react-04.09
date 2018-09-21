@@ -1,9 +1,9 @@
 import './WelcomeModal.css';
 
-import React, { Component } from 'react';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import React, {PureComponent} from 'react';
+import {Button, Modal, ModalHeader, ModalBody, ModalFooter} from 'reactstrap';
 
-export default class WelcomeModal extends Component {
+export default class WelcomeModal extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
