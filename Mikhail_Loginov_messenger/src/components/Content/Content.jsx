@@ -10,32 +10,28 @@ import {
   Container
 } from 'reactstrap';
 
-import { SERVER_ADDRESS, SERVER_PORT } from '../../config/server.js';
+import {SERVER_ADDRESS, SERVER_PORT} from '../../config/server.js';
 import Message from 'components/Message';
 
 export default class Content extends Component {
   state = {
     messageAuthor: '',
     messageText: '',
-    messages: []
+    messages: [],
   }
 
   componentDidMount() {
     fetch(`${SERVER_ADDRESS}:${SERVER_PORT}/messages`).then(res => {
-      console.log(res);
       res.json().then(res => {
-        console.log(res);
-        this.setState({messages: res});
-      })
+          this.setState({messages: res});
+        })
     })
   }
 
-  handleNameInputChange = (e) => {
-    this.setState({messageText: e.target.value});
-  }
-
-  handleMessageInputChange = (e) => {
-    this.setState({messageAuthor: e.target.value});
+  handleChange = (e) => {
+    this.setState({
+      [e.target.name]: e.target.value
+    });
   }
 
   handleSubmitClick = () => {
@@ -44,20 +40,29 @@ export default class Content extends Component {
       author: this.state.messageAuthor
     }
     fetch(`${SERVER_ADDRESS}:${SERVER_PORT}/messages`, {
-      method: "POST",
-      body: message
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      method: 'POST',
+      body: JSON.stringify(message)
     }).then(res => {
-      console.log(res);
-      res.json().then(res => {
-        console.log(res);
-        this.setState({messages: res});
-      })
-    })
-    this.forceUpdate();
+      res
+        .json()
+        .then(res => {
+          console.log(res);
+          let updatedMessages = this.state.messages.concat(res);
+          console.log(updatedMessages);
+          this.setState({messages: updatedMessages});
+        })
+    });
+    this.setState({messageAuthor: '', messageText: ''});
   }
 
   render() {
-    const renderedMessages = this.state.messages.map((message, index) => <Message key={index} message={message}/>);
+    const renderedMessages = this
+      .state
+      .messages
+      .map((message, index) => <Message key={index} message={message}/>);
     return (
       <main>
         <Container>
@@ -68,8 +73,13 @@ export default class Content extends Component {
             <div className="name-input-group">
               <FormGroup>
                 <Label for="userName" hidden>Name</Label>
-                <Input type="text" name="name" id="userName" placeholder="Enter your name"
-                onChange={this.handleNameInputChange}/>
+                <Input
+                  type="text"
+                  name="messageAuthor"
+                  id="userName"
+                  placeholder="Enter your name"
+                  onChange={this.handleChange}
+                  value={this.state.messageAuthor}/>
               </FormGroup>
               <Button onClick={this.handleSubmitClick}>Submit</Button>
             </div>
@@ -77,10 +87,11 @@ export default class Content extends Component {
               <Label for="commentInput" hidden>Message</Label>
               <Input
                 type="textarea"
-                name="text"
-                id="commentInput"
+                name="messageText"
+                id="messageInput"
                 placeholder="Your message"
-                onChange={this.handleMessageInputChange}/>
+                onChange={this.handleChange}
+                value={this.state.messageText}/>
             </FormGroup>
           </Form>
         </Container>

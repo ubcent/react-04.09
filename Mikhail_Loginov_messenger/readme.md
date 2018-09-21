@@ -1,17 +1,25 @@
-#Messenger
+# Messenger
 
-##JSON server 
-
-If you need a fake REST API that used here, you have to install it
+## Installation
 
 ```
-npm install -g json-server
+npm i
 ```
 
-A fake json database is called db.json and is in this project root directory
-To start a fakse JSON server run
+## JSON server
+
+This application uses a JSON server that is basically a fake server that locally simulates a real web server behavior
+
+A fake JSON database is called db.json and is in this project's root directory
+
+To start JSON server run
 
 ```
-json-server --watch db.json
+npm run server
 ```
 
+## Developing
+
+```
+npm run dev
+```
