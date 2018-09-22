@@ -1,5 +1,5 @@
 {
-  "name": "lesson-4",
+  "name": "chat-frontend",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -17,7 +17,8 @@
     "react": "^16.5.0",
     "react-dom": "^16.5.0",
     "react-router-dom": "^4.3.1",
-    "reactstrap": "^6.4.0"
+    "reactstrap": "^6.4.0",
+    "normalize.css": "^8.0.0"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
@@ -28,7 +29,6 @@
     "css-loader": "^1.0.0",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "html-webpack-plugin": "^3.2.0",
-    "normalize.css": "^8.0.0",
     "style-loader": "^0.23.0",
     "webpack": "^4.18.0",
     "webpack-cli": "^3.1.0",

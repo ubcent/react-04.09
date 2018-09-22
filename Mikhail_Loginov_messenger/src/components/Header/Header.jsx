@@ -36,25 +36,6 @@ export default class Header extends Component {
   }
 
   render() {
-    const menu = [
-      {
-        title: 'MainPage',
-        href: '/'
-      }, {
-        title: 'About',
-        href: '#'
-      }, {
-        title: 'Contacts',
-        href: '#'
-      }
-    ];
-
-    const navMenu = <Nav>
-      {menu.map((item, index) => <NavItem>
-        <NavLink href={item.href} key={index}>{item.title}</NavLink>
-      </NavItem>)}
-    </Nav>
-
     const modalWindow = <Modal
       isOpen={this.state.modal}
       toggle={this.toggle}
@@ -85,7 +66,6 @@ export default class Header extends Component {
     return (
       <header className="header">
         <Container>
-          {navMenu}
           <Button color="info" onClick={this.toggle}>{this.props.buttonLabel}Login</Button>
           {modalWindow}
         </Container>

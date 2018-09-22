@@ -4,7 +4,6 @@ import React, {Component} from 'react';
 import {Nav, NavItem, NavLink, Container} from 'reactstrap';
 
 export default class Footer extends Component {
-
   render() {
     const menu = [
       {
