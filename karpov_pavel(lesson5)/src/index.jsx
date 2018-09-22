@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 import Layout from 'components/Layout'
 
 class App extends Component {
+    
     render() {
         return(
            <Layout />
@@ -13,6 +14,4 @@ class App extends Component {
 
 const app = document.getElementById('app');
 
-ReactDOM.render(
-<App />,
-app)
+ReactDOM.render(<App />, app)
