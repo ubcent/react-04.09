@@ -1,0 +1,17 @@
+.comments {
+  margin: 20px 0;
+}
+
+.comments__item {
+  margin: 20px 0;
+}
+
+.comments__text {
+  font-size: 1.25em;
+  font-weight: 700;
+}
+
+.comments__author {
+  font-size: 0.75em;
+  font-style: italic;
+}
