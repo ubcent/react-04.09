@@ -1,0 +1,25 @@
+.login-btn, .logout-btn {
+  background: none;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+.login-btn:hover, .logout-btn:hover {
+  color: #829399;
+}
+
+.login-form .input-group {
+  margin-bottom: 20px;
+}
+
+.login-form .float-right {
+  float: right;
+}
+
+.login-form:after {
+  content: '';
+  display: block;
+  clear: both;
+}

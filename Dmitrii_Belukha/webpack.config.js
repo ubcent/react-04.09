@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const autoprefixer = require('autoprefixer');
 
 module.exports = {
   entry: {
@@ -10,9 +11,13 @@ module.exports = {
     filename: 'bundle.[name].js',
     path: path.resolve(__dirname, 'dist')
   },
-  mode: 'production',
+  devServer: {
+    contentBase: './dist'
+  },
+  mode: 'development',
   module: {
-    rules: [{
+    rules: [
+      {
         test: /\.js$/,
         exclude: /node_modules/,
         use: {
@@ -20,12 +25,24 @@ module.exports = {
         }
       },
       {
-        test: /\.css$/,
-        use: [{
-            loader: MiniCssExtractPlugin.loader,
-          },
+        test: /\.(scss|css)$/,
+        use: [
+          MiniCssExtractPlugin.loader,
           {
             loader: 'css-loader'
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              plugins: [
+                autoprefixer({
+                  browsers: ['ie >= 8', 'last 5 versions']
+                })
+              ]
+            }
+          },
+          {
+            loader: 'sass-loader'
           }
         ]
       }
@@ -37,7 +54,7 @@ module.exports = {
       filename: 'index.html'
     }),
     new MiniCssExtractPlugin({
-      filename: './css/styles.css'
+      filename: 'css/styles.css'
     })
   ]
 };

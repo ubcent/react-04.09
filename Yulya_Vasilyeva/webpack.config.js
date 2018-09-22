@@ -1,56 +1,88 @@
+//путь проекта
 const path = require('path');
-const ExtractCSS = require('extract-text-webpack-plugin');
+
+//объединяет css файлы в один
+const MiniCssExtract = require('mini-css-extract-plugin');
+//автоматически ставит префикты в css
+const AutoPrefixer = require('autoprefixer');
+//добавляем в HTML файл необходимые пути для css и js
 const HtmlPlugin = require('html-webpack-plugin');
+//чистим папку dist
 const CleanPlugin = require('clean-webpack-plugin');
 
 module.exports = {
     mode: 'development',
-    entry:{
-        app: path.resolve(__dirname, 'src', 'js/_index.js')
+    entry: {
+        entry: path.resolve(__dirname, 'src', 'js/_index.jsx'),
     },
-    output:{
-        path: path.resolve(__dirname,'dist'),
-        filename: 'js/[name].index.js'
+    output: {
+        path: path.resolve(__dirname, 'dist'),
+        filename: 'js/index.js',
     },
-    module:{
-        rules:[
+    resolve: {
+        extensions: ['.js', '.jsx'],
+        alias: {
+            components: path.resolve(__dirname, 'src', 'js/components'),
+        },
+    },
+    module: {
+        rules: [
             {
-                test:/\.js$/,
-                exclude: /(node_modules|bower_components)/,
-                use:{
+                test: /\.jsx?$/,
+                exclude: /(node_modules)/,
+                use: {
                     loader: 'babel-loader',
-                    options:{
-                        presets: ['@babel/preset-env']
-                    }
                 }
             },
             {
-                test: /\.css$/,
-                use: ExtractCSS.extract({
-                    fallback: 'style-loader',
-                    use: ['css-loader'],
-                })
+                test: /\.s?css$/,
+                use: [
+                        { loader: 'style-loader'},
+                        { loader: MiniCssExtract.loader},
+                        { loader: 'css-loader'},
+                        { loader: 'postcss-loader',
+                            options: {
+                                plugins: [
+                                    AutoPrefixer({
+                                        browsers:['ie >= 8', 'last 4 version']
+                                    })
+                                ],
+                            }
+                        },
+                        { loader: 'clean-css-loader'},
+                        { loader: 'sass-loader'},
+                    ]
             },
             {
                 test: /\.(woff|woff2|eot|ttf|otf)$/,
                 use: {
                     loader: 'file-loader',
                     options: {
-                        name: 'fonts/[name].[ext]'
+                        name: 'fonts/[name].[ext]',
                     }
-                }  
-            }
+                }
+
+            },
+            {
+                test: /\.(svg|gif|jpe?g|png)$/i,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options:{
+                            name: '[name].[ext]',
+                            outputPath: 'img/',
+                        },
+                    },
+                ]
+            },
         ],
     },
-    devServer: {
-        contentBase: './dist'
-    },
-    plugins:[
-        new ExtractCSS({filename: 'css/style.css'}),
+    plugins: [
+        new MiniCssExtract({filename: 'css/min.style.css'}),
         new HtmlPlugin({
-            template: path.resolve(__dirname, 'src','index.html'),
+            template: path.resolve(__dirname, 'src', 'index.html'),
             filename: 'index.html'
         }),
         new CleanPlugin(['dist']),
-    ]  
+    ]
 }

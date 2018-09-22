@@ -1,0 +1,23 @@
+// TODO Донастроить стили
+// Коэффициент перевода в em
+$k: 16;
+
+.main {
+  background-color: aqua;
+}
+
+.blog_header {
+  padding-top: 20em/$k;
+  padding-bottom: 20em/$k;
+}
+
+h1 {
+  margin-top: 30rem/$k;
+  margin-bottom: 0;
+  font-size: 60rem/$k;
+  font-weight: normal;
+}
+
+.posts {
+  margin-bottom: 60em/$k;
+}

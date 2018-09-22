@@ -1,0 +1,21 @@
+.message{
+    display:inline-block;
+    clear: both;
+    padding: 20px;
+    border-radius: 30px;
+    margin-bottom: 2px;
+    border-bottom-right-radius: 5px;
+}
+.message.in{
+    background: #eee;
+    float: left;
+    margin-left:8px;
+}
+.message.out{
+    float: right;
+    background: #0084ff;
+    color: #fff;
+    margin-right:8px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}

@@ -1,0 +1,33 @@
+.form{
+    height: 50px;
+    width: 40%;
+    border: 4px solid #eeeeee;
+    margin: auto;
+    background: #fff;
+    display: flex;
+    border-radius: 0 0 10px 10px;
+
+}
+.form textarea{
+    width: 80%;
+    height: 97%;
+    resize: none;
+    font-size: 20px;
+}
+.form button{
+    margin: 0;
+    width: 20%;
+    height: 97%;
+    box-shadow: 0 4px 0 #0057B4;
+    background: #0057B4;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    font-size: 30px;
+}
+.form button:hover{
+    opacity: 0.9;
+}
+.form button:active{
+    opacity: 1.1;
+}

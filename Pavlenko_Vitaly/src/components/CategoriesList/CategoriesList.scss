@@ -1,0 +1,23 @@
+.categories-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: bold;
+  &__item {
+    display: inline-block;
+    margin-right: 5px;
+    &:after {
+      content: ',';
+    }
+    &:last-child {
+      margin-right: 0;
+      &:after {
+        content: '';
+      }
+    }
+  }
+  &__link {
+  }
+}
