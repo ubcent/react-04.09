@@ -1,0 +1,30 @@
+*,
+*:after,
+*:before {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.clearfix:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+html {
+    font-size: 100%;    
+}
+body {
+    color: #333;
+    background: rgba(201, 201, 201, 0.3);
+    font-weight: 300;
+    font-size: 1rem;
+    line-height: 1.375;   
+    padding: 1rem; 
+}
+.wrapper {    
+    margin: 0 auto;
+    max-width: 600px;
+}
+.main-heading {
+    text-align: center;
+}
