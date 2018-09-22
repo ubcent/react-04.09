@@ -1,3 +1,4 @@
+import './index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import React, { Component, Fragment } from 'react';
@@ -14,10 +15,12 @@ class App extends Component {
     render() {
         return (
                 <Fragment>
-                    <Nav>nav</Nav>
-                    <Header size="small" categories={items} />
-                    <Main>main</Main>
-                    <Footer>copy</Footer>
+                    <div className="container">
+                        <Nav>nav</Nav>
+                        <Header size="small" categories={items} />
+                        <Main>main</Main>
+                    </div>
+                    <Footer>footer</Footer>
                 </Fragment>
         );
     }
