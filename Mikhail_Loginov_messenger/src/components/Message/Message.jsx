@@ -1,8 +1,8 @@
 import './Message.css';
 
-import React, {Component} from 'react';
+import React, {PureComponent} from 'react';
 
-export default class Message extends Component {
+export default class Message extends PureComponent {
 
   render() {
     return (

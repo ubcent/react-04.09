@@ -1,29 +1,32 @@
 import './Footer.css';
 
-import React, {Component} from 'react';
-import {Nav, NavItem, NavLink, Container} from 'reactstrap';
+import React, {PureComponent} from 'react';
+import {Nav, NavItem, Container} from 'reactstrap';
+import {Link} from 'react-router-dom';
 
-export default class Footer extends Component {
-
+export default class Footer extends PureComponent {
   render() {
     const menu = [
       {
-        title: 'General info',
+        title: 'Main Page',
         href: '/'
       }, {
-        title: 'Privacy',
-        href: '#'
+        title: 'Blog',
+        href: '/blog/'
       }, {
-        title: 'Policy',
-        href: '#'
+        title: 'Comments',
+        href: '/comments/'
+      }, {
+        title: 'Users',
+        href: '/users/'
       }
     ];
 
     const navMenu = <Nav>
-      {menu.map(item => <NavItem>
-        <NavLink href={item.href}>{item.title}</NavLink>
+      {menu.map((item, index) => <NavItem key={index}>
+        <Link to={{pathname: item.href}} className="nav-link">{item.title}</Link>
       </NavItem>)}
-    </Nav>
+    </Nav>;
 
     return (
       <footer className="footer">

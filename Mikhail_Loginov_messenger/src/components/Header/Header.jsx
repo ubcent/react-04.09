@@ -1,6 +1,6 @@
 import './Header.css';
 
-import React, {Component} from 'react';
+import React, {PureComponent} from 'react';
 import {
   Nav,
   NavItem,
@@ -17,7 +17,7 @@ import {
   Container
 } from 'reactstrap';
 
-export default class Header extends Component {
+export default class Header extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
