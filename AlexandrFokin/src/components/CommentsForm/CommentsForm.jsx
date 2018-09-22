@@ -49,6 +49,7 @@ export default class CommentsForm extends PureComponent {
         <input type="text" name="name" onChange={this.handleChange} value={name}/>
         <p/>
         <textarea name="body" onChange={this.handleChange} value={body}/>
+        <p/>
         <button onClick={this.handleClick}>Send</button>
       </div>
     );

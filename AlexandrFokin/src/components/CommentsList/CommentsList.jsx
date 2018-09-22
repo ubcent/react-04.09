@@ -1,6 +1,6 @@
 import './CommentsList.scss';
 
-import React, {PureComponent} from 'react';
+import React, {PureComponent, Fragment} from 'react';
 import PropTypes from 'prop-types';
 
 /**
@@ -23,12 +23,15 @@ export default class CommentsList extends PureComponent {
     // получаем список переданных комментариев
     const {comments} = this.props;
     return(
-      <ul>
-        {comments.map(
-          // Отображаем комментарии
-          (comment, idx) => <li key={idx}>{comment.name}: {comment.body}</li>
-        )}
-      </ul>
+      <Fragment>
+        <h5>Комментарии</h5>
+        <ol>
+          {comments.map(
+            // Отображаем комментарии
+            (comment, idx) => <li key={idx}>{comment.name}: {comment.body}</li>
+          )}
+        </ol>
+      </Fragment>
     );
   }
 }

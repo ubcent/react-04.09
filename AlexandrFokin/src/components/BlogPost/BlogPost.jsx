@@ -16,18 +16,29 @@ export default class BlogPost extends PureComponent {
 
     this.state = {
       comments: [],
+      loading: false,
     };
   }
 
+  loadMore = () => {
+    const {page} = this.state;
+    this.setState({
+      loading: true,
+    });
+    fetch(`https://jsonplaceholder.typicode.com/comments?_page=${page}&_limit=3`)
+      .then(response => response.json())
+      .then(comments => {
+        this.setState(prevState => ({
+          comments: prevState.comments.concat(comments),
+          loading: false,
+          page: prevState.page + 1,
+        }));
+      });
+  };
+
   // выполняется после визуализации
   componentDidMount() {
-    fetch('https://jsonplaceholder.typicode.com/comments')
-      .then((response) => response.json())
-      .then((comments) => {
-        this.setState({
-          comments: comments,
-        });
-      });
+    this.loadMore();
   }
 
   // Проверка свойств
@@ -72,7 +83,7 @@ export default class BlogPost extends PureComponent {
     // получаем переданные свойства поста
     const {id, title, date, author, message} = this.props.post;
     // получаем значение состояния
-    const {comments} = this.state;
+    const {comments, loading} = this.state;
     return (
         <Fragment>
           <div className="post" id={id}>
@@ -85,8 +96,13 @@ export default class BlogPost extends PureComponent {
             {/* TODO использовать react-markdown, чтобы избежать html в передаваемых сообщениях */}
             <div className="message" dangerouslySetInnerHTML={message}/>
           </div>
-          <h5>Комментарии</h5>
-          {<CommentsList comments={comments}/>}
+          <CommentsList comments={comments}/>
+          {
+            /* Отображаем надпись о загрузке */
+            loading && 'Loading...'
+          }
+          <p/>
+          <button onClick={this.loadMore}>Load more comments</button>
           <CommentsForm onSend={this.handleCommentReceive}/>
         </Fragment>
     );

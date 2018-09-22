@@ -32,6 +32,10 @@ module.exports = {
     alias: {
       // адрес папки components
       components: path.resolve(__dirname, 'src', 'components'),
+      // адрес папки containers
+      containers: path.resolve(__dirname, 'src', 'containers'),
+      // адрес папки img
+      img: path.resolve(__dirname, 'src', 'img'),
     }
   },
   devtool: false,
