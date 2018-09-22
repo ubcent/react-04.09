@@ -82,7 +82,7 @@ export default class BlogPost extends PureComponent {
             <p>
               <span className="date">{date} by</span> <span className="author">{author}</span>
             </p>
-            {/* если нужно использовать компоненты React в html коде, то вместо dangerouslySetInnerHTML следует использовать пакет react-html-parser */}
+            {/* TODO использовать react-markdown, чтобы избежать html в передаваемых сообщениях */}
             <div className="message" dangerouslySetInnerHTML={message}/>
           </div>
           <h5>Комментарии</h5>
