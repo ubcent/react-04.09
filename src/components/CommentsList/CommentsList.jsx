@@ -37,6 +37,13 @@ export default class CommentsList extends Component {
   componentWillUnmount() {
     clearInterval(this.interval);
   }
+
+  handleDeleteClick = () => {
+    const { comments, removeId } = this.state;
+    this.setState({
+      comments: comments.filter((comment) => comment.id !== removeId)
+    })
+  }
   
   render() {
     const { comments } = this.state; 
