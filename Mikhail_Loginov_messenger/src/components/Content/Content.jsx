@@ -1,6 +1,6 @@
 import './Content.css';
 
-import React, {Component} from 'react';
+import React, {PureComponent} from 'react';
 import {
   Form,
   FormGroup,
@@ -10,21 +10,28 @@ import {
   Container
 } from 'reactstrap';
 
-import messages from '../../data/messages';
+import {SERVER_ADDRESS, SERVER_PORT} from '../../config/server.js';
 import Message from 'components/Message';
 
-export default class Content extends Component {
+export default class Content extends PureComponent {
   state = {
     messageAuthor: '',
-    messageText: ''
+    messageText: '',
+    messages: [],
   }
 
-  handleNameInputChange = (e) => {
-    this.setState({messageText: e.target.value});
+  componentDidMount() {
+    fetch(`${SERVER_ADDRESS}:${SERVER_PORT}/messages`).then(res => {
+      res.json().then(res => {
+          this.setState({messages: res});
+        })
+    })
   }
 
-  handleMessageInputChange = (e) => {
-    this.setState({messageAuthor: e.target.value});
+  handleChange = (e) => {
+    this.setState({
+      [e.target.name]: e.target.value
+    });
   }
 
   handleSubmitClick = () => {
@@ -32,12 +39,30 @@ export default class Content extends Component {
       text: this.state.messageText,
       author: this.state.messageAuthor
     }
-    messages.push(message);
-    this.forceUpdate();
+    fetch(`${SERVER_ADDRESS}:${SERVER_PORT}/messages`, {
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      method: 'POST',
+      body: JSON.stringify(message)
+    }).then(res => {
+      res
+        .json()
+        .then(res => {
+          console.log(res);
+          let updatedMessages = this.state.messages.concat(res);
+          console.log(updatedMessages);
+          this.setState({messages: updatedMessages});
+        })
+    });
+    this.setState({messageAuthor: '', messageText: ''});
   }
 
   render() {
-    const renderedMessages = messages.map(message => <Message message={message}/>);
+    const renderedMessages = this
+      .state
+      .messages
+      .map((message, index) => <Message key={index} message={message}/>);
     return (
       <main>
         <Container>
@@ -48,8 +73,13 @@ export default class Content extends Component {
             <div className="name-input-group">
               <FormGroup>
                 <Label for="userName" hidden>Name</Label>
-                <Input type="text" name="name" id="userName" placeholder="Enter your name"
-                onChange={this.handleNameInputChange}/>
+                <Input
+                  type="text"
+                  name="messageAuthor"
+                  id="userName"
+                  placeholder="Enter your name"
+                  onChange={this.handleChange}
+                  value={this.state.messageAuthor}/>
               </FormGroup>
               <Button onClick={this.handleSubmitClick}>Submit</Button>
             </div>
@@ -57,10 +87,11 @@ export default class Content extends Component {
               <Label for="commentInput" hidden>Message</Label>
               <Input
                 type="textarea"
-                name="text"
-                id="commentInput"
+                name="messageText"
+                id="messageInput"
                 placeholder="Your message"
-                onChange={this.handleMessageInputChange}/>
+                onChange={this.handleChange}
+                value={this.state.messageText}/>
             </FormGroup>
           </Form>
         </Container>

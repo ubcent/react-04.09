@@ -1,0 +1,54 @@
+{
+  "messages": [
+    {
+      "id": 1,
+      "text": "My awesome comment",
+      "author": "John"
+    },
+    {
+      "id": 2,
+      "text": "Another awesome comment",
+      "author": "Mike"
+    },
+    {
+      "id": 3,
+      "text": "This chat is working!",
+      "author": "Cool guy"
+    },
+    {
+      "text": "6161126",
+      "author": "6161",
+      "id": 4
+    },
+    {
+      "text": "twees",
+      "author": "yesy",
+      "id": 5
+    },
+    {
+      "text": "testset",
+      "author": "test",
+      "id": 6
+    },
+    {
+      "text": "123",
+      "author": "123",
+      "id": 7
+    },
+    {
+      "text": "616122121",
+      "author": "61616",
+      "id": 8
+    },
+    {
+      "text": "tretzxz",
+      "author": "tret",
+      "id": 9
+    },
+    {
+      "text": "yeah",
+      "author": "it's works!",
+      "id": 10
+    }
+  ]
+}
