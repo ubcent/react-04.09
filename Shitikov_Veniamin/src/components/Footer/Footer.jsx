@@ -1,11 +1,11 @@
 import './Footer.css';
 
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 
 // Компонент принимает объект со свойствами:
 // content - контент для футора
-export default class Footer extends Component{
+export default class Footer extends PureComponent{
     static defaultProps = {
         content: 'Copyright © Your Website 2018',
     };

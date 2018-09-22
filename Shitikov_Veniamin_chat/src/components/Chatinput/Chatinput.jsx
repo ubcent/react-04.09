@@ -1,11 +1,11 @@
 import './Chatinput.css';
 
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 
 //Компонент формы ввода.
 //Принимает на вход value функцию обработчик сабмита
-export default class Chatinput extends Component{
+export default class Chatinput extends PureComponent{
     constructor(props){
         super(props);
 
@@ -27,8 +27,8 @@ export default class Chatinput extends Component{
     render(){
         const { handleSubmit } = this.props;
 
-        return <div className="form">
-            <textarea onChange={this.handleChange} name="input">{this.state.value}</textarea>
+        return <div className='form'>
+            <textarea onChange={this.handleChange} name='input'>{this.state.value}</textarea>
             <button onClick={()=> handleSubmit(this.state.value)}>send</button>
         </div>
     }

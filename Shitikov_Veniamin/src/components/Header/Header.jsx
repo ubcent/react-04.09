@@ -1,6 +1,6 @@
 import './Header.css';
 
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 
 // Компонент принимает объект со свойствами:
@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 //      title - заголовок и
 //      href - ссылка
 // items - массив объектов меню
-export default class Header extends Component {
+export default class Header extends PureComponent {
     static defaultProps = {
         brand: {
             href: '#',
@@ -23,16 +23,15 @@ export default class Header extends Component {
             href: PropTypes.string,
             title: PropTypes.string,
         }),
-        items: PropTypes.arrayOf(PropTypes.string),
         active: PropTypes.number,
     };
 
     render(){
-        const { brand, items, active } = this.props;
+        const { brand, items, active, handler } = this.props;
         const list = items.map( (item, index) => {
             const liClass = (index === active) ? 'nav-item active' : 'nav-item';
             return <li className={liClass}>
-                <a className='nav-link'
+                <a onClick={handler} name={index} className='nav-link'
                    href={item.href}>{item.title}
                 </a>
             </li>

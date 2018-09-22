@@ -1,19 +1,19 @@
 import './BlogPost.css';
 
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-
 
 // Компонент принимает объект со свойствами:
 //
 //      title - заголовок
 //      subtitle - текст, показываемый в превью.
 //      href - ссылка на автора
-export default class BlogPost extends Component {
+export default class BlogPost extends PureComponent {
     constructor(props){
         super(props);
 
     }
+
     static defaultProps = {
         title: 'Post Title',
         subtitle: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.\n' +

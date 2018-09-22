@@ -1,8 +1,8 @@
 import './CommentForm.css';
 
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 
-export default class CommentForm extends Component{
+export default class CommentForm extends PureComponent{
     constructor(props){
         super(props);
 

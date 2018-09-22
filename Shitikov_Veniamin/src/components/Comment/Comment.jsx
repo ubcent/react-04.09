@@ -1,13 +1,13 @@
 import './Comment.css';
 
-import React, {Component, Fragment} from 'react';
+import React, {PureComponent, Fragment} from 'react';
 import PropTypes from 'prop-types';
 
 // Компонент принимает 
   //image - аватар автора, 
   //author - автор, 
   //text - сам комментарий,
-export default class Comment extends Component{
+export default class Comment extends PureComponent{
     constructor(props){
         super(props);
 
