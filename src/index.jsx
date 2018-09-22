@@ -1,10 +1,11 @@
 import React, { Component, Fragment } from 'react';
 import ReactDom from 'react-dom';
+import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
 
 import Header from 'components/Header';
-import Counter from 'components/Counter';
-import CommentsList from 'components/CommentsList';
 import CommentsForm from 'components/CommentsForm';
+
+import routes from './routes';
 
 const creators = ['Vasya Pupkin', 'Petya Ivanov', 'Kolya Sidorov'];
 
@@ -31,15 +32,18 @@ class App extends Component {
     return (
       <Fragment>
         <Header size="small" creators={creators}>
-          <div>Content</div>
+          <Link to="/">Home</Link>{' '}
+          <Link to="/comments">Comments</Link>
         </Header>
-        <Counter />
-        Hello world
-        {comments.length && <CommentsList comments={comments} />}
-        <CommentsForm onSend={this.handleCommentRecieve} />
+        <Switch>
+          {routes.map((route, idx) => <Route key={idx} {...route} />)}
+        </Switch>
       </Fragment>
     );
   }
 }
 
-ReactDom.render(<App />, document.getElementById('root'));
+ReactDom.render(
+  <BrowserRouter><App /></BrowserRouter>,
+  document.getElementById('root')
+);
