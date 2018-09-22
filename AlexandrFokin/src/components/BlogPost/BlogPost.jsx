@@ -19,6 +19,17 @@ export default class BlogPost extends PureComponent {
     };
   }
 
+  // выполняется после визуализации
+  componentDidMount() {
+    fetch('https://jsonplaceholder.typicode.com/comments')
+      .then((response) => response.json())
+      .then((comments) => {
+        this.setState({
+          comments: comments,
+        });
+      });
+  }
+
   // Проверка свойств
   static propTypes = {
     // Пост - объект
@@ -36,13 +47,13 @@ export default class BlogPost extends PureComponent {
         // пост на html
         __html: PropTypes.string,
       }),
-    })
+    }),
   };
 
   // значения атрибутов по умолчанию
   static defaultProps = {
     // аттрибут post инициализируем пустым объектом
-    post: {}
+    post: {},
   };
 
   handleCommentReceive = comment => {
@@ -75,7 +86,7 @@ export default class BlogPost extends PureComponent {
             <div className="message" dangerouslySetInnerHTML={message}/>
           </div>
           <h5>Комментарии</h5>
-          {comments.length && <CommentsList comments={comments}/>}
+          {<CommentsList comments={comments}/>}
           <CommentsForm onSend={this.handleCommentReceive}/>
         </Fragment>
     );

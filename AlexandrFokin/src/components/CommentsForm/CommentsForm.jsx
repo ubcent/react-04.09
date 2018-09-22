@@ -4,15 +4,18 @@ import React, {PureComponent} from 'react';
 // Проверка свойств
 import PropTypes from 'prop-types';
 
+/**
+ * Класс CommentsForm - компонент, отображающий поле ввода комментария на странице
+ */
 export default class CommentsForm extends PureComponent {
   constructor(props) {
     super(props);
 
     this.state = {
       // значение поля Автор по умолчанию
-      author: '',
+      name: '',
       // значение поля Комментарий по умолчанию
-      message: '',
+      body: '',
     };
   }
 
@@ -40,12 +43,12 @@ export default class CommentsForm extends PureComponent {
 
   render() {
     // получаем содержимое state
-    const { author, message } = this.state;
+    const { name, body } = this.state;
     return (
       <div>
-        <input type="text" name="author" onChange={this.handleChange} value={author}/>
+        <input type="text" name="name" onChange={this.handleChange} value={name}/>
         <p/>
-        <textarea name="message" onChange={this.handleChange} value={message}/>
+        <textarea name="body" onChange={this.handleChange} value={body}/>
         <button onClick={this.handleClick}>Send</button>
       </div>
     );
