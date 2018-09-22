@@ -32,7 +32,7 @@ export default class MenuItem extends PureComponent {
     return (
       <NavItem>
         {/* Присваиваем пункту меню id */}
-        <NavLink id={id} href='#'>
+        <NavLink id={id} href="#">
           {/* Отображаем название пункта меню */}
           {name}
         </NavLink>

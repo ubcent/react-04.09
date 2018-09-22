@@ -42,12 +42,12 @@ export default class Header extends PureComponent {
       <Fragment>
         <header>
           <div className="container">
-            <div className='row menu'>
-              <div className='col-10'>
+            <div className="row menu">
+              <div className="col-10">
                 {/* Меню навигации */}
                 <HorizontalMenu menu={menu}/>
               </div>
-              <div className='col-2'>
+              <div className="col-2">
                 <BlogButton item={loginButton}/>
               </div>
             </div>

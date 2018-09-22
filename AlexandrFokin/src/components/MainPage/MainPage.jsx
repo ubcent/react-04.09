@@ -79,7 +79,7 @@ export default class MainPage extends PureComponent {
   render() {
     // Отображаем main
     return (
-      <main className='container'>
+      <main className="container">
         <div className="blog_header">
           <h1>
             The Bootstrap Blog
@@ -91,7 +91,7 @@ export default class MainPage extends PureComponent {
         <div className="row">
           <div className="col-7">
             {/* выводим все посты */}
-            <div className='posts'>
+            <div className="posts">
             {posts.map( (post, idx) => {
               return (
                 <BlogPost post={post} key={idx}/>
