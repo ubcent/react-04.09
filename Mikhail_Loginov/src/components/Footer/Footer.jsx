@@ -26,7 +26,7 @@ export default class Footer extends PureComponent {
       {menu.map((item, index) => <NavItem key={index}>
         <Link to={{pathname: item.href}} className="nav-link">{item.title}</Link>
       </NavItem>)}
-    </Nav>
+    </Nav>;
 
     return (
       <footer className="footer">

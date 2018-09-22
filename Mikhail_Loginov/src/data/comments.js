@@ -1,6 +1,6 @@
 export default [{
     id: 1,
-    authorID: 4,
+    authorID: 5,
     postID: 1,
     text: 'Cool!',
 },{
@@ -16,12 +16,12 @@ export default [{
 },{
     id: 4,
     postID: 2,
-    authorID: 4,
+    authorID: 5,
     text: 'Well done'
 },{
     id: 5,
     postID: 1,
-    authorID: 3,
+    authorID: 5,
     text: 'Nothing new.'
 },
 ]

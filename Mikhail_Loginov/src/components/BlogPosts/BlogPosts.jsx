@@ -8,7 +8,6 @@ import blogPosts from '../../data/blog-posts';
 
 export default class BlogPosts extends PureComponent {
   render() {
-
     return (
       <main>
         <Container>
@@ -17,7 +16,6 @@ export default class BlogPosts extends PureComponent {
               <BlogPost post={post} />
           </div>
           )}
-          
         </Container>
       </main>
     );

@@ -63,9 +63,9 @@ export default class Header extends PureComponent {
       }
     ];
 
-    const navMenu = <Nav>
-      {menu.map((item, index) => 
-        {
+    const navMenu = 
+      <Nav>
+        {menu.map((item, index) => {
           let linkClass = classNames({
             'nav-link': true,
             'active': item.href === this.state.activeLink,
@@ -75,36 +75,36 @@ export default class Header extends PureComponent {
               onClick={this.handleNavItemClick}>{item.title}
             </Link>
           </NavItem>
-        }
-      )}
-    </Nav>
+        })}
+      </Nav>;
 
-    const modalWindow = <Modal
-      isOpen={this.state.modal}
-      toggle={this.toggle}
-      className={this.props.className}>
-      <ModalHeader toggle={this.toggle}>Authentication</ModalHeader>
-      <ModalBody>
-        <Form>
-          <FormGroup>
-            <Label for="formLogin">Login</Label>
-            <Input type="text" name="login" id="formLogin" placeholder="enter your login"/>
-          </FormGroup>
-          <FormGroup>
-            <Label for="formPassword">Password</Label>
-            <Input
-              type="password"
-              name="password"
-              id="formPassword"
-              placeholder="enter your password"/>
-          </FormGroup>
-          <ModalFooter>
-            <Button color="primary" onClick={this.toggle}>Submit</Button>{' '}
-            <Button color="secondary" onClick={this.toggle}>Cancel</Button>
-          </ModalFooter>
-        </Form>
-      </ModalBody>
-    </Modal>
+    const modalWindow = 
+      <Modal
+        isOpen={this.state.modal}
+        toggle={this.toggle}
+        className={this.props.className}>
+        <ModalHeader toggle={this.toggle}>Authentication</ModalHeader>
+        <ModalBody>
+          <Form>
+            <FormGroup>
+              <Label for="formLogin">Login</Label>
+              <Input type="text" name="login" id="formLogin" placeholder="enter your login"/>
+            </FormGroup>
+            <FormGroup>
+              <Label for="formPassword">Password</Label>
+              <Input
+                type="password"
+                name="password"
+                id="formPassword"
+                placeholder="enter your password"/>
+            </FormGroup>
+            <ModalFooter>
+              <Button color="primary" onClick={this.toggle}>Submit</Button>{' '}
+              <Button color="secondary" onClick={this.toggle}>Cancel</Button>
+            </ModalFooter>
+          </Form>
+        </ModalBody>
+      </Modal>;
 
     return (
       <header className="header">

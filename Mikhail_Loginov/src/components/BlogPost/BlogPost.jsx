@@ -13,12 +13,12 @@ export default class BlogPost extends PureComponent {
   }
 
   render() {
-    let author = authors[this.props.post.authorID];
+    let author = authors[this.props.post.authorID-1];
     return (
       <main>
         <Container>
           <div className="blog-post">
-            <Link to={{pathname: '/post/' + this.props.post.id, hash: ''}} post={this.props.post}>
+            <Link to={{pathname: `/post/${this.props.post.id}`}} post={this.props.post}>
               <h2 className="blog-post__title">{this.props.post.title}</h2>
               <h3 className="blog-post__subtitle">{this.props.post.shortDescription}</h3>
             </Link>
