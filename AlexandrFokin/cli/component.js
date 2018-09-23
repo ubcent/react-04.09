@@ -38,6 +38,7 @@ export default class ${componentName} extends PureComponent {
   constructor(props) {
     super(props);
     
+    // значения полей, используемых в render()
     this.state = {
       
     }

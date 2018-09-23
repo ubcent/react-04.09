@@ -25,6 +25,7 @@ export default class BlogPost extends PureComponent {
     this.setState({
       loading: true,
     });
+    // загружаем 3 комментария
     fetch(`https://jsonplaceholder.typicode.com/comments?_page=${page}&_limit=3`)
       .then(response => response.json())
       .then(comments => {
