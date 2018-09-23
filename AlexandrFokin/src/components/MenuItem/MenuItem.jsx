@@ -1,7 +1,7 @@
 import './MenuItem.scss';
 
-import React, { PureComponent } from 'react';
-import { NavItem, NavLink } from 'reactstrap';
+import React, {Fragment, PureComponent} from 'react';
+import {Link} from 'react-router-dom';
 // Проверка свойств
 import PropTypes from 'prop-types';
 
@@ -17,6 +17,8 @@ export default class MenuItem extends PureComponent {
       id:  PropTypes.string,
       // название пункта
       name: PropTypes.string,
+      // адрес перехода по ссылке
+      to: PropTypes.string,
     })
   };
 
@@ -28,15 +30,15 @@ export default class MenuItem extends PureComponent {
 
   render() {
     // получаем переданные свойства пункта меню
-    const {id, name} = this.props.item;
+    const {id, name, to} = this.props.item;
     return (
-      <NavItem>
+      <Fragment>
         {/* Присваиваем пункту меню id */}
-        <NavLink id={id} href="#">
+        <Link to={to} id={id}>
           {/* Отображаем название пункта меню */}
           {name}
-        </NavLink>
-      </NavItem>
+        </Link>
+      </Fragment>
     );
   }
 }

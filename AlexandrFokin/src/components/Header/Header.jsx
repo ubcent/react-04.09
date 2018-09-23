@@ -1,6 +1,6 @@
 import './Header.scss';
 
-import React, {PureComponent, Fragment} from 'react';
+import React, {PureComponent} from 'react';
 
 import HorizontalMenu from 'components/HorizontalMenu';
 import BlogButton from 'components/BlogButton/BlogButton';
@@ -11,22 +11,27 @@ const menu = [
   {
     id: 'main',
     name: 'Home',
+    to: '/',
   },
   {
     id: 'new_feature,',
     name: 'Blog',
+    to: '/blog',
   },
   {
     id: 'press',
     name: 'Comments',
+    to: '/comments',
   },
   {
     id: 'new_hires',
     name: 'Users',
+    to: '/users',
   },
   {
     id: 'about',
     name: 'About',
+    to: '/about',
   }
 ];
 
@@ -39,7 +44,6 @@ const loginButton = {id: 'login', name: 'Log in'};
 export default class Header extends PureComponent {
   render() {
     return (
-      <Fragment>
         <header>
           <div className="container">
             <div className="row menu">
@@ -53,7 +57,6 @@ export default class Header extends PureComponent {
             </div>
           </div>
         </header>
-      </Fragment>
     );
   }
 }
