@@ -1,0 +1,54 @@
+{
+    "posts": [
+        {
+            "id": "1",
+            "head": "post1",
+            "body": "loren something",
+            "author": "user1"
+        },
+        {
+            "id": "2",
+            "head": "post2",
+            "body": "loren something",
+            "author": "user2"
+        },
+        {
+            "id": "3",
+            "head": "post3",
+            "body": "loren something",
+            "author": "user3"
+        },
+        {
+            "id": "4",
+            "head": "post4",
+            "body": "loren something",
+            "author": "user1"
+        },
+        {
+            "id": "5",
+            "head": "post5",
+            "body": "loren something",
+            "author": "user2"
+        }
+    ],
+    "comments": [
+        {
+            "id": "1",
+            "data": [
+                "loren loren", "loren loren"
+            ]
+        },
+        {
+            "id": "2",
+            "data": [
+                "loren loren", "loren loren"
+            ]
+        },
+        {
+            "id": "3",
+            "data": [
+                "loren loren", "loren loren"
+            ]
+        }
+    ]
+}
