@@ -1,44 +1,21 @@
 import React, { Component } from 'react';
-import Post from '../Post/Post';
+import PostFeed from '../PostFeed/PostFeed';
+import Sidebar from '../Sidebar/Sidebar';
+import Pagination from '../Pagination/Pagination';
 
 class MainPage extends Component {
   render() {
-    const posts = [
-      {
-        tag: 'frontend',
-        title: 'Post1',
-        date: 'Sep. 13',
-        text:
-          'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nemo veritatis minus consequuntur quidem est! Id, expedita error accusantium molestias recusandae dolor eveniet ad reprehenderit optio eaque possimus nesciunt delectus provident?'
-      },
-      {
-        tag: 'frontend',
-        title: 'Post2',
-        date: 'Sep. 13',
-        text:
-          'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nemo veritatis minus consequuntur quidem est! Id, expedita error accusantium molestias recusandae dolor eveniet ad reprehenderit optio eaque possimus nesciunt delectus provident?'
-      },
-      {
-        tag: 'frontend',
-        title: 'Post3',
-        date: 'Sep. 13',
-        text:
-          'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nemo veritatis minus consequuntur quidem est! Id, expedita error accusantium molestias recusandae dolor eveniet ad reprehenderit optio eaque possimus nesciunt delectus provident?'
-      }
-    ];
-
     return (
-      <div className="container mt-5">
+      <div className="container">
         <div className="row">
-          {posts.map((post, index) => (
-            <Post
-              key={index}
-              tag={post.tag}
-              title={post.title}
-              date={post.date}
-              text={post.text}
-            />
-          ))}
+          <div className="col-md-8">
+            <h1 className="my-4">Page Heading</h1>
+            <PostFeed />
+            <Pagination />
+          </div>
+          <div className="col-md-4">
+            <Sidebar />
+          </div>
         </div>
       </div>
     );

@@ -28,8 +28,12 @@ module.exports = {
                 }
             },
             {
-                test: /\.scss$/,
+                test: /\.s?css$/,
                 use: ['style-loader', MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
+            },
+            {
+                test: /\.(eot|svg|ttf|woff|woff2)$/,
+                loader: 'file-loader?name=resources/fonts/[name].[ext]'
             }
         ]
     },
@@ -49,7 +53,7 @@ module.exports = {
 
     plugins: [
         new HtmlPlugin({
-            title: 'ReactJS - lesson 03',
+            title: 'Blog Template for Bootstrap',
             template: path.resolve(__dirname, 'src', 'index.html'),
             filename: 'index.html'
         }),

@@ -1,0 +1,14 @@
+body, html {
+    padding: 0;
+    margin: 0;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.container > .wrapper {
+    display: flex;
+    width: 100%;
+}

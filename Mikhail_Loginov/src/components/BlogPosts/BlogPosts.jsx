@@ -1,14 +1,13 @@
 import './BlogPosts.css';
 
-import React, {Component} from 'react';
+import React, {PureComponent} from 'react';
 import {Container} from 'reactstrap';
 
 import BlogPost from 'components/BlogPost';
 import blogPosts from '../../data/blog-posts';
 
-export default class BlogPosts extends Component {
+export default class BlogPosts extends PureComponent {
   render() {
-
     return (
       <main>
         <Container>
@@ -17,7 +16,6 @@ export default class BlogPosts extends Component {
               <BlogPost post={post} />
           </div>
           )}
-          
         </Container>
       </main>
     );

@@ -1,0 +1,16 @@
+.main-page {
+  padding: 15px 0;
+}
+
+.article__header {
+  margin-bottom: 15px;
+}
+
+.article__paragraph {
+  text-align: justify;
+}
+
+.article__date {
+  text-align: right;
+  font-style: italic;
+}
