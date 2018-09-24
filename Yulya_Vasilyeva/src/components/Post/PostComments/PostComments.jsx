@@ -1,7 +1,7 @@
-import './Comments.scss';
+import './PostComments.scss';
 
 //импорт React
-import React, { PureComponent, Fragment } from 'react';
+import React, { PureComponent } from 'react';
 import { //импорт формы из Bootstrap
     ListGroup,
     ListGroupItem,
@@ -9,32 +9,9 @@ import { //импорт формы из Bootstrap
     ListGroupItemText,
 } from 'reactstrap';
 
-export default class Post extends PureComponent {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            postId: 0,
-            comments: [],//массив хранит комментарии к посту
-        };
-    }
-
-    //получаем комментарии из JSON
-    componentDidMount() {
-        const { postId } = this.props; //получаем id поста
-        //выбираем комментарии для определенного поста
-        const url = `http://127.0.0.1:3000/comments?postId=${postId}`;
-        fetch(url)
-            .then((response) => response.json())
-            .then((data) => {
-                this.setState({
-                    comments: data,
-                });
-            });
-    }
+export default class PostComments extends PureComponent {
     render() {
-        const { comments } = this.state;
-        //получаем 
+        const { comments } = this.props;
         return (
             <div className="comments">
                 <h3>Комментарии к записи</h3>

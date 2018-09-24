@@ -17,29 +17,12 @@ import {
 /*компонент для окна подписки на новости, при нажати на кнопку
 отображается модальное окно*/
 export default class Subscr extends PureComponent {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            modal: false
-        };
-    }
-    //появление / скрытие модального окна
-    toggle = () => {
-        const { modal } = this.state;
-        this.setState({
-            modal: !modal,
-        });
-    }
-
     render() {
-        //по нажатию на кнопку появлятеся модальное окно с формой для ввода email
-        const { modal } = this.state;//состояние модального окна
-        const { className, backdrop } = this.props;
+        const { modal, toggle } = this.props;
         return (
             <div>
-                <Button onClick={this.toggle} color="warning" className="subscr">Подписаться на новости</Button>
-                <Modal isOpen={modal} toggle={this.toggle} className={className}  backdrop={backdrop}>
+                <Button onClick={toggle} color="warning" className="subscr">Подписаться на новости</Button>
+                <Modal isOpen={modal} toggle={toggle}>
                     <ModalBody className="modal-text">
                         <Form>
                             <Label for="email">Введите свой электронный адрес и получайте свежие новости раз в неделю.</Label>
@@ -47,8 +30,8 @@ export default class Subscr extends PureComponent {
                         </Form>
                     </ModalBody>
                     <ModalFooter>
-                        <Button color="warning" onClick={this.toggle}>Подписаться</Button>{' '}
-                        <Button color="secondary" onClick={this.toggle}>Cancel</Button>
+                        <Button color="warning" onClick={toggle}>Подписаться</Button>{' '}
+                        <Button color="secondary" onClick={toggle}>Cancel</Button>
                     </ModalFooter>
                 </Modal>
             </div>
