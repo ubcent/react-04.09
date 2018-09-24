@@ -12,3 +12,21 @@
     margin-bottom: 150px;
     font-style: italic;
 }
+
+.post__comments {
+    margin-top: 100px;
+}
+
+.comment {
+    margin: 20px 0;
+}
+
+.comment__text {
+    font-size: 1em;
+    font-weight: 700;
+}
+
+.comment__author {
+    font-size: 0.75em;
+    font-style: italic;
+}

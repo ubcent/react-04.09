@@ -1,0 +1,32 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "name": "Johny",
+      "body": "What's up man how R U",
+      "postId": 1
+    },
+    {
+      "id": 1,
+      "name": "Johny",
+      "body": "YO, MAN WAZUP",
+      "postId": 2
+    },
+    {
+      "id": 1,
+      "name": "Johny",
+      "body": "WAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAZUP!!!!!",
+      "postId": 3
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
