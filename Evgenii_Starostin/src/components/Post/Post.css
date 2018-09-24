@@ -1,0 +1,12 @@
+.article__header {
+  margin-bottom: 15px;
+}
+
+.article__paragraph {
+  text-align: justify;
+}
+
+.article__author {
+  text-align: right;
+  font-style: italic;
+}
