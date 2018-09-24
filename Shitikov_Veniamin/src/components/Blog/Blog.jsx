@@ -2,17 +2,76 @@ import './Blog.css'
 
 import React, { PureComponent } from 'react';
 
-import Header from 'components/Header';
-import Footer from 'components/Footer';
 import Main from 'components/Main';
 import Sidebar from 'components/Sidebar';
 
 export default class Blog extends PureComponent {
+    constructor(props){
+        super(props);
+    }
+
+    static defaultProps = {
+        main:{
+            heading: 'Page Heading',
+        secondary: 'Secondary Text',
+        blogposts: [
+            {
+                title: 'Post Title',
+                subtitle: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.\n' +
+                '                    Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta\n' +
+                '                    expedita corporis animi vero voluptate voluptatibus possimus, veniam magni\n' +
+                '                    quis!',
+                author: 'Anonim',
+                href: '#',
+                date: '04/01/14',
+            },
+            {
+                title: 'Post Title',
+                subtitle: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.\n' +
+                '                    Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta\n' +
+                '                    expedita corporis animi vero voluptate voluptatibus possimus, veniam magni\n' +
+                '                    quis!',
+                author: 'Anonim',
+                href: '#',
+                date: '01/01/14',
+            },
+            {
+                title: 'Post Title',
+                subtitle: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.\n' +
+                '                    Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta\n' +
+                '                    expedita corporis animi vero voluptate voluptatibus possimus, veniam magni\n' +
+                '                    quis!',
+                author: 'Anonim',
+                href: '#',
+                date: '02/01/14',
+            },
+
+        ]
+        },
+        categories: [
+            {
+                href: '#',
+                title: 'Front',
+            },
+            {
+                href: '#',
+                title: 'Back',
+            },
+            {
+                href: '#',
+                title: 'Humor',
+            },
+        ],
+        side: {
+            title: 'Side',
+            content: 'Side content',
+        },
+    }
+
     render() {
-        const { header, main, categories, side } = this.props;
+        const { main, categories, side } = this.props;
         console.log(main);
         return <div>
-            <Header brand={header.brand} items={header.items} handler={header.handler} active={1}/>
             <div className='container'>
 
                 <div className='row'>
@@ -23,7 +82,6 @@ export default class Blog extends PureComponent {
                 </div>
 
             </div>)
-             <Footer />
         </div>
     }
 }

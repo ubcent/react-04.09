@@ -4,8 +4,6 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 
 import UserPreview from 'components/UserPreview';
-import Header from 'components/Header';
-import Footer from 'components/Footer';
 import Sidebar from 'components/Sidebar';
 
 
@@ -13,17 +11,55 @@ export default class Users extends PureComponent{
     constructor(props){
         super(props);
     }
-
+    
+    static defaultProps = {
+        users: [
+            {
+                name: 'blogger1',
+                href: '#',
+            },
+            {
+                name: 'blogger2',
+                href: '#',
+            },
+            {
+                name: 'blogger3',
+                href: '#',
+            },
+            {
+                name: 'blogger4',
+                href: '#',
+            },
+    
+        ],
+        categories: [
+            {
+                href: '#',
+                title: 'Front',
+            },
+            {
+                href: '#',
+                title: 'Back',
+            },
+            {
+                href: '#',
+                title: 'Humor',
+            },
+        ],
+        side: {
+            title: 'Side',
+            content: 'Side content',
+        },
+    }
 
     render(){
-        const { header, users, categories, side } = this.props;
+        const { users, categories, side } = this.props;
         const list = users.map( (item, index) => {
             const { name, href } = item;
             return <UserPreview key={index} href={href} name={name}/>
         });
 
         return <div>
-            <Header brand={header.brand} items={header.items} handler={header.handler} active={3}/>
             <div className='container'>
                 <div className='row'>
                     {/*<!-- Blog Entries Column -->*/}
@@ -36,7 +72,6 @@ export default class Users extends PureComponent{
                 </div>
 
             </div>
-            <Footer />
         </div>
     }
 }

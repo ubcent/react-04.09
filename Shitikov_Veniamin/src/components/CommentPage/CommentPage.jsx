@@ -1,17 +1,98 @@
 import './CommentPage.css'
 
-import React, { PureComponent, Fragment } from 'react';
+import React, { PureComponent } from 'react';
 
-import Header from 'components/Header';
-import Footer from 'components/Footer';
 import Sidebar from 'components/Sidebar';
 import Comments from 'components/Comments';
 
 export default class CommentPage extends PureComponent {
+    constructor(props){
+        super(props);
+    }
+
+    static defaultProps = {
+        comments: [
+            {
+                author: {
+                    name: 'Commenter Name',
+                    href: '#',
+                },
+                text: `Cras sit amet nibh libero, in gravida nulla. Nulla vel 
+                metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in 
+                vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi 
+                vulputate fringilla. Donec lacinia congue felis in faucibus.`,
+                blog: {
+                    name: 'Some Blog',
+                    href: '#',
+                },
+            },
+            {
+                author: {
+                    name: 'Commenter Name',
+                    href: '#',
+                },
+                text: `Cras sit amet nibh libero, in gravida nulla. Nulla vel 
+                metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in 
+                vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi 
+                vulputate fringilla. Donec lacinia congue felis in faucibus.`,
+                blog: {
+                    name: 'Some Blog',
+                    href: '#',
+                },
+            },
+            {
+                author: {
+                    name: 'Commenter Name',
+                    href: '#',
+                },
+                text: `Cras sit amet nibh libero, in gravida nulla. Nulla vel 
+                metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in 
+                vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi 
+                vulputate fringilla. Donec lacinia congue felis in faucibus.`,
+                blog: {
+                    name: 'Some Blog',
+                    href: '#',
+                },
+            },
+            {
+                author: {
+                    name: 'Commenter Name',
+                    href: '#',
+                },
+                text: `Cras sit amet nibh libero, in gravida nulla. Nulla vel 
+                metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in 
+                vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi 
+                vulputate fringilla. Donec lacinia congue felis in faucibus.`,
+                blog: {
+                    name: 'Some Blog',
+                    href: '#',
+                },
+            },
+        
+        ],
+        categories: [
+            {
+                href: '#',
+                title: 'Front',
+            },
+            {
+                href: '#',
+                title: 'Back',
+            },
+            {
+                href: '#',
+                title: 'Humor',
+            },
+        ],
+        side: {
+            title: 'Side',
+            content: 'Side content',
+        },
+    }
+
     render() {
-        const { header, comments, categories, side } = this.props;
+        const { comments, categories, side } = this.props;
         return <div>
-            <Header brand={header.brand} items={header.items} handler={header.handler} active={2} />
             <div className='container'>
 
                 <div className='row'>
@@ -24,7 +105,6 @@ export default class CommentPage extends PureComponent {
                 </div>
 
             </div>)
-             <Footer />
         </div>
     }
 }

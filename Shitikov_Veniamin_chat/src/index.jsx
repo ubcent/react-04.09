@@ -5,6 +5,7 @@ import ReactDom from 'react-dom';
 import Chathead from 'components/Chathead';
 import Chatbox from 'components/Chatbox';
 import Chatinput from 'components/Chatinput';
+import ChatRoom from './components/ChatRoom/ChatRoom';
 
 
 
@@ -12,18 +13,10 @@ import Chatinput from 'components/Chatinput';
 class Layout extends Component {
     constructor(props){
         super(props);
-
-        this.state = {
-            messages: [],
-        }
     }
 
-    componentDidMount(){
-        const { URL } = this.props;
-        fetch(URL).
-            then( response => response.json()).
-            then( data => this.setState({ messages: data}));
-
+    goToChat(user){
+        
     }
 
     render(){
@@ -40,11 +33,9 @@ class Layout extends Component {
 
         };
         return <div>
-            <Chathead title={'CHAT'}/>
-            <Chatbox items={this.state.messages}/>
-            <Chatinput handleSubmit={sendMessage}/>
+            <ChatRoom URL='http://localhost:3000/users' />
         </div>
     }
 }
 
-ReactDom.render(<Layout  URL='http://localhost:3000/messages'/>, document.getElementById('root'));
+ReactDom.render(<Layout  />, document.getElementById('root'));

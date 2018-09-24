@@ -2,6 +2,7 @@ import './Header.css';
 
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 // Компонент принимает объект со свойствами:
 // brand - объект заголовка навбара со свойствами
@@ -11,10 +12,27 @@ import PropTypes from 'prop-types';
 export default class Header extends PureComponent {
     static defaultProps = {
         brand: {
+            title: 'MyBlog',
             href: '#',
-            title: 'title'
         },
-        items: [],
+        items: [
+            {
+                title: 'Home',
+                href: '/'
+            },
+            {
+                title: 'Blog',
+                href: '/blog'
+            },
+            {
+                title: 'Comments',
+                href: '/comments'
+            },
+            {
+                title: 'Users',
+                href: '/users'
+            },
+        ],
         active: 0,
     };
 
@@ -27,13 +45,13 @@ export default class Header extends PureComponent {
     };
 
     render(){
-        const { brand, items, active, handler } = this.props;
+        const { brand, items, active } = this.props;
         const list = items.map( (item, index) => {
             const liClass = (index === active) ? 'nav-item active' : 'nav-item';
             return <li className={liClass}>
-                <a onClick={handler} name={index} className='nav-link'
-                   href={item.href}>{item.title}
-                </a>
+                <Link name={index} className='nav-link'
+                   to={item.href}>{item.title}
+                </Link>
             </li>
         });
         return <nav className='navbar navbar-expand-lg navbar-dark bg-dark fixed-top'>
