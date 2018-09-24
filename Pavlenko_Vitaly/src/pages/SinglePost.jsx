@@ -1,16 +1,11 @@
-import React, { PureComponent } from "react";
+import React from "react";
 
-export default class SinglePost extends PureComponent {
+import PostContainer from 'containers/PostContainer';
 
-    constructor(props) {
-        super(props);
-    }
-
-    render() {
-        return (
-            <div className="container">
-                <h1>Single Post test</h1>
-            </div>
-        );
-    }
+export default function SinglePost(props) {
+    return (
+        <div className="container">
+            <PostContainer match={props.match}/>
+        </div>
+    );
 }

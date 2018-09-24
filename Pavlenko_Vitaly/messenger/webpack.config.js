@@ -1,4 +1,4 @@
-const path = require('path'); // встроенный метод
+const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlPlugin = require('html-webpack-plugin');
 
@@ -7,7 +7,6 @@ module.exports = {
         main: path.resolve(__dirname, 'src', 'index.js'),
     },
     output: {
-        /* по умолчанию dist/main.js */
         path: path.resolve(__dirname, 'dist'),
         filename: 'bundle.js',
     },
@@ -15,6 +14,9 @@ module.exports = {
         extensions: ['.js', '.jsx'],
         alias: {
             components: path.resolve(__dirname, 'src', 'components'),
+            containers: path.resolve(__dirname, 'src', 'containers'),
+            pages: path.resolve(__dirname, 'src', 'pages'),
+            layouts: path.resolve(__dirname, 'src', 'layouts'),
             data: path.resolve(__dirname, 'src', 'data'),
         }
     },
@@ -42,6 +44,9 @@ module.exports = {
                 }),
             }
         ]
+    },
+    devServer: {
+        historyApiFallback: true
     },
     plugins: [
         new ExtractTextPlugin({ filename: 'style.css' }),

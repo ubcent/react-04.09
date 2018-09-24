@@ -1,23 +1,20 @@
 import './Message.scss';
 
-import React, { PureComponent } from 'react';
-import classNames from "classnames";
+import React from 'react';
+import classNames from 'classnames';
 
-export default class Message extends PureComponent {
+export default function Message(props) {
+    const {body, self} = props;
 
-    render() {
-        const { body, self } = this.props;
+    const messageClasses = classNames('message', {
+        'message_self': self
+    });
 
-        const messageClasses = classNames('message', {
-            'message_self': self
-        });
-
-        return (
-            <div className={messageClasses}>
-                <div className="message__inner">
-                    { body }
-                </div>
+    return (
+        <div className={messageClasses}>
+            <div className="message__inner">
+                {body}
             </div>
-        );
-    }
+        </div>
+    );
 }

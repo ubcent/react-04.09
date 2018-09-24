@@ -1,41 +1,13 @@
-import React, { PureComponent } from "react";
+import React from "react";
 
-import Posts from 'components/Posts';
+import PostsContainer from 'containers/PostsContainer';
 
-export default class Blog extends PureComponent {
-
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            articles: []
-        };
-    }
-
-    getPosts() {
-        fetch('https://jsonplaceholder.typicode.com/posts')
-            .then((res) => {
-                return res.json();
-            }).then((data) => {
-            this.setState({
-                articles: data
-            });
-        }).catch((err) => {
-            console.error(err);
-        });
-    }
-
-    componentDidMount() {
-        this.getPosts();
-    }
-
-    render() {
-        return (
-            <div className="container">
-                <div className="row">
-                    <Posts articles={this.state.articles}/>
-                </div>
+export default function Blog() {
+    return (
+        <div className="container">
+            <div className="row">
+                <PostsContainer/>
             </div>
-        );
-    }
+        </div>
+    );
 }

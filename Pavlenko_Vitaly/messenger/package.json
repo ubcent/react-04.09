@@ -6,7 +6,8 @@
   "scripts": {
     "start": "webpack-dev-server --mode development --open",
     "build": "webpack --mode production",
-    "dev": "webpack --mode development"
+    "dev": "webpack --mode development",
+    "cc": "node cli/component.js --name"
   },
   "author": "Pavlenko Vitaly",
   "license": "ISC",
@@ -15,6 +16,7 @@
     "prop-types": "^15.6.2",
     "react": "^16.5.0",
     "react-dom": "^16.5.0",
+    "react-router-dom": "^4.3.1",
     "webpack-dev-server": "^3.1.8"
   },
   "devDependencies": {

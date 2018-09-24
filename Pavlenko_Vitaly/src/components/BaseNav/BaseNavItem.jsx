@@ -1,19 +1,10 @@
-import React, { PureComponent } from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react';
+import {Link} from 'react-router-dom';
 
-export default class BaseNavItem extends PureComponent {
+export default function BaseNavItem(props) {
+    const {id, title, href} = props;
 
-    static defaultProps = {
-        id: null,
-        title: '',
-        href: '/',
-    };
-
-    render() {
-        const { id, title, href } = this.props;
-
-        return (
-            <Link className="base-nav__item" to={href} id={id}>{ title }</Link>
-        );
-    }
+    return (
+        <Link className="base-nav__item" to={href} id={id}>{title}</Link>
+    );
 }

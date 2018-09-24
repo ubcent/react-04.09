@@ -1,26 +1,24 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import ReactDom from 'react-dom';
-import { HashRouter as Router, Route } from 'react-router-dom';
+import {BrowserRouter, Switch, Route} from 'react-router-dom';
+import routes from './routes';
 
-import Layout from 'layouts/Layout/index';
-import MainPage from 'pages/MainPage';
-import Blog from 'pages/Blog';
-import Comments from 'pages/Comments';
-import SinglePost from 'pages/SinglePost';
+import Layout from 'layouts/Layout';
 
-export default class App extends PureComponent {
-
-    render() {
-        return (
-            <Router>
-                <Layout>
-                    <Route exact path='/' component={MainPage}/>
-                    <Route path='/blog' component={Blog}/>
-                    <Route path='/comments' component={Comments}/>
-                </Layout>
-            </Router>
-        );
-    }
+function App() {
+    return (
+        <BrowserRouter>
+            <Layout>
+                <Switch>
+                    {
+                        routes.map((route, idx) => (
+                            <Route key={idx} {...route}/>
+                        ))
+                    }
+                </Switch>
+            </Layout>
+        </BrowserRouter>
+    );
 }
 
-ReactDom.render(<App />, document.querySelector('#app'));
+ReactDom.render(<App/>, document.querySelector('#app'));
