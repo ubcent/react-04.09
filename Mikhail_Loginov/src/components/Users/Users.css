@@ -1,0 +1,30 @@
+.user {
+    margin: 25px 0;
+    font-size: 0.75em;
+    font-style: italic;
+}
+
+.user__name {
+    font-weight: 700;
+    font-size: 1.5em;
+    font-style: normal;
+    cursor: pointer;
+}
+
+.user__title {
+    font-size: 1.25em;
+    font-weight: 700;
+    margin: 15px 0;
+    font-style: normal;
+
+}
+
+.user__subtitle {
+    font-size: 1em;
+    font-style: normal;
+    margin-top: 10px;
+}
+
+.hidden {
+    display: none;
+}

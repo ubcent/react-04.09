@@ -1,0 +1,42 @@
+.message {
+    border-radius: 5px;
+    padding: 0.6rem;
+    position: relative;
+    margin-bottom: 0.5rem;
+    word-break: break-all;
+    max-width: 80%;
+    white-space: pre-wrap;
+}
+.message::before {
+    content: '';
+    position: absolute;
+    top: 4px;
+    border: 5px solid;
+    white-space: unset;
+}
+.message-guest {
+    color: #666;
+    background: rgba(235, 234, 234, 0.8);
+}
+.message-guest::before {
+    left: -10px;
+    border-color: rgba(235, 234, 234, 0.8) rgba(235, 234, 234, 0.8) transparent transparent;
+}
+.message-my {
+    background: rgba(45, 112, 236, 0.65);     
+    color: snow;
+}
+.message-my::before {
+    right: -10px;
+    border-color: rgba(45, 112, 236, 0.65) transparent transparent rgba(45, 112, 236, 0.65);
+}
+.comm-wrap {
+    display: flex;
+    flex-direction: column;
+}
+.wrap-left {
+    align-items: flex-start;  
+}
+.wrap-right {
+    align-items: flex-end;  
+}
