@@ -1,6 +1,6 @@
 import './Header.scss';
 
-import React, {PureComponent} from 'react';
+import React, {Component} from 'react';
 
 import HorizontalMenu from 'components/HorizontalMenu';
 import BlogButton from 'components/BlogButton/BlogButton';
@@ -41,7 +41,7 @@ const loginButton = {id: 'login', name: 'Log in'};
 /**
  * Класс Header - компонент, отображающий хидер страницы
  */
-export default class Header extends PureComponent {
+export default class Header extends Component {
   render() {
     return (
         <header>

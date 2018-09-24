@@ -1,5 +1,6 @@
-import CommentsList from 'components/CommentsList';
 import MainPage from 'components/MainPage';
+import BlogPost from 'components/BlogPost';
+import BlogPage from 'components/BlogPage';
 
 /**
  * Маршрутизация приложения
@@ -11,10 +12,16 @@ export default [
     component: MainPage,
     exact: true,
   },
+  // Страница с блогами - Blog
+  {
+    path: '/blog',
+    component: BlogPage,
+    exact: true,
+  },
   // Страница с комментариями - Comments
   {
     path: '/comments',
-    component: CommentsList,
+    component: BlogPost,
     exact: true,
   },
 ];

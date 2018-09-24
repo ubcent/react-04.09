@@ -1,6 +1,6 @@
 import './HorizontalMenu.scss';
 
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import { Nav } from 'reactstrap';
 // Проверка свойств
 import PropTypes from 'prop-types';
@@ -11,7 +11,7 @@ import MenuItem from 'components/MenuItem';
  * Класс HorizontalMenu - компонент, отображающий горизонтальное меню
  * TODO добавить выделение активного пункта меню
  */
-export default class HorizontalMenu extends PureComponent {
+export default class HorizontalMenu extends Component {
   // Проверка свойств
   static propTypes = {
     // Пункты меню - массив объектов
