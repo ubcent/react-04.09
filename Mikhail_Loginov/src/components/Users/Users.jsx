@@ -4,9 +4,9 @@ import React, {PureComponent} from 'react';
 import {Container} from 'reactstrap';
 import classNames from 'classnames';
 
-import users from '../../data/users';
-import comments from '../../data/comments';
-import blogPosts from '../../data/blog-posts';
+import users from 'data/users';
+import comments from 'data/comments';
+import blogPosts from 'data/blog-posts';
 
 export default class BlogPosts extends PureComponent {
   state = {

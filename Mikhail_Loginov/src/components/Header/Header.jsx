@@ -26,7 +26,6 @@ export default class Header extends PureComponent {
       modal: false,
       activeLink: '/',
     };
-    this.toggle = this.toggle.bind(this);
   }
 
   static propTypes = {
@@ -34,7 +33,7 @@ export default class Header extends PureComponent {
     buttonLabel: propTypes.string,
   }
 
-  toggle() {
+  toggle = () => {
     this.setState({
       modal: !this.state.modal
     });
@@ -71,7 +70,7 @@ export default class Header extends PureComponent {
             'active': item.href === this.state.activeLink,
           });
           return <NavItem key={index}> 
-            <Link to={{pathname: item.href}} className={linkClass}
+            <Link to={item.href} className={linkClass}
               onClick={this.handleNavItemClick}>{item.title}
             </Link>
           </NavItem>
