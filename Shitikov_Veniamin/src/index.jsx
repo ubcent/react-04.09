@@ -3,11 +3,12 @@ import './style.css'
 
 import React, {Component, Fragment} from 'react';
 import ReactDom from 'react-dom';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import MainPage from 'components/MainPage';
 import CommentPage from 'components/CommentPage';
 import Blog from './components/Blog/Blog';
-import Users from "./components/Users/Users";
+import Users from './components/Users/Users';
 
 const mySite = {
     header: {
@@ -192,10 +193,7 @@ class App extends Component {
     };
 
     render() {
-        mySite.header.handler = this.handleClick;
-        let Site = <MainPage header={mySite.header} main={mySite.home} categories={mySite.categories} side={mySite.side}/>;
-        switch (this.state.value){
-            case '0': Site = <MainPage header={mySite.header} main={mySite.home} categories={mySite.categories} side={mySite.side}/>;
+            <MainPage header={mySite.header} main={mySite.home} categories={mySite.categories} side={mySite.side}/>;
                 break;
             case '1': Site = <Blog header={mySite.header} main={mySite.blog} categories={mySite.categories} side={mySite.side} />;
                 break;
@@ -210,4 +208,9 @@ class App extends Component {
     }
 }
 
-ReactDom.render(<App/>, document.getElementById('root'));
+ReactDom.render(
+    <BrowserRouter>
+        <App/>
+    </BrowserRouter>,
+    document.getElementById('root')
+);
