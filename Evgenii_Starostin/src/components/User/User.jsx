@@ -19,6 +19,7 @@ function User(props) {
               <header className="article__header">
                 <h4><Link to={`/posts/${post.id}`}>{post.title}</Link></h4>
               </header>
+              
               <p className="article__paragraph">{post.paragraphs[0]}</p>
             </article>
           ))}
