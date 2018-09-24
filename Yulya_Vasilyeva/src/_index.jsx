@@ -1,67 +1,48 @@
 import './_index.scss'; //Пользовательские стили
 
 //компоненты React
-import React, {PureComponent, Fragment} from 'react';
+import React, {Component, Fragment} from 'react';
 import ReactDOM from 'react-dom';
+import {BrowserRouter, Switch, Route} from 'react-router-dom';
 
 //компоненты Bootstrap
 import {Container, Row, Col} from 'reactstrap';
 
 //компоненты страницы
-import Menu from 'components/Menu/'; // главное верхнее меню
+import MenuContainer from 'containers/MenuContainer'; // главное верхнее меню
 import Descr from 'components/Descr/'; // блок с описанием и заголовком сайта
-import Article from 'components/Article/'; // список статей
-import Post from 'components/Post/'; // статья
-import SignIn from 'components/SignIn/'; // форма авторизации
-import Submenu from 'components/Submenu/'; // дополнительное боковое меню
-import Subscr from 'components/Subscr/'; // кнопка подписки и модальное окно
+import SignInContainer from 'containers/SignInContainer'; // форма авторизации
+import SubmenuContainer from 'containers/SubmenuContainer'; // дополнительное боковое меню
+import SubscrContainer from 'containers/SubscrContainer'; // кнопка подписки и модальное окно
 import Footer from 'components/Footer/'; // подвал сайта
 
-//импортируем данные из файла
-import { mainMenu, subMenu, article } from './data';
-import {getTextPostById} from './functions';
+import routes from './routers';
 
 //Главный компонет
-class App extends PureComponent{
-    constructor(props){
-        super(props);
-
-        this.state = {
-            postId: 0,
-            postText: '',
-        }
-    }
-
-    getPostId = (postIdFrom) => {
-        this.setState( {
-            postId: postIdFrom,
-        });
-    }
-
+class App extends Component{
     render(){
-        const { postId} = this.state;
-        const postText = getTextPostById(article, postId);
-        
         //Собираем компонтенты: меню + авторизация + подписка + список статей + футер
         return(
             <Fragment>
                <Container>
-                   <Menu menu={mainMenu}/>
+                   <MenuContainer />
                 </Container>
                 <Descr/>
                 <Container>
                     <Row>
                         <Col md="9">
-                            { //если id поста известно -> отображается описание поста, если нет -> все
-                                postId ? 
-                                    <Post postId={postId} postText={postText} onSend={this.getPostId}/> : 
-                                    <Article text={article} onSend={this.getPostId}/>
-                            }
+                        <Switch>
+                            {/* загружаем по ссылкам страницы главная, статья, комментарии и пользователи*/}
+                            {routes.map( (item, indx) => <Route key={indx} {...item}/>)}
+                        </Switch>
                         </Col>
                         <Col md="3">
-                            <SignIn/>
-                            <Submenu submenu={subMenu}/>
-                            <Subscr/>
+                            {/* форма входа пользователя */}
+                            <SignInContainer/>
+                            {/* дополнительное меню */}
+                            <SubmenuContainer />
+                            {/* кнопка подписки на новости */}
+                            <SubscrContainer />
                         </Col>
                     </Row>
                </Container>
@@ -70,4 +51,8 @@ class App extends PureComponent{
         );
     }
 }
-ReactDOM.render(<App/>, document.querySelector('#root'));
+ReactDOM.render(
+   /* внедряем роутер в прилоежние */
+    <BrowserRouter><App/></BrowserRouter>, 
+    document.querySelector('#root')
+);
