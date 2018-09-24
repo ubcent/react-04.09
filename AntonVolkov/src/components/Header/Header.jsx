@@ -1,22 +1,16 @@
 import './Header.scss';
 
-import React, { PureComponent } from 'react';
-import { Container, Row, Col, Navbar, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
+import React, { Component } from 'react';
+import { NavLink as Link } from 'react-router-dom';
+import { Container, Row, Col, Navbar, NavbarBrand, Nav, NavItem } from 'reactstrap';
 
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 
-export default class Header extends PureComponent {
-    constructor(props){
-        super(props);
-        this.state = {
-            active: 'Home',
-        }
-    }
+export default class Header extends Component {
     
     static propTypes = {
         fixed: PropTypes.bool,
-        onChangePage: PropTypes.func
     }
 
     static defaultProps = {
@@ -26,21 +20,10 @@ export default class Header extends PureComponent {
    
 
     render() {
-        const { fixed, onChangePage } = this.props;
+        const { fixed } = this.props;
         const headerClass = classNames('header', {
             'header--fixed': fixed,
         });
-
-        const handlerClick = (ev) => {
-            console.log(ev.target.getAttribute('data-event') === 'changePage')
-            if (ev.target.getAttribute('data-event') === 'changePage') {
-                onChangePage(ev.target.getAttribute('name'));
-                this.setState({
-                    ...this.state,
-                    active: ev.target.getAttribute('name'),
-                });
-            }
-        };
 
         return (
             <header className={headerClass}>
@@ -52,19 +35,16 @@ export default class Header extends PureComponent {
                         </NavbarBrand>
                         <Nav>
                             <NavItem>
-                                <NavLink data-event="changePage" onClick={handlerClick} name="Home" href="#">Home</NavLink>
+                                <Link className="nav-link" to="/">Home</Link>
                             </NavItem>
                             <NavItem>
-                                <NavLink data-event="changePage" onClick={handlerClick} name="Blog" href="#">Blog</NavLink>
+                                <Link className="nav-link" to="/blog">Blog</Link>
                             </NavItem>
                             <NavItem>
-                                <NavLink data-event="changePage" onClick={handlerClick} name="Comments" href="#">Comments</NavLink>
+                                <Link className="nav-link" to="/comments">Comments</Link>
                             </NavItem>
                             <NavItem>
-                                <NavLink data-event="changePage" onClick={handlerClick} name="Users" href="#">Users</NavLink>
-                            </NavItem>
-                            <NavItem>
-                                <NavLink href="https://github.com/AntoxaVolkov">My GitHub</NavLink>
+                                <Link className="nav-link" to="/users">User</Link>
                             </NavItem>
                         </Nav>
                     </Container>

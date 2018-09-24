@@ -3,7 +3,7 @@ import './Home.scss';
 import React, { Component } from 'react';
 import { Container, Row, Col } from 'reactstrap';
 
-import PostListContainer from 'components/PostListContainer';
+import PostListContainer from 'containers/PostListContainer';
 
 export default class Home extends Component {
     render() {

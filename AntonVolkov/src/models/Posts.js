@@ -1,24 +1,29 @@
-import { postsData, to } from './data';
-
-export default modelPosts = {
+const modelPosts = {
+    base: "http://localhost:3000",
     async getPosts(){
-        const posts = await to( () => postsData );
+        let posts = await fetch(`${this.base}/posts?_expand=user`)
+            .then(data => data.json());
         return posts;
     },
 
     async getPost(id){
-        const post = await to( () => postsData.filter((post) => post.id === id.toString()) );
-        return post[0];
+        const post = await fetch(`${this.base}/posts/${id}?_expand=user`)
+            .then(data => data.json());
+        return post;
     },
 
-    async getPostsById(ids){
-        ids = [].concat(ids);
-        const posts = await to( () => postsData.filter((post) => ids.indexOf(post.id) !== -1) );
+    async getPostsByUserId(userId){
+        const posts = await fetch(`${this.base}/users/${userId}/posts`)
+            .then(data => data.json());
         return posts;
     },
     
-    async getPostsByUserId(id){
-        const posts = await to(() => postsData.filter((post) => post.author == id ) );
+    async getPostsById(ids) {
+        ids = [].concat(ids).join('&id=');
+        const posts = await fetch(`${this.base}/posts?id=${ids}&_expand=user`)
+            .then(data => data.json());
         return posts;
     },
 }
+
+export default modelPosts;

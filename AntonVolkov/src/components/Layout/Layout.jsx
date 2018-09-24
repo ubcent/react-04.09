@@ -36,7 +36,6 @@ export default class Layout extends Component {
 
         let contentMD = sidebar ? 8 : 12;
 
-
         return (
             <div className="layout d-flex flex-column">
                 <Header onChangePage={onChangePage}/>
