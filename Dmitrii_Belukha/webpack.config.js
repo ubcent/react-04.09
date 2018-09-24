@@ -5,14 +5,15 @@ const autoprefixer = require('autoprefixer');
 
 module.exports = {
   entry: {
-    app: './src/index.js'
+    app: './src/index.js',
   },
   output: {
     filename: 'bundle.[name].js',
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, 'dist'),
   },
   devServer: {
-    contentBase: './dist'
+    contentBase: './dist',
+    historyApiFallback: true,
   },
   mode: 'development',
   module: {
@@ -21,40 +22,40 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/,
         use: {
-          loader: 'babel-loader'
-        }
+          loader: 'babel-loader',
+        },
       },
       {
         test: /\.(scss|css)$/,
         use: [
           MiniCssExtractPlugin.loader,
           {
-            loader: 'css-loader'
+            loader: 'css-loader',
           },
           {
             loader: 'postcss-loader',
             options: {
               plugins: [
                 autoprefixer({
-                  browsers: ['ie >= 8', 'last 5 versions']
-                })
-              ]
-            }
+                  browsers: ['ie >= 8', 'last 5 versions'],
+                }),
+              ],
+            },
           },
           {
-            loader: 'sass-loader'
-          }
-        ]
-      }
-    ]
+            loader: 'sass-loader',
+          },
+        ],
+      },
+    ],
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, 'src', 'index.html'),
-      filename: 'index.html'
+      filename: 'index.html',
     }),
     new MiniCssExtractPlugin({
-      filename: 'css/styles.css'
-    })
-  ]
+      filename: 'css/styles.css',
+    }),
+  ],
 };
