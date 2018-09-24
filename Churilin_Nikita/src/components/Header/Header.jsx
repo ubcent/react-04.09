@@ -1,71 +1,53 @@
 import './Header.css';
 
-import React, { Component } from 'react';
-import classNames from 'classnames';
-import PropTypes from 'prop-types';
+import React, {PureComponent} from 'react';
+import {Link} from 'react-router-dom';
 
-export default class Header extends Component {
+const styleForCheckedMenu = {
+  borderBottom: "2px solid #fff",
+};
+
+const nonStyle = {
+  color: "#fff",
+};
+
+export default class Header extends PureComponent {
   constructor(props) {
     super(props);
+
     this.state = {
-      heading: 'Clean Blog',
-      otherHeaging: '',
-      subHeading: 'A Blog Theme by Start Bootstrap'
+      checked: '/',
     };
-  }
 
-  static propTypes = {
-    menus: PropTypes.arrayOf(PropTypes.string), 
+    this.checked = this.checked.bind(this);
   };
 
-  static defaultProps = {
-    menus: [],
+  checked() {
+    this.forceUpdate();
   };
-
-  changeHeading = (menu) => {
-    switch(menu.menu) {
-      case 'HOME':
-      this.setState(prevState => ({
-        heading: 'Clean Blog',
-        subHeading: 'A Blog Theme by Start Bootstrap'
-      }));
-      break;
-      case 'ABOUT':
-      this.setState(prevState => ({
-        heading: 'About Me',
-        subHeading: 'This is what I do.'
-      }));
-      break;
-      break;
-      case 'CONTACT':
-      this.setState(prevState => ({
-        heading: 'Contact Me',
-        subHeading: 'Have questions? I have answers.'
-      }));
-      break;
-    }
-  };
-
+  
   render() {
-    const { menus } = this.props;
-    const headerClasses = classNames('header');
-    const logo = classNames('logo');
-    const menu = classNames('menu');
-    const heading = classNames('heading');
-
     return (
-      <header className={headerClasses}>
-        <div className={menu}>
-          <a href="#" className={logo}>Start Bootstrap</a>
-          <ul>
-            {menus.map((menu, idx) => <li key={idx} onClick={() => this.changeHeading({menu})}><a href="#">{menu}</a></li>)}
-          </ul>
+      <header>
+        <div className="top">
+          <Link to='/' onClick={this.checked}><span>Start Bootstrap</span></Link>
+          <nav>
+            <ul>
+              <li onClick={this.checked} style={document.location.pathname === '/' ? styleForCheckedMenu : nonStyle}><Link to='/'>HOME</Link></li>
+              <li onClick={this.checked} style={document.location.pathname === '/about' ? styleForCheckedMenu : nonStyle}><Link to='/about'>ABOUT</Link></li>
+              <li onClick={this.checked} style={document.location.pathname === '/sample-post' ? styleForCheckedMenu : nonStyle}><Link to='sample-post'>SAMPLE POST</Link></li>
+            </ul>
+          </nav>
         </div>
-        <div className={heading}>
-          <h1>{this.state.heading}</h1>
-          <h2>{this.state.subHeading}</h2>
+        <div className="textInHeader">
+          <h1>{document.location.pathname === '/' ? 'Clean Blog' :
+               document.location.pathname === '/about' ? 'About Me' :
+               document.location.pathname === '/sample-post' ? 'Sample post' : ''}</h1>
+          <p>{document.location.pathname === '/' ? 'A Blog Theme by Start Bootstrap' :
+               document.location.pathname === '/about' ? 'This is what I do.' :
+               document.location.pathname === '/sample-post' ? 'Text for example' : ''}</p>
         </div>
       </header>
     );
-  }
-}
+  };
+};
