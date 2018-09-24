@@ -4,7 +4,7 @@ import Errors from 'Components/Errors';
 import Loading from 'Components/Loading';
 import CommentsList from 'Components/CommentsList';
 
-export default class CommentsContainer extends PureComponent {
+export default class CommentsListContainer extends PureComponent {
   constructor(props) {
     super(props);
 

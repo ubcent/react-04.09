@@ -5,6 +5,7 @@
     "linebreak-style": 0,
     "no-alert": 0,
     "no-console": 0,
+    "no-debugger": 0,
     "react/no-array-index-key": 0,
     "import/no-unresolved": 0,
     "jsx-a11y/anchor-is-valid": 0,

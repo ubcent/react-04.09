@@ -15,7 +15,8 @@ const config = {
         target: 'http://localhost:3000',
         secure: false
       }
-    }
+    },
+    historyApiFallback: true,
   },
   module: {
     rules: [

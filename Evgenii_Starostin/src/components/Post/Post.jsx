@@ -2,9 +2,10 @@ import './Post.css';
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 function Post(props) {
-  const { post, handleClick } = props;
+  const { post } = props;
 
   return (
     <article className="article">
@@ -17,13 +18,15 @@ function Post(props) {
       ))}
 
       <footer className="article__footer">
-        <p className="article__author">{post.user.name}</p>
+        <p className="article__author">
+          <Link to={`/users/${post.user.id}`}>{post.user.name}</Link>
+        </p>
       </footer>
 
-      <a href="#" onClick={handleClick}>
+      <Link to="/posts">
         <span className="glyphicon glyphicon-chevron-left" aria-hidden="true" />
         Вернуться ко списку постов
-      </a>
+      </Link>
     </article>
   );
 }
@@ -35,12 +38,10 @@ Post.propTypes = {
     userId: PropTypes.number,
     paragraphs: PropTypes.arrayOf(PropTypes.string),
   }),
-  handleClick: PropTypes.func,
 };
 
 Post.defaultProps = {
   post: null,
-  handleClick: null,
 };
 
 export default Post;

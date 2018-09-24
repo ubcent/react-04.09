@@ -2,19 +2,20 @@ import './UsersList.css';
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 function UsersList(props) {
-  const { users, handleClick } = props;
+  const { users } = props;
 
   return (
     <ul className="list-group">
       {users.map(user => (
         <li key={user.id} className="list-group-item">
-          <a href="#" className="userlist__user" data-id={user.id} onClick={handleClick}>
+          <Link to={`/users/${user.id}`} className="userlist__user">
             <span className="glyphicon glyphicon-user" aria-hidden="true" />
             {' '}
             {user.name}
-          </a>
+          </Link>
         </li>
       ))}
     </ul>
@@ -26,12 +27,10 @@ UsersList.propTypes = {
     id: PropTypes.number,
     name: PropTypes.string,
   })),
-  handleClick: PropTypes.func,
 };
 
 UsersList.defaultProps = {
   users: [],
-  handleClick: null,
 };
 
 export default UsersList;

@@ -2,9 +2,10 @@ import './User.css';
 
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 function User(props) {
-  const { user, handleClick } = props;
+  const { user } = props;
 
   return (
     <Fragment>
@@ -16,7 +17,7 @@ function User(props) {
           {user.posts.map(post => (
             <article key={post.id} className="article">
               <header className="article__header">
-                <h4>{post.title}</h4>
+                <h4><Link to={`/posts/${post.id}`}>{post.title}</Link></h4>
               </header>
               <p className="article__paragraph">{post.paragraphs[0]}</p>
             </article>
@@ -35,10 +36,10 @@ function User(props) {
         </div>
       </div>
 
-      <a href="#" onClick={handleClick}>
+      <Link to="/users">
         <span className="glyphicon glyphicon-chevron-left" aria-hidden="true" />
         Вернуться ко списку пользователей
-      </a>
+      </Link>
     </Fragment>
   );
 }
@@ -48,12 +49,10 @@ User.propTypes = {
     id: PropTypes.number,
     name: PropTypes.string,
   }),
-  handleClick: PropTypes.func,
 };
 
 User.defaultProps = {
   user: null,
-  handleClick: null,
 };
 
 export default User;
