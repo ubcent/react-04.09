@@ -21,7 +21,7 @@
     background: rgb(200, 129, 209);
 }
 
-.message:nth-child(2n) {
+.message-yours {
     margin-left: 20%;
 }
 
