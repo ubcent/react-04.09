@@ -22,7 +22,7 @@ export default class PostContainer extends PureComponent {
     const { postId } = this.props;
     this.setState({ loading: true });
     modelPosts.getPost(postId)
-      .then((post) => {
+      .then(({post}) => {
         this.setState((prevState) => ({
           loading: false,
           post,

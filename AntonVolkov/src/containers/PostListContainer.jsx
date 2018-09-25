@@ -11,58 +11,73 @@ export default class PostListContainer extends PureComponent {
         this.state = {
             posts: [],
             loading: false,
+            page: null,
+            count: 0,
         }
     }
 
     static propTypes = {
-        itemsPerPage: PropTypes.number,
+        limit: PropTypes.number,
         userId: PropTypes.number,
         postIds: PropTypes.arrayOf(PropTypes.number),
     }
 
     static defaultProps = {
-        itemsPerPage: 12,
+        limit: null,
     };
 
     componentDidMount() {
+        this.loadPosts();    
+    }
+
+    changePage = page => {
+        this.setState({ page: page });
+        this.loadPosts(page);
+    }
+
+    loadPosts = (page) => {
+        const { postIds, userId, limit } = this.props;
+
         this.setState({ loading: true });
-        const { postIds, userId } = this.props;
+
         if (postIds) {
-            modelPosts.getPostsById(postsIds)
-                .then((posts) => {
+            modelPosts.getPostsById(postsIds, limit, page)
+                .then(({posts, count}) => {
                     this.setState((prevState) => ({
                         loading: false,
                         posts,
+                        count,
                     }));
                 });
         } else if (userId) {
-            modelPosts.getPostsByUserId(userId)
-                .then((posts) => {
+            modelPosts.getPostsByUserId(userId, limit, page)
+                .then(({posts, count}) => {
                     this.setState((prevState) => ({
                         loading: false,
                         posts,
+                        count,
                     }));
                 });
         } else {
-            modelPosts.getPosts()
-                .then((posts) => {
+            modelPosts.getPosts(limit, page)
+                .then(({posts, count}) => {
                     this.setState((prevState) => ({
                         loading: false,
                         posts,
+                        count,
                     }));
                 });
         }
-        
     }
 
     render() {
-        const { itemsPerPage } = this.props;
-        const { posts, loading } = this.state;
+        const { limit } = this.props;
+        const { posts, loading, count } = this.state;
 
         return (
             <Fragment>
-                <PostList itemsPerPage={itemsPerPage} posts={posts} />
                 { loading && 'Loading...' }
+                <PostList limit={limit} count={count} posts={posts} onChangePage={this.changePage} />
             </Fragment>
         );
     }

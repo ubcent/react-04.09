@@ -1,28 +1,54 @@
 const modelPosts = {
     base: "http://localhost:3000",
-    async getPosts(){
-        let posts = await fetch(`${this.base}/posts?_expand=user`)
-            .then(data => data.json());
-        return posts;
+    async getPosts(limit, page){
+        let count;
+        page = page ? page : 1;
+        limit = limit ? `&_limit=${limit}&_page=${page}` : '';
+
+        const posts = await fetch(`${this.base}/posts?_expand=user${limit}`)
+            .then(data => {
+                count = +data.headers.get('X-Total-Count');
+                return data.json();
+            });
+
+        return {posts, count};
     },
 
     async getPost(id){
         const post = await fetch(`${this.base}/posts/${id}?_expand=user`)
             .then(data => data.json());
-        return post;
+
+        return {post};
     },
 
-    async getPostsByUserId(userId){
-        const posts = await fetch(`${this.base}/users/${userId}/posts`)
-            .then(data => data.json());
-        return posts;
+    async getPostsByUserId(userId, limit, page) {
+        let count;
+
+        page = page ? page : 1;
+        limit = limit ? `?_limit=${limit}&_page=${page}` : '';
+        const posts = await fetch(`${this.base}/users/${userId}/posts${limit}`)
+            .then(data => {
+                count = +data.headers.get('X-Total-Count');
+                return data.json();
+            });
+
+        return { posts, count };
     },
     
-    async getPostsById(ids) {
+    async getPostsById(ids, limit, page) {
+        let count;
+
+        page = page ? page : 1;
+        limit = limit ? `&_limit=${limit}&_page=${page}` : '';
         ids = [].concat(ids).join('&id=');
-        const posts = await fetch(`${this.base}/posts?id=${ids}&_expand=user`)
-            .then(data => data.json());
-        return posts;
+
+        const posts = await fetch(`${this.base}/posts?id=${ids}&_expand=user${limit}`)
+            .then(data => {
+                count = +data.headers.get('X-Total-Count');
+                return data.json();
+            });
+
+        return { posts, count };
     },
 }
 

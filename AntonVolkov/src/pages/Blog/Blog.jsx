@@ -10,7 +10,7 @@ export default class Blog extends Component {
         return (
             <div className="Blog-pege">
                 <p className="Blog-pege__text">It's Blog Page. =)</p>
-                <PostListContainer itemsPerPage={10}/>
+                <PostListContainer limit={6}/>
             </div>
         );
     }

@@ -10,7 +10,7 @@ export default class Home extends Component {
         return (
             <div className="home-pege">
                 <p className="home-pege__text">It's Home Page. =)</p>
-                <PostListContainer itemsPerPage={10}/>
+                <PostListContainer limit={4}/>
             </div>
         );
     }
