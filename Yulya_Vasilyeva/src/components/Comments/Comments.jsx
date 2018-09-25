@@ -3,7 +3,6 @@ import './Comments.scss';
 //компоненты React
 import React, { PureComponent, Fragment } from 'react';
 import {
-    Alert,
     ListGroup,
     ListGroupItem,
     ListGroupItemHeading,
@@ -17,12 +16,12 @@ export default class Comments extends PureComponent {
             <Fragment>
                 <h1>Последние комментарии</h1>
                 <ListGroup>
-                    {comments.map((item, indx) =>
+                {comments.map((item, indx) =>
                         <ListGroupItem key={indx} className="comment-item">
                             <ListGroupItemHeading>Статья: </ListGroupItemHeading>
                             <ListGroupItemText>
                                 {item.text}
-                                <Alert color="light">Пользователь: {item.name} / Дата: {item.data}</Alert>
+                                <span className="comment-info">Пользователь: <a href="#">{item.name}</a> / Дата: {item.data}</span>
                             </ListGroupItemText>
                         </ListGroupItem>
                     )}
