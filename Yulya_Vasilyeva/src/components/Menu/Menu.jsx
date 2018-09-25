@@ -16,7 +16,7 @@ import {Link} from 'react-router-dom';
 
 export default class Menu extends Component {
     render() {
-        const { menu, toggle, isOpen, clickMenu } = this.props;
+        const { activeMenu, menu, toggle, isOpen, clickMenu } = this.props;
         return (
             <Navbar dark expand="md">
                 <NavbarBrand href="/" className="logo">
@@ -27,7 +27,7 @@ export default class Menu extends Component {
                 <Collapse isOpen={isOpen} navbar>
                     <Nav className="mr-auto" navbar>
                         {menu.map( item =>{
-                            const activeClass = item.active ? 'active-menu' : '';
+                            const activeClass = activeMenu === item.id ? 'active-menu' : '';
                             //элементы главного меню
                             return(
                                 <NavItem key={`mainMenu${item.id}`} >

@@ -22,28 +22,9 @@ export default class MenuContainer extends PureComponent {
 
     //при клике на пункт меню, он становится активным
     clickMenu = (ev) => {
-        const { menu } = this.state;
-       
-        const menuItem = menu.filter( item => item.id === +ev.target.name )[0];
-        const url = `http://127.0.0.1:3000/menu/${ev.target.name}`;
-        fetch(url, {
-            method: 'put',
-            headers:{
-                "Content-type": "application/json"
-            },
-            body: JSON.stringify({
-                title: menuItem.title,
-                link: menuItem.link,
-                active: true
-            })
-        })
-        .then(resp => resp.json())
-        .then( ()=>{
-            this.setState({
-                activeMenu:1
-            })
-        })
-        .catch(err => console.error(err))
+        this.setState({
+            activeMenu: +ev.target.name,
+       }); 
     }
 
     //появление / скрытие коллапс меню
@@ -57,19 +38,20 @@ export default class MenuContainer extends PureComponent {
     componentDidMount(){
         const url = `http://127.0.0.1:3000/menu`;
         fetch(url)
-            .then((response) => response.json())
-            .then((data) => {
-                this.setState({
+        .then((response) => response.json())
+        .then((data) => {
+            this.setState({
                     menu: data
-                });
             });
+        });
+        
     }
     
     render() {
-        const { isOpen, menu } = this.state;//состояние открытового меню (сжатая версия)
+        const { isOpen, menu, activeMenu } = this.state;//состояние открытового меню (сжатая версия)
         //строим навигацию на сайте (главная)
         return (
-            <Menu menu={menu} isOpen={isOpen} toggle={this.toggle} clickMenu={this.clickMenu}/>
+            <Menu activeMenu={activeMenu} menu={menu} isOpen={isOpen} toggle={this.toggle} clickMenu={this.clickMenu}/>
         );
     }
 }
