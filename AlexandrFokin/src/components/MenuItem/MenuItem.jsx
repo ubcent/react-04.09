@@ -31,13 +31,16 @@ export default class MenuItem extends Component {
   render() {
     // получаем переданные свойства пункта меню
     const {id, name, to} = this.props.item;
+    // проверка пути в строке браузера при выделении пункта меню
+    const checkLocation = path => location.pathname === path;
+
     return (
       <Fragment>
-        {/* Присваиваем пункту меню id и адрес перехода */}
-        <NavLink activeClassName="active"
-                 exact
+        {/* Присваиваем пункту меню id и адрес перехода, активному пункту меню присваивается класс active */}
+        <NavLink exact
                  to={to}
-                 id={id}>
+                 id={id}
+                 isActive={() => checkLocation(to)}>
           {/* Отображаем название пункта меню */}
           {name}
         </NavLink>
