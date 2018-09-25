@@ -1,6 +1,6 @@
 import './About.css';
 
-import React, {PureComponent} from 'react';
+import React, { PureComponent } from 'react';
 
 export default class About extends PureComponent {
   constructor(props) {
@@ -8,7 +8,7 @@ export default class About extends PureComponent {
 
     this.state = {};
   };
-  
+
   render() {
     return (
       <div className="about">

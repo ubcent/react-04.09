@@ -39,4 +39,4 @@ export default [
     component: PageOfPost,
     exact: true
   },
-]
+];

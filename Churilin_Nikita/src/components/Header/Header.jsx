@@ -1,15 +1,11 @@
 import './Header.css';
 
-import React, {PureComponent} from 'react';
-import {Link} from 'react-router-dom';
+import React, { PureComponent } from 'react';
+import { Link } from 'react-router-dom';
 
-const styleForCheckedMenu = {
-  borderBottom: "2px solid #fff",
-};
+const styleForCheckedMenu = { borderBottom: '2px solid #fff', };
 
-const nonStyle = {
-  color: "#fff",
-};
+const nonStyle = { color: '#fff', };
 
 export default class Header extends PureComponent {
   constructor(props) {
@@ -25,7 +21,7 @@ export default class Header extends PureComponent {
   checked() {
     this.forceUpdate();
   };
-  
+
   render() {
     return (
       <header>
@@ -41,11 +37,11 @@ export default class Header extends PureComponent {
         </div>
         <div className="textInHeader">
           <h1>{document.location.pathname === '/' ? 'Clean Blog' :
-               document.location.pathname === '/about' ? 'About Me' :
-               document.location.pathname === '/sample-post' ? 'Sample post' : ''}</h1>
+            document.location.pathname === '/about' ? 'About Me' :
+              document.location.pathname === '/sample-post' ? 'Sample post' : ''}</h1>
           <p>{document.location.pathname === '/' ? 'A Blog Theme by Start Bootstrap' :
-               document.location.pathname === '/about' ? 'This is what I do.' :
-               document.location.pathname === '/sample-post' ? 'Text for example' : ''}</p>
+            document.location.pathname === '/about' ? 'This is what I do.' :
+              document.location.pathname === '/sample-post' ? 'Text for example' : ''}</p>
         </div>
       </header>
     );

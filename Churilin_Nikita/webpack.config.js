@@ -18,7 +18,7 @@ module.exports = {
   },
   module: {
     rules: [
-      { 
+      {
         test: /\.jsx?$/,
         exclude: /node_modules/,
         use: {
@@ -44,4 +44,4 @@ module.exports = {
       filename: 'index.html',
     })
   ]
-}
+};

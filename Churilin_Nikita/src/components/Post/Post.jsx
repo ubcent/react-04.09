@@ -1,7 +1,7 @@
 import './Post.css';
 
-import React, {PureComponent} from 'react';
-import {Link} from 'react-router-dom';
+import React, { PureComponent } from 'react';
+import { Link } from 'react-router-dom';
 
 export default class Post extends PureComponent {
   constructor(props) {
@@ -11,7 +11,7 @@ export default class Post extends PureComponent {
 
     };
   };
-  
+
   render() {
     return (
       <div className="post">
