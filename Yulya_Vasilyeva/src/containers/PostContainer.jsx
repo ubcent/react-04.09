@@ -36,7 +36,6 @@ export default class PostContainer extends PureComponent {
 
     render() {
         const { article, loading } = this.state;
-
         return (
             <Fragment>
                 {loading ? 'Загрузка...' :
