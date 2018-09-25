@@ -1,16 +1,19 @@
 <html>
-  <head>
-    <title>React App</title>
-  </head>
-  <body>
-    <div id="root"></div>
-  </body>
-  <script>
-    const messages = document.getElementById('messages');
-    const send = document.getElementById('send');
+
+<head>
+  <title>React App</title>
+</head>
+
+<body>
+  <div id="root"></div>
+</body>
+<script>
+  const messages = document.getElementById('messages');
+  const send = document.getElementById('send');
+  messages.scrollTop = messages.scrollHeight;
+  send.addEventListener('submit', function () {
     messages.scrollTop = messages.scrollHeight;
-    send.addEventListener('submit', function() {
-      messages.scrollTop = messages.scrollHeight;
-    });
-  </script>
+  });
+</script>
+
 </html>

@@ -1,6 +1,6 @@
 import './InputForMessage.css';
 
-import React, {PureComponent} from 'react';
+import React, { PureComponent } from 'react';
 
 export default class InputForMessage extends PureComponent {
   constructor(props) {
@@ -9,9 +9,9 @@ export default class InputForMessage extends PureComponent {
     this.state = {
       myMessage: '',
     };
-  };
+  }
 
-  sendMessage = (event) => {
+  sendMessage = event => {
     event.preventDefault();
     this.props.getMessage(this.state.myMessage);
     this.setState({
@@ -19,18 +19,22 @@ export default class InputForMessage extends PureComponent {
     });
   };
 
-  myMessage = (event) => {
+  myMessage = event => {
     this.setState({
       myMessage: event.target.value,
     });
   };
-  
+
   render() {
     return (
       <form id="send" onSubmit={this.sendMessage} className="input-for-message">
-        <input onChange={this.myMessage} type="text" value={this.state.myMessage} />
+        <input
+          onChange={this.myMessage}
+          type="text"
+          value={this.state.myMessage}
+        />
         <button type="submit">>></button>
       </form>
     );
-  };
-};
+  }
+}

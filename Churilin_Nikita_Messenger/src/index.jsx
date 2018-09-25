@@ -1,4 +1,4 @@
-import React, {Component, Fragment} from 'react';
+import React, { Component, Fragment } from 'react';
 import ReactDom from 'react-dom';
 
 import WindowForMessages from 'components/WindowForMessages';
@@ -11,9 +11,9 @@ class App extends Component {
     this.state = {
       message: [],
     };
-  };
+  }
 
-  getMessage = (value) => {
+  getMessage = value => {
     this.setState({
       message: value,
     });
@@ -24,7 +24,11 @@ class App extends Component {
     let name = 'Nikita';
     return (
       <Fragment>
-        <WindowForMessages name={name} text={this.state.message} userId={userId} />
+        <WindowForMessages
+          name={name}
+          text={this.state.message}
+          userId={userId}
+        />
         <InputForMessage getMessage={this.getMessage} />
         <h1>{this.state.messages}</h1>
       </Fragment>

@@ -1,14 +1,14 @@
 import './BubleWithMessage.css';
 
-import React, {PureComponent} from 'react';
+import React, { PureComponent } from 'react';
 
 export default class BubleWithMessage extends PureComponent {
   constructor(props) {
     super(props);
 
     this.state = {};
-  };
-  
+  }
+
   render() {
     return (
       <div style={this.props.style} className="buble-with-message">
@@ -16,5 +16,5 @@ export default class BubleWithMessage extends PureComponent {
         <p>{this.props.text}</p>
       </div>
     );
-  };
-};
+  }
+}
