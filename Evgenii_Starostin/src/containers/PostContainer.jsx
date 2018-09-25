@@ -7,11 +7,11 @@ import Post from 'Components/Post';
 
 export default class PostsContainer extends PureComponent {
   static propTypes = {
-    match: PropTypes.arrayOf(PropTypes.shape({
+    match: PropTypes.shape({
       params: PropTypes.shape({
         postId: PropTypes.string,
       }),
-    })),
+    }),
   };
 
   static defaultProps = {

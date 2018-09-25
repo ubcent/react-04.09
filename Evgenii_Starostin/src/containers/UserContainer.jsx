@@ -7,11 +7,11 @@ import User from 'Components/User';
 
 export default class UsersListContainer extends PureComponent {
   static propTypes = {
-    match: PropTypes.arrayOf(PropTypes.shape({
+    match: PropTypes.shape({
       params: PropTypes.shape({
         userId: PropTypes.string,
       }),
-    })),
+    }),
   };
 
   static defaultProps = {
