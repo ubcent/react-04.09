@@ -34,10 +34,12 @@
     "webpack-dev-server": "^3.1.7"
   },
   "dependencies": {
+    "promise-polyfill": "8.1.0",
     "prop-types": "^15.6.2",
     "react": "^16.5.0",
     "react-bootstrap": "^0.32.4",
     "react-dom": "^16.5.0",
-    "react-router-dom": "^4.3.1"
+    "react-router-dom": "^4.3.1",
+    "whatwg-fetch": "^3.0.0"
   }
 }

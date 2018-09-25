@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 
 const config = {
-  entry: './src/index.jsx',
+  entry: ['promise-polyfill/src/polyfill', 'whatwg-fetch', './src/index.jsx'],
   output: { 
     path: path.resolve(__dirname, 'build'),
     filename: 'bundle.js'
