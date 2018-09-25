@@ -33,7 +33,7 @@ export default class FormCommentsContainer extends PureComponent {
 
     //добавляем комментарии в JSON
     addComment = () => {
-        const { nameUser, messageUser, emailUser, update } = this.state;
+        const { nameUser, messageUser, emailUser } = this.state;
         const { postId } = this.props;
         //если поля формы не пустые
         if (nameUser && messageUser && emailUser) {
