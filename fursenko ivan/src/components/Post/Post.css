@@ -2,7 +2,9 @@
     box-shadow: 1px 1px 4px 0px;
     padding: 5px;
     margin: 10px;
-    width: 100%;
+    min-width: 150px;
+    min-height: 150px;
+    max-width: 200px;
 }
 
 .post > div {
@@ -10,13 +12,12 @@
     justify-content: space-between;
 }
 
-.post > div > h2 {
+.post > div > div > h2 {
     margin: 0;
+    font-family: sans-serif;
 }
 
-.blog {
-    box-shadow: none;
-    background: transparent;
-    padding: 0;
-    margin: 0;
+.post > div > div:hover > h2 {
+    cursor: pointer;
+    text-decoration: underline;
 }

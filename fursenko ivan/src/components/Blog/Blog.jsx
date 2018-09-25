@@ -36,7 +36,7 @@ export default class Blog extends PureComponent {
                {
                 posts.map((post) => {
                     const postComments = comments.find((obj) => (obj.id == post.id));
-                    return <Post key={post.id} onClick={this.getComments} data={post} comments={postComments ? postComments.data : postComments} />
+                    return <Post key={post.id} data={post} comments={postComments ? postComments.data : postComments} />
                 })
                 }
             </div>
