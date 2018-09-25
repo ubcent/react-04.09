@@ -5,6 +5,8 @@ import Post from 'components/Post';
 
 //для проверки свойств компонента
 import PropTypes from 'prop-types';
+//функция fetch
+import requestData from './func';
 
 export default class PostContainer extends PureComponent {
     constructor(props) {
@@ -23,25 +25,22 @@ export default class PostContainer extends PureComponent {
     componentDidMount() {
         const { match } = this.props; //получаем id поста
         const id = match.params.postId;
-        //выбираем статью
-        const url = `http://127.0.0.1:3000/article/${id}`;
-        fetch(url)
-            .then((response) => response.json())
-            .then((data) => {
-                this.setState({
-                    article: data,
-                    loading: false,
-                });
+        // получаем статью
+        requestData(`article/${id}`).then((article) => {
+            this.setState({
+                article,
+                loading: false,
             });
+        })
     }
 
     render() {
         const { article, loading } = this.state;
-        
+
         return (
             <Fragment>
-                {loading ? 'Загрузка...' : 
-                    <Post article={article}/>
+                {loading ? 'Загрузка...' :
+                    <Post article={article} />
                 }
             </Fragment>
         );

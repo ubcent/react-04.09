@@ -5,11 +5,13 @@ import Article from 'components/Article';
 
 //для проверки свойств компонента
 import PropTypes from 'prop-types';
+//функция fetch
+import requestData from './func';
 
 export default class ArticleContainer extends PureComponent {
-    constructor(props){
-       super(props);
-       
+    constructor(props) {
+        super(props);
+
         this.state = {
             article: [],
         }
@@ -18,13 +20,11 @@ export default class ArticleContainer extends PureComponent {
         article: PropTypes.arrayOf(PropTypes.object),
     }
 
-    componentDidMount(){
-        const url = 'http://127.0.0.1:3000/article';
-        fetch(url)
-        .then( resp => resp.json())
-        .then( data => {
+    componentDidMount() {
+        // получаем список статей с сервера
+        requestData('article').then((article) => {
             this.setState({
-                article: data
+                article
             });
         })
     }
@@ -32,7 +32,7 @@ export default class ArticleContainer extends PureComponent {
     render() {
         const { article } = this.state;
         return (
-            <Article article={article}/>
+            <Article article={article} />
         );
     }
 }

@@ -5,6 +5,8 @@ import PostComments from 'components/Post/PostComments';
 
 //для проверки свойств компонента
 import PropTypes from 'prop-types';
+//функция fetch
+import requestData from './func';
 
 export default class PostCommentsContainer extends PureComponent {
     constructor(props) {
@@ -21,16 +23,12 @@ export default class PostCommentsContainer extends PureComponent {
     //получаем комментарии из JSON
     componentDidMount() {
         const { postId } = this.props; //получаем id поста
-
-        //выбираем комментарии для определенного поста
-        const url = `http://127.0.0.1:3000/comments?postId=${postId}`;
-        fetch(url)
-            .then((response) => response.json())
-            .then((data) => {
-                this.setState({
-                    comments: data,
-                });
+        // получаем список комментариев к статье
+        requestData(`comments?postId=${postId}`).then((comments) => {
+            this.setState({
+                comments
             });
+        })
     }
     render() {
         const { comments } = this.state;

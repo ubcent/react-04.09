@@ -5,6 +5,8 @@ import Submenu from 'components/Submenu';
 
 //проверка свойств
 import PropTypes from 'prop-types';
+//функция fetch
+import requestData from './func';
 
 //компонент для бокового меню на странице
 export default class SubmenuContainer extends PureComponent {
@@ -21,15 +23,13 @@ export default class SubmenuContainer extends PureComponent {
         submenu: PropTypes.arrayOf(PropTypes.object),
     }
 
-    componentDidMount(){
-        const url = `http://127.0.0.1:3000/submenu`;
-        fetch(url)
-            .then((response) => response.json())
-            .then((data) => {
-                this.setState({
-                    submenu: data,
-                });
+    componentDidMount() {
+        // получаем боковое меню
+        requestData('submenu').then((submenu) => {
+            this.setState({
+                submenu
             });
+        })
     }
 
     render() {

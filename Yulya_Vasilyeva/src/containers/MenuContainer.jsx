@@ -4,6 +4,8 @@ import Menu from 'components/Menu';
 
 //проверка свойств
 import PropTypes from 'prop-types';
+//функция fetch
+import requestData from './func';
 
 export default class MenuContainer extends PureComponent {
     constructor(props) {
@@ -24,7 +26,7 @@ export default class MenuContainer extends PureComponent {
     clickMenu = (ev) => {
         this.setState({
             activeMenu: +ev.target.name,
-       }); 
+        });
     }
 
     //появление / скрытие коллапс меню
@@ -35,23 +37,20 @@ export default class MenuContainer extends PureComponent {
         });
     }
 
-    componentDidMount(){
-        const url = `http://127.0.0.1:3000/menu`;
-        fetch(url)
-        .then((response) => response.json())
-        .then((data) => {
+    componentDidMount() {
+        // получаем меню с сервера
+        requestData('menu').then((menu) => {
             this.setState({
-                    menu: data
+                menu
             });
-        });
-        
+        })
     }
-    
+
     render() {
         const { isOpen, menu, activeMenu } = this.state;//состояние открытового меню (сжатая версия)
         //строим навигацию на сайте (главная)
         return (
-            <Menu activeMenu={activeMenu} menu={menu} isOpen={isOpen} toggle={this.toggle} clickMenu={this.clickMenu}/>
+            <Menu activeMenu={activeMenu} menu={menu} isOpen={isOpen} toggle={this.toggle} clickMenu={this.clickMenu} />
         );
     }
 }

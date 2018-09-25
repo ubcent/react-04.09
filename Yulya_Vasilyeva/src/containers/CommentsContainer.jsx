@@ -1,13 +1,15 @@
 //компоненты React
-import React, {PureComponent} from 'react';
+import React, { PureComponent } from 'react';
 
 import Comments from 'components/Comments';
 
 //для проверки свойств компонента
 import PropTypes from 'prop-types';
+//функция fetch
+import requestData from './func';
 
-export default class CommentsContainer extends PureComponent{
-    constructor(props){
+export default class CommentsContainer extends PureComponent {
+    constructor(props) {
         super(props);
 
         this.state = {
@@ -18,21 +20,19 @@ export default class CommentsContainer extends PureComponent{
         comments: PropTypes.arrayOf(PropTypes.object),
     }
 
-    componentDidMount(){
-        const url = `http://127.0.0.1:3000/comments`;
-        fetch(url)
-            .then((response) => response.json())
-            .then((data) => {
-                this.setState({
-                    comments: data,
-                });
+    componentDidMount() {
+        // получаем список комментариев с сервера
+        requestData('comments').then((comments) => {
+            this.setState({
+                comments
             });
+        })
     }
 
-    render(){
-        const { comments } = this.state; 
-        return(
-            <Comments comments={comments}/>
+    render() {
+        const { comments } = this.state;
+        return (
+            <Comments comments={comments} />
         );
     }
 }
