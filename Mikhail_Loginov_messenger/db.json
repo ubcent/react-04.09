@@ -1,59 +1,168 @@
 {
-  "messages": [
+  "messagesToYou": [
     {
       "id": 1,
       "text": "My awesome comment",
-      "author": "John"
+      "authorID": 2,
+      "createdAt": 1537892683921
     },
     {
       "id": 2,
       "text": "Another awesome comment",
-      "author": "Mike"
+      "authorID": 4,
+      "createdAt": 1537892683921
     },
     {
       "id": 3,
       "text": "This chat is working!",
-      "author": "Cool guy"
+      "authorID": 3,
+      "createdAt": 1537892683921
     },
     {
       "text": "6161126",
-      "author": "6161",
-      "id": 4
+      "authorID": 2,
+      "id": 4,
+      "createdAt": 1537892683921
     },
     {
       "text": "twees",
-      "author": "yesy",
-      "id": 5
+      "authorID": 3,
+      "id": 5,
+      "createdAt": 1537892683921
     },
     {
       "text": "testset",
-      "author": "test",
-      "id": 6
+      "authorID": 2,
+      "id": 6,
+      "createdAt": 1537892683921
     },
     {
       "text": "123",
-      "author": "123",
-      "id": 7
+      "authorID": 3,
+      "id": 7,
+      "createdAt": 1537892683921
     },
     {
       "text": "616122121",
-      "author": "61616",
-      "id": 8
+      "authorID": 2,
+      "id": 8,
+      "createdAt": 1537892683921
     },
     {
       "text": "tretzxz",
-      "author": "tret",
-      "id": 9
+      "authorID": 2,
+      "id": 9,
+      "createdAt": 1537892683921
     },
     {
       "text": "yeah",
-      "author": "it's works!",
+      "authorID": 4,
+      "id": 10,
+      "createdAt": 1537892683921
+    }
+  ],
+  "messagesFromYou": [
+    {
+      "text": "1",
+      "toUserID": 2,
+      "id": 1,
+      "createdAt": 1537892683921
+    },
+    {
+      "text": "515215",
+      "toUserID": 3,
+      "id": 2,
+      "createdAt": 1537892683921
+    },
+    {
+      "text": "441241512",
+      "toUserID": 4,
+      "id": 3,
+      "createdAt": 1517892683921
+    },
+    {
+      "text": "515215",
+      "toUserID": 3,
+      "id": 4,
+      "createdAt": 1527892683921
+    },
+    {
+      "text": "fdsfsd",
+      "toUserID": 2,
+      "createdAt": 1537893889438,
+      "id": 5
+    },
+    {
+      "text": "fdsfsd",
+      "toUserID": 3,
+      "createdAt": 1537893954349,
+      "id": 6
+    },
+    {
+      "text": "fdsf",
+      "toUserID": 3,
+      "createdAt": 1537894129374,
+      "id": 7
+    },
+    {
+      "text": "dsfsdf",
+      "toUserID": 2,
+      "createdAt": 1537895141481,
+      "id": 8
+    },
+    {
+      "text": "adsf",
+      "toUserID": 3,
+      "createdAt": 1537895147488,
+      "id": 9
+    },
+    {
+      "text": "fds",
+      "toUserID": 4,
+      "createdAt": 1537895154281,
       "id": 10
     },
     {
-      "text": "1525125",
-      "author": "5125",
+      "text": "gfdgdfgdfg",
+      "toUserID": 2,
+      "createdAt": 1537898585016,
       "id": 11
+    },
+    {
+      "text": "gfdgd",
+      "toUserID": 2,
+      "createdAt": 1537898664856,
+      "id": 12
+    },
+    {
+      "text": "z",
+      "toUserID": 2,
+      "createdAt": 1537898667489,
+      "id": 13
+    },
+    {
+      "text": "fdsfsdf",
+      "toUserID": 2,
+      "createdAt": 1537898710922,
+      "id": 14
+    }
+  ],
+  "contacts": [
+    {
+      "id": 1,
+      "firstName": "Mikhail"
+    },
+    {
+      "id": 2,
+      "firstName": "John"
+    },
+    {
+      "id": 3,
+      "firstName": "David"
+    },
+    {
+      "id": 4,
+      "firstName": "Rachel"
     }
   ]
 }
