@@ -15,7 +15,7 @@ module.exports = {
         alias: {
             components: path.resolve(__dirname, 'src', 'components'),
             data: path.resolve(__dirname, 'src', 'data'),
-            container: path.resolve(__dirname, 'src', 'container')
+            containers: path.resolve(__dirname, 'src', 'containers')
         }
     },
     module: {

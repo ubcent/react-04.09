@@ -19,7 +19,6 @@ export default class BlogPosts extends PureComponent {
     if (this.state.collapsedUsersIDs.indexOf(user.id) === -1) {
       this.setState({collapsedUsersIDs: this.state.collapsedUsersIDs.concat(user.id)});
     } else {
-      // WTF IS GOING ON HERE?!
       let tempArray = this.state.collapsedUsersIDs.slice();
       tempArray.splice(tempArray.indexOf(user.id),1);
       this.setState({collapsedUsersIDs: tempArray});
