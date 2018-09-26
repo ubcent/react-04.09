@@ -1,49 +1,19 @@
 import './CommentsList.css';
 
 import React, { Component, PureComponent } from 'react';
+import { Link } from 'react-router-dom';
 
 export default class CommentsList extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      comments: [],
-    }
-    this.interval = null;
-  }
-  // После монитирования компонента
-  componentDidMount() {
-    this.interval = setInterval(() => {
-      fetch('https://jsonplaceholder.typicode.com/comments')
-        .then((response) => response.json())
-        .then((comments) => {
-          this.setState({
-            comments: comments,
-          });
-        });
-    })
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if(nextProps.id !== this.props.id) {
-      this.setState({ width: 2 * nextProps.size })
-    } 
-  }
-
-  shouldComponentUpdate(nextProps, nextState) {
-    return true;
-  }
-
-  componentWillUnmount() {
-    clearInterval(this.interval);
-  }
-  
   render() {
-    const { comments } = this.state; 
+    const { comments, onLoadMore } = this.props;
+
     return (
-      <ul>
-        {comments.map((comment, idx) => <li key={idx}>{comment.name}: {comment.body}</li>)}
-      </ul>
+      <div>
+        <ol>
+          {comments.map((comment, idx) => <li key={idx}><Link to={`/comments/${comment.id}`}>{comment.name}</Link>: {comment.body}</li>)}
+        </ol>
+        <button onClick={onLoadMore}>Load more</button>
+      </div>
     );
   }
 }
