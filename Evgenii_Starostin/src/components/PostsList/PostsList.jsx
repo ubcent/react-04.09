@@ -30,7 +30,7 @@ PostsList.propTypes = {
 };
 
 PostsList.defaultProps = {
-  post: null,
+  posts: [],
 };
 
 export default PostsList;
