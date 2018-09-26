@@ -1,5 +1,3 @@
-import './BlogPosts.css';
-
 import React, {PureComponent} from 'react';
 import {Container} from 'reactstrap';
 
@@ -14,7 +12,7 @@ export default class BlogPosts extends PureComponent {
           {blogPosts.map(post => 
             <div className="blog-posts" key={post.id}>
               <BlogPost post={post} />
-          </div>
+            </div>
           )}
         </Container>
       </main>

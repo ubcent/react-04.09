@@ -7,20 +7,15 @@ import {Button, Modal, ModalHeader, ModalBody, ModalFooter} from 'reactstrap';
 import propTypes from 'prop-types';
 
 export default class WelcomeModal extends PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = {
-      modal: true
-    };
-
-    this.toggle = this.toggle.bind(this);
+  state = {
+    modal: true,
   }
 
   static propTypes = {
     className: propTypes.string,
   }
 
-  toggle() {
+  toggle = () => {
     this.setState({
       modal: !this.state.modal
     });

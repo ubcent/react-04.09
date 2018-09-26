@@ -13,7 +13,8 @@ module.exports = {
       '.js', '.jsx'
     ],
     alias: {
-      components: path.resolve(__dirname, 'src', 'components')
+      components: path.resolve(__dirname, 'src', 'components'),
+      containers: path.resolve(__dirname, 'src', 'containers')
     }
   },
   module: {
@@ -21,14 +22,18 @@ module.exports = {
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader'
-        }
+        use: [
+          'babel-loader',
+          'eslint-loader'
+        ]
       }, {
         test: /\.css$/,
         use: ExtractTextPlugin.extract({fallback: 'style-loader', use: ['css-loader']})
       }
     ]
+  },
+  devServer: {
+    historyApiFallback: true,
   },
   plugins: [
     new ExtractTextPlugin({filename: 'style.css'}),
