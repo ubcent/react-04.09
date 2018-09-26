@@ -1,0 +1,13 @@
+@import '../../../variables';
+
+.send-comment{
+    cursor: pointer;
+    border: none;
+}
+.send-comment:hover{
+    box-shadow: 0 0 10px 2px $lightShadow;
+    background-color: $orangeColor;
+}
+.send-comment:active{
+    transform: translateY(2px);
+}
