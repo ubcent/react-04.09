@@ -4,6 +4,7 @@ import React, { PureComponent} from 'react';
 
 export default class User extends PureComponent{
     render(){
+        const { user } = this.props;
         return(
             <div className="user">
                 <div className="user__img-block">
@@ -11,7 +12,11 @@ export default class User extends PureComponent{
                 </div>
                 <div className="user__text-block">
                     <div className="user__info">
-                        <span className="user__name"><a href="#">User Name</a></span>
+                        <span className="user__name">
+                            <a href="#">{user.firstName} {user.lastName}</a>
+                        </span>
+                        <span className="user__gender">{user.gender}</span>
+                        <span className="user__email">{user.email}</span>
                     </div>
                 </div>
             </div>

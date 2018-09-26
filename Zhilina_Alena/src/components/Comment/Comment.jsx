@@ -4,6 +4,7 @@ import React, { PureComponent} from 'react';
 
 export default class Comment extends PureComponent{
     render(){
+        const { comment } = this.props;
         return(
            <div className="comment">
                <div className="comment__img-block">
@@ -11,11 +12,11 @@ export default class Comment extends PureComponent{
                </div>
                <div className="comment__text-block">
                    <div className="comment__info">
-                       <span className="comment__name"><a href="#">User normal</a></span>
+                       <span className="comment__name"><a href="#">{comment.user.firstName} {comment.user.lastName}</a></span>
                        <span className="comment__date">APRIL 18, 2017</span>
-                       <span className="comment__post"><a href="#">Normal Post</a></span>
+                       <span className="comment__post"><a href="#">{comment.post.title}</a></span>
                    </div>
-                      <p className="comment__text">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.</p>
+                      <p className="comment__text">{comment.text}</p>
                </div>
            </div>
         )

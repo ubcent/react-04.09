@@ -1,34 +1,17 @@
 import './Menu.css'
 
 import React, { PureComponent} from 'react';
+import { Link } from 'react-router-dom';
 
 export default class Menu extends PureComponent{
-
-    constructor(props){
-        super(props);
-
-        this.state={
-            page: '/home',
-        };
-    }
-
-    handleClick = (event) =>{
-        this.setState({
-            page: event.target.name,
-        });
-        const { onSend } = this.props;
-        onSend(event.target.name);
-    };
-
     render(){
-
         return(
             <nav className="menu-block">
                 <ul className="menu">
-                    <li className="menu__item"><a className="menu__link" href="#" name="/home" onClick={this.handleClick}>Home</a></li>
-                    <li className="menu__item"><a className="menu__link" href="#" name="/blog" onClick={this.handleClick}>Blog</a></li>
-                    <li className="menu__item"><a className="menu__link" href="#" name="/comments" onClick={this.handleClick}>Comments</a></li>
-                    <li className="menu__item"><a className="menu__link" href="#" name="/users" onClick={this.handleClick}>Users</a></li>
+                    <li className="menu__item"><Link className="menu__link" to="/">Home</Link></li>
+                    <li className="menu__item"><Link className="menu__link" to="/blog">Blogs</Link></li>
+                    <li className="menu__item"><Link className="menu__link" to="/comments">Comments</Link></li>
+                    <li className="menu__item"><Link className="menu__link" to="/users">Users</Link></li>
                 </ul>
             </nav>
         )

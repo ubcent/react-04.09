@@ -2,13 +2,18 @@ import './Aside.css'
 
 import React, { PureComponent} from 'react';
 
-export default class Aside extends PureComponent{
+import Search from 'components/Search/index';
+import Login from 'components/Login/index';
+import Categories from 'components/Categories/index';
 
+export default class Aside extends PureComponent{
     render(){
-        console.log("render");
-        const { children } = this.props;
         return(
-            <div className="aside-content"> {children} </div>
+            <div className="aside-content">
+                <Search />
+                <Login />
+                <Categories />
+            </div>
         )
     }
 }
