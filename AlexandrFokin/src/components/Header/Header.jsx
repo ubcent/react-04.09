@@ -1,6 +1,8 @@
 import './Header.scss';
 
 import React, {Component} from 'react';
+// Проверка свойств
+import PropTypes from 'prop-types';
 
 import HorizontalMenu from 'components/HorizontalMenu';
 import BlogButton from 'components/BlogButton/BlogButton';
@@ -42,6 +44,23 @@ const loginButton = {id: 'login', name: 'Log in'};
  * Класс Header - компонент, отображающий хидер страницы
  */
 export default class Header extends Component {
+  // Проверка свойств
+  static propTypes = {
+    // класс для компонента
+    className: PropTypes.string,
+  };
+
+  // значения атрибутов по умолчанию
+  static defaultProps = {
+    // имя класса отсутствует
+    className: '',
+  };
+
+  // обновляем визуализацию компонента
+  shouldComponentUpdate(nextProps) {
+    return nextProps.className === this.props.className;
+  }
+
   render() {
     return (
         <header>

@@ -20,13 +20,22 @@ export default class MenuItem extends Component {
       // адрес перехода по ссылке
       to: PropTypes.string,
     }),
+    // класс для компонента
+    className: PropTypes.string,
   };
 
   // значения атрибутов по умолчанию
   static defaultProps = {
     // аттрибут menu инициализируем пустым объектом
     item: {},
+    // имя класса отсутствует
+    className: '',
   };
+
+  // обновляем визуализацию компонента
+  shouldComponentUpdate(nextProps) {
+    return nextProps.className === this.props.className;
+  }
 
   render() {
     // получаем переданные свойства пункта меню
