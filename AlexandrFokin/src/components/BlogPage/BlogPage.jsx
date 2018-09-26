@@ -92,11 +92,7 @@ export default class BlogPage extends PureComponent {
           <div className="col-7">
             {/* выводим все посты */}
             <div className="posts">
-              {posts.map( (post, idx) => {
-                return (
-                  <BlogPost post={post} key={idx}/>
-                );
-              })}
+              {posts.map( (post, idx) => <BlogPost post={post} key={idx}/>)}
             </div>
           </div>
           <div className="col"/>
