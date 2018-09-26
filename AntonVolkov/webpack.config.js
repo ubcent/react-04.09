@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
-    entry: path.resolve(__dirname, 'src', 'index.jsx'),
+    entry: ['babel-polyfill', path.resolve(__dirname, 'src', 'index.jsx')],
     output: {
         filename: 'bundle.js',
         path: path.resolve(__dirname, 'dist'),
@@ -13,7 +13,9 @@ module.exports = {
         extensions: ['.js', '.jsx'],
         alias: {
             components: path.resolve(__dirname, 'src', 'components'),
+            containers: path.resolve(__dirname, 'src', 'containers'),
             pages: path.resolve(__dirname, 'src', 'pages'),
+            models: path.resolve(__dirname, 'src', 'models'),
         }
     },
     module: {
@@ -33,6 +35,9 @@ module.exports = {
                     'sass-loader'],
             },
         ]
+    },
+    devServer: {
+        historyApiFallback: true,
     },
     plugins: [
         new CleanWebpackPlugin(['dist']),

@@ -1,0 +1,10 @@
+.footer{
+    background-color: #919ed6;
+    background-image: linear-gradient(#919ed6, rgb(116, 124, 168));
+    padding: 40px 0;
+    &__copy{
+        color: #fff;
+        font-size: 10px;    
+        text-align: center;
+    }
+}
