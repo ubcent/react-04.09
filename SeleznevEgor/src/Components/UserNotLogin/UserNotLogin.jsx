@@ -8,6 +8,10 @@ import './UserNotLogin.scss';
 /*import libs*/
 import React, {Component, Fragment} from 'react';
 import  PropTypes from 'prop-types';
+<<<<<<< HEAD
+=======
+import 'bootstrap/modal';
+>>>>>>> create_routing
 import $ from 'jquery';
 
 /*User input*/

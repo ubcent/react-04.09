@@ -8,11 +8,16 @@ import './sass/main.scss';
 /*Incude libraries*/ 
 import  React, {Component, Fragment} from 'react';
 import ReactDom from 'react-dom';
+import {BrowserRouter, Switch, Route} from 'react-router-dom';
 
 /*Import user components*/
-import Header from 'components/Header/';
 import Main from 'components/Main/';
 import Footer from 'components/Footer/';
+import HeaderContainer from 'containers/HeaderContainer';
+import HomeContainer from 'containers/HomeContainer';
+import BlogContainer from 'containers/BlogContainer';
+import CommentContainer from 'containers/CommentContainer';
+import UsersContainer from 'containers/UsersContainer';
 
 /********************************************************************
 * Main															*
@@ -55,15 +60,28 @@ class Layout extends Component{
     render(){
         return(
             <Fragment>
+<<<<<<< HEAD
             <Header user={this.state.user} active={this.state.active} loginActive = {this.loginClick} menuChange={this.changeMenu}/>
             <Main/>
             <Footer />
+=======
+                <HeaderContainer user={this.state.user} active={this.state.active} loginActive = {this.loginClick} menuChange={this.changeMenu}/>
+                <Switch>
+                    <Route path="/" component={HomeContainer} exact/>
+                    <Route path="/blog" component={BlogContainer} exact/>
+                    <Route path="/comments" component={CommentContainer} exact/>
+                    <Route path="/users" component={UsersContainer} exact/>
+                </Switch>
+                <Footer />
+>>>>>>> create_routing
             </Fragment>
         );
     }
 }
 
 /*Запуск отрисовки*/
-ReactDom.render(<Layout/>, document.getElementById('webPage'));
+ReactDom.render(
+    <BrowserRouter><Layout/></BrowserRouter>,
+    document.getElementById('webPage'));
 
 
