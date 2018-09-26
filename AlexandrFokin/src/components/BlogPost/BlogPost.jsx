@@ -3,6 +3,8 @@ import './BlogPost.scss';
 import React, { PureComponent, Fragment } from 'react';
 // Проверка свойств
 import PropTypes from 'prop-types';
+// Поддержка языка Markdown
+import Markdown from 'react-markdown';
 
 import CommentsList from 'components/CommentsList';
 import CommentsForm from 'components/CommentsForm';
@@ -54,11 +56,8 @@ export default class BlogPost extends PureComponent {
       date: PropTypes.string,
       // автор поста
       author: PropTypes.string,
-      // пост
-      message: PropTypes.shape({
-        // пост на html
-        __html: PropTypes.string,
-      }),
+      // пост на MarkDown
+      message: PropTypes.string,
     }),
   };
 
@@ -94,8 +93,7 @@ export default class BlogPost extends PureComponent {
             <p>
               <span className="date">{date} by</span> <span className="author">{author}</span>
             </p>
-            {/* TODO использовать react-markdown, чтобы избежать html в передаваемых сообщениях */}
-            <div className="message" dangerouslySetInnerHTML={message}/>
+            <Markdown className="message" source={message}/>
           </div>
           <CommentsList comments={comments}/>
           {
