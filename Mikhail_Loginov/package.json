@@ -1,11 +1,12 @@
 {
-  "name": "lesson-6",
+  "name": "react-blog",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "build": "webpack --mode production",
-    "dev": "webpack-dev-server --mode development"
+    "dev": "webpack-dev-server --mode development",
+    "dev:cc": "node cli/component.js --name" 
   },
   "author": "",
   "license": "ISC",
@@ -32,6 +33,7 @@
     "eslint-plugin-react": "^7.11.1",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "html-webpack-plugin": "^3.2.0",
+    "minimist": "^1.2.0",
     "style-loader": "^0.23.0",
     "webpack": "^4.18.0",
     "webpack-cli": "^3.1.0",
