@@ -63,9 +63,9 @@ class Layout extends Component{
                 <HeaderContainer user={this.state.user} active={this.state.active} loginActive = {this.loginClick} menuChange={this.changeMenu}/>
                 <Switch>
                     <Route path="/" component={HomeContainer} exact/>
-                    <Route path="/blog" component={BlogContainer} />
-                    <Route path="/comments" component={CommentContainer}/>
-                    <Route path="/users" component={UsersContainer}/>
+                    <Route path="/blog" component={BlogContainer} exact/>
+                    <Route path="/comments" component={CommentContainer} exact/>
+                    <Route path="/users" component={UsersContainer} exact/>
                 </Switch>
                 <Footer />
             </Fragment>
