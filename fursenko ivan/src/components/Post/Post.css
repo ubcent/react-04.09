@@ -1,0 +1,23 @@
+.post {
+    box-shadow: 1px 1px 4px 0px;
+    padding: 5px;
+    margin: 10px;
+    min-width: 150px;
+    min-height: 150px;
+    max-width: 200px;
+}
+
+.post > div {
+    display: flex;
+    justify-content: space-between;
+}
+
+.post > div > div > h2 {
+    margin: 0;
+    font-family: sans-serif;
+}
+
+.post > div > div:hover > h2 {
+    cursor: pointer;
+    text-decoration: underline;
+}
