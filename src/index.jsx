@@ -1,11 +1,13 @@
 import React, { Component, Fragment } from 'react';
 import ReactDom from 'react-dom';
 import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
+import { Provider } from 'react-redux';
 
 import Header from 'components/Header';
 import CommentsForm from 'components/CommentsForm';
 
 import routes from './routes';
+import store from './store';
 
 const creators = ['Vasya Pupkin', 'Petya Ivanov', 'Kolya Sidorov'];
 
@@ -44,6 +46,6 @@ class App extends Component {
 }
 
 ReactDom.render(
-  <BrowserRouter><App /></BrowserRouter>,
-  document.getElementById('root')
+  <Provider store={store}><BrowserRouter><App /></BrowserRouter></Provider>,
+  document.getElementById('root'),
 );
