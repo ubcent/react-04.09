@@ -1,12 +1,12 @@
 import './Chatbox.css';
 
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import Message from "components/Message/Message";
+import Message from 'components/Message';
 
 //Компонент сообщений чата.
 //Принимает на вход массив сообщений
-export default class Chatbox extends Component{
+export default class Chatbox extends PureComponent{
     constructor(props){
         super(props);
     }
@@ -24,7 +24,7 @@ export default class Chatbox extends Component{
 
     render(){
         const { items } = this.props;
-        return <div className="chatbox">
+        return <div className='chatbox'>
             <ul>
                 {items.map( (item) => {
                     return <Message type={item.type} message={item.message} id={item.id}/>

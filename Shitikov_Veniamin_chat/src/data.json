@@ -1,0 +1,112 @@
+{
+  "users":[
+    {
+      "user": "Ivan",
+      "messages": [
+        {
+          "id":1,
+          "type": "in",
+          "message": "By Other User"
+        },
+        {
+          "id":2,
+          "type": "out",
+          "message": "By this User, message"
+        },
+        {
+          "id":1,
+          "type": "in",
+          "message": "By Other User"
+        },
+        {
+          "id":2,
+          "type": "out",
+          "message": "By this User, message"
+        },
+        {
+          "id":1,
+          "type": "in",
+          "message": "By Other User"
+        },
+        {
+          "id":2,
+          "type": "out",
+          "message": "By this User, message"
+        }
+    
+      ]
+    },
+    {
+      "user": "Alice",
+      "messages": [
+        {
+          "id":1,
+          "type": "in",
+          "message": "By Other User"
+        },
+        {
+          "id":2,
+          "type": "out",
+          "message": "By this User, message"
+        },
+        {
+          "id":1,
+          "type": "in",
+          "message": "By Other User"
+        },
+        {
+          "id":2,
+          "type": "out",
+          "message": "By this User, message"
+        },
+        {
+          "id":1,
+          "type": "in",
+          "message": "By Other User"
+        },
+        {
+          "id":2,
+          "type": "out",
+          "message": "By this User, message"
+        }
+    
+      ]
+    },
+    {
+      "user": "Tanya",
+      "messages": [
+        {
+          "id":1,
+          "type": "in",
+          "message": "By Other User"
+        },
+        {
+          "id":2,
+          "type": "out",
+          "message": "By this User, message"
+        },
+        {
+          "id":1,
+          "type": "in",
+          "message": "By Other User"
+        },
+        {
+          "id":2,
+          "type": "out",
+          "message": "By this User, message"
+        },
+        {
+          "id":1,
+          "type": "in",
+          "message": "By Other User"
+        },
+        {
+          "id":2,
+          "type": "out",
+          "message": "By this User, message"
+        }
+    
+      ]
+    }
+  ]
+}

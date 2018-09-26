@@ -34,6 +34,9 @@ module.exports = {
             }
         ]
     },
+    devServer: {
+        historyApiFallback: true,
+    },
     plugins: [
         new ExptacrTextPlugin({filename: 'style.css'}),
         new HTMLPlugin({

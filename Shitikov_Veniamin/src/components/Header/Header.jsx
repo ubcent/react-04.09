@@ -1,20 +1,39 @@
 import './Header.css';
 
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 // Компонент принимает объект со свойствами:
 // brand - объект заголовка навбара со свойствами
 //      title - заголовок и
 //      href - ссылка
 // items - массив объектов меню
-export default class Header extends Component {
+export default class Header extends PureComponent {
     static defaultProps = {
         brand: {
+            title: 'MyBlog',
             href: '#',
-            title: 'title'
         },
-        items: []
+        items: [
+            {
+                title: 'Home',
+                href: '/'
+            },
+            {
+                title: 'Blog',
+                href: '/blog'
+            },
+            {
+                title: 'Comments',
+                href: '/comments'
+            },
+            {
+                title: 'Users',
+                href: '/users'
+            },
+        ],
+        active: 0,
     };
 
     static propTypes = {
@@ -22,17 +41,17 @@ export default class Header extends Component {
             href: PropTypes.string,
             title: PropTypes.string,
         }),
-        items: PropTypes.arrayOf(PropTypes.string),
+        active: PropTypes.number,
     };
 
     render(){
-        const { brand, items } = this.props;
+        const { brand, items, active } = this.props;
         const list = items.map( (item, index) => {
-            const liClass = (index === 0) ? 'nav-item active' : 'nav-item';
+            const liClass = (index === active) ? 'nav-item active' : 'nav-item';
             return <li className={liClass}>
-                <a className='nav-link'
-                   href={item.href}>{item.title}
-                </a>
+                <Link name={index} className='nav-link'
+                   to={item.href}>{item.title}
+                </Link>
             </li>
         });
         return <nav className='navbar navbar-expand-lg navbar-dark bg-dark fixed-top'>

@@ -1,6 +1,6 @@
 import './Sidebar.css';
 
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 
 import Search from '../Search';
@@ -10,7 +10,7 @@ import Side from '../Side';
 // Компонент принимает объект со свойствами:
 // categories - массив объектов категорий
 // side - объект бокового виджета
-export default class Sidebar extends Component {
+export default class Sidebar extends PureComponent {
     static defaultProps = {
         categories: [],
         side: {},
