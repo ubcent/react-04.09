@@ -12,7 +12,7 @@ export default class App {
       headers: {
         'Content-Type': 'application/json'
       },
-      method: "POST",
+      method: 'POST',
       body,
     })
   }
