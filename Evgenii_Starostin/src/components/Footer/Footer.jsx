@@ -1,21 +1,18 @@
 import './Footer.css';
 
-import React, { Component } from 'react';
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-class Footer extends Component {
-  render() {
-    return (
-      <footer className="footer">
-        <div className="container">
-          <ul className="footer-menu">
-            <li className="footer-menu__item"><a href="#">О проекте</a></li>
-            <li className="footer-menu__item"><a href="#">Пользовательское соглашение</a></li>
-            <li className="footer-menu__item"><a href="#">Помощь</a></li>
-          </ul>
-        </div>
-      </footer>
-    );
-  }
+export default function Footer() {
+  return (
+    <footer className="footer">
+      <div className="container">
+        <ul className="footer-menu">
+          <li className="footer-menu__item"><Link to="#">О проекте</Link></li>
+          <li className="footer-menu__item"><Link to="#">Пользовательское соглашение</Link></li>
+          <li className="footer-menu__item"><Link to="#">Помощь</Link></li>
+        </ul>
+      </div>
+    </footer>
+  );
 }
-
-export default Footer;
