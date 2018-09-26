@@ -1,0 +1,40 @@
+.blog-preview{
+    display: flex;
+    flex-flow: column;
+    border-bottom: 1px dotted #111;
+    padding-bottom: 20px;
+}
+
+.blog-preview:last-of-type{
+    border-bottom: none;
+}
+
+.blog-preview__info-block{
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.blog-preview__title{
+    border-bottom: 2px solid black;
+}
+
+.blog-preview__description{
+
+}
+
+.blog-preview__user-block{
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+}
+
+.blog-preview__user-img{
+    width: 30px;
+    margin-right: 20px;
+}
+
+.blog-preview__user-name{
+
+}

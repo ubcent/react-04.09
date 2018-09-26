@@ -1,0 +1,11 @@
+.category-box{
+}
+
+.category-list{
+    margin: 0;
+}
+
+.category-list__item{
+    list-style-type: square;
+    padding: 10px 0;
+}

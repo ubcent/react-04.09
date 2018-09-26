@@ -1,0 +1,41 @@
+import React, { PureComponent, Fragment } from 'react';
+
+import User from 'components/User';
+
+export default class UserListContainer extends PureComponent {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            users: [],
+            loading: false,
+        };
+    }
+
+    load = () => {
+        this.setState({ loading: true });
+        fetch(`http://localhost:3000/users`)
+            .then((response) => response.json())
+            .then((users) => {
+                this.setState(() => ({
+                    loading: false,
+                    users: users
+                }));
+            });
+    };
+
+    componentDidMount() {
+        this.load();
+    }
+
+    render() {
+        const { users, loading } = this.state;
+
+        return (
+            <Fragment>
+                {users.map((user) => <User key={user.id} user ={ user }/>)}
+                {loading && 'Loading...'}
+            </Fragment>
+        )
+    }
+}

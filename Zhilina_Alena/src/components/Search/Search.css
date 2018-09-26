@@ -1,0 +1,39 @@
+.form-search{
+    display: flex;
+    flex-direction: column;
+}
+
+.aside-block-wrap{
+    margin-bottom: 40px;
+}
+
+.block-title{
+    background-color: black;
+    color: white;
+    display: block;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.button{
+    padding: 6px;
+    background-color: black;
+    color: white;
+    border: none;
+    transition: .4s;
+    cursor: pointer;
+}
+
+.button:hover{
+    background-color: #d1061f;
+}
+
+.form-search__input{
+    padding: 6px;
+    margin-bottom: 10px;
+}
+.form-box{
+    padding: 20px;
+    border: 2px dashed #ccc;
+    background-color: #f3f3f3;
+}

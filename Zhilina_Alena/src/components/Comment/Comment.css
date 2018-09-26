@@ -1,0 +1,21 @@
+.comment{
+    display: flex;
+    flex-flow: row;
+}
+
+.comment__img-block{
+}
+
+.comment__img{
+    width: 60px;
+}
+
+.comment__text-block{
+    display: flex;
+    flex-flow: column;
+    margin-left: 30px;
+}
+.comment__info{
+    display: flex;
+    flex-flow: column;
+}

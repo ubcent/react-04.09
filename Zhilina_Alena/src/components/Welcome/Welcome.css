@@ -1,0 +1,8 @@
+.welcome-wrap{
+    width: 80%;
+    margin: 0 auto;
+}
+.welcome-wrap__img{
+    width: 100%;
+    display: block;
+}

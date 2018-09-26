@@ -15,6 +15,10 @@ module.exports = {
         extensions: ['.js','.jsx'],
         alias: {
             components: path.resolve(__dirname, 'src', 'components'),
+            images: path.resolve(__dirname, 'src', 'img'),
+            containers: path.resolve(__dirname, 'src', 'containers'),
+            pages :path.resolve(__dirname, 'src', 'pages'),
+            layouts: path.resolve(__dirname, 'src', 'layouts'),
         }
     },
     module: {
@@ -33,7 +37,17 @@ module.exports = {
                     use: ['css-loader']
                 }),
             },
+            {
+                test: /\.(jpe?g|png|gif|svg)$/i,
+                use: [
+                    'url-loader?limit=10000',
+                    'img-loader'
+                ]
+            },
         ]
+    },
+    devServer: {
+        historyApiFallback:true,
     },
 
     plugins: [
