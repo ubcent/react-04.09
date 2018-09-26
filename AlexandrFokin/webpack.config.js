@@ -14,6 +14,8 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 // Доступ к плагинам webpack
 const webpack = require('webpack');
+// History Api Fallback (поддержка перехода по прямой ссылке)
+const historyApiFallback = require('connect-history-api-fallback');
 
 module.exports = {
   // точки входа
@@ -32,6 +34,10 @@ module.exports = {
     alias: {
       // адрес папки components
       components: path.resolve(__dirname, 'src', 'components'),
+      // адрес папки containers
+      containers: path.resolve(__dirname, 'src', 'containers'),
+      // адрес папки img
+      img: path.resolve(__dirname, 'src', 'img'),
     }
   },
   devtool: false,
@@ -54,7 +60,11 @@ module.exports = {
       host: 'localhost',
       port: 3000,
       // папка со сборкой, используемая в качестве корневой для сервера
-      server: { baseDir: ['dist'] },
+      server: {
+        baseDir: ['dist'],
+        // поддержка перехода по прямой ссылке
+        middleware: [ historyApiFallback() ],
+      },
     }),
     // создаем карты исходников
     new webpack.SourceMapDevToolPlugin(),

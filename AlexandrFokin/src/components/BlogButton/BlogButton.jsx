@@ -1,6 +1,6 @@
 import './BlogButton.scss';
 
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { Button } from 'reactstrap';
 // Проверка свойств
 import PropTypes from 'prop-types';
@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 /**
  * Класс BlogButton - компонент, отображающий кнопку на странице
  */
-export default class BlogButton extends Component {
+export default class BlogButton extends PureComponent {
   // Проверка свойств
   static propTypes = {
     // Кнопка - объект
@@ -30,7 +30,7 @@ export default class BlogButton extends Component {
     // получаем переданные свойства кнопки
     const {id, name} = this.props.item;
     return (
-      <Button outline color='primary' id={id}>
+      <Button outline color="primary" id={id}>
         {name}
       </Button>
     );
