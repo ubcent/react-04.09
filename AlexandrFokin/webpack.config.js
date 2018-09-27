@@ -38,6 +38,10 @@ module.exports = {
       containers: path.resolve(__dirname, 'src', 'containers'),
       // адрес папки img
       img: path.resolve(__dirname, 'src', 'img'),
+      // адрес папки actions
+      actions: path.resolve(__dirname, 'src', 'actions'),
+      // адрес папки reducers
+      reducers: path.resolve(__dirname, 'src', 'reducers'),
     }
   },
   devtool: false,
