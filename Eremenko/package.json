@@ -18,6 +18,7 @@
     "prop-types": "^15.6.2",
     "react": "^16.5.0",
     "react-dom": "^16.5.1",
+    "react-holder-component": "^1.0.5",
     "reactstrap": "^6.4.0"
   },
   "devDependencies": {
