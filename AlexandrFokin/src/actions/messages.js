@@ -17,7 +17,7 @@ export const messageReceived = createAction('[Message] Receive');
  */
 export const mountEvents = dispatch => {
   // обрабатываем событие отправки сообщения
-  io.on('message', message => {
+  socket.on('message', message => {
     // отправляем полученное сообщение в store
     dispatch(messageReceived(message));
   });
