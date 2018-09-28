@@ -4,6 +4,7 @@ import './_index.scss'; //Пользовательские стили
 import React, {Component, Fragment} from 'react';
 import ReactDOM from 'react-dom';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
+import {Provider} from 'react-redux';
 
 //компоненты Bootstrap
 import {Container, Row, Col} from 'reactstrap';
@@ -17,6 +18,7 @@ import SubscrContainer from 'containers/SubscrContainer'; // кнопка под
 import Footer from 'components/Footer/'; // подвал сайта
 
 import routes from './routers';
+import store from './store';
 
 //Главный компонет
 class App extends Component{
@@ -53,6 +55,6 @@ class App extends Component{
 }
 ReactDOM.render(
    /* внедряем роутер в прилоежние */
-    <BrowserRouter><App/></BrowserRouter>, 
+    <Provider store={store}><BrowserRouter><App/></BrowserRouter></Provider>, 
     document.querySelector('#root')
 );
