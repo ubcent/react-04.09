@@ -3,7 +3,7 @@ import './Login.css';
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 
-import { submitLogin } from "../../actions/messages";
+import { submitLogin } from "../../actions/login";
 
 class Login extends PureComponent {
   constructor(props) {

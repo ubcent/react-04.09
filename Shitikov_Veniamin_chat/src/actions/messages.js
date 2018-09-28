@@ -17,6 +17,3 @@ export const sendMessage = dispatch => message => {
     socket.emit('message', message);
 };
 
-export const submitLogin = dispatch => userName => {
-    socket.emit('login', userName);
-};
