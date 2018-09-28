@@ -13,14 +13,10 @@ server.listen(3003, ()=>{
 
 io.on('connection', socket => {
     socket.on('login', userName => {
-        if (users.find( user => user.id === socket.id)){
-            socket.emit('loginFail', userName);
-        }else {
-            users.push({
-                id: socket.id,
-                name: userName,
-            });
-        }
+        users.push({
+            id: socket.id,
+            name: userName,
+        });
         console.log(users);
     });
     socket.on('message', message => {
