@@ -59,6 +59,9 @@ const config = {
     alias: {
       Containers: path.resolve(__dirname, 'src/containers/'),
       Components: path.resolve(__dirname, 'src/components/'),
+      Actions: path.resolve(__dirname, 'src/actions/'),
+      Reducers: path.resolve(__dirname, 'src/reducers/'),
+      Models: path.resolve(__dirname, 'src/models/'),
     },
     extensions: ['.js', '.jsx']
   }

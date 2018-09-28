@@ -1,29 +1,35 @@
 import React, { PureComponent, Fragment } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 import Errors from 'Components/Errors';
 import Loading from 'Components/Loading';
 import UsersList from 'Components/UsersList';
+import { fetchUsersList } from 'Actions/usersActions';
+import { IUser, IError } from 'Models';
 
-export default class UsersListContainer extends PureComponent {
-  constructor(props) {
-    super(props);
+class UsersListContainer extends PureComponent {
+  static propTypes = {
+    usersList: PropTypes.arrayOf(IUser),
+    fetching: PropTypes.bool,
+    errors: PropTypes.arrayOf(IError),
+    getUsersList: PropTypes.func,
+  };
 
-    this.state = { users: [], fetching: false, errors: [] };
-  }
+  static defaultProps = {
+    usersList: [],
+    fetching: false,
+    errors: [],
+    getUsersList: null,
+  };
 
   componentDidMount = () => {
-    this.setState({ fetching: true, errors: [] });
-
-    fetch('api/users?_embed=posts&_embed=comments')
-      .then(response => response.json())
-      .then(users => this.setState({ users, fetching: false }))
-      .catch(error => this.setState(({ errors }) => (
-        { errors: errors.concat(error), fetching: false }
-      )));
+    const { getUsersList } = this.props;
+    getUsersList();
   }
 
   render() {
-    const { users, fetching, errors } = this.state;
+    const { usersList, fetching, errors } = this.props;
 
     if (fetching) {
       return (
@@ -37,8 +43,24 @@ export default class UsersListContainer extends PureComponent {
           <Errors errors={errors} />
         )}
 
-        <UsersList users={users} />
+        <UsersList users={usersList} />
       </Fragment>
     );
   }
 }
+
+function mapStateToProps(state) {
+  return {
+    usersList: state.users.usersList,
+    fetching: state.users.fetching,
+    errors: state.users.errors,
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    getUsersList: () => fetchUsersList(dispatch),
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(UsersListContainer);

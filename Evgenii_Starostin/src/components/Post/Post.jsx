@@ -1,8 +1,9 @@
 import './Post.css';
 
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+
+import { IPost } from 'Models';
 
 function Post(props) {
   const { post } = props;
@@ -32,12 +33,7 @@ function Post(props) {
 }
 
 Post.propTypes = {
-  post: PropTypes.shape({
-    id: PropTypes.number,
-    title: PropTypes.string,
-    userId: PropTypes.number,
-    paragraphs: PropTypes.arrayOf(PropTypes.string),
-  }),
+  post: IPost,
 };
 
 Post.defaultProps = {

@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
-import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+
+import { IUser } from 'Models';
 
 function User(props) {
   const { user } = props;
@@ -44,10 +45,7 @@ function User(props) {
 }
 
 User.propTypes = {
-  user: PropTypes.shape({
-    id: PropTypes.number,
-    name: PropTypes.string,
-  }),
+  user: IUser,
 };
 
 User.defaultProps = {

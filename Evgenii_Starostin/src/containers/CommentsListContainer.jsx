@@ -1,29 +1,35 @@
 import React, { PureComponent, Fragment } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 import Errors from 'Components/Errors';
 import Loading from 'Components/Loading';
 import CommentsList from 'Components/CommentsList';
+import { fetchCommentsList } from 'Actions/commentsActions';
+import { IComment, IError } from 'Models';
 
-export default class CommentsListContainer extends PureComponent {
-  constructor(props) {
-    super(props);
+class CommentsListContainer extends PureComponent {
+  static propTypes = {
+    commentsList: PropTypes.arrayOf(IComment),
+    fetching: PropTypes.bool,
+    errors: PropTypes.arrayOf(IError),
+    getCommentsList: PropTypes.func,
+  };
 
-    this.state = { comments: [], fetching: false, errors: [] };
-  }
+  static defaultProps = {
+    commentsList: [],
+    fetching: false,
+    errors: [],
+    getCommentsList: null,
+  };
 
   componentDidMount = () => {
-    this.setState({ fetching: true, errors: [] });
-
-    fetch('api/comments?_expand=post')
-      .then(response => response.json())
-      .then(comments => this.setState({ comments, fetching: false }))
-      .catch(error => this.setState(({ errors }) => (
-        { errors: errors.concat(error), fetching: false }
-      )));
+    const { getCommentsList } = this.props;
+    getCommentsList();
   }
 
   render() {
-    const { comments, fetching, errors } = this.state;
+    const { commentsList, fetching, errors } = this.props;
 
     if (fetching) {
       return (
@@ -37,8 +43,24 @@ export default class CommentsListContainer extends PureComponent {
           <Errors errors={errors} />
         )}
 
-        <CommentsList comments={comments} />
+        <CommentsList comments={commentsList} />
       </Fragment>
     );
   }
 }
+
+function mapStateToProps(state) {
+  return {
+    commentsList: state.comments.commentsList,
+    fetching: state.comments.fetching,
+    errors: state.comments.errors,
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    getCommentsList: () => fetchCommentsList(dispatch),
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CommentsListContainer);

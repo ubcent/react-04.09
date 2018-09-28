@@ -4,6 +4,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
+import { IPost } from 'Models';
+
 function PostsList(props) {
   const { posts } = props;
 
@@ -21,12 +23,7 @@ function PostsList(props) {
 }
 
 PostsList.propTypes = {
-  posts: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number,
-    title: PropTypes.string,
-    userId: PropTypes.number,
-    paragraphs: PropTypes.arrayOf(PropTypes.string),
-  })),
+  posts: PropTypes.arrayOf(IPost),
 };
 
 PostsList.defaultProps = {

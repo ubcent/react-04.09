@@ -2,6 +2,8 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
+import { IComment } from 'Models';
+
 function CommentsList(props) {
   const { comments } = props;
 
@@ -18,12 +20,7 @@ function CommentsList(props) {
 }
 
 CommentsList.propTypes = {
-  comments: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number,
-    postId: PropTypes.number,
-    userid: PropTypes.number,
-    text: PropTypes.string,
-  })),
+  comments: PropTypes.arrayOf(IComment),
 };
 
 CommentsList.defaultProps = {

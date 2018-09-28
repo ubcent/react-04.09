@@ -4,6 +4,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
+import { IUser } from 'Models';
+
 function UsersList(props) {
   const { users } = props;
 
@@ -23,10 +25,7 @@ function UsersList(props) {
 }
 
 UsersList.propTypes = {
-  users: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number,
-    name: PropTypes.string,
-  })),
+  users: PropTypes.arrayOf(IUser),
 };
 
 UsersList.defaultProps = {
