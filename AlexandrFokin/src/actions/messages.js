@@ -5,7 +5,6 @@ const socket = io.connect('http://localhost:3002');
 
 /**
  * Action, отправляющий полученное сообщение в store
- * @type {string}
  * Message - название сущности
  * Receive - название действия
  */
@@ -25,9 +24,8 @@ export const mountEvents = dispatch => {
 
 /**
  * Отправляет сообщение
- * @param dispatch диспетчер, содержащий сообщение
  * @return {Function} отправляет сообщение на сервер с помощью сокета
  */
-export const sendMessage = dispatch => message => {
+export const sendMessage = () => message => {
   socket.emit('message', message);
 };
