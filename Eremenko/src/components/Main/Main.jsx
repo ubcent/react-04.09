@@ -1,12 +1,15 @@
 import './Main.css'
 
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import ClassNames from 'classnames';
-import PropTypes from 'prop-types';
+import { Media } from 'reactstrap';
+//import PropTypes from 'prop-types';
+
+import 'react-holder-component'
 
 //собственные модули
 
-export default class Main extends Component {
+export default class Main extends PureComponent {
 
     render() {
         const { size, children } = this.props;
@@ -17,8 +20,41 @@ export default class Main extends Component {
 
         return (
                 <main className={mainClasses}>
-                    {children}
+                    <Media>
+                        <Media left href="#">
+                            <Media object data-src="holder.js/64x64" alt="Generic placeholder image" />
+                        </Media>
+                        <Media body>
+                            <Media heading>
+                                Media {children}
+                            </Media>
+                            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                        </Media>
+                    </Media>
+                    <Media>
+                        <Media left href="#">
+                            <Media object data-src="holder.js/64x64" alt="Generic placeholder image" />
+                        </Media>
+                        <Media body>
+                            <Media heading>
+                                Media {children}
+                            </Media>
+                            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                        </Media>
+                    </Media>
+                    <Media>
+                        <Media left href="#">
+                            <Media object data-src="holder.js/64x64" alt="Generic placeholder image" />
+                        </Media>
+                        <Media body>
+                            <Media heading>
+                                Media {children}
+                            </Media>
+                            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                        </Media>
+                    </Media>
                 </main>
+
         );
     }
 }
