@@ -41,8 +41,7 @@ export default class MenuContainer extends PureComponent {
         // получаем меню с сервера
         requestData('menu').then((menu) => {
             this.setState({
-                menu, 
-                update: false
+                menu
             });
         })
     }
