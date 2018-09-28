@@ -23,6 +23,6 @@ export default handleActions({
       // добавляем новое сообщение в массив сообщений
       // payload - хранит параметр, указанный при вызове action, т.е. message (сообщение)
       entities: state.entities.concat([action.payload]),
-    }
+    };
   }
 }, initialState);

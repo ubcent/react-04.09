@@ -8,4 +8,4 @@ export default combineReducers({
   // устанавливаем reducer, управляющий хранением сообщений messages
   // messages - наименование обрабатываемого action
   messages: messagesReducer,
-})
+});
