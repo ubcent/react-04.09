@@ -1,7 +1,6 @@
 import MainPage from 'components/MainPage';
-import BlogPost from 'components/BlogPost';
 import BlogPage from 'components/BlogPage';
-import Messages from 'containers/MessagesContainer';
+import ChatPage from 'containers/MessagesContainer';
 
 /**
  * Маршрутизация приложения
@@ -22,13 +21,7 @@ export default [
   // Страница с комментариями - Comments
   {
     path: '/comments',
-    component: BlogPost,
-    exact: true,
-  },
-  // Страница с сообщениями - Messages
-  {
-    path: '/messages',
-    component: Messages,
+    component: ChatPage,
     exact: true,
   },
 ];
