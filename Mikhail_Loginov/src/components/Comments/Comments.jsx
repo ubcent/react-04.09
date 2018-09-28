@@ -3,18 +3,22 @@ import './Comments.css';
 import React, {PureComponent} from 'react';
 import {Container} from 'reactstrap';
 import {Link} from 'react-router-dom';
+import propTypes from 'prop-types';
+import {connect} from 'react-redux';
 
-import comments from 'data/comments';
-import users from 'data/users';
-import blogPosts from 'data/blog-posts';
+class Comments extends PureComponent {
+  static propTypes = {
+    comments: propTypes.array,
+    users: propTypes.array,
+    blogPosts: propTypes.array,
+  }
 
-export default class BlogPosts extends PureComponent {
   renderComment() {
     return (
       <div className="comments">
-        {comments.map((comment, index) => {
-          let author = users[comment.authorID-1];
-          let post = blogPosts[comment.postID-1];
+        {this.props.comments.map((comment, index) => {
+          let author = this.props.users[comment.authorID-1];
+          let post = this.props.blogPosts[comment.postID-1];
           return (<div className="comments__item" key={index}>
             <Link className="comments__text" to={`/post/${post.id}`} post={post}>
               {comment.text}
@@ -39,3 +43,14 @@ export default class BlogPosts extends PureComponent {
     );
   }
 }
+
+function mapStateToProps(state, ownProps) {
+  return {
+    ...ownProps,
+    blogPosts: state.blogPosts,
+    users: state.users,
+    comments: state.comments,
+  }
+}
+
+export default connect(mapStateToProps)(Comments);

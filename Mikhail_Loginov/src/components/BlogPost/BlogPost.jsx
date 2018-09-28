@@ -3,16 +3,16 @@ import './BlogPost.css';
 import React, {PureComponent} from 'react';
 import {Link} from 'react-router-dom';
 import propTypes from 'prop-types';
+import {connect} from 'react-redux';
 
-import authors from 'data/users';
-
-export default class BlogPost extends PureComponent {
+class BlogPost extends PureComponent {
   static propTypes = {
-    post: propTypes.object
+    post: propTypes.object,
+    authors: propTypes.array,
   }
 
   render() {
-    let author = authors[this.props.post.authorID-1];
+    let author = this.props.authors[this.props.post.authorID-1];
     return (
       <div className="blog-post">
         <Link to={`/post/${this.props.post.id}`} post={this.props.post}>
@@ -24,3 +24,12 @@ export default class BlogPost extends PureComponent {
     );
   }
 }
+
+function mapStateToProps(state, ownProps) {
+  return {
+    ...ownProps,
+    authors: state.users,
+  }
+}
+
+export default connect(mapStateToProps)(BlogPost);

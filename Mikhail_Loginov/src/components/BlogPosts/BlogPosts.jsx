@@ -2,16 +2,21 @@ import './BlogPosts.css';
 
 import React, {PureComponent} from 'react';
 import {Container} from 'reactstrap';
+import propTypes from 'prop-types';
+import {connect} from 'react-redux';
 
 import BlogPost from 'components/BlogPost';
-import blogPosts from 'data/blog-posts';
 
-export default class BlogPosts extends PureComponent {
+class BlogPosts extends PureComponent {
+  static propTypes = {
+    blogPosts: propTypes.array,
+  }
+
   render() {
     return (
       <main>
         <Container>
-          {blogPosts.map(post => 
+          {this.props.blogPosts.map(post => 
             <div className="blog-posts" key={post.id}>
               <BlogPost post={post} />
           </div>
@@ -21,3 +26,12 @@ export default class BlogPosts extends PureComponent {
     );
   }
 }
+
+function mapStateToProps(state, ownProps) {
+  return {
+    ...ownProps,
+    blogPosts: state.blogPosts,
+  }
+}
+
+export default connect(mapStateToProps)(BlogPosts);
