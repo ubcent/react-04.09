@@ -2,21 +2,20 @@ import './style.css';
 
 import React, { Component } from 'react';
 import ReactDom from 'react-dom';
+import { Provider } from 'react-redux';
+
 import Chathead from 'components/Chathead';
 import Chatbox from 'components/Chatbox';
 import Chatinput from 'components/Chatinput';
-import ChatRoom from './components/ChatRoom/ChatRoom';
-
+import ChatRoom from './components/ChatRoom';
+import Login from "./components/Login";
+import store from './store';
 
 
 
 class Layout extends Component {
     constructor(props){
         super(props);
-    }
-
-    goToChat(user){
-        
     }
 
     render(){
@@ -33,7 +32,10 @@ class Layout extends Component {
 
         };
         return <div>
-            <ChatRoom URL='http://localhost:3000/users' />
+            {/*<ChatRoom URL='http://localhost:3000/users' />*/}
+            <Provider store={store}>
+                <Login/>
+            </Provider>
         </div>
     }
 }

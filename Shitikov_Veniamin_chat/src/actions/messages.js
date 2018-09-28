@@ -11,8 +11,12 @@ export const mountEvents = dispatch => {
     socket.on('message', message => {
         dispatch(messageReceived(message));
     })
-}
+};
 
 export const sendMessage = dispatch => message => {
     socket.emit('message', message);
-}
+};
+
+export const submitLogin = dispatch => userName => {
+    socket.emit('login', userName);
+};
