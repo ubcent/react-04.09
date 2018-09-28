@@ -7,7 +7,7 @@ import {Provider} from 'react-redux';
 import Header from 'components/Header';
 
 import routes from '../../routes';
-import store from 'store';
+import store from '../../../store';
 
 /**
  * Класс App - корневой компонент, отображающий страницы сайта
