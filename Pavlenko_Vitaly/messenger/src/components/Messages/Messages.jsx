@@ -9,7 +9,7 @@ export default function Messages(props) {
         <div className="messages">
             {
                 props.messages.map(item => (
-                    <Message key={item.id} body={item.body} self={item.self}/>
+                    <Message key={item.id} body={item.body} self={item.author === props.author}/>
                 ))
             }
         </div>

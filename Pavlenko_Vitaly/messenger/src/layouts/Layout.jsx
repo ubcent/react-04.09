@@ -1,11 +1,11 @@
 import React, {Fragment} from "react";
 
-import ChatsList from "components/ChatsList";
+import ChatsListContainer from "containers/ChatsListContainer";
 
 export default function Layout(props) {
     return (
         <Fragment>
-            <ChatsList/>
+            <ChatsListContainer/>
             {props.children}
         </Fragment>
     );

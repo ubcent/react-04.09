@@ -15,9 +15,10 @@ module.exports = {
         alias: {
             components: path.resolve(__dirname, 'src', 'components'),
             containers: path.resolve(__dirname, 'src', 'containers'),
+            actions: path.resolve(__dirname, 'src', 'actions'),
+            reducers: path.resolve(__dirname, 'src', 'reducers'),
             pages: path.resolve(__dirname, 'src', 'pages'),
             layouts: path.resolve(__dirname, 'src', 'layouts'),
-            data: path.resolve(__dirname, 'src', 'data'),
         }
     },
     module: {

@@ -1,19 +1,28 @@
 import './ChatsList.scss';
 
 import React from 'react';
-import {Link} from 'react-router-dom';
 
-export default function ChatsList() {
+import ChatsListItem from './ChatsListItem';
+
+export default function ChatsList(props) {
+    const {userSelf, chats} = props;
+
     return (
-        <div className="chats-list">
-            <h2>Список чатов</h2>
-            <ul>
-                <li>
-                    <Link to="/chat/1">Иван</Link>
-                </li>
-                <li>
-                    <Link to="/chat/2">Ира</Link>
-                </li>
+        <div className="chats-list-wrapper">
+            <header className="contact-header chats-list-header">
+                <div className="contact-header__img"></div>
+                <h2 className="contact-header__name">{userSelf}</h2>
+            </header>
+            <ul className="chats-list">
+                {
+                    chats.map((chat) => (
+                        <ChatsListItem
+                            key={chat.id}
+                            id={chat.id}
+                            users={chat.users}
+                            userSelf={userSelf}/>
+                    ))
+                }
             </ul>
         </div>
     );
