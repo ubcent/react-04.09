@@ -14,10 +14,10 @@ export default handleActions({
             postList: action.payload,
         }
     },
-    /*[getPostDescr]: (state, action) => {
+    [getPostDescr]: (state, action) => {
         return {
             ...state,
             post: action.payload,
         }
-    },*/
+    },
 }, initialState);

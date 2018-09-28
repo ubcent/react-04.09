@@ -12,8 +12,8 @@ export const mountEventPostList = (dispatch) => {
     })
 }
 //получаем описание статьи
-export const mountEventPostDescr = (dispatch) => {
-    requestData('article').then((data) => {
+export const mountEventPost = (dispatch) => (id) => {
+    requestData(`article/${id}`).then((data) => {
         dispatch(getPostDescr(data));
     })
 }

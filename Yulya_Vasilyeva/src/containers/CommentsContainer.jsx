@@ -7,14 +7,8 @@ import { mountEventCommentsList } from 'actions/comments';
 
 //для проверки свойств компонента
 import PropTypes from 'prop-types';
-//функция fetch
-import requestData from './func';
 
 class CommentsContainer extends PureComponent {
-    static propTypes = {
-        //comments: PropTypes.arrayOf(PropTypes.object),
-    }
-
     componentDidMount() {
         const { mountEventCommentsList } = this.props;
         mountEventCommentsList();
@@ -28,6 +22,9 @@ class CommentsContainer extends PureComponent {
     }
 }
 function mapStateToProps(state, ownProps){
+    CommentsContainer.propTypes = {
+        comments: PropTypes.arrayOf(PropTypes.object) 
+    }
     return{
         ...ownProps,
         comments: state.comments.commentsList,
