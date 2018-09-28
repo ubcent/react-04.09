@@ -1,7 +1,7 @@
 .form {
     display: flex;
     flex-direction: column;
-    margin: 2rem 0;
+    margin: 0.5rem 0;
 }
 .form__text-area, 
 .form__sub-btn {
@@ -18,12 +18,12 @@
     text-transform: uppercase;
     font-weight: bold;
     letter-spacing: 1px;
-    background: rgb(105, 152, 238, 0.7);
+    background: rgba(105, 152, 238, 0.7);
     border: 1px solid;
     padding: 1rem;
 }
 .form__sub-btn--disabled { 
-    background: rgb(105, 152, 238, 0.7); 
+    background: rgba(105, 152, 238, 0.7); 
 }
 .form__sub-btn--active {
     cursor: pointer;   

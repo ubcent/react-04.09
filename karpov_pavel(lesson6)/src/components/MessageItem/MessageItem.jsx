@@ -1,30 +1,13 @@
 import './MessageItem.css';
 
-import React, {PureComponent} from 'react';
+import React, { PureComponent } from 'react';
 
 import classNames from 'classnames';
-import PropTypes from 'prop-types';
 
-class MessageItem extends PureComponent {
-    static propTypes = {
-        type: PropTypes.oneOf(['guest', 'me']),        
-    }
-    static defaultProps = {
-        type: 'guest',
-        text: [],
-    };  
-
-    componentDidMount() {
-        const commArea = document.querySelector('.comment-area');
-        commArea.scrollTo({
-            top: commArea.scrollHeight,
-            behavior: 'smooth'
-        })
-    } 
-    
-
+export default class MessageItem extends PureComponent {
+        
     render() {
-        const{text, type} = this.props;
+        const{ text, type } = this.props;
         const messageStyles = classNames('message',  {
             'message-guest': type === 'guest',
             'message-my': type === 'me',
@@ -41,5 +24,3 @@ class MessageItem extends PureComponent {
         )
     }
 }
-
-export default MessageItem;
