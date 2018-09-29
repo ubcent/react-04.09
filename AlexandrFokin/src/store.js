@@ -4,6 +4,6 @@ import {createStore} from 'redux';
 import rootReducer from 'reducers';
 
 /**
- * Создает store
+ * Создает store - хранилище состояния приложения
  */
 export default createStore(rootReducer);

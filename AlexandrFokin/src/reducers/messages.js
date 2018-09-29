@@ -8,14 +8,14 @@ const initialState = {
 };
 
 /**
- * Reducer для хранения сообщений в store
+ * Reducer для хранения сообщений путем изменения значения entities в store
  */
 export default handleActions({
   // устанавливает соответствие между action и обработчиком
   // messageReceived - наименование обрабатываемого action
-  // (state, action) - функция-обработчик
+  // (state, action) - чистая функция-обработчик
   // state - предыдущее состояние до прихода сообщения
-  // action - объект действия, содержащий параметры
+  // action - объект (действие), содержащий параметры
   [messageReceived]: (state, action) => {
     return {
       // старое значение состояния

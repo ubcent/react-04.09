@@ -6,7 +6,9 @@ import {Provider} from 'react-redux';
 
 import Header from 'components/Header';
 
+// машрутизация сайта
 import routes from '../../routes';
+// хранилище Redux
 import store from '../../store';
 
 /**
