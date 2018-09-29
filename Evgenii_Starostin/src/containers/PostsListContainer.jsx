@@ -59,7 +59,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    getPostsList: () => fetchPostsList(dispatch),
+    getPostsList: () => dispatch(fetchPostsList()),
   };
 }
 

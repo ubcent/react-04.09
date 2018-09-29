@@ -8,7 +8,7 @@ export const loadPostRequest = createAction('LOAD_POST_REQUEST');
 export const loadPostFailure = createAction('LOAD_POST_FAILURE');
 export const loadPostSuccess = createAction('LOAD_POST_SUCCESS');
 
-export const fetchPostsList = (dispatch) => {
+export const fetchPostsList = () => (dispatch) => {
   dispatch(loadPostsListRequest());
   fetch('api/posts')
     .then(response => response.json())
@@ -16,7 +16,7 @@ export const fetchPostsList = (dispatch) => {
     .catch(err => dispatch(loadPostsListFailure(err)));
 };
 
-export const fetchPost = dispatch => (postId) => {
+export const fetchPost = postId => (dispatch) => {
   dispatch(loadPostRequest());
   fetch(`api/posts/${postId}?_expand=user`)
     .then(response => response.json())

@@ -59,7 +59,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    getCommentsList: () => fetchCommentsList(dispatch),
+    getCommentsList: () => dispatch(fetchCommentsList()),
   };
 }
 
