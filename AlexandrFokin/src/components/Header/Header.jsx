@@ -34,7 +34,7 @@ const menu = [
     id: 'about',
     name: 'About',
     to: '/about',
-  }
+  },
 ];
 
 // Данные для кнопки логина

@@ -9,6 +9,7 @@ const initialState = {
 
 /**
  * Reducer для хранения сообщений путем изменения значения entities в store
+ * @return {object} новый state или текущий state, если action не определен
  */
 export default handleActions({
   // устанавливает соответствие между action и обработчиком
@@ -24,5 +25,5 @@ export default handleActions({
       // payload - хранит параметр, указанный при вызове action, т.е. message (сообщение)
       entities: state.entities.concat([action.payload]),
     };
-  }
+  },
 }, initialState);
