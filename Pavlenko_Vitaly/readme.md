@@ -1,4 +1,4 @@
-# React App (Pavlenko Vitaly)
+# Blog (Pavlenko Vitaly)
 
 > Реализация блога на ReactJS для курса по ReactJS от GeekBrains
 

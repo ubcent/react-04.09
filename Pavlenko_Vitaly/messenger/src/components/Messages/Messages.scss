@@ -1,0 +1,9 @@
+.messages {
+  padding: 70px 45px 80px;
+}
+
+@media screen and (max-width: 768px) {
+  .messages {
+    padding: 70px 20px 80px;
+  }
+}

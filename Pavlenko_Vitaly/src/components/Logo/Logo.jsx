@@ -1,13 +1,11 @@
 import './Logo.scss';
 
-import React, {Component} from 'react';
+import React from 'react';
+import {Link} from 'react-router-dom';
 
-export default class Logo extends Component {
 
-    render() {
-
-        return (
-            <a href="#" className="logo header__logo">MY BLOG</a>
-        );
-    }
+export default function Logo() {
+    return (
+        <Link to="/" className="logo header__logo">MY BLOG</Link>
+    );
 }
