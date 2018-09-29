@@ -2,6 +2,7 @@ import './App.scss';
 
 import React, { PureComponent } from 'react';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
+// позволяет получать необходимые данные из store с помощью функции connect
 import {Provider} from 'react-redux';
 
 import Header from 'components/Header';

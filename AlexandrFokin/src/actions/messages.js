@@ -5,7 +5,8 @@ const socket = io.connect('http://localhost:3002');
 
 /**
  * Action, отправляющий полученное сообщение в store
- * Message - название сущности
+ * Указываем значение action.type:
+ * Message - название сущности, для которой выполняется действие
  * Receive - название действия
  */
 export const messageReceived = createAction('[Message] Receive');
@@ -17,7 +18,7 @@ export const messageReceived = createAction('[Message] Receive');
 export const mountEvents = dispatch => {
   // обрабатываем событие отправки сообщения
   socket.on('message', message => {
-    // отправляем полученное сообщение в store
+    // вызываем экшн, чтобы отправить полученное сообщение в store
     dispatch(messageReceived(message));
   });
 };

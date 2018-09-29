@@ -69,7 +69,11 @@ export default class MessagesContainer extends PureComponent {
         {/* выводим сообщения */}
         <MessagesList messages={messages}/>
         {/* форма для ввода комментария */}
-        <MessagesForm author={author} text={text} onHandleChange={this.handleChange} onHandleSend={this.handleSend}/>
+        <MessagesForm
+          author={author}
+          text={text}
+          onHandleChange={this.handleChange}
+          onHandleSend={this.handleSend}/>
       </Fragment>
     );
   }

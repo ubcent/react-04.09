@@ -6,30 +6,37 @@ import { mountEvents, sendMessage } from 'actions/messages';
 import MessagesContainer from 'containers/MessagesContainer';
 
 /**
- * Устанавливает новые свойства компонента из store
- * @param state содержимое store
- * @param ownProps свойства, изначально переданные в компонент (в т.ч. match, location при использовании Router)
- * @return {{messages: (Array|NamedNodeMap|ActiveX.IXMLDOMNamedNodeMap)}} новые свойства компонента
+ * Добавляет из store новые свойства присоединенному компоненту и подписывает на изменение
+ * этих свойств в store
+ * @param store содержимое store
+ * @param ownProps свойства, изначально переданные в компонент (в т.ч. match, location
+ *        при использовании Router)
+ * @return {{messages: (Array|NamedNodeMap|ActiveX.IXMLDOMNamedNodeMap)}} новые свойства
+ *        компонента
  */
-function mapStateToProps(state, ownProps) {
+function mapStateToProps(store, ownProps) {
   return {
-    // старые свойства
+    // текущие свойства
     ...ownProps,
-    // достаем сообщение из store
-    messages: state.messages.entities,
+    // с помощью редьюсера messages достаем из переменной messages, хранящейся в store,
+    // массив сообщений entities, передаем их в свойства присоединенного компонента и
+    // подписываемся на изменение этих данных
+    messages: store.messages.entities,
   };
 }
 
 /**
- * Устанавливает новые свойства компонента из action
- * @param dispatch диспетчер, содержащий сообщение
- * @param ownProps свойства, изначально переданные в компонент (в т.ч. match, location при использовании Router)
+ * Добавляет из action новые свойства присоединенному компоненту
+ * @param dispatch {object} диспетчер, содержащий сообщение
+ * @param ownProps свойства, изначально переданные в компонент (в т.ч. match, location при
+ *        использовании Router)
  * @return {{mountEvents: (function(): void), sendMessage: Function}}
  */
 function mapDispatchToProps(dispatch, ownProps) {
   return {
-    // старые свойства
+    // текущие свойства
     ...ownProps,
+    // получаем функции из экшена messages и передаем их в свойства присоединенного компонента
     mountEvents: () => mountEvents(dispatch),
     sendMessage: sendMessage(),
   };
@@ -38,8 +45,10 @@ function mapDispatchToProps(dispatch, ownProps) {
 /**
  * Подключает контейнер MessagesContainer к store
  * Методы, на которые подписывается компонент:
- * mapStateToProps - устанавливает новые свойства компонента из store
- * mapDispatchToProps - устанавливает новые свойства компонента из action
+ * mapStateToProps - добавляет из store новые свойства компоненту
+ * mapDispatchToProps - добавляет из action новые свойства компоненту
  * MessagesContainer - подключаемый контейнер
+ * @return новый присоединенный компонент (контейнер), который оборачивает переданный
+ * компонент (контейнер) <Connect(MessagesContainer)/>
  */
 export default connect(mapStateToProps, mapDispatchToProps)(MessagesContainer);
