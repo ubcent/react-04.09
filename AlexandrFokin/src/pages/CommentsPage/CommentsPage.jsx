@@ -2,10 +2,10 @@ import './CommentsPage.scss';
 
 import React, { PureComponent } from 'react';
 
-import MessagesContainer from 'containers/MessagesContainer';
+import MessagesContainer from 'containers/ConnectContainer';
 
 /**
- * Класс CommentsPage - компонент, отображающий ****** на странице
+ * Класс CommentsPage - компонент, отображающий страницу с комментариями
  */
 export default class CommentsPage extends PureComponent {
   render() {    
