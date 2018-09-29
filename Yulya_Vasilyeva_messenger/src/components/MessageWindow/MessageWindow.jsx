@@ -6,7 +6,7 @@ import React, { PureComponent } from 'react';
 
 //импортируем пользовательские компоненты
 import OpenUserChat from './OpenUserChat/';//открытый пользователь
-import Messages from './Messages/';//сообщения
+import MessageContainer from 'containers/MessageContainer';//сообщения
 import SendForm from './SendForm/';//форма отправки сообщения
 
 export default class MessageWindow extends PureComponent {
@@ -14,7 +14,7 @@ export default class MessageWindow extends PureComponent {
         return (
             <div className="message-window">
                 <OpenUserChat />
-                <Messages />
+                <MessageContainer />
                 <SendForm />
             </div>
         );
