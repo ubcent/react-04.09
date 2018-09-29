@@ -6,22 +6,24 @@ import PropTypes from 'prop-types';
 
 export default class Message extends PureComponent {
   static propTypes = {
-    author: PropTypes.object,
-    message: PropTypes.object
+    message: PropTypes.object,
   }
   render() {
     const messageClass = ClassNames({
-      'message': null == undefined,
-      'message-yours': this.props.author.firstName === 'You'
+      'message': true,
+      'message-yours': this.props.message.author.id === '1'  // Hardcoded
     })
-    let date = new Date(this.props.message.createdAt);
+    if (this.props.message.author.id === '1') {
+      this.props.message.author.username = 'You';
+    }
+    let date = new Date(this.props.message.timestamp);
     return (
       <div className={messageClass}>
         <div className="message__text">
           {this.props.message.text}
         </div>
         <div className="message__name">
-          {this.props.author.firstName}
+          {this.props.message.author.username}
           , at {date.getDate()}/{date.getMonth()+1}
         </div>
       </div>

@@ -1,45 +1,41 @@
 import React, {PureComponent} from 'react';
 
 import Room from 'components/Room';
-import app from '../index';
 import {Container} from 'reactstrap';
+import {connect} from 'react-redux';
+import propTypes from 'prop-types';
 
-const USER_ID = 1; // Hardcoded user id of our hero
+//const USER_ID = 1; // Hardcoded user id of our hero
 
-export default class RoomsContainer extends PureComponent {
-  state = {
-    messages: [],
-    authors: [],
-  }
-
-  componentDidMount() {
-    app.get('messagesToYou').then(res => {
-      res.json().then(res => {
-        this.setState({messages: res});
-      })
-    });
-    app.get('contacts').then(res => {
-      res.json().then(res => {
-        this.setState({authors: res});
-      })
-    })
+class RoomsContainer extends PureComponent {
+  static propTypes = {
+    authors: propTypes.array,
+    messages: propTypes.array,
+    dialogs: propTypes.array,
   }
 
   render() {
     let renderedRooms = '';
-    if (this.state.authors.length !== 0) {
-      renderedRooms = this.state.authors.map((user, index) => {
-        if (user.id !== USER_ID) {
+    if (this.props.authors.length !== 0) {
+      renderedRooms = this.props.dialogs.map((dialog, index) => {
+        /*if (+user.id !== USER_ID) {
           let messageCounter = 0;
-          this.state.messages.forEach(message => {
+          this.props.messages.forEach(message => {
             if (message.authorID === user.id) {
               messageCounter++;
             }
-          })
-          return <Room key={index} user={user} messageCounter={messageCounter}/>
-        }
-      });
-    }
+          })*/
+          let messageCounter = 0;
+          let author = {};
+          this.props.messages.forEach(message => {
+            if (+message.dialogId === +dialog.id) {
+              messageCounter++;
+              author = message.author;
+            }
+          });
+          return <Room key={index} user={author} messageCounter={messageCounter} dialogId={+dialog.id}/>
+        });
+      }
     return (
       <Container>
         {renderedRooms}
@@ -47,3 +43,14 @@ export default class RoomsContainer extends PureComponent {
     )
   }
 }
+
+function mapStateToProps(state, ownProps) {
+  return {
+    ...ownProps,
+    messages: state.messages,
+    authors: state.users,
+    dialogs: state.dialogs,
+  }
+}
+
+export default connect(mapStateToProps)(RoomsContainer);
