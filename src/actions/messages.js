@@ -8,8 +8,6 @@ export const messageReceived = createAction('[Message] Receive');
 
 // Side effects
 export const mountEvents = () => (dispatch, getState) => {
-  const state = getState();
-  console.log(state);
   socket.on('message', (message) => {
     dispatch(messageReceived(message));
   });
