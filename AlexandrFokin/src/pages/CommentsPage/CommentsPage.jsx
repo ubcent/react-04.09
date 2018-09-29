@@ -2,7 +2,7 @@ import './CommentsPage.scss';
 
 import React, { PureComponent } from 'react';
 
-import MessagesContainer from 'containers/ConnectContainer';
+import MessagesContainer from 'containers/ConnectMessagesToStoreContainer';
 
 /**
  * Класс CommentsPage - компонент, отображающий страницу с комментариями
