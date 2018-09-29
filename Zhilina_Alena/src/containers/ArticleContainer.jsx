@@ -24,7 +24,7 @@ export default class ArticleContainer extends PureComponent {
             }
 
         });
-        console.log(this.state.comments);
+      
     };
 
     load = () => {
@@ -51,7 +51,7 @@ export default class ArticleContainer extends PureComponent {
     }
 
     render() {
-        console.log(this.state.comments);
+    
         const { comments, article, loading } = this.state;
         return (
             <Fragment>

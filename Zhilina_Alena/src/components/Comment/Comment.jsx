@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 export default class Comment extends PureComponent{
     render(){
         const { comment } = this.props;
-        console.log('2222222222222222222222222');
+    
         return(
            <div className="comment">
                <div className="comment__img-block">
