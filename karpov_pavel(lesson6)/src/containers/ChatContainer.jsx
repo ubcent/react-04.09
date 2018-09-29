@@ -7,7 +7,6 @@ export default class ChatContainer extends Component {
         super(props);
         this.state = { 
             res: [],
-            id: '',
          };
       }
 
@@ -20,17 +19,11 @@ export default class ChatContainer extends Component {
             })
         );       
     } 
-    
-    updateId = (value) => {
-        this.setState({
-            id: value,
-        })        
-    } 
 
     render() {  
-        const { res, id } = this.state;    
+        const { res } = this.state;    
         return (  
-            <Chat res={res.name} onUpdateId={this.updateId} id={id} />                   
+            <Chat res={res.name} />                   
         );
     }
 }

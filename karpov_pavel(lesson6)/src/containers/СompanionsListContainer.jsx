@@ -2,8 +2,9 @@ import React, { PureComponent } from 'react';
 
 import СompanionsList from 'components/СompanionsList';
 import CompanionItem from 'containers/CompanionItemContainer';
+import { withRouter } from 'react-router-dom';
 
-export default class СompanionsListContainer extends PureComponent {
+class СompanionsListContainer extends PureComponent {
     constructor(props) {
         super(props);
         this.state = {
@@ -18,19 +19,21 @@ export default class СompanionsListContainer extends PureComponent {
             { 
                 posts: json,
             })
-        );       
+        );      
     } 
 
     render() {     
         const { posts } = this.state; 
-        const { activeId } = this.props;
+        const { location } = this.props;
       
         const companionsRend = posts.map((companion, idx) => {
-            return (<CompanionItem key={idx} text={companion.name} id={companion.id} activeId={activeId} />)         
+            return (<CompanionItem key={idx} text={companion.name} id={companion.id} location={location.pathname} />)         
         });    
 
         return (  
-            <СompanionsList companionsRend={companionsRend} />       
+            <СompanionsList companionsRend={companionsRend} />  
         );
     }
 }
+
+export default withRouter(СompanionsListContainer);;

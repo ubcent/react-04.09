@@ -8,16 +8,17 @@ import classNames from 'classnames';
 export default class CompanionItem extends PureComponent {
  
     render() {
-        const{ text, id, activeId } = this.props;
+        const{ text, id, location } = this.props;
         const companionStyles = classNames('companions__item',  {
-            'active': +activeId === id,            
+            'active': location === `/chat/${id}`,            
         });
           
         return (
-            <li className={companionStyles} >
+            <li className={companionStyles}>
                 <Link className="companions__link" to={`/chat/${id}`}>{text}</Link>
                 <hr className="companions__hr" />
             </li>     
         )
     }
 }
+

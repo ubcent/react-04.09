@@ -9,12 +9,12 @@ import Chat from 'containers/ChatContainer';
 
 export default class Layout extends Component {
     render() {  
-        const { onGetApi, res, onBtnDisabled } = this.props; 
+        const { onGetApi, res } = this.props; 
         
         return (
         <div className="wrapper">
             <Switch>
-                <Route path='/' render={() => (<RegistrationForm onGetApi={onGetApi} onBtnDisabled={onBtnDisabled} /> )} exact />
+                <Route path='/' render={() => (<RegistrationForm onGetApi={onGetApi} /> )} exact />
                 <Route path="/chat" render={() => <Chat onGetApi={onGetApi} res={res} exact />} />
             </Switch>
         </div>

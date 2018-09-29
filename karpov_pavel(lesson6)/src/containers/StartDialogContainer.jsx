@@ -15,7 +15,6 @@ export default class StartDialogContainer extends PureComponent {
     componentDidMount() {
         const { match } = this.props;
         this.getApi(match.params.id);        
-        console.log(match);
     } 
 
     componentDidUpdate(prevProps) {
@@ -31,7 +30,6 @@ export default class StartDialogContainer extends PureComponent {
       }
 
       getApi = (id) => {
-        const { onUpdateId } = this.props;
         fetch(`http://localhost:3001/posts/${id}/comments`)
         .then(response => response.json())
         .then(json => 
@@ -40,8 +38,7 @@ export default class StartDialogContainer extends PureComponent {
                 comments: json,
                 id,
             })
-        )
-        .then(onUpdateId(id))    
+        )   
     }
 
     render() {   
