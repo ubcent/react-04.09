@@ -3,17 +3,10 @@ import './style.css';
 import React, { Component } from 'react';
 import ReactDom from 'react-dom';
 import { Provider } from 'react-redux';
-import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
-import Chathead from 'components/Chathead';
-import Chatbox from 'components/Chatbox';
-import Chatinput from 'components/Chatinput';
-import ChatRoom from './components/ChatRoom';
-import Login from "./components/Login";
 import store from './store';
 import routes from './routes';
-
-
 
 class Layout extends Component {
     constructor(props) {
@@ -21,6 +14,7 @@ class Layout extends Component {
     }
 
     render() {
+        console.log(store.getState());
         return <div>
             {/*<ChatRoom URL='http://localhost:3000/users' />*/}
             <Provider store={store}>

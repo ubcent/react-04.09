@@ -9,4 +9,5 @@ export const userLogIn = createAction('[User] LogIn');
 //functions
 export const submitLogin = dispatch => userName => {
     socket.emit('login', userName);
+    dispatch(userLogIn());
 };

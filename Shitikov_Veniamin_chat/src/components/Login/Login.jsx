@@ -2,6 +2,7 @@ import './Login.css';
 
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import { submitLogin } from "../../actions/login";
 
@@ -26,14 +27,13 @@ class Login extends PureComponent {
   };
 
   render() {
-      const { handleSubmit } = this.props;
     return (
       <div className="Login">
       <h1>Welcome to chat!</h1>
         <form onSubmit={this.handleSubmit }>
             <input type='text' onChange={this.handleChange} value={this.state.value} placeholder='Your name'/>
             <br />
-            <button>Login</button>
+            <button><Link to='/chat'>Login</Link></button>
         </form>
       </div>
     );
