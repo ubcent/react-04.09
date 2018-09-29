@@ -44,6 +44,8 @@ io.on('connection', (socket) => {
     });
 });
 
+/*
 io.on('disconnection', (socket) => {
     // Удалить id из базы
 });
+*/

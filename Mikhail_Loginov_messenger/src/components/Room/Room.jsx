@@ -2,18 +2,19 @@ import './Room.css';
 
 import React, {PureComponent} from 'react';
 import {Link} from 'react-router-dom';
-import PropTypes from 'prop-types';
+import propTypes from 'prop-types';
 
 export default class Room extends PureComponent {
   static propTypes = {
-    user: PropTypes.object,
-    messageCounter: PropTypes.number
+    user: propTypes.object,
+    messageCounter: propTypes.number,
+    dialogId: propTypes.number,
   }
   render() {
     return (
       <div className="room">
-        <Link to={`chat/${this.props.user.id}`} params={{id: this.props.user.id}}>
-          <h3>{this.props.user.firstName}</h3>
+        <Link to={`chat/${this.props.dialogId}`} params={{dialogId: +this.props.dialogId}}>
+          <h3>{this.props.user.username}</h3>
           <p>You have {this.props.messageCounter} messages from this user</p>
         </Link>
       </div>
