@@ -1,6 +1,6 @@
-import MainPage from 'pages/MainPage';
-import BlogPage from 'pages/BlogPage';
-import ChatPage from 'containers/MessagesContainer';
+import Home from 'pages/HomePage';
+import Blog from 'pages/BlogPage';
+import Comments from 'pages/CommentsPage';
 
 /**
  * Маршрутизация приложения
@@ -9,19 +9,19 @@ export default [
   // Главная страница блога - Home
   {
     path: '/',
-    component: MainPage,
+    component: Home,
     exact: true,
   },
   // Страница с блогами - Blog
   {
     path: '/blog',
-    component: BlogPage,
+    component: Blog,
     exact: true,
   },
   // Страница с комментариями - Comments
   {
     path: '/comments',
-    component: ChatPage,
+    component: Comments,
     exact: true,
   },
 ];
