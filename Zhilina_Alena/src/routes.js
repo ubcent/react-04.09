@@ -3,6 +3,8 @@ import BlogListContainer from 'containers/BlogListContainer';
 import UserListContainer from 'containers/UserListContainer';
 import PostListContainer from 'containers/PostListContainer';
 import CommentListContainer from 'containers/CommentListContainer';
+import ArticleContainer from 'containers/ArticleContainer';
+import UserContainer from 'containers/UserContainer';
 
 export default [
     {
@@ -28,6 +30,16 @@ export default [
     {
         path: '/blog/:idBlog',
         component: PostListContainer,
+        exact: true
+    },
+    {
+        path: '/article/:idArticle',
+        component: ArticleContainer,
+        exact: true
+    },
+    {
+        path: '/users/:idUser',
+        component: UserContainer,
         exact: true
     },
 ]

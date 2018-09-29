@@ -18,7 +18,7 @@ export default class BlogPreview extends Component{
                 <div className="blog-preview__user-block">
                     <img className="blog-preview__user-img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBeyQJ_ELi86o4buR57vNCK2ci9alOjNuejXiKIxL8Oyj5cXuz" alt=""/>
                     <span className="blog-preview__user-name">
-                        <a className="blog-preview__user-link" href="#">{blog.user.firstName} {blog.user.lastName}</a>
+                        <Link className="blog-preview__user-link" to={`/users/${blog.user.id}`} >{blog.user.firstName} {blog.user.lastName}</Link>
                     </span>
                 </div>
 

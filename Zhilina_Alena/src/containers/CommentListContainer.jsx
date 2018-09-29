@@ -11,6 +11,7 @@ export default class CommentListContainer extends PureComponent {
             loading: false,
         };
     }
+
     load = () => {
         this.setState({loading: true});
 

@@ -19,6 +19,8 @@ module.exports = {
             containers: path.resolve(__dirname, 'src', 'containers'),
             pages :path.resolve(__dirname, 'src', 'pages'),
             layouts: path.resolve(__dirname, 'src', 'layouts'),
+            actions: path.resolve(__dirname, 'src', 'actions'),
+            reducers: path.resolve(__dirname, 'src', 'reducers'),
         }
     },
     module: {

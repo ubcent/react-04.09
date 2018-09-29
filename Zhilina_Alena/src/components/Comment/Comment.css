@@ -1,6 +1,7 @@
 .comment{
     display: flex;
     flex-flow: row;
+    align-self: normal;
 }
 
 .comment__img-block{

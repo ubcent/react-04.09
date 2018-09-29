@@ -1,6 +1,7 @@
 import React, { Component, Fragment} from 'react';
 import ReactDom from 'react-dom';
 import { Switch, BrowserRouter, Route } from 'react-router-dom';
+import { Provider } from 'react-redux';
 
 import 'normalize.css';
 
@@ -12,6 +13,7 @@ import Main from 'components/Main/index';
 import Aside from 'components/Aside/index';
 
 import routes from './routes';
+import store from './store';
 
 class App extends Component{
 
@@ -33,4 +35,7 @@ class App extends Component{
     }
 }
 
-ReactDom.render(<BrowserRouter><App /></BrowserRouter>, document.getElementById('root'));
+ReactDom.render(
+    <Provider store={store}><BrowserRouter><App /></BrowserRouter></Provider>,
+    document.getElementById('root')
+);

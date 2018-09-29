@@ -87,7 +87,6 @@
       "lastName":"Moore",
       "email":"leonard.moore27@example.com"
     }
-
   ],
 
   "posts":[
@@ -95,13 +94,16 @@
       "id":"1",
       "blogId":"1",
       "title": "All You Need To Know About IT",
-      "description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sed ornare massa. Ut vitae finibus libero, vitae congue ligula. Cras dapibus mollis urna vel laoreet. Nulla facilisi. Vivamus ac tempor justo."
+      "description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sed ornare massa. Ut vitae finibus libero, vitae congue ligula. Cras dapibus mollis urna vel laoreet. Nulla facilisi. Vivamus ac tempor justo.",
+      "text":"Red ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, qui dolorem ipsum quia dolor sit amet, consectetur, qui dolorem ipsum quia dolor sit amet, consectetur, qui dolorem ipsum quia dolor sit amet, consectetur, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Ut enim ad minima veniam."
     },
     {
       "id":"2",
       "blogId":"1",
       "title": "Here's What No One Tells You About IT",
-      "description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sed ornare massa. Ut vitae finibus libero, vitae congue ligula. Cras dapibus mollis urna vel laoreet. Nulla facilisi. Vivamus ac tempor justo."
+      "description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sed ornare massa. Ut vitae finibus libero, vitae congue ligula. Cras dapibus mollis urna vel laoreet. Nulla facilisi. Vivamus ac tempor justo.",
+      "text":"Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt."
+
     },
     {
       "id":"3",
@@ -139,7 +141,7 @@
     {
       "id":"2",
       "userId":"2",
-      "postId":"1",
+      "postId":"2",
       "text":"Integer sed ornare massa?"
     }
   ]
