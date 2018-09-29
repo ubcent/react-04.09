@@ -4,9 +4,9 @@ import React, {PureComponent} from 'react';
 import {Container} from 'reactstrap';
 import classNames from 'classnames';
 
-import users from '../../data/users';
-import comments from '../../data/comments';
-import blogPosts from '../../data/blog-posts';
+import users from 'data/users';
+import comments from 'data/comments';
+import blogPosts from 'data/blog-posts';
 
 export default class BlogPosts extends PureComponent {
   state = {
@@ -19,7 +19,6 @@ export default class BlogPosts extends PureComponent {
     if (this.state.collapsedUsersIDs.indexOf(user.id) === -1) {
       this.setState({collapsedUsersIDs: this.state.collapsedUsersIDs.concat(user.id)});
     } else {
-      // WTF IS GOING ON HERE?!
       let tempArray = this.state.collapsedUsersIDs.slice();
       tempArray.splice(tempArray.indexOf(user.id),1);
       this.setState({collapsedUsersIDs: tempArray});

@@ -6,6 +6,11 @@
   "scripts": {
     "build": "webpack --mode production",
     "dev": "webpack-dev-server --mode development",
+    "dev:json": "json-server --watch data.json",
+    "dev:ccm": "node cli/index.js --component --name",
+    "dev:ccr": "node cli/index.js --container --name",
+    "dev:ccmr": "node cli/index.js --container --component --name",
+    "dev:cp": "node cli/index.js --page --name",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "AntonVolkov",
@@ -17,10 +22,13 @@
     "@babel/preset-react": "^7.0.0",
     "autoprefixer": "^9.1.5",
     "babel-loader": "^8.0.2",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-polyfill": "^6.26.0",
     "clean-webpack-plugin": "^0.1.19",
     "css-loader": "^1.0.0",
     "html-webpack-plugin": "^3.2.0",
     "mini-css-extract-plugin": "^0.4.2",
+    "minimist": "^1.2.0",
     "node-sass": "^4.9.3",
     "postcss-loader": "^3.0.0",
     "sass-loader": "^7.1.0",
@@ -35,6 +43,7 @@
     "prop-types": "^15.6.2",
     "react": "^16.5.0",
     "react-dom": "^16.5.0",
+    "react-router-dom": "^4.3.1",
     "reactstrap": "^6.4.0"
   }
 }

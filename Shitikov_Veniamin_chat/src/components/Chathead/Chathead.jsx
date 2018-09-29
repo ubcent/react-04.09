@@ -1,11 +1,11 @@
 import './Chathead.css';
 
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 
 //Компонент заголовка чата.
 //Принимает на вход заголовок
-export default class Chathead extends Component{
+export default class Chathead extends PureComponent{
     constructor(props){
         super(props);
     }

@@ -1,0 +1,16 @@
+@import '~bootstrap/scss/bootstrap';//импорт Bootstrap стилей
+@import '_variables';
+
+@font-face{
+    font-family: 'Roboto';
+    src: url('fonts/Roboto-Light.ttf') format('ttf');
+}
+body{
+    color: $lightText;
+    background-color: rgb(32, 32, 32);
+    font-family: $fontFamily, sans-serif;  
+}
+h4{
+    font-size: 1.1em;
+    text-transform: uppercase;
+}

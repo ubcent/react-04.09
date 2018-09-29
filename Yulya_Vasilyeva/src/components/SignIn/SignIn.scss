@@ -1,0 +1,17 @@
+@import '../../variables';
+
+.signin{
+   padding: 20px 0; 
+}
+input[type="text"],input[type="password"]{
+    outline: none;
+    font-size: 0.9em;
+}
+input[type="text"]:focus,input[type="password"]:focus{
+    outline: none;
+    border: 1px solid $lightText;
+    box-shadow: 0 0 8px 4px $lightShadow;
+}
+.btn-signin:hover{
+    box-shadow: 0 0 8px 4px $lightShadow;
+}

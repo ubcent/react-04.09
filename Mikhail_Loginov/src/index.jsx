@@ -5,6 +5,6 @@ import './index.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import Layout from 'components/Layout';
+import LayoutContainer from 'containers/LayoutContainer';
 
-ReactDOM.render(<Layout/>, document.getElementById('root'));
+ReactDOM.render(<LayoutContainer/>, document.getElementById('root'));

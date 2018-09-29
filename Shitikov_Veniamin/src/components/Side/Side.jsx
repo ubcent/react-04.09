@@ -1,12 +1,12 @@
 import './Side.css';
 
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 
 //Компонент принимает на вход
 //  title - заголовок
 //  content - контент виджета
-export default class Side extends Component {
+export default class Side extends PureComponent {
     constructor(props) {
         super(props);
 

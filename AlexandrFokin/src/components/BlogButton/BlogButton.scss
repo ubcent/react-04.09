@@ -1,4 +1,8 @@
+// Коэффициент перевода в em
+$k: 16;
+
 .btn {
   color: #cdddeb;
-  margin-top: 0.15em;
+  margin-top: 5em/$k;
+  margin-bottom: 0;
 }

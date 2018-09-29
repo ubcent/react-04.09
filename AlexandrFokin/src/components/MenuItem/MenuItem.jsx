@@ -1,7 +1,7 @@
 import './MenuItem.scss';
 
-import React, { Component } from 'react';
-import { NavItem, NavLink } from 'reactstrap';
+import React, {Fragment, Component} from 'react';
+import {NavLink} from 'react-router-dom';
 // Проверка свойств
 import PropTypes from 'prop-types';
 
@@ -17,26 +17,34 @@ export default class MenuItem extends Component {
       id:  PropTypes.string,
       // название пункта
       name: PropTypes.string,
-    })
+      // адрес перехода по ссылке
+      to: PropTypes.string,
+    }),
   };
 
   // значения атрибутов по умолчанию
   static defaultProps = {
     // аттрибут menu инициализируем пустым объектом
-    item: {}
+    item: {},
   };
 
   render() {
     // получаем переданные свойства пункта меню
-    const {id, name} = this.props.item;
+    const {id, name, to} = this.props.item;
+    // проверка пути в строке браузера при выделении пункта меню
+    const checkLocation = path => location.pathname === path;
+
     return (
-      <NavItem>
-        {/* Присваиваем пункту меню id */}
-        <NavLink id={id} href='#'>
+      <Fragment>
+        {/* Присваиваем пункту меню id и адрес перехода, активному пункту меню присваивается класс active */}
+        <NavLink exact
+                 to={to}
+                 id={id}
+                 isActive={() => checkLocation(to)}>
           {/* Отображаем название пункта меню */}
           {name}
         </NavLink>
-      </NavItem>
+      </Fragment>
     );
   }
 }

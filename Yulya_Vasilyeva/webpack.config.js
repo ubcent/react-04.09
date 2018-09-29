@@ -9,11 +9,13 @@ const AutoPrefixer = require('autoprefixer');
 const HtmlPlugin = require('html-webpack-plugin');
 //чистим папку dist
 const CleanPlugin = require('clean-webpack-plugin');
+//копируем изображения
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
     mode: 'development',
     entry: {
-        entry: path.resolve(__dirname, 'src', 'js/_index.jsx'),
+        entry: path.resolve(__dirname, 'src', './_index.jsx'),
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
@@ -22,7 +24,8 @@ module.exports = {
     resolve: {
         extensions: ['.js', '.jsx'],
         alias: {
-            components: path.resolve(__dirname, 'src', 'js/components'),
+            components: path.resolve(__dirname, 'src', './components'),
+            containers: path.resolve(__dirname, 'src', './containers'),
         },
     },
     module: {
@@ -37,21 +40,22 @@ module.exports = {
             {
                 test: /\.s?css$/,
                 use: [
-                        { loader: 'style-loader'},
-                        { loader: MiniCssExtract.loader},
-                        { loader: 'css-loader'},
-                        { loader: 'postcss-loader',
-                            options: {
-                                plugins: [
-                                    AutoPrefixer({
-                                        browsers:['ie >= 8', 'last 4 version']
-                                    })
-                                ],
-                            }
-                        },
-                        { loader: 'clean-css-loader'},
-                        { loader: 'sass-loader'},
-                    ]
+                    { loader: 'style-loader' },
+                    { loader: MiniCssExtract.loader },
+                    { loader: 'css-loader' },
+                    {
+                        loader: 'postcss-loader',
+                        options: {
+                            plugins: [
+                                AutoPrefixer({
+                                    browsers: ['ie >= 8', 'last 4 version']
+                                })
+                            ],
+                        }
+                    },
+                    { loader: 'clean-css-loader' },
+                    { loader: 'sass-loader' },
+                ]
             },
             {
                 test: /\.(woff|woff2|eot|ttf|otf)$/,
@@ -64,25 +68,34 @@ module.exports = {
 
             },
             {
-                test: /\.(svg|gif|jpe?g|png)$/i,
+                test: /\.(svg|gif|jpe?g|png)$/,
                 use: [
                     {
-                        loader: 'file-loader',
-                        options:{
-                            name: '[name].[ext]',
-                            outputPath: 'img/',
+                        loader: 'url-loader',
+                        options: {
+                            name: 'img/[name].[ext]',
                         },
                     },
                 ]
             },
         ],
     },
+    devServer: {
+        historyApiFallback: true,
+    },
     plugins: [
-        new MiniCssExtract({filename: 'css/min.style.css'}),
+        new MiniCssExtract({ filename: 'css/min.style.css' }),
         new HtmlPlugin({
             template: path.resolve(__dirname, 'src', 'index.html'),
             filename: 'index.html'
         }),
+        new CopyWebpackPlugin([
+            {
+                from: 'src/**/*',
+                to: 'img/[name].[ext]',
+                ignore: [ '*.jsx','*.scss', '*.js', '*.html', '*.ttf' ],
+            }
+        ]),
         new CleanPlugin(['dist']),
     ]
 }

@@ -1,8 +1,8 @@
 import './Search.css';
 
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 
-export default class Search extends Component {
+export default class Search extends PureComponent {
     constructor(props){
         super(props);
 

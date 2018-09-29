@@ -1,6 +1,6 @@
 import './Header.scss';
 
-import React, {Component, Fragment} from 'react';
+import React, {Component} from 'react';
 
 import HorizontalMenu from 'components/HorizontalMenu';
 import BlogButton from 'components/BlogButton/BlogButton';
@@ -11,22 +11,27 @@ const menu = [
   {
     id: 'main',
     name: 'Home',
+    to: '/',
   },
   {
     id: 'new_feature,',
-    name: 'New features',
+    name: 'Blog',
+    to: '/blog',
   },
   {
     id: 'press',
-    name: 'Press',
+    name: 'Comments',
+    to: '/comments',
   },
   {
     id: 'new_hires',
-    name: 'New hires',
+    name: 'Users',
+    to: '/users',
   },
   {
     id: 'about',
     name: 'About',
+    to: '/about',
   }
 ];
 
@@ -39,21 +44,19 @@ const loginButton = {id: 'login', name: 'Log in'};
 export default class Header extends Component {
   render() {
     return (
-      <Fragment>
         <header>
           <div className="container">
-            <div className='row menu'>
-              <div className='col-10'>
+            <div className="row menu">
+              <div className="col-10">
                 {/* Меню навигации */}
                 <HorizontalMenu menu={menu}/>
               </div>
-              <div className='col-2'>
+              <div className="col-2">
                 <BlogButton item={loginButton}/>
               </div>
             </div>
           </div>
         </header>
-      </Fragment>
     );
   }
 }

@@ -2,9 +2,6 @@ import './Header.css';
 
 import React, {PureComponent} from 'react';
 import {
-  Nav,
-  NavItem,
-  NavLink,
   Button,
   Modal,
   ModalHeader,
@@ -16,20 +13,19 @@ import {
   Input,
   Container
 } from 'reactstrap';
+import PropTypes from 'prop-types';
 
 export default class Header extends PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = {
-      modal: false
-    };
-
-    this.toggle = this
-      .toggle
-      .bind(this);
+  static propTypes = {
+    className: PropTypes.string,
+    buttonLabel: PropTypes.string,
   }
 
-  toggle() {
+  state = {
+    modal: false
+  };
+
+  toggle = () => {
     this.setState({
       modal: !this.state.modal
     });

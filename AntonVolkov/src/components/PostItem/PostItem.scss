@@ -1,0 +1,14 @@
+.post-item{
+    &__link{
+        display: block;
+
+        &:link{
+            text-decoration: none;
+        }
+
+        &:hover{
+            text-decoration: none;
+        }
+
+    }
+}

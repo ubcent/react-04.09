@@ -4,35 +4,23 @@ import React, {PureComponent} from 'react';
 import {Container} from 'reactstrap';
 import propTypes from 'prop-types';
 
-import blogPosts from '../../data/blog-posts';
-import authors from '../../data/users';
-import comments from '../../data/comments';
+import authors from 'data/users';
 
 export default class PostPage extends PureComponent {
   static propTypes = {
-    id: propTypes.string,
+    post: propTypes.object,
+    author: propTypes.object,
+    postComments: propTypes.array,
   }
 
   render() {
-    let post = {};
-    blogPosts.map(currPost => {
-      if (currPost.id === + this.props.id) {
-        post = currPost;
-      }
-    });
+    let {post} = this.props; 
+    let {author} = this.props;
+    let {postComments} = this.props;
 
-    // Getting post author and post comments
-    let author = authors[post.authorID-1];
-    let postComments = [];
-    comments.map(comment => {
-      if (comment.postID === post.id) {
-        postComments.push(comment);
-      }
-    })
-
-    // Rendering Comments; showing nothing in case there is no comments
+    // Rendering Comments; showing nothing in case there are no comments
     let renderedComments = '';
-    if (postComments.length !== 0) {
+    if (postComments) {
       renderedComments =
         <div className="post__comments">
           <h4>Comments</h4>

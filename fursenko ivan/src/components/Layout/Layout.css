@@ -12,3 +12,31 @@ body, html {
     display: flex;
     width: 100%;
 }
+
+.nav {
+    box-shadow: 1px 1px 4px 0px;
+    padding: 5px;
+    margin: 10px;
+    width: 100%;
+}
+
+nav > ul {
+    list-style: none;
+    padding-left: 0;
+    display: flex;
+}
+
+nav > ul > li > .is-active {
+    border-bottom: 1px solid black;
+}
+
+nav > ul > li > a:hover {
+    border-bottom: 1px solid black;
+}
+
+nav > ul > li > a {
+    border-bottom: 1px solid transparent;
+    color: #000;
+    text-decoration: none;
+    margin: 0 20px 0 0;
+}

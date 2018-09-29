@@ -1,49 +1,39 @@
 import './Layout.css';
 
-import React, { Component } from 'react';
+import React from 'react';
+import { Switch, Route } from 'react-router-dom';
 
 import Header from 'Components/Header';
-import Menu from 'Components/Menu';
-import MainPage from 'Components/MainPage';
+import NavMenu from 'Components/NavMenu';
 import Footer from 'Components/Footer';
-import categories from 'Mocks/categories.json';
-import articles from 'Mocks/articles.json';
 
-export default class Layout extends Component {
-  constructor(props) {
-    super(props);
+import routes from '../../routes';
 
-    this.handleClick = this.handleClick.bind(this);
-    
-    this.state = {focused: 0};
-  }
+export default function Layout() {
+  const menuItems = [
+    { title: 'Главная', href: '/', exact: true },
+    { title: 'Блог', href: '/posts', exact: false },
+    { title: 'Комментарии', href: '/comments', exact: false },
+    { title: 'Пользователи', href: '/users', exact: false },
+  ];
 
-  showAlert = () => {
-    alert('Добро пожаловать!');
-  }
+  return (
+    <div className="Layout">
+      <div className="wrapper">
+        <Header />
 
-  componentDidMount = () => {
-    setTimeout(this.showAlert, 0);
-  }
+        <div className="container">
+          <NavMenu items={menuItems} />
 
-  handleClick = (e) => {
-    const index = +e.target.name;
-    e.preventDefault();
-    this.setState({focused: index});
-  }
-
-  render() {
-    const { focused } = this.state;
-    const menuItems = [{id: 0, name: 'Главная'}].concat(categories);
-    return (
-      <div className="Layout">
-        <div className="wrapper">
-          <Header />
-          <Menu items={menuItems} handleClick={this.handleClick} focused={focused} />
-          <MainPage articles={articles} focused={focused} />
+          <main className="main">
+            <Switch>
+              {routes.map((route, idx) => <Route key={idx} {...route} />)}
+            </Switch>
+          </main>
         </div>
-        <Footer />
       </div>
-    );
-  }
+
+      <Footer />
+    </div>
+  );
 }

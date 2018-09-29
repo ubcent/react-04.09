@@ -1,8 +1,8 @@
 import './Companions.scss';
 
 import React, {PureComponent} from 'react';
+import {Link} from 'react-router-dom';
 import classNames from 'classnames';
-import Data from "components/Data";
 
 export default class Companions extends PureComponent {
   constructor(props) {
@@ -21,28 +21,30 @@ export default class Companions extends PureComponent {
     this.setState({isClosed: false})
   };
   
-  openRoom = (event) => {
-    this.close();
-    this.props.openRoom(event.target.name);
-  };
-  
   componentDidMount() {
-    Data.getCompanionList(this);
+    fetch('http://localhost:3000/companions/')
+    .then((response) => response.json())
+    .then((list) => {
+      this.setState({companionList: list});
+    });
   };
   
   render() {
-    const companionListModalClass = classNames('companion-list-modal', {
-      'companion-list-modal hidden': this.state.isClosed,
-    });
+    const companionListModalClass = classNames(
+      'companion-list-modal',
+      {'companion-list-modal hidden': this.state.isClosed,}
+    );
     const {companionList} = this.state;
     return (
-      <div>
-        <a className="btn btn-default" href="#" role="button" onClick={this.open}>Собеседники</a>
+      <div className="companion-menu">
+        <button className="btn btn-default" role="button" onClick={this.open}>Собеседники</button>
         <div className={companionListModalClass}>
           <div onClick={this.close}>x</div>
-          {companionList.map((companion) =>
-            <p key={companion.id}><a href="#" title={companion.name} name={companion.id} onClick={this.openRoom}>{companion.name} ({companion.status})</a></p>
-          )}
+          {
+            companionList.length ?
+              companionList.map((companion) => <Link to={'/companion/' + companion.id} onClick={this.close} key={companion.id}>{companion.name}</Link>) :
+              <p>Сервер Off-line</p>
+          }
         </div>
       </div>
     );

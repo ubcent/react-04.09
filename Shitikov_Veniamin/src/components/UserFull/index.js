@@ -1,0 +1,1 @@
+export UserFull from './UserFull';

@@ -1,12 +1,12 @@
 import './Categories.css';
 
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 
 //Компонент принимает массив объектов категорий
 //  href - ссылка
 //  title - заголовок
-export default class Categories extends Component {
+export default class Categories extends PureComponent {
     constructor(props){
         super(props);
     }
