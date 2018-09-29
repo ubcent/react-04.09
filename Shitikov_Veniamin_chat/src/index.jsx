@@ -3,6 +3,7 @@ import './style.css';
 import React, { Component } from 'react';
 import ReactDom from 'react-dom';
 import { Provider } from 'react-redux';
+import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
 
 import Chathead from 'components/Chathead';
 import Chatbox from 'components/Chatbox';
@@ -10,34 +11,27 @@ import Chatinput from 'components/Chatinput';
 import ChatRoom from './components/ChatRoom';
 import Login from "./components/Login";
 import store from './store';
+import routes from './routes';
 
 
 
 class Layout extends Component {
-    constructor(props){
+    constructor(props) {
         super(props);
     }
 
-    render(){
-        const sendMessage = (text) => {
-            const message = {
-                id: new Date().getTime().toString(),
-                type: 'out',
-                message: text,
-            };
-            const messages = this.state.messages.concat([message]);
-            this.setState({
-                messages: messages,
-            })
-
-        };
+    render() {
         return <div>
             {/*<ChatRoom URL='http://localhost:3000/users' />*/}
             <Provider store={store}>
-                <Login/>
+                <Switch>
+                    {routes.map((route, index) => {
+                        return <Route key={index} exact={route.exact} path={route.path} component={route.component} />
+                    })}
+                </Switch>
             </Provider>
         </div>
     }
 }
 
-ReactDom.render(<Layout  />, document.getElementById('root'));
+ReactDom.render(<BrowserRouter><Layout /></BrowserRouter>, document.getElementById('root'));

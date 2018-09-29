@@ -29,6 +29,7 @@ class Login extends PureComponent {
       const { handleSubmit } = this.props;
     return (
       <div className="Login">
+      <h1>Welcome to chat!</h1>
         <form onSubmit={this.handleSubmit }>
             <input type='text' onChange={this.handleChange} value={this.state.value} placeholder='Your name'/>
             <br />
