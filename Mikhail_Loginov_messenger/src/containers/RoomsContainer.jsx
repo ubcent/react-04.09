@@ -47,7 +47,7 @@ class RoomsContainer extends PureComponent {
 function mapStateToProps(state, ownProps) {
   return {
     ...ownProps,
-    messages: state.messages,
+    messages: state.messages.entities,
     authors: state.users,
     dialogs: state.dialogs,
   }

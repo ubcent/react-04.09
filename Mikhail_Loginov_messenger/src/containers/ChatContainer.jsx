@@ -54,15 +54,19 @@ class ChatContainer extends PureComponent {
 
   handleSubmitClick = () => {
     let message = {
-      id: '123',
-      dialogId : this.props.dialogId,
-      text: this.state.messageText,
+      id: String(this.props.messages.length + 1),
+      dialogId : String(this.props.dialogId),
       timestamp: Date.now(),
+      text: this.state.messageText,
       author: USER,
     }
 
     const {sendMessage} = this.props;
     sendMessage(message);
+    this.setState({
+      messages: this.state.messages.concat(message),
+      messageText: '',
+    });
   }
 
   render() {
@@ -101,7 +105,7 @@ class ChatContainer extends PureComponent {
 function mapStateToProps(state, ownProps) {
   return {
     ...ownProps,
-    messages: state.messages,
+    messages: state.messages.entities,
     users: state.users,
   }
 }
