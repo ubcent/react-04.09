@@ -19,12 +19,6 @@ export default class MessagesList extends PureComponent {
     })),
   };
 
-  // значения атрибутов по умолчанию
-  static defaultProps = {
-    // аттрибут post инициализируем пустым объектом
-    post: {},
-  };
-
   render() {
     const {messages} = this.props;
 
