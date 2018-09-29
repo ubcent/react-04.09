@@ -32,5 +32,10 @@ module.exports = {
       'error',
       'always',
     ],
+    // проверка наличия запятой в многострочной записи
+    'comma-dangle': [
+      'error',
+      'always-multiline',
+    ],
   },
 };
