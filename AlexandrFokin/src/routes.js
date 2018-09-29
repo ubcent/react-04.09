@@ -1,5 +1,5 @@
-import MainPage from 'components/MainPage';
-import BlogPage from 'components/BlogPage';
+import MainPage from 'pages/MainPage';
+import BlogPage from 'pages/BlogPage';
 import ChatPage from 'containers/MessagesContainer';
 
 /**
