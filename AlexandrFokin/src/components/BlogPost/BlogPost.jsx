@@ -22,28 +22,6 @@ export default class BlogPost extends PureComponent {
     };
   }
 
-  loadMore = () => {
-    const {page} = this.state;
-    this.setState({
-      loading: true,
-    });
-    // загружаем 3 комментария
-    fetch(`https://jsonplaceholder.typicode.com/comments?_page=${page}&_limit=3`)
-      .then(response => response.json())
-      .then(comments => {
-        this.setState(prevState => ({
-          comments: prevState.comments.concat(comments),
-          loading: false,
-          page: prevState.page + 1,
-        }));
-      });
-  };
-
-  // выполняется после визуализации
-  componentDidMount() {
-    this.loadMore();
-  }
-
   // Проверка свойств
   static propTypes = {
     // Пост - объект
@@ -66,6 +44,28 @@ export default class BlogPost extends PureComponent {
     // аттрибут post инициализируем пустым объектом
     post: {},
   };
+
+  loadMore = () => {
+    const {page} = this.state;
+    this.setState({
+      loading: true,
+    });
+    // загружаем 3 комментария
+    fetch(`https://jsonplaceholder.typicode.com/comments?_page=${page}&_limit=3`)
+      .then(response => response.json())
+      .then(comments => {
+        this.setState(prevState => ({
+          comments: prevState.comments.concat(comments),
+          loading: false,
+          page: prevState.page + 1,
+        }));
+      });
+  };
+
+  // выполняется после визуализации
+  componentDidMount() {
+    this.loadMore();
+  }
 
   handleCommentReceive = comment => {
     this.setState(
