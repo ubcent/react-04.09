@@ -1,18 +1,15 @@
 import React, {PureComponent} from 'react';
-import Room from 'components/Room';
+import {connect} from 'react-redux';
 
-export default class RoomContainer extends PureComponent {
+import Room from 'components/Room';
+import {sendMessage, getCompanionData} from 'actions/messages';
+
+class RoomContainer extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      userMessages: '',
       editorMessage: '',
-      companionId: 0,
-      companionName: '',
-      companionStatus: '',
-      companionMessages: '',
     };
-    this.intervalCompanion = null;
   }
   
   onEditorStateChange = (event) => {
@@ -22,9 +19,10 @@ export default class RoomContainer extends PureComponent {
   };
   
   sendMessage = () => {
+    const {sendMessage} = this.props;
     if (this.state.editorMessage.trim() !== '') {
+      sendMessage(this.state.editorMessage);
       this.setState({
-        userMessages: this.state.userMessages.concat(this.state.editorMessage, '\n\n'),
         editorMessage: '',
       });
     }
@@ -49,75 +47,20 @@ export default class RoomContainer extends PureComponent {
   
   componentWillReceiveProps(nextProps) {
     const {match} = nextProps;
-    if (this.state.companionId !== match.params.id) {
-      this.setState({
-        companionId: match.params.id,
-        userMessages: '',
-      });
-      this.getCompanionInfo();
-      this.getCompanionMessages();
+    const {companionId, getCompanionData} = this.props;
+    if (match.params.id && companionId !== parseInt(match.params.id)) {
+      getCompanionData(parseInt(match.params.id));
     }
   }
   
   componentDidMount() {
-    const {match} = this.props;
-    this.intervalCompanion = setInterval(() => {
-      this.getCompanionInfo();
-      this.getCompanionMessages();
-    }, 1000);
-    if (this.state.companionId === 0 && !match.params.id) {
-      this.getLastCompanionId();
-    } else {
-      this.setState({companionId: match.params.id});
-    }
-  };
-  
-  componentWillUnmount() {
-    clearInterval(this.intervalCompanion);
-  }
-  
-  getCompanionInfo = () => {
-    fetch('http://localhost:3000/companions/' + this.state.companionId)
-    .then((response) => response.json())
-    .then((companion) => {
-      this.setState({
-        companionName: companion.name,
-        companionStatus: companion.status,
-      });
-    }).catch(() => {
-      this.setState({
-        companionStatus: 'Off-line',
-      });
-    });
-  };
-  
-  getCompanionMessages = () => {
-    fetch('http://localhost:3000/messages/?companionId=' + this.state.companionId)
-    .then((response) => response.json())
-    .then((messages) => {
-      this.setState({
-        companionMessages: messages.reduce((accumulator, item) => accumulator + item.message + '\n\n', ''),
-        companionStatus: 'On-line',
-      });
-    }).catch(() => {
-      this.setState({
-        companionStatus: 'Off-line',
-      });
-    });
-  };
-  
-  getLastCompanionId = () => {
-    fetch('http://localhost:3000/state/')
-    .then((response) => response.json())
-    .then((state) => {
-      this.setState({
-        companionId: state.lastCompanionId,
-      });
-    });
+    const {getCompanionData} = this.props;
+    getCompanionData();
   };
   
   render() {
-    const {editorMessage, userMessages, companionName, companionStatus, companionMessages} = this.state;
+    const {editorMessage} = this.state;
+    const {companionName, companionStatus, companionMessages, userMessages} = this.props;
     return (
       <Room
         editorMessage={editorMessage}
@@ -130,3 +73,24 @@ export default class RoomContainer extends PureComponent {
     );
   }
 }
+
+function mapStateToProps(state, props) {
+  return {
+    ...props,
+    companionId: state.messages.companionId,
+    companionName: state.messages.companionName,
+    companionStatus: state.messages.companionStatus,
+    companionMessages: state.messages.companionMessages,
+    userMessages: state.messages.userMessages,
+  }
+}
+
+function mapDispatchToProps(dispatch, props) {
+  return {
+    ...props,
+    sendMessage: sendMessage(dispatch),
+    getCompanionData: getCompanionData(dispatch),
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(RoomContainer);
