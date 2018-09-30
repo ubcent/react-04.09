@@ -2,29 +2,29 @@ module.exports = {
   async up(db) {
     await db.createCollection('comments');
     await db.collection('comments').insertMany([{
-      id: 1,
-      authorID: 5,
-      postID: 1,
+      id: '1',
+      authorId: '5',
+      postId: '1',
       text: 'Cool!',
     }, {
-      id: 2,
-      postID: 2,
-      authorID: 2,
+      id: '2',
+      postId: '2',
+      authorId: '2',
       text: 'Good post'
     }, {
-      id: 3,
-      postID: 3,
-      authorID: 1,
+      id: '3',
+      postId: '3',
+      authorId: '1',
       text: 'Thanks'
     }, {
-      id: 4,
-      postID: 2,
-      authorID: 5,
+      id: '4',
+      postId: '2',
+      authorId: '5',
       text: 'Well done'
     }, {
-      id: 5,
-      postID: 1,
-      authorID: 5,
+      id: '5',
+      postId: '1',
+      authorId: '5',
       text: 'Nothing new.'
     }, ])
   },

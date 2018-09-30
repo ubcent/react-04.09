@@ -7,8 +7,8 @@ import Footer from 'components/Footer';
 import WelcomeModal from 'components/WelcomeModal';
 import PostPageContainer from 'containers/PostPageContainer';
 import MainPage from 'components/MainPage';
-import Comments from 'components/Comments';
-import Users from 'components/Users';
+import CommentsContainer from 'containers/CommentsContainer';
+import UsersContainer from 'containers/UsersContainer';
 
 export default class LayoutContainer extends PureComponent {
   render() {
@@ -20,11 +20,11 @@ export default class LayoutContainer extends PureComponent {
           <Switch>
             <Route exact path='/' component={MainPage}/>
             <Route exact path='/blog' component={BlogPostsContainer}/>
-            <Route exact path='/comments' component={Comments}/>
-            <Route exact path='/users' component={Users}/>
+            <Route exact path='/comments' component={CommentsContainer}/>
+            <Route exact path='/users' component={UsersContainer}/>
             <Route
               path='/post/:id'
-              render={(props) => <PostPageContainer id={props.match.params.id}/>}/>
+              render={(props) => <PostPageContainer id={+props.match.params.id}/>}/>
           </Switch>
           <Footer/>
         </Fragment>
