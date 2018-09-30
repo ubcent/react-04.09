@@ -6,19 +6,6 @@ const initialState = {
   entities: [],
 };
 
-/*
-export default handleActions({
-  [usersLoaded]: (state, actions) => {
-    return {
-      ...state,
-      entities: state
-        .entities
-        .concat(actions.payload)
-    }
-  }
-}, initialState);
-*/
-
 export default handleActions({
   [usersLoaded]: (state, actions) => {
     return {

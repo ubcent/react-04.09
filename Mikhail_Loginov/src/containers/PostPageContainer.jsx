@@ -9,13 +9,14 @@ import {loadBlogPosts} from 'actions/blog-posts';
 
 class PostPageContainer extends PureComponent {
   static propTypes = {
-    id: propTypes.string,
+    id: propTypes.number,
     blogPosts: propTypes.array,
     authors: propTypes.array,
     comments: propTypes.array,
     loadUsers: propTypes.func,
     loadComments: propTypes.func,
     loadBlogPosts: propTypes.func,
+    match: propTypes.object,
   }
 
   componentDidMount() {
@@ -47,13 +48,14 @@ class PostPageContainer extends PureComponent {
   }
 
   render() {
-    let post = this.getPostById(+this.props.id);
-    let author = this.props.authors[+post.authorId-1];
-    let postComments = this.getCommentsByPostId(+post.id);
-      
-    return (
-      <PostPage post={post} author={author} postComments={postComments} authors={this.props.authors}/>
-    );
+    if (this.props.blogPosts.length !== 0 && this.props.authors.length !== 0 && this.props.authors.length !== 0) {
+      let post = this.getPostById(+this.props.match.params.id);
+      let author = this.props.authors[+post.authorId-1];
+      let postComments = this.getCommentsByPostId(+post.id);
+      return (
+        <PostPage post={post} author={author} postComments={postComments} authors={this.props.authors}/>
+      );
+    }
   }
 }
 
