@@ -1,4 +1,5 @@
 import React, { PureComponent, Fragment } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import CommentsList from 'components/CommentsList';
@@ -12,6 +13,12 @@ class ChatContainer extends PureComponent {
       author: '',
       text: '',
     }
+  }
+
+  static propTypes = {
+    messages: PropTypes.arrayOf(),
+    mountEvents: PropTypes.func,
+    sendMessage: PropTypes.func,
   }
 
   componentDidMount() {
@@ -62,8 +69,8 @@ function mapStateToProps(state, ownProps) {
 function mapDispatchToProps(dispatch, props) {
   return {
     ...props,
-    mountEvents: () => mountEvents(dispatch),
-    sendMessage: sendMessage(dispatch),
+    mountEvents: () => dispatch(mountEvents()),
+    sendMessage: (message) => dispatch(sendMessage(message)),
   }
 }
 

@@ -7,12 +7,12 @@ const socket = io.connect('http://localhost:3000');
 export const messageReceived = createAction('[Message] Receive');
 
 // Side effects
-export const mountEvents = (dispatch) => {
+export const mountEvents = () => (dispatch, getState) => {
   socket.on('message', (message) => {
     dispatch(messageReceived(message));
   });
 };
 
-export const sendMessage = (dispatch) => (message) => {
+export const sendMessage = (message) => (dispatch) => {
   socket.emit('message', message);
 };

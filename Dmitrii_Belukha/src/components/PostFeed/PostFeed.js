@@ -1,24 +1,18 @@
 import React, { Component } from 'react';
 import PostPreview from '../PostPreview/PostPreview';
 
-class PostFeed extends Component {
-  constructor(props) {
-    super(props);
+function PostFeed(props) {
+  const { data } = props;
+  const { blogs } = data;
+  console.log(data);
 
-    this.state = {
-      posts: []
-    };
-  }
-
-  render() {
-    return (
-      <div>
-        <PostPreview />
-        <PostPreview />
-        <PostPreview />
-      </div>
-    );
-  }
+  return (
+    <div>
+      {blogs.map((blog, index) => (
+        <PostPreview data={data} blog={blog} key={index} />
+      ))}
+    </div>
+  );
 }
 
 export default PostFeed;
