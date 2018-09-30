@@ -1,103 +1,127 @@
+const mongoose = require('mongoose');
+const {Companion, Message, State, UserMessage} = require('./models');
+
+mongoose.connect('mongodb://localhost/mark_vaisman_messenger', {useNewUrlParser: true});
+
 module.exports = class db {
-  static getCompanionData(id) {
-    const currentId = id ? id : data.state.lastCompanionId;
+  
+  static async init() {
+    if (!await Companion.find().countDocuments()) {
+      await Companion.insertMany(data.companions);
+    }
+    if (!await Message.find().countDocuments()) {
+      await Message.insertMany(data.messages);
+    }
+    if (!await State.find().countDocuments()) {
+      await State.insertMany(data.state);
+    }
+  }
+  
+  static async getCompanionData(id) {
+    let currentId = id
+    if (!currentId) {
+      const state = await State.find();
+      currentId = state[0].lastCompanionId;
+    }
+    const [info] = await Companion.find({'companionId': currentId});
+    const messages = await Message.find({'companionId': currentId});
     return {
-      info: data.companions.filter(companion => companion.id === currentId)[0],
-      messages: data.messages.filter(message => message.companionId === currentId).reduce((accumulator, item) => accumulator + item.message + '\n\n', '')
+      info: info,
+      messages: messages.reduce((accumulator, item) => accumulator + item.message + '\n\n', ''),
     };
   }
   
-  static getCompanions() {
-    return data.companions;
+  static async getCompanions() {
+    return await Companion.find();
   }
   
-  static setStatus(status) {
-    data.state.status = status;
+  static async saveUserMessage(message) {
+    let userMessage = new UserMessage(message);
+    await userMessage.save();
+  }
+  
+  static async getUserMessagesByCompanionId(id) {
+    let currentId = id
+    if (!currentId) {
+      const state = await State.find();
+      currentId = state[0].lastCompanionId;
+    }
+    const messages = await UserMessage.find({'companionId': currentId});
+    return {messages: messages.reduce((accumulator, item) => accumulator + item.message + '\n\n', '')};
   }
 };
 
+// Данные для инициализации MongoDB
 const data = {
   'companions': [
     {
-      'id': 1,
+      'companionId': 1,
       'name': 'Илья Муромец',
       'status': 'Off-line'
     },
     {
-      'id': 2,
+      'companionId': 2,
       'name': 'Добрыня Никитич',
       'status': 'On-line'
     },
     {
-      'id': 3,
+      'companionId': 3,
       'name': 'Алеша Попович',
       'status': 'On-line'
     }
   ],
   'messages': [
     {
-      'id': 1,
       'message': 'Praesent in mauris eu tortor porttitor accumsan. In sem justo, commodo ut, suscipit at, pharetra vitae, orci. Maecenas aliquet accumsan leo.',
       'companionId': 1
     },
     {
-      'id': 2,
       'message': 'Nullam sit amet magna in magna gravida vehicula. Etiam ligula pede, sagittis quis, interdum ultricies, scelerisque eu.',
       'companionId': 2
     },
     {
-      'id': 3,
       'message': 'Etiam posuere lacus quis dolor. Maecenas fermentum, sem in pharetra pellentesque, velit turpis volutpat ante, in pharetra metus odio a lectus.',
       'companionId': 3
     },
     {
-      'id': 4,
       'message': 'Nulla accumsan, elit sit amet varius semper, nulla mauris mollis quam, tempor suscipit diam nulla vel leo. In laoreet, magna id viverra tincidunt, sem odio bibendum justo, vel imperdiet sapien wisi sed libero. In dapibus augue non sapien.',
       'companionId': 1
     },
     {
-      'id': 5,
       'message': 'Aliquam in lorem sit amet leo accumsan lacinia. Integer lacinia. Etiam neque. Quisque tincidunt scelerisque libero.',
       'companionId': 2
     },
     {
-      'id': 6,
       'message': 'Praesent in mauris eu tortor porttitor accumsan. In sem justo, commodo ut, suscipit at, pharetra vitae, orci. Maecenas aliquet accumsan leo.',
       'companionId': 3
     },
     {
-      'id': 7,
       'message': 'Nullam sit amet magna in magna gravida vehicula. Etiam ligula pede, sagittis quis, interdum ultricies, scelerisque eu.',
       'companionId': 1
     },
     {
-      'id': 8,
       'message': 'Etiam posuere lacus quis dolor. Maecenas fermentum, sem in pharetra pellentesque, velit turpis volutpat ante, in pharetra metus odio a lectus.',
       'companionId': 2
     },
     {
-      'id': 9,
       'message': 'Nulla accumsan, elit sit amet varius semper, nulla mauris mollis quam, tempor suscipit diam nulla vel leo. In laoreet, magna id viverra tincidunt, sem odio bibendum justo, vel imperdiet sapien wisi sed libero. In dapibus augue non sapien.',
       'companionId': 3
     },
     {
-      'id': 10,
       'message': 'Aliquam in lorem sit amet leo accumsan lacinia. Integer lacinia. Etiam neque. Quisque tincidunt scelerisque libero.',
       'companionId': 1
     },
     {
-      'id': 11,
       'message': 'Nulla accumsan, elit sit amet varius semper, nulla mauris mollis quam, tempor suscipit diam nulla vel leo. In laoreet, magna id viverra tincidunt, sem odio bibendum justo, vel imperdiet sapien wisi sed libero. In dapibus augue non sapien.',
       'companionId': 2
     },
     {
-      'id': 12,
       'message': 'Aliquam in lorem sit amet leo accumsan lacinia. Integer lacinia. Etiam neque. Quisque tincidunt scelerisque libero.',
       'companionId': 3
     }
   ],
   'state': {
     'lastCompanionId': 2,
-    'status': 'Off-line'
+    'status': 'On-line'
   }
 };

@@ -41,7 +41,7 @@ class Companions extends PureComponent {
           <div onClick={this.close}>x</div>
           {
             companionList && companionList.length ?
-              companionList.map((companion) => <Link to={'/companion/' + companion.id} onClick={this.close} key={companion.id}>{companion.name}</Link>) :
+              companionList.map((companion) => <Link to={'/companion/' + companion.companionId} onClick={this.close} key={companion.companionId}>{companion.name}</Link>) :
               <p>Сервер Off-line</p>
           }
         </div>

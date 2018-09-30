@@ -1,6 +1,6 @@
 import {handleActions} from 'redux-actions';
 
-import {messageReceived, companionsReceived, companionDataReceived} from 'actions/messages';
+import {messageReceived, userMessagesReceived, companionsReceived, companionDataReceived} from 'actions/messages';
 
 const initialState = {
   companionList: [],
@@ -18,15 +18,21 @@ export default handleActions({
       userMessages: state.userMessages.concat(action.payload, '\n\n'),
     }
   },
+  [userMessagesReceived]: (state, action) => {
+    return {
+      ...state,
+      userMessages: action.payload.messages,
+    }
+  },
   [companionDataReceived]: (state, action) => {
     return {
       ...state,
-      companionId: action.payload.info.id,
+      companionId: action.payload.info.companionId,
       companionName: action.payload.info.name,
       companionStatus: action.payload.info.status,
       companionMessages: action.payload.messages,
-      userMessages: '',
     }
+    
   },
   [companionsReceived]: (state, action) => {
     return {

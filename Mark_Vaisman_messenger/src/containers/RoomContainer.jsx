@@ -2,7 +2,7 @@ import React, {PureComponent} from 'react';
 import {connect} from 'react-redux';
 
 import Room from 'components/Room';
-import {sendMessage, getCompanionData} from 'actions/messages';
+import {sendMessage, getCompanionData, getUserMessages} from 'actions/messages';
 
 class RoomContainer extends PureComponent {
   constructor(props) {
@@ -19,9 +19,9 @@ class RoomContainer extends PureComponent {
   };
   
   sendMessage = () => {
-    const {sendMessage} = this.props;
+    const {sendMessage, companionId} = this.props;
     if (this.state.editorMessage.trim() !== '') {
-      sendMessage(this.state.editorMessage);
+      sendMessage({message: this.state.editorMessage, companionId: companionId});
       this.setState({
         editorMessage: '',
       });
@@ -47,15 +47,17 @@ class RoomContainer extends PureComponent {
   
   componentWillReceiveProps(nextProps) {
     const {match} = nextProps;
-    const {companionId, getCompanionData} = this.props;
+    const {companionId, getCompanionData, getUserMessages} = this.props;
     if (match.params.id && companionId !== parseInt(match.params.id)) {
       getCompanionData(parseInt(match.params.id));
+      getUserMessages(parseInt(match.params.id));
     }
   }
   
   componentDidMount() {
-    const {getCompanionData} = this.props;
+    const {getCompanionData, getUserMessages} = this.props;
     getCompanionData();
+    getUserMessages();
   };
   
   render() {
@@ -89,6 +91,7 @@ function mapDispatchToProps(dispatch, props) {
   return {
     ...props,
     sendMessage: sendMessage(dispatch),
+    getUserMessages: getUserMessages(dispatch),
     getCompanionData: getCompanionData(dispatch),
   }
 }
