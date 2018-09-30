@@ -37,8 +37,8 @@ function mapDispatchToProps(dispatch, ownProps) {
     // текущие свойства
     ...ownProps,
     // получаем функции из экшена messages и передаем их в свойства присоединенного компонента
-    mountEvents: () => mountEvents(dispatch),
-    sendMessage: sendMessage(),
+    mountEvents: () => dispatch(mountEvents()),
+    sendMessage: message => dispatch(sendMessage(message)),
   };
 }
 
