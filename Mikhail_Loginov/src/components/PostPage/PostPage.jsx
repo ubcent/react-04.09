@@ -3,9 +3,8 @@ import './PostPage.css';
 import React, {PureComponent} from 'react';
 import {Container} from 'reactstrap';
 import PropTypes from 'prop-types';
-import {connect} from 'react-redux';
 
-class PostPage extends PureComponent {
+export default class PostPage extends PureComponent {
   static propTypes = {
     post: PropTypes.object,
     author: PropTypes.object,
@@ -31,7 +30,7 @@ class PostPage extends PureComponent {
         <div className="post__comments">
           <h4>Comments</h4>
           {postComments.map((comment, index) => {
-            let commentAuthor = this.props.authors[comment.authorID-1];
+            let commentAuthor = this.props.authors[comment.authorId-1];
             return (
             <div className="comment" key={index}>
               <div className="comment__text">{comment.text}</div>
@@ -58,11 +57,3 @@ class PostPage extends PureComponent {
   }
 }
 
-function mapStateToProps(state, ownProps) {
-  return {
-    ...ownProps,
-    authors: state.users,
-  }
-}
-
-export default connect(mapStateToProps)(PostPage);

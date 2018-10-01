@@ -3,6 +3,7 @@ import './Message.css';
 import React, {PureComponent} from 'react';
 import ClassNames from 'classnames';
 import PropTypes from 'prop-types';
+import moment from 'moment';
 
 export default class Message extends PureComponent {
   static propTypes = {
@@ -16,7 +17,6 @@ export default class Message extends PureComponent {
     if (this.props.message.author.id === '1') {
       this.props.message.author.username = 'You';
     }
-    let date = new Date(this.props.message.timestamp);
     return (
       <div className={messageClass}>
         <div className="message__text">
@@ -24,7 +24,7 @@ export default class Message extends PureComponent {
         </div>
         <div className="message__name">
           {this.props.message.author.username}
-          , at {date.getDate()}/{date.getMonth()+1}
+          , at {moment(this.props.message.timestamp).format("D MMMM")}
         </div>
       </div>
     );

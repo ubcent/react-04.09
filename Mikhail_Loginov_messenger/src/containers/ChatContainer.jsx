@@ -9,6 +9,7 @@ import {
 } from 'reactstrap';
 import propTypes from 'prop-types';
 import {connect} from 'react-redux';
+import moment from 'moment';
 
 import Message from 'components/Message';
 import {mountEvents, sendMessage} from 'actions/messages';
@@ -56,7 +57,7 @@ class ChatContainer extends PureComponent {
     let message = {
       id: String(this.props.messages.length + 1),
       dialogId : String(this.props.dialogId),
-      timestamp: Date.now(),
+      timestamp: moment().format(),
       text: this.state.messageText,
       author: USER,
     }
