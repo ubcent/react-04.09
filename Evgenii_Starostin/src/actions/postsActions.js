@@ -18,7 +18,7 @@ export const fetchPostsList = () => (dispatch) => {
 
 export const fetchPost = postId => (dispatch) => {
   dispatch(loadPostRequest());
-  fetch(`api/posts/${postId}?_expand=user`)
+  fetch(`api/posts/${postId}`)
     .then(response => response.json())
     .then(json => dispatch(loadPostSuccess(json)))
     .catch(err => dispatch(loadPostFailure(err)));

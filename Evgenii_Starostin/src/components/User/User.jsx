@@ -14,9 +14,9 @@ function User(props) {
         <div className="panel-heading">Блоги</div>
         <div className="panel-body">
           {user.posts.map(post => (
-            <article key={post.id} className="article">
+            <article key={post._id} className="article">
               <header className="article__header">
-                <h4><Link to={`/posts/${post.id}`}>{post.title}</Link></h4>
+                <h4><Link to={`/posts/${post._id}`}>{post.title}</Link></h4>
               </header>
 
               <p className="article__paragraph">{post.paragraphs[0]}</p>
@@ -29,7 +29,7 @@ function User(props) {
         <div className="panel-heading">Комментарии</div>
         <div className="panel-body">
           {user.comments.map(comment => (
-            <blockquote key={comment.id}>
+            <blockquote key={comment._id}>
               <p><q>{comment.text}</q></p>
             </blockquote>
           ))}

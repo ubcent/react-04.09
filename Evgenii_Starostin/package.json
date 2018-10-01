@@ -4,7 +4,7 @@
   "description": "домашнее задание в рамках обучения на курсе React от GeekBrains",
   "main": "index.js",
   "scripts": {
-    "server": "node server/server.js",
+    "server": "node server/mongoServer",
     "build": "webpack --mode production",
     "start": "webpack-dev-server --mode development --open"
   },
@@ -36,6 +36,8 @@
     "whatwg-fetch": "^3.0.0"
   },
   "dependencies": {
+    "body-parser": "^1.18.3",
+    "mongoose": "^5.3.0",
     "prop-types": "^15.6.2",
     "react": "^16.5.0",
     "react-bootstrap": "^0.32.4",

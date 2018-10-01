@@ -11,9 +11,9 @@ function PostsList(props) {
 
   return (
     posts.map(post => (
-      <article key={post.id} className="article">
+      <article key={post._id} className="article">
         <header className="article__header">
-          <h3><Link to={`/posts/${post.id}`}>{post.title}</Link></h3>
+          <h3><Link to={`/posts/${post._id}`}>{post.title}</Link></h3>
         </header>
 
         <p className="article__paragraph">{post.paragraphs[0]}</p>
