@@ -1,0 +1,3 @@
+export const UPDATE_POSTS = 'UPDATE_POSTS';
+export const UPDATE_USERS = 'UPDATE_USERS';
+export const UPDATE_COMMENTS = 'UPDATE_COMMENTS';
