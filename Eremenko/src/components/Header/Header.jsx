@@ -8,9 +8,6 @@ import { Jumbotron } from 'reactstrap';
 //собственные модули
 
 export default class Header extends PureComponent {
-    // Uncaught TypeError: _propTypes2.default.string.oneOf is not a function
-
-
     static propTypes = {
         size: PropTypes.oneOf(['small', 'big']),
         categories: PropTypes.arrayOf(PropTypes.string),

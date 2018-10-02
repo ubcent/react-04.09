@@ -1,39 +1,42 @@
 {
-  "name": "Eremenko",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "dev": "webpack-dev-server --mode development",
-    "build": "webpack --mode production",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "bootstrap": "^4.1.3",
-    "classnames": "^2.2.6",
-    "npm": "^6.4.1",
-    "prop-types": "^15.6.2",
-    "react": "^16.5.0",
-    "react-dom": "^16.5.1",
-    "react-holder-component": "^1.0.5",
-    "reactstrap": "^6.4.0"
-  },
-  "devDependencies": {
-    "babel-core": "^6.26.3",
-    "babel-loader": "^7.1.5",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-react": "^6.24.1",
-    "babel-preset-stage-0": "^6.24.1",
-    "css-loader": "^1.0.0",
-    "extract-text-webpack-plugin": "^4.0.0-beta.0",
-    "file-loader": "^2.0.0",
-    "html-webpack-plugin": "^3.2.0",
-    "style-loader": "^0.23.0",
-    "webpack": "^4.18.1",
-    "webpack-cli": "^3.1.0",
-    "webpack-dev-server": "^3.1.8"
-  }
+    "name": "Eremenko",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "dev": "webpack-dev-server --mode development",
+        "build": "webpack --mode production",
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "dcc": "node cli/component.js --name"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "bootstrap": "^4.1.3",
+        "classnames": "^2.2.6",
+        "npm": "^6.4.1",
+        "prop-types": "^15.6.2",
+        "react": "^16.5.0",
+        "react-dom": "^16.5.1",
+        "react-holder-component": "^1.0.5",
+        "reactstrap": "^6.4.0"
+    },
+    "devDependencies": {
+        "babel-core": "^6.26.3",
+        "babel-loader": "^7.1.5",
+        "babel-preset-env": "^1.7.0",
+        "babel-preset-react": "^6.24.1",
+        "babel-preset-stage-0": "^6.24.1",
+        "css-loader": "^1.0.0",
+        "extract-text-webpack-plugin": "^4.0.0-beta.0",
+        "file-loader": "^2.0.0",
+        "fs": "0.0.1-security",
+        "html-webpack-plugin": "^3.2.0",
+        "minimist": "^1.2.0",
+        "style-loader": "^0.23.0",
+        "webpack": "^4.18.1",
+        "webpack-cli": "^3.1.0",
+        "webpack-dev-server": "^3.1.8"
+    }
 }
