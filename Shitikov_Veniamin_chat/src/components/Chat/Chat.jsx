@@ -10,7 +10,6 @@ import Chatinput from 'components/Chatinput';
 class Chat extends PureComponent {
   constructor(props) {
     super(props);
-    console.log(this.props);
   }
 
   render() {
@@ -19,8 +18,10 @@ class Chat extends PureComponent {
           <Chatbox />
           <Chatinput />
       </Fragment>;
+            const cookie = document.cookie.includes('login=true');
+          const isValid = cookie || this.props.isValid;
           const invisible = <h1>Page not found</h1>;
-          const body = (this.props.isValid) ? visible : invisible;
+          const body = (isValid) ? visible : invisible;
     return (
       <div className="Chat">
           {body}

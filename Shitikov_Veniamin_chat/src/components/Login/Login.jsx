@@ -23,6 +23,7 @@ class Login extends PureComponent {
 
     handleSubmit = () => {
         this.props.submitLogin(this.state.value);
+        document.cookie='login=true';
     };
 
     render() {
