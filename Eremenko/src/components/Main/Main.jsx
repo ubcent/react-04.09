@@ -3,16 +3,13 @@ import './Main.css'
 import React, { PureComponent } from 'react';
 import ClassNames from 'classnames';
 import { Media } from 'reactstrap';
-//import PropTypes from 'prop-types';
-
-import 'react-holder-component'
 
 //собственные модули
 
 export default class Main extends PureComponent {
 
     render() {
-        const { size, children } = this.props;
+        const { size } = this.props;
         const mainClasses = ClassNames('main', {
             'main-small': size === 'small',
             'main-big': size === 'big',
@@ -26,7 +23,7 @@ export default class Main extends PureComponent {
                         </Media>
                         <Media body>
                             <Media heading>
-                                Media {children}
+                                Media main
                             </Media>
                             Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
                         </Media>
@@ -37,7 +34,7 @@ export default class Main extends PureComponent {
                         </Media>
                         <Media body>
                             <Media heading>
-                                Media {children}
+                                Media
                             </Media>
                             Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
                         </Media>
@@ -48,7 +45,7 @@ export default class Main extends PureComponent {
                         </Media>
                         <Media body>
                             <Media heading>
-                                Media {children}
+                                Media
                             </Media>
                             Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
                         </Media>

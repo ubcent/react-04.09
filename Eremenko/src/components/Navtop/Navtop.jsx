@@ -1,6 +1,7 @@
 import './Navtop.css'
 
 import React, { PureComponent } from 'react';
+import { Link } from 'react-router-dom';
 import ClassNames from 'classnames';
 import PropTypes from 'prop-types';
 import {
@@ -65,7 +66,8 @@ export default class Navtop extends PureComponent {
 
         return (
                 <Navbar className={navClasses} color="faded" light >
-                    <NavbarBrand href="/" className="mr-auto">Eremenko</NavbarBrand>
+                    <Link to="/" className="mr-auto">Eremenko</Link>
+                    <Link to="/comments" className="mr-auto">Comments</Link>
                     <NavItem>
                         <Button color="danger" onClick={this.toggleModal}>Log in</Button>
                         <Modal isOpen={this.state.modal} toggle={this.toggleModal} className={this.props.className}>

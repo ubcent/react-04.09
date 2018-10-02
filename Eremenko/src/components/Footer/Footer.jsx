@@ -9,7 +9,7 @@ import ClassNames from 'classnames';
 export default class Footer extends PureComponent {
 
     render() {
-        const { size, children } = this.props;
+        const { size } = this.props;
         const footerClasses = ClassNames('footer', {
             'footer-small': size === 'small',
             'footer-big': size === 'big',
@@ -18,7 +18,7 @@ export default class Footer extends PureComponent {
         return (
                 <footer className={footerClasses}>
                     <div className="container">
-                        {children}
+                        &copy; Eremenko ReactJS
                     </div>
                 </footer>
         );

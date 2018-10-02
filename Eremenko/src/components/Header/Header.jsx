@@ -30,7 +30,7 @@ export default class Header extends PureComponent {
         return (
                 <header className={headerClasses}>
                     <Jumbotron>
-                        <h1 className="display-3">Hello, {children}!</h1>
+                        <h1 className="display-3">Hello!</h1>
                         <p className="lead">This is a simple hero unit, a simple Jumbotron-style component for calling extra attention to featured content or information.</p>
                     </Jumbotron>
                 </header>
