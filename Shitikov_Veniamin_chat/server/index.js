@@ -19,8 +19,12 @@ io.on('connection', socket => {
         });
         console.log(users);
     });
-    socket.on('message', message => {
-        socket.broadcast.emit('message', message);
-        socket.emit('message', message);
+    socket.on('message', text => {
+        const message = {
+            id: Date.now(),
+            text,
+        };
+        socket.broadcast.emit('message', JSON.stringify({...message, type: 'in'}));
+        socket.emit('message', JSON.stringify({...message, type: 'out'}));
     });
 });

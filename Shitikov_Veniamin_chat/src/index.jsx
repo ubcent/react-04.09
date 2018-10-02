@@ -14,7 +14,6 @@ class Layout extends Component {
     }
 
     render() {
-        console.log(store.getState());
         return <div>
             {/*<ChatRoom URL='http://localhost:3000/users' />*/}
             <Provider store={store}>

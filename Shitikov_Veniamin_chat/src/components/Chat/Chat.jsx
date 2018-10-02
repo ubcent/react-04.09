@@ -10,8 +10,7 @@ import Chatinput from 'components/Chatinput';
 class Chat extends PureComponent {
   constructor(props) {
     super(props);
-
-    this.state = {};
+    console.log(this.props);
   }
 
   render() {
@@ -22,7 +21,6 @@ class Chat extends PureComponent {
       </Fragment>;
           const invisible = <h1>Page not found</h1>;
           const body = (this.props.isValid) ? visible : invisible;
-          console.log(this.props);
     return (
       <div className="Chat">
           {body}
@@ -31,9 +29,11 @@ class Chat extends PureComponent {
   }
 }
 
-export default connect((state, props) => {
+function mapStateToProps(state, props) {
     return {
         ...props,
-        isValid: state.isValidUser,
+        isValid: state.login.isValidUser,
     }
-})(Chat)
+}
+
+export default connect(mapStateToProps, null)(Chat);

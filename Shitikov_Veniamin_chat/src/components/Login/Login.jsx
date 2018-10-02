@@ -1,54 +1,50 @@
 import './Login.css';
 
-import React, { PureComponent } from 'react';
-import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import React, {PureComponent} from 'react';
+import {connect} from 'react-redux';
+import {Link} from 'react-router-dom';
 
 import { submitLogin } from "../../actions/login";
 
 class Login extends PureComponent {
-  constructor(props) {
-    super(props);
+    constructor(props) {
+        super(props);
+        console.log(this.props);
+        this.state = {
+            value: '',
+        };
+    }
 
-    this.state = {
-        value: '',
+    handleChange = (event) => {
+        this.setState({
+            value: event.target.value,
+        });
     };
-  }
 
-  handleChange = (event) => {
-      this.setState({
-          value: event.target.value,
-      });
-  };
+    handleSubmit = () => {
+        this.props.submitLogin(this.state.value);
+    };
 
-  handleSubmit = (event) => {
-      this.props.submitLogin(this.state.value);
-      event.preventDefault();
-  };
+    render() {
+        return (
+            <div className="Login">
+                <h1>Welcome to chat!</h1>
 
-  render() {
-    return (
-      <div className="Login">
-      <h1>Welcome to chat!</h1>
-        <form onSubmit={this.handleSubmit }>
-            <input type='text' onChange={this.handleChange} value={this.state.value} placeholder='Your name'/>
-            <br />
-            <button><Link to='/chat'>Login</Link></button>
-        </form>
-      </div>
-    );
-  }
-}
+                <input type='text' onChange={this.handleChange} value={this.state.value} placeholder='Your name'/>
+                <br/>
+                <Link to='/chat'>
+                    <button onClick={this.handleSubmit}>Login</button>
+                </Link>
 
-function mapStateToProps(state, props) {
-    return props;
-}
-
-function mapDispatchToProps(dispatch, props) {
-    return {
-        ...props,
-        submitLogin: submitLogin(dispatch),
+            </div>
+        );
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login)
+function mapDispatchToProps(dispatch) {
+    return {
+        submitLogin: submitLogin(dispatch)
+    }
+}
+
+export default connect(null, mapDispatchToProps)(Login);

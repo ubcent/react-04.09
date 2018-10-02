@@ -9,7 +9,7 @@ export const messageReceived = createAction('[Message] Receive');
 //functions
 export const mountEvents = dispatch => {
     socket.on('message', message => {
-        dispatch(messageReceived(message));
+        dispatch(messageReceived(JSON.parse(message)));
     })
 };
 

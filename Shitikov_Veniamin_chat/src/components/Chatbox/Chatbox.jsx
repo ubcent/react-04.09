@@ -3,39 +3,53 @@ import './Chatbox.css';
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import Message from 'components/Message';
+import { connect } from "react-redux";
+import {mountEvents} from "../../actions/messages";
 
 //Компонент сообщений чата.
 //Принимает на вход массив сообщений
-export default class Chatbox extends PureComponent{
+class Chatbox extends PureComponent{
     constructor(props){
         super(props);
     }
 
     static propTypes = {
-        items: PropTypes.arrayOf(PropTypes.shape({
-            type: PropTypes.oneOf(['in', 'out']),
-            message: PropTypes.string.isRequired,
-        }))
+        items: PropTypes.array,
     };
 
     static defaultProps = {
         items: [],
     };
 
+    componentDidMount() {
+        const { mountEvents } = this.props;
+        mountEvents();
+    }
+
     render(){
         const { items } = this.props;
         return <div className='chatbox'>
             <ul>
                 {items.map( (item) => {
-                    return <Message type={item.type} message={item.message} id={item.id}/>
+                    return <Message key={item.id} type={item.type} message={item.text} id={item.id}/>
                 })}
             </ul>
         </div>
     }
 }
 
+function mapStateToProps(state, ownProps) {
+    return {
+        ...ownProps,
+        items: state.messages.entities,
+    }
+}
 
+function mapDispatchToProps(dispatch, props) {
+    return {
+        ...props,
+        mountEvents: () => mountEvents(dispatch),
+    }
+}
 
-
-
-
+export default connect(mapStateToProps, mapDispatchToProps)(Chatbox);
