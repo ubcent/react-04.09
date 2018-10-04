@@ -1,0 +1,15 @@
+.companions-block {
+    height: 350px;
+    overflow-y: auto;
+    background-color: rgba(255, 255, 255, 0.5);
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 1.5rem 0;
+    float: left;
+    width: 5.5rem;
+    text-align: center;
+}
+.companions-list {
+    padding: 0;
+    margin: 0;
+}

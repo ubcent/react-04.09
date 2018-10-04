@@ -1,0 +1,34 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    margin: 0.5rem 0;
+}
+.form__text-area, 
+.form__sub-btn {
+    border-radius: 5px;
+    margin: 0.3rem 0;
+}
+.form__text-area {
+    padding: 0.6rem;
+    max-width: 100%;
+    min-height: 80px;
+}
+.form__sub-btn {
+    color: white;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1px;
+    background: rgba(105, 152, 238, 0.7);
+    border: 1px solid;
+    padding: 1rem;
+}
+.form__sub-btn--disabled { 
+    background: rgba(105, 152, 238, 0.7); 
+}
+.form__sub-btn--active {
+    cursor: pointer;   
+    background: rgba(45, 112, 236, 0.829); 
+}
+.form__sub-btn--active:hover {
+    background: rgb(39, 113, 252); 
+}
