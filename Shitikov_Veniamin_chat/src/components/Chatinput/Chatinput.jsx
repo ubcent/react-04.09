@@ -1,11 +1,12 @@
 import './Chatinput.css';
 
 import React, { PureComponent } from 'react';
-import classNames from 'classnames';
+import {connect} from "react-redux";
+import {sendMessage} from "../../actions/messages";
 
 //Компонент формы ввода.
 //Принимает на вход value функцию обработчик сабмита
-export default class Chatinput extends PureComponent{
+class Chatinput extends PureComponent{
     constructor(props){
         super(props);
 
@@ -14,22 +15,31 @@ export default class Chatinput extends PureComponent{
         }
     }
 
-    static defaultProps = {
-        handleSubmit: console.log,
-    };
-
     handleChange = (event) => {
         this.setState({
             value: event.target.value,
         })
     };
 
-    render(){
-        const { handleSubmit } = this.props;
+    sendMessage = (event) => {
+        event.preventDefault();
+        this.props.sendMessage(this.state.value);
+        this.setState({value: ''});
+    };
 
+    render(){
         return <div className='form'>
-            <textarea onChange={this.handleChange} name='input'>{this.state.value}</textarea>
-            <button onClick={()=> handleSubmit(this.state.value)}>send</button>
+            <textarea onChange={this.handleChange} name='input' value={this.state.value} />
+            <button onClick={this.sendMessage}>send</button>
         </div>
     }
 }
+
+function mapDispatchToProps(dispatch, props) {
+    return {
+        ...props,
+        sendMessage: sendMessage(dispatch),
+    }
+}
+
+export default connect(null, mapDispatchToProps)(Chatinput);
