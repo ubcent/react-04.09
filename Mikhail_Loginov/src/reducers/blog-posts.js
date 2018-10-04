@@ -1,4 +1,6 @@
-export default [{
+import {handleActions} from 'redux-actions';
+
+const initialState = [{
     id: 1,
     title: 'Man must explore, and this is exploration at its greatest ',
     shortDescription: 'Problems look mighty small from 150 miles up',
@@ -27,4 +29,6 @@ export default [{
     date: 'July 8, 2018',
     text: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. In itaque mollitia numquam? Rerum odit ad perferendis corrupti omnis illum incidunt, nihil dicta fugit beatae molestiae libero quis fuga quo odio possimus impedit praesentium sed fugiat exercitationem natus qui aut expedita voluptatibus! Vel perferendis cum, fuga impedit neque qui laudantium dolores asperiores debitis autem voluptatum minus nostrum dignissimos quo a nesciunt, suscipit voluptas vitae! Veritatis doloremque dolorem tempore aut iure optio consequuntur blanditiis nisi? Illo sequi consectetur provident eaque! Assumenda saepe sapiente placeat ullam nostrum veritatis vero quam molestiae. Deserunt magni exercitationem officiis quisquam harum beatae consequuntur atque blanditiis sit ad?',
 },
-]
+];
+
+export default handleActions({}, initialState);

@@ -4,10 +4,16 @@ import 'normalize.css/normalize.css';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {Provider} from 'react-redux';
 
 import LayoutContainer from 'containers/LayoutContainer';
 import App from './server';
+import store from './store';
 
 export default new App();
 
-ReactDOM.render(<LayoutContainer />, document.getElementById('root'));
+ReactDOM.render(
+    <Provider store={store}>
+        <LayoutContainer />
+    </Provider>, 
+    document.getElementById('root'));

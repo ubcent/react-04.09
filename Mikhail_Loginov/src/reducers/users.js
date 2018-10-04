@@ -1,4 +1,6 @@
-export default [{
+import {handleActions} from 'redux-actions';
+
+const initialState = [{
     id: 1,
     firstName: 'John',
     lastName: 'Doe'
@@ -23,4 +25,6 @@ export default [{
     firstName: 'Elon',
     lastName: 'Mask'
 },
-]
+];
+
+export default handleActions({}, initialState);

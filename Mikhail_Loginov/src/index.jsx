@@ -4,7 +4,14 @@ import './index.css';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {Provider} from 'react-redux';
 
 import LayoutContainer from 'containers/LayoutContainer';
+import store from './store';
 
-ReactDOM.render(<LayoutContainer/>, document.getElementById('root'));
+ReactDOM.render(
+    <Provider store={store}>
+        <LayoutContainer/>
+    </Provider>, 
+    document.getElementById('root')
+);

@@ -3,19 +3,23 @@ import './Users.css';
 import React, {PureComponent} from 'react';
 import {Container} from 'reactstrap';
 import classNames from 'classnames';
+import {connect} from 'react-redux';
+import PropTypes from 'prop-types';
 
-import users from 'data/users';
-import comments from 'data/comments';
-import blogPosts from 'data/blog-posts';
-
-export default class BlogPosts extends PureComponent {
+class Users extends PureComponent {
   state = {
     collapsedUsersIDs: [],
   }
 
+  static propTypes = {
+    users: PropTypes.array,
+    comments: PropTypes.array,
+    blogPosts: PropTypes.array,
+  }
+
   //Adding user to collapsedUsersIDs array on first click and removing from this array on second click
   handleUserNameClick = e => {
-    let user = users[e.target.getAttribute('name')-1];
+    let user = this.props.users[e.target.getAttribute('name')-1];
     if (this.state.collapsedUsersIDs.indexOf(user.id) === -1) {
       this.setState({collapsedUsersIDs: this.state.collapsedUsersIDs.concat(user.id)});
     } else {
@@ -25,17 +29,17 @@ export default class BlogPosts extends PureComponent {
     }
   }
 
-  render() {
-    const usersList = users.map((user, index) => {
+  renderUsersList() {
+    return this.props.users.map((user, index) => {
       // Getting all user posts and all user comments
       let userPosts = [];
       let userComments = [];
-      blogPosts.map(blogPost => {
+      this.props.blogPosts.map(blogPost => {
         if (blogPost.authorID === user.id) {
           userPosts.push(blogPost);
         }
       });
-      comments.map(com => {
+      this.props.comments.map(com => {
         if (com.authorID === user.id) {
           userComments.push(com);
         }
@@ -76,20 +80,33 @@ export default class BlogPosts extends PureComponent {
             {renderedComments}
           </div>;
       }
-
       return (
       <div className="user" key={index}>
         <span name={user.id} onClick={this.handleUserNameClick} className="user__name">{user.firstName} {user.lastName}</span>
         {renderedActivity}
       </div>);
     });
+  }
 
+  render() {
+    const renderedUsersList = this.renderUsersList();
     return (
       <main>
         <Container>
-          {usersList}
+          {renderedUsersList}
         </Container>
       </main>
     );
   }
 }
+
+function mapStateToProps(state, ownProps) {
+  return {
+    ...ownProps,
+    blogPosts: state.blogPosts,
+    users: state.users,
+    comments: state.comments
+  }
+}
+
+export default connect(mapStateToProps)(Users);

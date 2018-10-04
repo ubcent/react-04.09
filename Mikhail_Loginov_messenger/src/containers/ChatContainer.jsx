@@ -7,87 +7,77 @@ import {
   Button,
   Container
 } from 'reactstrap';
-import PropTypes from 'prop-types';
+import propTypes from 'prop-types';
+import {connect} from 'react-redux';
+import moment from 'moment';
 
-import app from '../index';
 import Message from 'components/Message';
+import {mountEvents, sendMessage} from 'actions/messages';
 
-const USER_ID = 1; // Hardcoded current user ID
+// Hardcoded current user
+const USER = {
+  id: '1',
+  username: 'Mikhail',
+  fullname: 'Mikhail',
+  password: '12345',
+  sockedId: '1',
+}
 
-export default class Chat extends PureComponent {
+class ChatContainer extends PureComponent {
   static propTypes = {
-    authorID: PropTypes.number,
+    dialogId: propTypes.number,
+    messages: propTypes.array,
+    users: propTypes.array,
+    mountEvents: propTypes.func,
+    sendMessage: propTypes.func,
   }
 
   state = {
     messageText: '',
     messages: [],
-    author: {},
-    user: {}
   }
 
   componentDidMount() {
-    app.get('messagesToYou').then(res => {
-      res.json().then(messages => {
-        messages.forEach(message => {
-          if (+message.authorID === +this.props.authorID) {
-            this.setState({messages: this.state.messages.concat(message)});
-          }
-        })
-      })
+    this.props.messages.forEach(message => {
+      if (+message.dialogId === +this.props.dialogId) {
+        this.setState({messages: this.state.messages.concat(message)});
+      }
     });
-    app.get('messagesFromYou').then(res => {
-      res.json().then(messages => {
-        messages.forEach(message => {
-          if (+message.toUserID === +this.props.authorID) {
-            this.setState({messages: this.state.messages.concat(message)});
-          }
-        })
-      })
-    });
-    app.get('contacts').then(res => {
-      res.json().then(res => {
-        this.setState({
-          author: res[this.props.authorID-1],
-          user: res[USER_ID-1]
-        });
-      })
-    });
+    const {mountEvents} = this.props;
+    mountEvents();
   }
 
   handleChange = e => {
     this.setState({
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   }
 
   handleSubmitClick = () => {
     let message = {
+      id: String(this.props.messages.length + 1),
+      dialogId : String(this.props.dialogId),
+      timestamp: moment().format(),
       text: this.state.messageText,
-      toUserID: +this.props.authorID,
-      createdAt: Date.now()
+      author: USER,
     }
-    app.post('messagesFromYou', JSON.stringify(message)).then(res => {
-      res.json().then(res => {
-        this.setState({messages: this.state.messages.concat(res)});
-      })
+
+    const {sendMessage} = this.props;
+    sendMessage(message);
+    this.setState({
+      messages: this.state.messages.concat(message),
+      messageText: '',
     });
-    this.setState({messageAuthor: '', messageText: ''});
   }
 
   render() {
     let renderedMessages = '';
-    if (this.state.messages && this.state.user) {
+    if (this.state.messages) {
       this.setState({messages: this.state.messages
-        .sort((a, b) => a.createdAt > b.createdAt)
+        .sort((a, b) => a.timestamp > b.timestamp)
       })
       renderedMessages = this.state.messages.map((message, index) => {
-        if (message.toUserID) {
-          let author = this.state.user;
-          author.firstName = 'You';
-          return <Message key={index} message={message} author={author}/>;
-        }
-        return <Message key={index} message={message} author={this.state.author}/>;
+        return <Message key={index} message={message}/>;
       });
     }
     return (
@@ -112,3 +102,21 @@ export default class Chat extends PureComponent {
     );
   }
 }
+
+function mapStateToProps(state, ownProps) {
+  return {
+    ...ownProps,
+    messages: state.messages.entities,
+    users: state.users,
+  }
+}
+
+function mapDispatchToProps(dispatch, props) {
+  return {
+    ...props,
+    mountEvents: () => mountEvents(dispatch),
+    sendMessage: sendMessage(dispatch),
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ChatContainer);
