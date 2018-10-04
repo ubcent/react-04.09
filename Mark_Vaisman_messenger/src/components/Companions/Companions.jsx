@@ -3,12 +3,14 @@ import './Companions.scss';
 import React, {PureComponent} from 'react';
 import {Link} from 'react-router-dom';
 import classNames from 'classnames';
+import {connect} from 'react-redux';
 
-export default class Companions extends PureComponent {
+import {getCompanions} from 'actions/messages';
+
+class Companions extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      companionList: [],
       isClosed: true,
     };
   }
@@ -22,11 +24,8 @@ export default class Companions extends PureComponent {
   };
   
   componentDidMount() {
-    fetch('http://localhost:3000/companions/')
-    .then((response) => response.json())
-    .then((list) => {
-      this.setState({companionList: list});
-    });
+    const {getCompanions} = this.props;
+    getCompanions();
   };
   
   render() {
@@ -34,15 +33,15 @@ export default class Companions extends PureComponent {
       'companion-list-modal',
       {'companion-list-modal hidden': this.state.isClosed,}
     );
-    const {companionList} = this.state;
+    const {companionList} = this.props;
     return (
       <div className="companion-menu">
         <button className="btn btn-default" role="button" onClick={this.open}>Собеседники</button>
         <div className={companionListModalClass}>
           <div onClick={this.close}>x</div>
           {
-            companionList.length ?
-              companionList.map((companion) => <Link to={'/companion/' + companion.id} onClick={this.close} key={companion.id}>{companion.name}</Link>) :
+            companionList && companionList.length ?
+              companionList.map((companion) => <Link to={'/companion/' + companion.companionId} onClick={this.close} key={companion.companionId}>{companion.name}</Link>) :
               <p>Сервер Off-line</p>
           }
         </div>
@@ -50,3 +49,19 @@ export default class Companions extends PureComponent {
     );
   }
 }
+
+function mapStateToProps(state, props) {
+  return {
+    ...props,
+    companionList: state.messages.companionList,
+  }
+}
+
+function mapDispatchToProps(dispatch, props) {
+  return {
+    ...props,
+    getCompanions: getCompanions(dispatch),
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Companions);
