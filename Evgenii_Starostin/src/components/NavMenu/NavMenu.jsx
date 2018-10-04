@@ -24,8 +24,9 @@ function NavMenu(props) {
 
 NavMenu.propTypes = {
   items: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number,
-    name: PropTypes.string,
+    title: PropTypes.string,
+    href: PropTypes.string,
+    exact: PropTypes.bool,
   })),
 };
 

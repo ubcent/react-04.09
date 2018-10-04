@@ -17,6 +17,12 @@ export default function Layout() {
     { title: 'Пользователи', href: '/users', exact: false },
   ];
 
+  const footerLinks = [
+    { title: 'О проекте', href: '#' },
+    { title: 'Пользовательское соглашение', href: '#' },
+    { title: 'Помощь', href: '#' },
+  ];
+
   return (
     <div className="Layout">
       <div className="wrapper">
@@ -33,7 +39,7 @@ export default function Layout() {
         </div>
       </div>
 
-      <Footer />
+      <Footer links={footerLinks} />
     </div>
   );
 }
