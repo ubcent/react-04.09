@@ -1,29 +1,24 @@
 //импорт React
-import React, { PureComponent } from 'react';
+import React, { PureComponent} from 'react';
 //для подключения контейнера к store
 import { connect } from 'react-redux';
 
-import Article from 'components/Article';
-import { mountEventPostList } from 'actions/posts';
+import Users from 'components/Users';
+import { mountEvents } from 'actions/users';
 
 //для проверки свойств компонента
-import PropTypes from 'prop-types';
+//import PropTypes from 'prop-types';
 
-class ArticleContainer extends PureComponent {
-    static propTypes = {
-        //article: PropTypes.arrayOf(PropTypes.object),
-    }
-
-    componentDidMount() {
+class UserContainer extends PureComponent {
+    componentDidMount(){
         //подклчаем функции
-        const { mountEventPostList } = this.props;
-        mountEventPostList();
+        const { mountEvents } = this.props;
+        mountEvents();
     }
-
     render() {
-        const { article } = this.props;
+        const { users } = this.props;
         return (
-            <Article article={ article } />
+            <Users users={users} />
         );
     }
 }
@@ -33,7 +28,7 @@ function mapStateToProps(state, ownProps){
     //то, что вернем, попадет в props
     return{
         ...ownProps,
-        article: state.posts.postList,//post - ветка в store, postList - Объект
+        users: state.users.userList,
     }
 }
 // для отправки компонетом действий (action)
@@ -42,8 +37,8 @@ function mapDispatchToProps(dispatch, props){
     return{
         ...props,
         //методы, которые мы посылаем из action
-        mountEventPostList: () => mountEventPostList(dispatch),
+        mountEvents: () => mountEvents(dispatch),
     }
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(ArticleContainer);
+export default connect(mapStateToProps,mapDispatchToProps)(UserContainer);

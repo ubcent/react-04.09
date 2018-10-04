@@ -17,7 +17,7 @@ export default class FormComments extends PureComponent {
                 <h3>Оставить комментарий</h3>
                 <Form>
                     <FormGroup>
-                        <Label for="name">Name</Label>
+                        <Label for="name">Имя</Label>
                         <Input onChange={changeInput} type="text" value={nameUser} name="nameUser" id="name" placeholder="Vasya"/>
                     </FormGroup>
                     <FormGroup>

@@ -1,38 +1,40 @@
 //компоненты React
 import React, { PureComponent } from 'react';
+import { connect } from 'react-redux';
 
 import Comments from 'components/Comments';
+import { mountEventCommentsList } from 'actions/comments';
 
 //для проверки свойств компонента
 import PropTypes from 'prop-types';
-//функция fetch
-import requestData from './func';
 
-export default class CommentsContainer extends PureComponent {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            comments: [],
-        }
-    }
-    static propTypes = {
-        comments: PropTypes.arrayOf(PropTypes.object),
-    }
-
+class CommentsContainer extends PureComponent {
     componentDidMount() {
-        // получаем список комментариев с сервера
-        requestData('comments').then((comments) => {
-            this.setState({
-                comments
-            });
-        })
+        const { mountEventCommentsList } = this.props;
+        mountEventCommentsList();
     }
 
     render() {
-        const { comments } = this.state;
+        const { comments } = this.props;
         return (
             <Comments comments={comments} />
         );
     }
 }
+function mapStateToProps(state, ownProps){
+    CommentsContainer.propTypes = {
+        comments: PropTypes.arrayOf(PropTypes.object) 
+    }
+    return{
+        ...ownProps,
+        comments: state.comments.commentsList,
+    }
+}
+function mapDispatchToProps(dispatch, props){
+    return{
+        ...props,
+        mountEventCommentsList: () => mountEventCommentsList(dispatch),
+    }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(CommentsContainer);
