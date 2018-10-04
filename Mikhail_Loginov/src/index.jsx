@@ -8,6 +8,9 @@ import {Provider} from 'react-redux';
 
 import LayoutContainer from 'containers/LayoutContainer';
 import store from './store';
+import App from './server';
+
+export default new App();
 
 ReactDOM.render(
     <Provider store={store}>

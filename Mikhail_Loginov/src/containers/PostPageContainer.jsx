@@ -3,19 +3,33 @@ import propTypes from 'prop-types';
 import {connect} from 'react-redux';
 
 import PostPage from 'components/PostPage';
+import {loadUsers} from 'actions/users';
+import {loadComments} from 'actions/comments';
+import {loadBlogPosts} from 'actions/blog-posts';
 
 class PostPageContainer extends PureComponent {
   static propTypes = {
-    id: propTypes.string,
+    id: propTypes.number,
     blogPosts: propTypes.array,
     authors: propTypes.array,
     comments: propTypes.array,
+    loadUsers: propTypes.func,
+    loadComments: propTypes.func,
+    loadBlogPosts: propTypes.func,
+    match: propTypes.object,
+  }
+
+  componentDidMount() {
+    const {loadUsers, loadComments, loadBlogPosts} = this.props;
+    loadUsers();
+    loadComments();
+    loadBlogPosts();
   }
 
   getPostById(id) {
     let post = {};
     for (let blogPost of this.props.blogPosts) {
-      if (blogPost.id === id) {
+      if (+blogPost.id === +id) {
         post = blogPost;
         break;
       }
@@ -26,7 +40,7 @@ class PostPageContainer extends PureComponent {
   getCommentsByPostId(id) {
     let postComments = [];
     this.props.comments.forEach(comment => {
-      if (comment.postID === id) {
+      if (+comment.postId === +id) {
         postComments.push(comment);
       }
     });
@@ -34,23 +48,33 @@ class PostPageContainer extends PureComponent {
   }
 
   render() {
-    let post = this.getPostById(+this.props.id);
-    let author = this.props.authors[post.authorID-1];
-    let postComments = this.getCommentsByPostId(post.id);
-      
-    return (
-      <PostPage post={post} author={author} postComments={postComments}/>
-    );
+    if (this.props.blogPosts.length !== 0 && this.props.authors.length !== 0 && this.props.authors.length !== 0) {
+      let post = this.getPostById(+this.props.match.params.id);
+      let author = this.props.authors[+post.authorId-1];
+      let postComments = this.getCommentsByPostId(+post.id);
+      return (
+        <PostPage post={post} author={author} postComments={postComments} authors={this.props.authors}/>
+      );
+    }
   }
 }
 
 function mapStateToProps(state, ownProps) {
   return {
     ...ownProps,
-    blogPosts: state.blogPosts,
-    authors: state.users,
-    comments: state.comments
+    blogPosts: state.blogPosts.entities,
+    authors: state.users.entities,
+    comments: state.comments.entities
   }
 }
 
-export default connect(mapStateToProps)(PostPageContainer);
+function mapDispatchToProps(dispatch, ownProps) {
+  return {
+    ...ownProps,
+    loadUsers: () => dispatch(loadUsers()),
+    loadComments: () => dispatch(loadComments()),
+    loadBlogPosts: () => dispatch(loadBlogPosts())
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(PostPageContainer);
