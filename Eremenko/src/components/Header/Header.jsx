@@ -1,15 +1,13 @@
 import './Header.css'
 
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import ClassNames from 'classnames';
 import PropTypes from 'prop-types';
+import { Jumbotron } from 'reactstrap';
 
 //собственные модули
 
-export default class Header extends Component {
-    // Uncaught TypeError: _propTypes2.default.string.oneOf is not a function
-
-
+export default class Header extends PureComponent {
     static propTypes = {
         size: PropTypes.oneOf(['small', 'big']),
         categories: PropTypes.arrayOf(PropTypes.string),
@@ -23,7 +21,7 @@ export default class Header extends Component {
     }
 
     render() {
-        const { size, categories, children } = this.props;
+        const { size, children } = this.props;
         const headerClasses = ClassNames('header', {
             'header-small': size === 'small',
             'header-big': size === 'big',
@@ -31,7 +29,10 @@ export default class Header extends Component {
 
         return (
                 <header className={headerClasses}>
-                    <ul>{categories.map((item, idx) => <li key={idx}>{item}</li>)}</ul>
+                    <Jumbotron>
+                        <h1 className="display-3">Hello!</h1>
+                        <p className="lead">This is a simple hero unit, a simple Jumbotron-style component for calling extra attention to featured content or information.</p>
+                    </Jumbotron>
                 </header>
         );
     }

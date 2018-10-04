@@ -1,15 +1,15 @@
 import './Footer.css'
 
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import ClassNames from 'classnames';
-import PropTypes from 'prop-types';
+//import PropTypes from 'prop-types';
 
 //собственные модули
 
-export default class Footer extends Component {
+export default class Footer extends PureComponent {
 
     render() {
-        const { size, children } = this.props;
+        const { size } = this.props;
         const footerClasses = ClassNames('footer', {
             'footer-small': size === 'small',
             'footer-big': size === 'big',
@@ -17,7 +17,9 @@ export default class Footer extends Component {
 
         return (
                 <footer className={footerClasses}>
-                    {children}
+                    <div className="container">
+                        &copy; Eremenko ReactJS
+                    </div>
                 </footer>
         );
     }
