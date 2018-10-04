@@ -1,7 +1,7 @@
 {
   "name": "churilin_nikita",
   "version": "1.0.0",
-  "description": "second hw for react",
+  "description": "messenger",
   "main": "index.js",
   "scripts": {
     "build": "webpack --mode production",
