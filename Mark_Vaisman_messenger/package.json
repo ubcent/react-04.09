@@ -6,9 +6,7 @@
   "scripts": {
     "build": "webpack --mode production",
     "dev": "webpack-dev-server --mode development",
-    "json-server": "json-server --watch db.json",
-    "dev:cc": "node cli/component.js --name",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev:cc": "node cli/component.js --name"
   },
   "keywords": [],
   "author": "",
@@ -39,6 +37,13 @@
     "react": "^16.5.0",
     "react-dom": "^16.5.0",
     "react-markdown": "^3.6.0",
-    "react-router-dom": "^4.3.1"
+    "react-redux": "^5.0.7",
+    "react-router-dom": "^4.3.1",
+    "redux": "^4.0.0",
+    "redux-actions": "^2.6.1",
+    "socket.io": "^2.1.1",
+    "socket.io-client": "^2.1.1",
+    "mongoose": "^5.3.0",
+    "express": "^4.16.3"
   }
 }

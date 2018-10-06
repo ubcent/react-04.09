@@ -6,7 +6,8 @@
   "scripts": {
     "build": "webpack --mode production",
     "dev": "webpack-dev-server --mode development",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "crco": "node cli/component.js --n"
   },
   "author": "Churilin Nikita",
   "license": "ISC",
@@ -14,17 +15,26 @@
     "classnames": "^2.2.6",
     "prop-types": "^15.6.2",
     "react": "^16.5.0",
-    "react-dom": "^16.5.1"
+    "react-dom": "^16.5.1",
+    "react-router-dom": "^4.3.1"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
+    "babel-eslint": "^10.0.0",
     "babel-loader": "^7.1.5",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "css-loader": "^1.0.0",
+    "eslint": "^5.6.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.1",
+    "eslint-plugin-react": "^7.11.1",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "html-webpack-plugin": "^3.2.0",
+    "minimist": "^1.2.0",
+    "prettier": "1.14.3",
     "style-loader": "^0.23.0",
     "url-loader": "^1.1.1",
     "webpack": "^4.17.2",

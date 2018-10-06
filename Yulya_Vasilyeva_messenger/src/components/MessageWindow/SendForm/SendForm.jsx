@@ -21,20 +21,7 @@ export default class SendForm extends PureComponent {
     }
 
     sendMessage = () => {
-        const { userMessage } = this.state;
-        const url = 'http://127.0.0.1:3000/chat';
-        fetch(url, {
-            method: 'post',
-            headers: {  
-                "Content-type": "application/json"  
-              },
-              body: JSON.stringify({
-                user: 'right',
-                message: userMessage,
-                data: '01-02-2018'
-              })
-        })
-        .then(resp => resp.json())
+        
     }
 
     render() {

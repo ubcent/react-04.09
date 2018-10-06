@@ -6,7 +6,7 @@
     width: 100%;
     @extend %flex-row-nowrap;
     justify-content: center;
-    padding: 10px 0;
+    padding: 20px 0;
     position: relative;
 }
 .user-pic{
@@ -14,11 +14,15 @@
     height: 100px;
     border-radius: 50%;
     display: block;
+    transition: all 0.3s ease-in;
+}
+.user-pic:hover{
+    transform: scale(1.05);
 }
 .user-name{
     display: block;
     text-align: center;
-    font-size: 1.2em;
+    font-size: 1.1em;
 }
 .arrow-back{
     position: absolute;

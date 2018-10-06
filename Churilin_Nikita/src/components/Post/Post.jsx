@@ -1,22 +1,28 @@
 import './Post.css';
 
-import React, { Component } from 'react';
-import classNames from 'classnames';
+import React, { PureComponent } from 'react';
+import { Link } from 'react-router-dom';
 
-export default class Post extends Component {
-    render() {
-        const classPost = classNames('classPost');
+export default class Post extends PureComponent {
+  constructor(props) {
+    super(props);
 
-        return(
-            <div className={classPost}>
-                <div>
-                    <a href="#">
-                        <p>{this.props.firstP}</p>
-                        <p>{this.props.secondP}</p>
-                    </a>
-                </div>
-                <p>Posted by <a href="#">Start Bootstrap</a> {this.props.data}</p>
-            </div>
-        );
-    }
-}
+    this.state = {
+
+    };
+  };
+
+  render() {
+    return (
+      <div className="post">
+        <div>
+          <Link to={`${this.props.link}`}>
+            <h2>{this.props.heading}</h2>
+            <h3>{this.props.shortDescriprion}</h3>
+          </Link>
+        </div>
+        <p>Posted by <a href="#">{this.props.author}</a> on {this.props.date}</p>
+      </div>
+    );
+  };
+};

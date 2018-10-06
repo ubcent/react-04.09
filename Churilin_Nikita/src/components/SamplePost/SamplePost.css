@@ -1,0 +1,14 @@
+.sample-post {
+    padding: 90px 470px 0 470px;
+}
+
+.sample-post p {
+    color: #444;
+    font-size: 1.3em;
+    margin-bottom: 30px;
+}
+
+.sample-post h2 {
+    font-size: 2em;
+    margin: 50px 0 30px 0;
+}

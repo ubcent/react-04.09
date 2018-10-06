@@ -1,19 +1,24 @@
-import React, {Component} from 'react';
+import React from 'react';
 import ReactDom from 'react-dom';
+import {BrowserRouter, Switch, Route} from 'react-router-dom';
+import routes from './routes';
 
-import Layout from 'layouts/Layout/index';
-import MainPage from 'pages/MainPage/index';
+import Layout from 'layouts/Layout';
 
-export default class App extends Component {
-
-    render() {
-
-        return (
+function App() {
+    return (
+        <BrowserRouter>
             <Layout>
-                <MainPage/>
+                <Switch>
+                    {
+                        routes.map((route, idx) => (
+                            <Route key={idx} {...route}/>
+                        ))
+                    }
+                </Switch>
             </Layout>
-        );
-    }
+        </BrowserRouter>
+    );
 }
 
 ReactDom.render(<App/>, document.querySelector('#app'));

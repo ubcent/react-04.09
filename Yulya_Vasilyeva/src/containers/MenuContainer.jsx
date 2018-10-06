@@ -1,9 +1,8 @@
 import React, { PureComponent } from 'react';
 
-import Menu from 'components/Menu';
-
-//проверка свойств
 import PropTypes from 'prop-types';
+
+import Menu from 'components/Menu';
 //функция fetch
 import requestData from './func';
 
@@ -14,7 +13,7 @@ export default class MenuContainer extends PureComponent {
         this.state = {
             menu: [],
             isOpen: false,
-            activeMenu: 0,
+            update: false,
         };
     }
     static propTypes = {
@@ -23,9 +22,10 @@ export default class MenuContainer extends PureComponent {
     }
 
     //при клике на пункт меню, он становится активным
-    clickMenu = (ev) => {
+    clickMenu = () => {
+        const { update } = this.state;
         this.setState({
-            activeMenu: +ev.target.name,
+            update: !update,
         });
     }
 
@@ -47,10 +47,11 @@ export default class MenuContainer extends PureComponent {
     }
 
     render() {
-        const { isOpen, menu, activeMenu } = this.state;//состояние открытового меню (сжатая версия)
+        const { isOpen, menu } = this.state;//состояние открытового меню (сжатая версия)
+        
         //строим навигацию на сайте (главная)
         return (
-            <Menu activeMenu={activeMenu} menu={menu} isOpen={isOpen} toggle={this.toggle} clickMenu={this.clickMenu} />
+            <Menu menu={menu} isOpen={isOpen} toggle={this.toggle} clickMenu={this.clickMenu} />
         );
     }
 }

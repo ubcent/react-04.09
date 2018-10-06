@@ -1,4 +1,4 @@
-import Users from 'components/Users/'; // страница со всеми пользователями
+import UserContainer from 'containers/UserContainer'; // страница со всеми пользователями
 import ArticleContainer from 'containers/ArticleContainer'; // список статей
 import PostContainer from 'containers/PostContainer'; //страница описания статьи
 import CommentsContainer from 'containers/CommentsContainer';//список всех комментариев
@@ -21,7 +21,7 @@ export default [
     },
     {
         path: "/users",
-        component: Users,
+        component: UserContainer,
         exact: true
     }
 ]

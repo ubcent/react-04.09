@@ -1,52 +1,40 @@
-@import url('https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i');
-
-.classPost {
+.post {
     border-bottom: 1px solid #ccc;
-    margin: 0 auto;
     margin-top: 90px;
-    width: 615px;
+    padding-bottom: 40px;
 }
 
-.classPost a {
+.post div a {
+    color: #333;
     text-decoration: none;
+    transition: .2s;
 }
 
-.classPost:hover p:first-child, .classPost:hover div p:nth-child(2) {
-    color: #0085a1;
+.post div a:hover {
+    color: lightskyblue;
 }
 
-p {
-    font-family: 'Lora', serif;
-    margin-bottom: 10px;
+.post a h2 {
+    font-size: 2.4em;
 }
 
-p:first-child{
-    font-size: 2.5em;
-    font-weight: 800;
-    transition: .3s;
+.post a h3 {
+    font-size: 1.5em;
+    font-weight: 100;
+    padding: 20px 0;
 }
 
-div p:first-child {
-    color: #000;
+.post p {
+    color: #999;
 }
 
-.classPost div p:nth-child(2) {
-    font-size: 2em;
-    color: #212529;
-    transition: .3s;
-}
-
-p:last-child {
-    color: gray;
-}
-
-p:last-child a {
-    color: #212529;
+.post p a {
+    color: #212121;
     text-decoration: none;
-    transition: .5s;
+    transition: .2s;
 }
 
-p:last-child a:hover {
-    color: #0085a1;
+.post p a:hover {
+    color: lightskyblue;
     text-decoration: underline;
 }

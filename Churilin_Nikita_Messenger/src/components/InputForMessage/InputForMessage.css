@@ -1,0 +1,17 @@
+.input-for-message {
+    border: 1px solid #000;
+    border-top: none;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    width: 500px;
+}
+
+.input-for-message input {
+    height: 60px;
+    width: 460px;
+}
+
+.input-for-message button {
+    width: 40px;
+}

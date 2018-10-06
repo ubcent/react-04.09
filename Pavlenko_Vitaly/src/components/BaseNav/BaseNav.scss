@@ -1,4 +1,21 @@
 .base-nav {
   display: flex;
   align-items: center;
+  &__item {
+    margin-right: 23px;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    text-decoration: none;
+    transition: border .2s;
+    border-bottom: solid 2px transparent;
+    &:hover {
+      border-color: #fff;
+    }
+    &:last-child {
+      margin-right: 0;
+    }
+  }
 }

@@ -1,0 +1,8 @@
+.window-for-messages {
+    border: 1px solid #000;
+    border-bottom: none;
+    height: 500px;
+    overflow-y: scroll;
+    width: 500px;
+    margin: 0 auto;
+}

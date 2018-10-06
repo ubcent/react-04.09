@@ -1,0 +1,17 @@
+.Home {
+    color: #0057B4;
+    text-align: center;
+}
+
+.Home button{
+    width: 30%;
+    height: 10%;
+    box-shadow: 0 4px 0 #0057B4;
+    background: #0057B4;
+    border: none;
+    border-radius: 4px;
+    font-size: 20px;
+}
+.Home a{
+    color: white;
+}
