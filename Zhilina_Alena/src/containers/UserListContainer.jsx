@@ -30,7 +30,6 @@ export default class UserListContainer extends PureComponent {
 
     render() {
         const { users, loading } = this.state;
-        console.log(users);
 
         return (
             <Fragment>

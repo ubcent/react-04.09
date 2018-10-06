@@ -15,10 +15,9 @@ export default class CommentListContainer extends PureComponent {
     load = () => {
         this.setState({loading: true});
 
-        fetch(`http://localhost:8000/comments/?_expand=user`)
+        fetch(`http://localhost:8000/comments`)
             .then((response) => response.json())
             .then((comments) => {
-                console.log(comments);
                 this.setState(() => ({
                     loading: false,
                     comments: comments

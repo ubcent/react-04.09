@@ -37,7 +37,6 @@ export default class UserContainer extends PureComponent {
         return (
             <Fragment>
                 <User user={ user } />
-
                 {loading && 'Loading...'}
             </Fragment>
         )
