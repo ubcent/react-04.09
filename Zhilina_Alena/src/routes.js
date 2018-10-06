@@ -3,7 +3,7 @@ import BlogListContainer from 'containers/BlogListContainer';
 import UserListContainer from 'containers/UserListContainer';
 import PostListContainer from 'containers/PostListContainer';
 import CommentListContainer from 'containers/CommentListContainer';
-import ArticleContainer from 'containers/ArticleContainer';
+import ArticlePageContainer from 'containers/ArticlePageContainer';
 import UserContainer from 'containers/UserContainer';
 
 export default [
@@ -34,7 +34,7 @@ export default [
     },
     {
         path: '/article/:idArticle',
-        component: ArticleContainer,
+        component: ArticlePageContainer,
         exact: true
     },
     {

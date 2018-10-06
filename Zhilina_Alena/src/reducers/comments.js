@@ -1,13 +1,21 @@
 import { handleActions } from 'redux-actions';
-
-import {} from 'actions/comments';
+import {loadList, send} from 'actions/comments';
 
 const initialState = {
-    entities: [],
-    loading: true,
+    comments: []
 };
 
 export default handleActions({
-
+        [loadList]: (state, action) => {
+            return {
+                comments: action.payload
+            }
+        },
+        [send]: (state, action) =>{
+            return{
+                ...state,
+                comments:state.comments.concat(action.payload)
+            }
+        }
     },
-    {initialState});
+    initialState);

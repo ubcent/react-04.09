@@ -1,25 +1,30 @@
 import './CommentForm.css';
 
 import React, { PureComponent } from 'react';
+import { sendComments } from 'actions/comments';
+import {connect} from 'react-redux';
 
-export default class CommentForm extends PureComponent{
+class CommentForm extends PureComponent{
     constructor(props) {
         super(props);
 
         this.state = {
             text:'',
-            id:'20',
-            userId:'3',
-            postId:'1',
-            user:{
-                "id":"3",
-                "gender":"female",
-                "firstName":"Melanie",
-                "lastName":"Ward",
-                "email":"melanie.ward19@example.com"
-            }
+            userId:'5bb3bbc4e7179a1193d942c4',
         };
     }
+
+    handleSubmit = (event) => {
+
+        event.preventDefault();
+
+        const comment = {
+            idPost: this.props.idArticle,
+            idUser: this.state.userId,
+            text:this.state.text
+        };
+        this.props.sendComments(comment);
+    };
 
     handleChange = (event) => {
         this.setState({
@@ -27,15 +32,8 @@ export default class CommentForm extends PureComponent{
         });
     };
 
-    handleClick = (event) => {
-        const { onSend } = this.props;
-        event.preventDefault();
-
-        onSend(this.state);
-    };
 
     render(){
-
         const { text } = this.state;
 
         return(
@@ -44,9 +42,24 @@ export default class CommentForm extends PureComponent{
                <form className = "form-comment">
                    <label className = "form-comment__label" htmlFor="text">Comment</label>
                    <textarea className = "form-comment__input" name="text" rows="10" onChange={this.handleChange} value={text}></textarea>
-                   <button className="button" onClick={this.handleClick}>Send!</button>
+                   <button className="button" onClick={this.handleSubmit}>Send!</button>
                </form>
            </div>
         );
     }
 }
+
+function mapStateToProps(state, props) {
+    return {
+        ...props
+    }
+}
+
+function mapDispatchToProps(dispatch, props) {
+    return {
+        ...props,
+        sendComments: (comment) => sendComments(dispatch)(comment)
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CommentForm);

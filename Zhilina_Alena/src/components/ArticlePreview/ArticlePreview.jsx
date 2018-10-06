@@ -14,7 +14,7 @@ export default class ArticlePreview extends PureComponent{
                 </div>
                 <div className="article-preview__text-block">
                     <h2 className="article-preview__title">
-                        <Link className="link link_main" to={`/article/${article.id}`}>{article.title}</Link>
+                        <Link className="link link_main" to={`/article/${article._id}`}>{article.title}</Link>
                     </h2>
                     <div className="article-preview__meta">
                         <span className="article-preview__date">MAR 01, 2017 </span>
