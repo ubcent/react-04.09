@@ -1,6 +1,7 @@
 import Home from 'pages/HomePage';
 import Blog from 'pages/BlogPage';
 import Comments from 'pages/CommentsPage';
+import Users from 'pages/UsersPage';
 
 /**
  * Маршрутизация приложения
@@ -22,6 +23,12 @@ export default [
   {
     path: '/comments',
     component: Comments,
+    exact: true,
+  },
+  // Страница с пользователями - Users
+  {
+    path: '/users',
+    component: Users,
     exact: true,
   },
 ];
