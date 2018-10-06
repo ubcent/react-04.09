@@ -2,19 +2,24 @@ import express from 'express';
 // работа с вебсокетами
 import socketIO from 'socket.io';
 import http from 'http';
+// для cross-origin resource sharing
 import cors from 'cors';
 // для парсинга тела запроса
 import bodyParser from 'body-parser';
-// пакет для моделирования объектных данных
+// позволяет сопоставлять объекты классов и документы коллекций из базы данных
 import mongoose from 'mongoose';
 
+// подключаем схему User
 import {User} from './models';
 
 const app = express();
 const server = http.createServer(app);
 const io = socketIO(server);
 
+// подключаемся к коллекции test на локальном сервере
 mongoose.connect('mongodb://localhost/test');
+
+app.use(cors());
 app.use(bodyParser.json());
 
 // поднимаем сервер на порту 3002
