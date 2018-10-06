@@ -2,10 +2,10 @@
 ## Инициализация данных в БД MongoDB
 Сервер приема и отправки сообщений использует БД MongoDB (необходимо устанавливать отдельно) по адресу `127.0.0.1`.  
 Инициализация данных в БД:  
-`mongoimport --db test --collection users --jsonArray server/data/initialization.json --host=127.
+`mongoimport -d test -c users --jsonArray server/data/initialization.json --host=127.
 0.0.1`  
-Выгрузка данных из БД:  
-`mongoexport -d test -c users -o server/data/initialization.json`  
+Выгрузка данных из БД (замещаются данные в файле инициализации БД):  
+`mongoexport -d test -c users --jsonArray -o server/data/initialization.json`  
 ## Параметры запуска
 1. Запуск сервера для разработки:  
 `npm run dev`
