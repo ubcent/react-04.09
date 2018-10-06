@@ -16,7 +16,7 @@ const app = express();
 const server = http.createServer(app);
 const io = socketIO(server);
 
-// подключаемся к коллекции test на локальном сервере
+// подключаемся к БД test на локальном сервере
 mongoose.connect('mongodb://localhost/test');
 
 app.use(cors());
@@ -73,23 +73,43 @@ io.on('disconnection', socket => {
   // удаляем id из базы
 });
 
-// req - параметры запроса (заголовки и т.д.)
-// res - ответ
+/**
+ * GET-запрос списка всех пользователей
+ * req - параметры запроса (заголовки, тело и т.д.)
+ * res - ответ
+ */
 app.get('/users', async(req, res) => {
+  // ищем всех пользователей в БД
   const users = await User.find();
 
+  // отправляем найденных пользователей клиенту в json-виде
   res.json(users);
 });
 
+/**
+ * GET-запрос пользователя с указанным id
+ * req - параметры запроса (заголовки, тело и т.д.)
+ * res - ответ
+ */
 app.get('/users/:id', async(req, res) => {
+  // ищем пользователя с указанным id в БД
   const user = await User.findById(req.params.id);
 
+  // отправляем найденного пользователя клиенту в json-виде
   res.json(user);
 });
 
+/**
+ * POST-запрос на создание и сохранение пользователя на сервере
+ * req - параметры запроса (заголовки, тело и т.д.)
+ * res - ответ
+ */
 app.post('/users', async(req, res) => {
+  // создаем пользователя со свойствами из полученного тела post-запроса
   let user = new User(req.body);
+  // сохраняем созданного пользователя в БД в коллекцию users
   user = await user.save();
 
+  // отправляем созданного пользователя клиенту в json-виде
   res.json(user);
 });
