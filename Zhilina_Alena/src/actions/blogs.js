@@ -5,9 +5,6 @@ export const loadListBlogs = (dispatch) => {
         .then((response) => response.json())
         .then((blogs) => {
             dispatch(loadList(blogs));
-            console.log('-----4----action',blogs);
-            console.log('loadList',loadList(blogs));
-            console.log('-----4------------------------------------');
         });
 };
 
