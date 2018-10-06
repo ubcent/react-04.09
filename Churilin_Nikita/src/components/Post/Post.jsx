@@ -1,28 +1,52 @@
 import './Post.css';
 
-import React, { PureComponent } from 'react';
-import { Link } from 'react-router-dom';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
-export default class Post extends PureComponent {
-  constructor(props) {
-    super(props);
+import { deletePost } from 'actions/postActions';
 
-    this.state = {
-
-    };
+class Post extends Component {
+  handleClick = () => {
+    this.props.deletePost(this.props.post.id);
+    this.props.history.push('/');
   };
 
   render() {
-    return (
+    console.log(this.props);
+    const post = this.props.post ? (
       <div className="post">
-        <div>
-          <Link to={`${this.props.link}`}>
-            <h2>{this.props.heading}</h2>
-            <h3>{this.props.shortDescriprion}</h3>
-          </Link>
+        <h4 className="center">{this.props.post.title}</h4>
+        <p className="center">{this.props.post.body}</p>
+        <div className="center">
+          <button className="btn grey" onClick={this.handleClick}>
+            Delete Post
+          </button>
         </div>
-        <p>Posted by <a href="#">{this.props.author}</a> on {this.props.date}</p>
       </div>
+    ) : (
+      <div className="center">Loading post...</div>
     );
+
+    return <div className="container">{post}</div>;
+  }
+}
+
+const mapStateToProps = (state, ownProps) => {
+  let id = ownProps.match.params.post_id;
+  return {
+    post: state.posts.find(post => post.id === id),
   };
 };
+
+const mapDispatchToProps = dispatch => {
+  return {
+    deletePost: id => {
+      dispatch(deletePost(id));
+    },
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Post);

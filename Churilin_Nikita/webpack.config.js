@@ -14,7 +14,10 @@ module.exports = {
     extensions: ['.js', '.jsx'],
     alias: {
       components: path.resolve(__dirname, 'src', 'components'),
-    }
+      containers: path.resolve(__dirname, 'src', 'containers'),
+      reducers: path.resolve(__dirname, 'src', 'reducers'),
+      actions: path.resolve(__dirname, 'src', 'actions'),
+    },
   },
   module: {
     rules: [
@@ -32,7 +35,7 @@ module.exports = {
           use: ['css-loader'],
         }),
       },
-    ]
+    ],
   },
   devServer: {
     historyApiFallback: true,
@@ -42,6 +45,6 @@ module.exports = {
     new HtmlPlugin({
       template: path.resolve(__dirname, 'src', 'index.html'),
       filename: 'index.html',
-    })
-  ]
+    }),
+  ],
 };
