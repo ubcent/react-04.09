@@ -13,7 +13,7 @@ export const messageReceived = createAction('[Message] Receive');
 
 /**
  * Обрабатывает событие отправки сообщения *
- * @return {Function}
+ * @return {function}
  * dispatch диспетчер, содержащий сообщение
  * вместе с dispatch можно вторым параметром передать функцию getState, позволяющую получать
  * текущее содержимое state
