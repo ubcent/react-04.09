@@ -8,7 +8,9 @@
     "dev": "webpack --mode development --watch",
     "test": "echo \"Error: no test specified\" && exit 1",
     "cc": "node cli/component.js --name",
-    "server": "nodemon --exec babel-node server"
+    "server": "nodemon --exec babel-node server",
+    "initDB": "mongoimport -d test -c users --jsonArray server/data/initialization.json --host=127.0.0.1",
+    "saveDB": "mongoexport -d test -c users --jsonArray -o server/data/initialization.json"
   },
   "keywords": [
     "ReactJS",
