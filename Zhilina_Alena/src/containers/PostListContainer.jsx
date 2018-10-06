@@ -16,7 +16,7 @@ export default class PostListContainer extends PureComponent {
         const { match } = this.props;
 
         this.setState({loading: true});
-        fetch(`http://localhost:3000/posts?blogId=${match.params.idBlog}`)
+        fetch(`http://localhost:8000/posts?blogId=${match.params.idBlog}`)
             .then((response) => response.json())
             .then((posts) => {
                 this.setState(() => ({
@@ -34,7 +34,7 @@ export default class PostListContainer extends PureComponent {
         const { posts, loading } = this.state;
         return (
             <Fragment>
-                {posts.map((post) => <ArticlePreview key={post.id} article ={ post }/>)}
+                {posts.map((post) => <ArticlePreview key={post._id} article ={ post }/>)}
                 {loading && 'Loading...'}
             </Fragment>
         )

@@ -2,6 +2,8 @@ import './Comment.css'
 
 import React, { PureComponent} from 'react';
 
+import { Link } from 'react-router-dom';
+
 export default class Comment extends PureComponent{
     render(){
         const { comment } = this.props;
@@ -12,9 +14,13 @@ export default class Comment extends PureComponent{
                </div>
                <div className="comment__text-block">
                    <div className="comment__info">
-                       <span className="comment__name"><a href="#">{comment.user.firstName} {comment.user.lastName}</a></span>
+                       <span className="comment__name">
+                           <Link to={`/users/${comment.user._id}`}>{comment.user.firstName} {comment.user.lastName}</Link>
+                       </span>
                        <span className="comment__date">APRIL 18, 2017</span>
-                       <span className="comment__post"><a href="#">{comment.post.title}</a></span>
+                       <span className="comment__post">
+                           <Link to={`/posts/${comment.post._id}`}>{comment.post.title}</Link>
+                       </span>
                    </div>
                       <p className="comment__text">{comment.text}</p>
                </div>

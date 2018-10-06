@@ -14,7 +14,7 @@ export default class UserListContainer extends PureComponent {
 
     load = () => {
         this.setState({ loading: true });
-        fetch(`http://localhost:3000/users`)
+        fetch(`http://localhost:8000/users`)
             .then((response) => response.json())
             .then((users) => {
                 this.setState(() => ({
@@ -33,7 +33,7 @@ export default class UserListContainer extends PureComponent {
 
         return (
             <Fragment>
-                {users.map((user) => <User key={user.id} user ={ user }/>)}
+                {users.map((user) => <User key={user._id} user ={ user }/>)}
                 {loading && 'Loading...'}
             </Fragment>
         )

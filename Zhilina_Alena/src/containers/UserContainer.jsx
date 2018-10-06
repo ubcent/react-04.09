@@ -1,13 +1,13 @@
 import React, { PureComponent, Fragment } from 'react';
 
-import Comment from 'components/Comment';
+import User from 'components/User';
 
-export default class CommentListContainer extends PureComponent {
+export default class UserContainer extends PureComponent {
     constructor(props) {
         super(props);
 
         this.state = {
-            comments: [],
+            user:{},
             loading: false,
         };
     }
@@ -15,24 +15,28 @@ export default class CommentListContainer extends PureComponent {
     load = () => {
         this.setState({loading: true});
 
-        fetch(`http://localhost:8000/comments`)
-            .then((response) => response.json())
-            .then((comments) => {
+        const { match } = this.props;
+
+            fetch(`http://localhost:3000/users/${match.params.idUser}`)
+                .then((response) => response.json())
+                .then((user) => {
                 this.setState(() => ({
                     loading: false,
-                    comments: comments
+                    user: user
                 }));
-            });
+            })
     };
 
     componentDidMount() {
         this.load();
     }
+
     render() {
-        const { comments, loading } = this.state;
+        const { user, loading } = this.state;
+
         return (
             <Fragment>
-                {comments.map((comment) => <Comment key={comment._id} comment ={ comment }/>)}
+                <User user={ user } />
                 {loading && 'Loading...'}
             </Fragment>
         )

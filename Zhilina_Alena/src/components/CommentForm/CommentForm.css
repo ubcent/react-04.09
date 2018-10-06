@@ -1,0 +1,23 @@
+.form-comment-wrap {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    width: 100%;
+    margin-top: 40px;
+}
+
+.form-comment {
+    display: flex;
+    flex-flow: column;
+    width: 100%;
+}
+
+.form-comment__input {
+    padding: 6px;
+    margin-bottom: 10px;
+    border: 1px solid black;
+}
+
+.form-comment__label {
+    margin: 0 0 5px 5px;
+}
