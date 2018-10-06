@@ -11,7 +11,7 @@ import MessagesContainer from 'containers/MessagesContainer';
  * @param state содержимое state
  * @param ownProps свойства, изначально переданные в компонент (в т.ч. match, location
  *        при использовании Router)
- * @return {{messages: (Array|NamedNodeMap|ActiveX.IXMLDOMNamedNodeMap)}} новые свойства
+ * @return {{messages: Array}} новые свойства
  *        компонента
  */
 function mapStateToProps(state, ownProps) {
@@ -30,7 +30,7 @@ function mapStateToProps(state, ownProps) {
  * @param dispatch {function} диспетчер, содержащий сообщение
  * @param ownProps свойства, изначально переданные в компонент (в т.ч. match, location при
  *        использовании Router)
- * @return {{mountEvents: (function(): void), sendMessage: Function}}
+ * @return {{mountEvents: (function(): *), sendMessage: (function(*=): *)}}
  */
 function mapDispatchToProps(dispatch, ownProps) {
   return {
@@ -45,7 +45,7 @@ function mapDispatchToProps(dispatch, ownProps) {
 /**
  * Подключает контейнер MessagesContainer к store
  * Методы, на которые подписывается компонент:
- * mapStateToProps - добавляет из store новые свойства компоненту
+ * mapStateToProps - добавляет из state новые свойства компоненту
  * mapDispatchToProps - добавляет из action новые свойства компоненту
  * MessagesContainer - подключаемый контейнер
  * @return новый присоединенный компонент (контейнер), который оборачивает переданный

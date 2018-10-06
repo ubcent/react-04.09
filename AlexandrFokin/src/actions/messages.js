@@ -12,9 +12,9 @@ const socket = io.connect('http://localhost:3002');
 export const messageReceived = createAction('[Message] Receive');
 
 /**
- * Обрабатывает событие отправки сообщения *
+ * Обрабатывает событие отправки сообщения
  * @return {function}
- * dispatch диспетчер, содержащий сообщение
+ * dispatch {function} диспетчер, содержащий сообщение
  * вместе с dispatch можно вторым параметром передать функцию getState, позволяющую получать
  * текущее содержимое state
  */
@@ -28,7 +28,8 @@ export const mountEvents = () => dispatch => {
 
 /**
  * Отправляет сообщение
- * @return {Function} отправляет сообщение на сервер с помощью сокета
+ * @param message сообщение
+ * @return {function} отправляет сообщение на сервер с помощью сокета
  */
 export const sendMessage = message => () => {
   socket.emit('message', message);
