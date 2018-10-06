@@ -1,6 +1,6 @@
 # Blog (Pavlenko Vitaly)
 
-> Реализация блога на ReactJS для курса по ReactJS от GeekBrains
+> Реализация блога для курса по ReactJS от GeekBrains
 
 ## Запуск проекта
 
