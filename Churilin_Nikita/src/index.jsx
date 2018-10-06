@@ -1,22 +1,16 @@
-import React, { Component, Fragment } from 'react';
-import ReactDom from 'react-dom';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
 
-import Header from 'components/Header';
+import App from './App';
+import rootReducer from 'reducers/rootReducer';
 
-import routes from 'components/routes.js';
+const store = createStore(rootReducer);
 
-class App extends Component {
-  render() {
-    return (
-      <Fragment>
-        <Header></Header>
-        <Switch>
-          {routes.map((route, idx) => <Route key={idx} {...route} />)}
-        </Switch>
-      </Fragment>
-    );
-  }
-}
-
-ReactDom.render(<BrowserRouter><App /></BrowserRouter>, document.getElementById('root'));
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('root')
+);
