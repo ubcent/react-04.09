@@ -8,7 +8,7 @@ const blogPostSchema = new Schema({
   shortDescription: {type: String, required: true},
   authorId: {type: String, required: true},
   date: {type: String, required: true},
-  text: {type: String, required: true}
+  text: {type: String, required: true},
 });
 
 module.exports = mongoose.model('Blog-post', blogPostSchema);

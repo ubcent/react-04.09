@@ -13,7 +13,7 @@ export default class App {
         'Content-Type': 'application/json'
       },
       method: 'POST',
-      body,
+      body: JSON.stringify(body),
     })
   }
 }

@@ -20,6 +20,7 @@
     "cors": "^2.8.4",
     "express": "^4.16.3",
     "migrate-mongo": "^4.0.0",
+    "moment": "^2.22.2",
     "mongoose": "^5.3.0",
     "normalize.css": "^8.0.0",
     "prop-types": "^15.6.2",

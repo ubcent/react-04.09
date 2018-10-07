@@ -4,8 +4,10 @@ import {connect} from 'react-redux';
 
 import PostPage from 'components/PostPage';
 import {loadUsers} from 'actions/users';
-import {loadComments} from 'actions/comments';
+import {loadComments, addComment} from 'actions/comments';
 import {loadBlogPosts} from 'actions/blog-posts';
+
+//import app from '../index';
 
 class PostPageContainer extends PureComponent {
   static propTypes = {
@@ -15,8 +17,14 @@ class PostPageContainer extends PureComponent {
     comments: propTypes.array,
     loadUsers: propTypes.func,
     loadComments: propTypes.func,
+    addComment: propTypes.func,
     loadBlogPosts: propTypes.func,
     match: propTypes.object,
+  }
+
+  state = {
+    comments: [],
+    commentText: '',
   }
 
   componentDidMount() {
@@ -24,6 +32,32 @@ class PostPageContainer extends PureComponent {
     loadUsers();
     loadComments();
     loadBlogPosts();
+  }
+
+  handleCommentInputChange = e => {
+    this.setState({
+      [e.target.name]: e.target.value,
+    });
+  }
+
+  handleSubmitButton = e => {
+    e.preventDefault();
+    const comment = {
+      postId: this.props.match.params.id,
+      authorId: '1',
+      text: this.state.commentText,
+      timestamp: new Date(),
+    };
+    /*app.post('comments', comment).then(res => {
+      res.json().then(comment => {
+        this.setState({
+          comments: this.state.comments.concat(comment),
+          commentText: '',
+        });
+      })
+    });*/
+    const {addComment} = this.props;
+    addComment(comment);
   }
 
   getPostById(id) {
@@ -53,7 +87,9 @@ class PostPageContainer extends PureComponent {
       let author = this.props.authors[+post.authorId-1];
       let postComments = this.getCommentsByPostId(+post.id);
       return (
-        <PostPage post={post} author={author} postComments={postComments} authors={this.props.authors}/>
+        <PostPage post={post} author={author} postComments={postComments} authors={this.props.authors}
+          handleCommentInputChange={this.handleCommentInputChange} handleSubmitButton={this.handleSubmitButton}
+        />
       );
     }
   }
@@ -73,7 +109,8 @@ function mapDispatchToProps(dispatch, ownProps) {
     ...ownProps,
     loadUsers: () => dispatch(loadUsers()),
     loadComments: () => dispatch(loadComments()),
-    loadBlogPosts: () => dispatch(loadBlogPosts())
+    loadBlogPosts: () => dispatch(loadBlogPosts()),
+    addComment: (comment) => dispatch(addComment(comment)),
   }
 }
 

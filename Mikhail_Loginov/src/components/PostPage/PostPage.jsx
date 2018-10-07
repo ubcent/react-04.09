@@ -1,15 +1,21 @@
 import './PostPage.css';
 
 import React, {PureComponent} from 'react';
-import {Container} from 'reactstrap';
-import PropTypes from 'prop-types';
+import {Container, Input, Button} from 'reactstrap';
+import propTypes from 'prop-types';
 
 export default class PostPage extends PureComponent {
   static propTypes = {
-    post: PropTypes.object,
-    author: PropTypes.object,
-    postComments: PropTypes.array,
-    authors: PropTypes.array,
+    post: propTypes.object,
+    author: propTypes.object,
+    postComments: propTypes.array,
+    authors: propTypes.array,
+    handleSubmitButton: propTypes.func,
+    handleCommentInputChange: propTypes.func,
+  }
+
+  state = {
+    commentText: '',
   }
 
   renderPost(post, author) {
@@ -27,17 +33,18 @@ export default class PostPage extends PureComponent {
     let renderedComments = '';
     if (postComments.length !== 0) {
       renderedComments =
-        <div className="post__comments">
-          <h4>Comments</h4>
-          {postComments.map((comment, index) => {
-            let commentAuthor = this.props.authors[comment.authorId-1];
-            return (
-            <div className="comment" key={index}>
-              <div className="comment__text">{comment.text}</div>
-              <div className="comment__author">Written by {commentAuthor.firstName} {commentAuthor.lastName}</div>
-            </div>)
-          })}
-        </div>;
+        postComments.map((comment, index) => {
+          let commentAuthor = this.props.authors[comment.authorId-1];
+          return (
+          <div className="comment" key={index}>
+            <div className="comment__menu">
+              <button className="comment__delete">X</button>
+              <button className="comment__edit">Edit</button>
+            </div>
+            <div className="comment__text">{comment.text}</div>
+            <div className="comment__author">Written by {commentAuthor.firstName} {commentAuthor.lastName}</div>
+          </div>)
+        });
     }
     return renderedComments;
   }
@@ -50,7 +57,14 @@ export default class PostPage extends PureComponent {
       <main>
         <Container>
           {renderedPost}
-          {renderedComments}
+          <div className="post__comments">
+            <h4>Comments</h4>
+            <form>
+              <Input name="commentText" onChange={this.props.handleCommentInputChange} type="textarea"/>
+              <Button onClick={this.props.handleSubmitButton}>Submit</Button>
+            </form>
+            {renderedComments}
+          </div>
         </Container>
       </main>
     );

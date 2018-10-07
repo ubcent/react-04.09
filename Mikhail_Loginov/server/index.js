@@ -34,8 +34,11 @@ app.get('/blog-posts', async (req, res) => {
   res.json(blogPosts);
 });
 
-app.post('/comments', (req, res) => {
-  console.log(req.body);
-
-  res.send('OK');
+app.post('/comments', async (req, res) => {
+  const comment = req.body;
+  const count = await Comment.countDocuments();
+  comment.id = String(count + 1);
+  console.log(comment);
+  await Comment.create(comment);
+  res.json(comment);
 });
