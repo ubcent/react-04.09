@@ -1,24 +1,17 @@
 import React, { PureComponent, Fragment } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 import PostList from 'components/PostList';
+import Pagination from 'components/Pagination';
 import modelPosts from 'models/Posts';
+import { loadPosts, loadPostsByIds, loadPostsByUid } from 'actions/actionsPosts';
 
-export default class PostListContainer extends PureComponent {
-    constructor(props){
-        super(props);
-        
-        this.state = {
-            posts: [],
-            loading: false,
-            page: null,
-            count: 0,
-        }
-    }
+class PostListContainer extends PureComponent {
 
     static propTypes = {
         limit: PropTypes.number,
-        userId: PropTypes.number,
+        userId: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
         postIds: PropTypes.arrayOf(PropTypes.number),
     }
 
@@ -31,54 +24,52 @@ export default class PostListContainer extends PureComponent {
     }
 
     changePage = page => {
-        this.setState({ page: page });
         this.loadPosts(page);
     }
 
-    loadPosts = (page) => {
+    loadPosts = (page = 1) => {
         const { postIds, userId, limit } = this.props;
 
-        this.setState({ loading: true });
-
         if (postIds) {
-            modelPosts.getPostsById(postsIds, limit, page)
-                .then(({posts, count}) => {
-                    this.setState((prevState) => ({
-                        loading: false,
-                        posts,
-                        count,
-                    }));
-                });
+            this.props.dispatch(loadPostsByIds(limit, page, postIds));
         } else if (userId) {
-            modelPosts.getPostsByUserId(userId, limit, page)
-                .then(({posts, count}) => {
-                    this.setState((prevState) => ({
-                        loading: false,
-                        posts,
-                        count,
-                    }));
-                });
+            this.props.dispatch(loadPostsByUid(limit, page, userId));
         } else {
-            modelPosts.getPosts(limit, page)
-                .then(({posts, count}) => {
-                    this.setState((prevState) => ({
-                        loading: false,
-                        posts,
-                        count,
-                    }));
-                });
+            this.props.dispatch(loadPosts(limit, page));
         }
     }
 
     render() {
-        const { limit } = this.props;
-        const { posts, loading, count } = this.state;
+        const { isLoading, limit, posts, count, currentPage } = this.props;
 
         return (
             <Fragment>
-                { loading && 'Loading...' }
-                <PostList limit={limit} count={count} posts={posts} onChangePage={this.changePage} />
+                { isLoading && 'Loading...' }
+                <PostList posts={posts}  />
+                {limit && count && count > limit ? <Pagination
+                    limit={limit}
+                    count={count}
+                    currentPage={currentPage}
+                    onChangePage={this.changePage}
+                /> : ''}
             </Fragment>
         );
     }
 }
+
+function mapStateToProps(state, ownProps) {
+    return {
+        ...ownProps,
+        ...state.posts,
+    }
+}
+/*
+function mapDispatchToProps(dispatch, props) {
+    return {
+        ...props,
+        mountEvents: () => dispatch(mountEvents()),
+        sendMessage: (message) => dispatch(sendMessage(message)),
+    }
+}
+*/
+export default connect(mapStateToProps/*, mapDispatchToProps*/)(PostListContainer);
