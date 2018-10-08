@@ -3,6 +3,8 @@ import './BlogPost.scss';
 import React, { PureComponent, Fragment } from 'react';
 // Проверка свойств
 import PropTypes from 'prop-types';
+// Поддержка языка Markdown
+import Markdown from 'react-markdown';
 
 import CommentsList from 'components/CommentsList';
 import CommentsForm from 'components/CommentsForm';
@@ -19,6 +21,29 @@ export default class BlogPost extends PureComponent {
       loading: false,
     };
   }
+
+  // Проверка свойств
+  static propTypes = {
+    // Пост - объект
+    post: PropTypes.shape({
+      // id поста
+      id:  PropTypes.string,
+      // заголовок поста
+      title: PropTypes.string,
+      // дата поста
+      date: PropTypes.string,
+      // автор поста
+      author: PropTypes.string,
+      // пост на MarkDown
+      message: PropTypes.string,
+    }),
+  };
+
+  // значения атрибутов по умолчанию
+  static defaultProps = {
+    // аттрибут post инициализируем пустым объектом
+    post: {},
+  };
 
   loadMore = () => {
     const {page} = this.state;
@@ -41,32 +66,6 @@ export default class BlogPost extends PureComponent {
   componentDidMount() {
     this.loadMore();
   }
-
-  // Проверка свойств
-  static propTypes = {
-    // Пост - объект
-    post: PropTypes.shape({
-      // id поста
-      id:  PropTypes.string,
-      // заголовок поста
-      title: PropTypes.string,
-      // дата поста
-      date: PropTypes.string,
-      // автор поста
-      author: PropTypes.string,
-      // пост
-      message: PropTypes.shape({
-        // пост на html
-        __html: PropTypes.string,
-      }),
-    }),
-  };
-
-  // значения атрибутов по умолчанию
-  static defaultProps = {
-    // аттрибут post инициализируем пустым объектом
-    post: {},
-  };
 
   handleCommentReceive = comment => {
     this.setState(
@@ -94,8 +93,7 @@ export default class BlogPost extends PureComponent {
             <p>
               <span className="date">{date} by</span> <span className="author">{author}</span>
             </p>
-            {/* TODO использовать react-markdown, чтобы избежать html в передаваемых сообщениях */}
-            <div className="message" dangerouslySetInnerHTML={message}/>
+            <Markdown className="message" source={message}/>
           </div>
           <CommentsList comments={comments}/>
           {

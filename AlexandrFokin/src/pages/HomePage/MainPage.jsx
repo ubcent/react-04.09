@@ -3,7 +3,7 @@ import './MainPage.scss';
 import React, { PureComponent } from 'react';
 
 /**
- * Класс MainPage - компонент, отображающий главную страницу
+ * Класс HomePage - компонент, отображающий главную страницу
  */
 export default class MainPage extends PureComponent {
   render() {

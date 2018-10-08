@@ -17,13 +17,13 @@ export default class BlogButton extends PureComponent {
       id:  PropTypes.string,
       // название кнопки
       name: PropTypes.string,
-    })
+    }),
   };
 
   // значения атрибутов по умолчанию
   static defaultProps = {
     // аттрибут item инициализируем пустым объектом
-    item: {}
+    item: {},
   };
 
   render() {

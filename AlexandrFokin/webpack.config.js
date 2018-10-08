@@ -38,6 +38,12 @@ module.exports = {
       containers: path.resolve(__dirname, 'src', 'containers'),
       // адрес папки img
       img: path.resolve(__dirname, 'src', 'img'),
+      // адрес папки actions
+      actions: path.resolve(__dirname, 'src', 'actions'),
+      // адрес папки reducers
+      reducers: path.resolve(__dirname, 'src', 'reducers'),
+      // адрес папки pages
+      pages: path.resolve(__dirname, 'src', 'pages'),
     }
   },
   devtool: false,
@@ -59,6 +65,8 @@ module.exports = {
       // локальный сервер находится по адресу http://localhost:3000/
       host: 'localhost',
       port: 3000,
+      // отключаем синхронизацию действий во всех окнах браузера
+      ghostMode: false,
       // папка со сборкой, используемая в качестве корневой для сервера
       server: {
         baseDir: ['dist'],
