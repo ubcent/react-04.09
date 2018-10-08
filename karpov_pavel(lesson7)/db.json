@@ -1,0 +1,73 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "name": "Brian"
+    },
+    {
+      "id": 2,
+      "name": "Johny"
+    }
+  ],
+  "comments": [
+    {
+      "body": "Brian comment -1",
+      "postId": 1,
+      "id": 1
+    },
+    {
+      "body": "Brian comment -2",
+      "postId": 1,
+      "id": 2
+    },
+    {
+      "body": "Johny comment -1",
+      "postId": "2",
+      "id": 3
+    },
+    {
+      "body": "Johny comment -2",
+      "postId": "2",
+      "id": 4
+    },
+    {
+      "body": "Hi, Brian",
+      "type": "me",
+      "postId": "1",
+      "id": 5
+    },
+    {
+      "body": "Hi, Johny!",
+      "type": "me",
+      "postId": "2",
+      "id": 6
+    },
+    {
+      "body": "What's up, Brian",
+      "type": "me",
+      "postId": "1",
+      "id": 7
+    },
+    {
+      "body": "What's up Johny",
+      "type": "me",
+      "postId": "2",
+      "id": 8
+    },
+    {
+      "body": "Briaaan",
+      "type": "me",
+      "postId": "1",
+      "id": 9
+    },
+    {
+      "body": "JOOOON",
+      "type": "me",
+      "postId": "2",
+      "id": 10
+    }
+  ],
+  "profile": {
+    "name": "Paul"
+  }
+}

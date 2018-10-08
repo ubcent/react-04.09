@@ -1,22 +1,20 @@
 //Импортируем стили для форматирования меню
 import './Menu.scss';
 
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
+import { withRouter, NavLink } from 'react-router-dom';
 import {//импортируем компоненты для навигации Bootstrap
     Collapse,
     Navbar,
     NavbarToggler,
     NavbarBrand,
     Nav,
-    NavItem,
-    NavLink
+    NavItem
 } from 'reactstrap';
 
-import {Link} from 'react-router-dom';
-
-export default class Menu extends Component {
+class Menu extends PureComponent {
     render() {
-        const { activeMenu, menu, toggle, isOpen, clickMenu } = this.props;
+        const { menu, toggle, isOpen, clickMenu, location } = this.props;
         return (
             <Navbar dark expand="md">
                 <NavbarBrand href="/" className="logo">
@@ -27,12 +25,13 @@ export default class Menu extends Component {
                 <Collapse isOpen={isOpen} navbar>
                     <Nav className="mr-auto" navbar>
                         {menu.map( item =>{
-                            const activeClass = activeMenu === item.id ? 'active-menu' : '';
+                            const activeIndex = item.link !== location.pathname ? '' : ' active-menu';
                             //элементы главного меню
                             return(
                                 <NavItem key={`mainMenu${item.id}`} >
-                                    <NavLink tag={Link} to={item.link} name={item.id} onClick={clickMenu} className={activeClass}>{item.title}</NavLink>
+                                    <NavLink to={item.link} onClick={clickMenu} className={`nav-link${activeIndex}`}>{item.title}</NavLink>
                                 </NavItem>
+                                
                             );
                         })}
                     </Nav>
@@ -41,3 +40,4 @@ export default class Menu extends Component {
         );
     }
 }
+export default withRouter(Menu);

@@ -1,29 +1,35 @@
 import React, { PureComponent, Fragment } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 import Errors from 'Components/Errors';
 import Loading from 'Components/Loading';
 import PostsList from 'Components/PostsList';
+import { fetchPostsList } from 'Actions/postsActions';
+import { IPost, IError } from 'Models';
 
-export default class PostsListContainer extends PureComponent {
-  constructor(props) {
-    super(props);
+class PostsListContainer extends PureComponent {
+  static propTypes = {
+    postsList: PropTypes.arrayOf(IPost),
+    fetching: PropTypes.bool,
+    errors: PropTypes.arrayOf(IError),
+    getPostsList: PropTypes.func,
+  };
 
-    this.state = { posts: [], fetching: false, errors: [] };
-  }
+  static defaultProps = {
+    postsList: [],
+    fetching: false,
+    errors: [],
+    getPostsList: null,
+  };
 
   componentDidMount = () => {
-    this.setState({ fetching: true, errors: [] });
-
-    fetch('api/posts')
-      .then(response => response.json())
-      .then(posts => this.setState({ posts, fetching: false }))
-      .catch(error => this.setState(({ errors }) => (
-        { errors: errors.concat(error), fetching: false }
-      )));
+    const { getPostsList } = this.props;
+    getPostsList();
   }
 
   render() {
-    const { posts, fetching, errors } = this.state;
+    const { postsList, fetching, errors } = this.props;
 
     if (fetching) {
       return (
@@ -37,8 +43,24 @@ export default class PostsListContainer extends PureComponent {
           <Errors errors={errors} />
         )}
 
-        <PostsList posts={posts} />
+        <PostsList posts={postsList} />
       </Fragment>
     );
   }
 }
+
+function mapStateToProps(state) {
+  return {
+    postsList: state.posts.postsList,
+    fetching: state.posts.fetching,
+    errors: state.posts.errors,
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    getPostsList: () => dispatch(fetchPostsList()),
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(PostsListContainer);

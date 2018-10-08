@@ -15,6 +15,7 @@
     @extend %flex-column;
     align-content: center;
     box-sizing: border-box;
+    overflow-y: auto;
 }
 .msg-left{
     margin-right: auto;

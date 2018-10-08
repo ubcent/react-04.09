@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { IError } from 'Models';
+
 function Errors(props) {
   const { errors } = props;
 
@@ -12,9 +14,7 @@ function Errors(props) {
 }
 
 Errors.propTypes = {
-  errors: PropTypes.arrayOf(PropTypes.shape({
-    message: PropTypes.string,
-  })),
+  errors: PropTypes.arrayOf(IError),
 };
 
 Errors.defaultProps = {

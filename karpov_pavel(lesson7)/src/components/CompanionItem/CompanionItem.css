@@ -1,0 +1,34 @@
+.companions__item {
+    margin-bottom: 0.4rem;
+    transition: 0.1s;
+}
+.companions__link {
+    text-decoration: none;
+    color: #666;
+    display: block;
+    padding: 0.4rem 0.6rem;
+}
+.companions__item:hover {
+    background-color: rgba(207, 207, 207, 0.3);
+}
+.companions__hr {
+    border: 0.5px solid #ccc;
+    width: 80%;
+    margin: 0 auto;
+}
+.companions__item.active {
+    color: #333;
+    font-weight: bold;
+    background-color: rgba(207, 207, 207, 0.3);
+    position: relative;
+}
+.companions__item.active::before {
+    content: '';
+    background: #709df1;
+    border-radius: 50%;
+    width: 0.4rem;
+    height: 0.4rem;
+    position: absolute;
+    left: 0.6rem;
+    top: 0.85rem;
+}

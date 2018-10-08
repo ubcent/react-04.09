@@ -18,7 +18,7 @@ module.exports = {
   },
   module: {
     rules: [
-      { 
+      {
         test: /\.jsx?$/,
         exclude: /node_modules/,
         use: {
@@ -34,6 +34,9 @@ module.exports = {
       },
     ]
   },
+  devServer: {
+    historyApiFallback: true,
+  },
   plugins: [
     new ExtractTextPlugin({ filename: 'style.css' }),
     new HtmlPlugin({
@@ -41,4 +44,4 @@ module.exports = {
       filename: 'index.html',
     })
   ]
-}
+};

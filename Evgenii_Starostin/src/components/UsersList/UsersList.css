@@ -2,3 +2,30 @@
 .userlist__user:focus {
   text-decoration: none;
 }
+
+.delete-user-btn {
+  margin-bottom: 10px;
+}
+
+.list-group-item {
+  display: flex;
+  justify-content: space-between;
+}
+
+.dropdown-toggle {
+  padding: 0 5px;
+}
+
+.user-form .input-group {
+  margin-bottom: 20px;
+}
+
+.user-form .float-right {
+  float: right;
+}
+
+.user-form:after {
+  content: '';
+  display: block;
+  clear: both;
+}

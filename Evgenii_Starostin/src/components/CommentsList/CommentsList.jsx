@@ -2,15 +2,17 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
+import { IComment } from 'Models';
+
 function CommentsList(props) {
   const { comments } = props;
 
   return (
     <Fragment>
       {comments.map(comment => (
-        <blockquote key={comment.id}>
+        <blockquote key={comment._id}>
           <p><q>{comment.text}</q></p>
-          <p><cite><Link to={`/posts/${comment.post.id}`}>{comment.post.title}</Link></cite></p>
+          <p><cite><Link to={`/posts/${comment.post._id}`}>{comment.post.title}</Link></cite></p>
         </blockquote>
       ))}
     </Fragment>
@@ -18,12 +20,7 @@ function CommentsList(props) {
 }
 
 CommentsList.propTypes = {
-  comments: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number,
-    postId: PropTypes.number,
-    userid: PropTypes.number,
-    text: PropTypes.string,
-  })),
+  comments: PropTypes.arrayOf(IComment),
 };
 
 CommentsList.defaultProps = {

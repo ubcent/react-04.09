@@ -19,8 +19,8 @@ export default class Post extends PureComponent {
                 <p className='post-data'>Дата публикации: {article.data}</p>
                 <p className="text-center"><img src={`img/article-${article.id}.jpeg`} alt={article.title} /></p>
                 <p>{article.text}</p>
-                <PostCommentsContainer postId={article.id}/>
-                <FormCommentsContainer postId={article.id}/>
+                <PostCommentsContainer />
+                <FormCommentsContainer />
             </Fragment>
         );
     }
