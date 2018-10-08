@@ -36,6 +36,16 @@ module.exports = {
                     fallback: 'style-loader',
                     use: ['css-loader']
                 })
+            },
+            {
+                test: /\.styl$/,
+                use: ExtractTextPlugin.extract({
+                    fallback: 'style-loader',
+                    use: [
+                        'css-loader',
+                        'stylus-loader',
+                    ]
+                })
             }
         ]
     },

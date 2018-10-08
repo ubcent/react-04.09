@@ -4,7 +4,11 @@ import './index.css';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Provider} from 'react-redux';
+import { Provider } from 'react-redux';
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faEdit } from '@fortawesome/free-solid-svg-icons'
+
+library.add(faEdit);
 
 import LayoutContainer from 'containers/LayoutContainer';
 import store from './store';

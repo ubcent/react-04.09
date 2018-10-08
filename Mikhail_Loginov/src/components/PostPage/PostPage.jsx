@@ -1,8 +1,9 @@
-import './PostPage.css';
+import './PostPage.styl';
 
 import React, {PureComponent} from 'react';
 import {Container, Input, Button} from 'reactstrap';
 import propTypes from 'prop-types';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export default class PostPage extends PureComponent {
   static propTypes = {
@@ -39,7 +40,9 @@ export default class PostPage extends PureComponent {
           <div className="comment" key={index}>
             <div className="comment__menu">
               <button className="comment__delete">X</button>
-              <button className="comment__edit">Edit</button>
+              <button className="comment__edit">
+                <FontAwesomeIcon icon="edit" />
+              </button>
             </div>
             <div className="comment__text">{comment.text}</div>
             <div className="comment__author">Written by {commentAuthor.firstName} {commentAuthor.lastName}</div>
