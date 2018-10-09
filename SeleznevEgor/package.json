@@ -9,7 +9,8 @@
     "start": "webpack-dev-server --mode development --open",
     "watch": "webpack --mode development --watch",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "cc": "node cli/cli.js --name"
+    "cc": "node cli/cli.js --name",
+    "admin": "node src/admin/admin.js"
   },
   "author": "seleznev egor",
   "license": "ISC",

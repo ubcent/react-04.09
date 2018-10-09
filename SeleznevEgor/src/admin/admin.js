@@ -2,76 +2,81 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
-const userSchema = new Schema({
-    login: {
-        type: String,
-        required: true,
-        minlength: 5,
-        maxlength: 20,
-    },
-    password: {
-        type: String,
-        required: true,
-        minlength: 6,
-        maxlength: 20,
-    },
-    userpic: String,
-    posts: {
-        type: Array,
-        default: [],
-    },
-    comments: {
-        type: Array,
-        default:[],
-    },
-});
+const command = process.argv[2];
 
-const User = mongoose.model('User', userSchema);
-//
-// const newUser = new User ({
-//    login: 'admin',
-//    password: '456852',
-//    userpic: 'content/avatar.png',
-// });
 
-// console.log(newUser);
+mongoose.set('bufferCommands', false);
+switch (command) {
+    case 'addUser':
+        user = (require('./user.json'));
+        if (user.login && user.password) addUser(user.login, user.password, user.userpic);
+        break;
+    case 'addCategory':
+        category = process.argv[3];
+        category ? addCategory(category): console.log('category not entered');
+        break;
+    default:
+        console.log('unknow command');
+}
 
-mongoose.connect('mongodb://localhost:27017/blog', {useNewUrlParser: true});
-
-// newUser.save(function (err) {
-//    mongoose.disconnect();
-//    if (err) return console.log('err');
-//     console.log('Сохранен объект ',newUser);
-// });
-User.find({}, function (err, docs) {
-
-    if (err) return console.log('err');
-    docs.map(function (item) {
-        User.deleteOne({login: item.login}, function(err, result){
-            if (err) return console.log('err');
-            console.log(result);
-        })
-    });
-    console.log(docs);
-});
+function addCategory(category) {
+    const { Category } = require('./models');
+    mongoose.connect('mongodb://localhost:27017/blog', {useNewUrlParser: true}).then(
+        ()=>{
+            Category.find({}, function (err, docs) {
+                if(err){
+                    mongoose.disconnect();
+                    return console.log(err);
+                }
+                if (docs.length < 10){
+                    const newCategory = new Category ({
+                        name: category,
+                    });
+                    newCategory.save(function (err) {
+                        mongoose.disconnect();
+                        if (err) return console.log(err);
+                        console.log('Category saved', newCategory);
+                    })
+                }else{
+                    mongoose.disconnect();
+                    console.log('Too much categories');
+                    console.log(docs);
+                }
+            })
+        },
+        err => {
+            console.log(err);
+        });
+}
 
 function addUser(login, password, userpic) {
-    mongoose.connect('mongodb://localhost:27017/blog', {useNewUrlParser: true}).then(()=>{
-        User.find({login:login}, function (err, docs){
-           if (err) return console.log('err');
-           if (docs.length !== 0) return console.log('Login is used, please use other login');
-            const user = new User({
-                login:login,
-                password:password,
-                userpic:userpic
-            });
-            user.save(function (err) {
-                if (err) console.log('err');
-                console.log('Сохранен объект ',user);
-               });
-           });
-    });
-};
-
-addUser('admin', '456852');
-mongoose.disconnect();
+    const { User } = require('./models');
+    mongoose.connect('mongodb://localhost:27017/blog', {useNewUrlParser: true}).then(
+        ()=>{
+            User.find({login: login}, function (err, docs) {
+                if (docs.length){
+                    mongoose.disconnect();
+                    console.log('User already exist');
+                    console.log(docs);
+                }else{
+                    const user = new User ({
+                        login:login,
+                        password: password,
+                        userpic:userpic
+                    });
+                    user.save(function (err) {
+                        mongoose.disconnect();
+                        if (err) return console.log(err);
+                        console.log('User saved', user);
+                    })
+                }
+                if(err){
+                    mongoose.disconnect();
+                    console.log(err);
+                }
+            })
+        },
+        err => {
+            console.log(err);
+        });
+}

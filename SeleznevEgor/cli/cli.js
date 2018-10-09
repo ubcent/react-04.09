@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const minimist = require('minimist');
 const args = minimist(process.argv, {
-  alias: { name: 'n', }
+    alias: { name: 'n', }
 });
 const componentName = args.name;
 
