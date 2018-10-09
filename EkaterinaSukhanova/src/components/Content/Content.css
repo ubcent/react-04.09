@@ -1,17 +1,13 @@
-.content {
-    background-color: lightyellow;
-    padding: 20px;
-    font-size: 20px;
+.content{
+    margin-left: auto;
+    margin-right: auto;
+    width: 700px;
+}
+.name-article{
+    color: darkgray;
 }
 
-.content-small {
-    height: 300px;
-}
-
-.content-middle {
-    height: 400px;
-}
-
-.content-big {
-    height: 500px;
+.content-button{
+    margin-top: 20px;
+    margin-left: 20px;
 }

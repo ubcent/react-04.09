@@ -1,32 +1,28 @@
 import './Content.css';
 
-import React, { Component } from 'react';
-import PropTypes from "prop-types";
-import classNames from "classnames";
+import React, {Component} from 'react';
+import {Button} from 'reactstrap';
+
 
 export default class Content extends Component {
-    static propTypes = {
-        size: PropTypes.oneOf(['small', 'middle', 'big']),
-    };
 
-    static defaultProps = {
-        size: 'middle',
-    };
-
-    render() {
-        const { size, children } = this.props;
-        const contentClasses = classNames('content', {
-            'content-small': size === 'small',
-            'content-middle': size === 'middle',
-            'content-big': size === 'big'
-        });
+    render(){
+        const {articles} = this.props;
 
         return(
-            <div className={contentClasses}>
-                <div>
-                    {children}
-                </div>
-            </div>
+            <main className='content'>
+                {articles.map((article) =>
+                    <div key={article.title}>
+                        <h2>{article.title}</h2>
+                        <p className='name-article'>{article.date} by <a href='#'>{article.author}</a></p>
+                        <p>{article.text}</p>
+                    </div>
+                )}
+                <Button outline color='primary' className='content-button'>Previous</Button>
+                <Button outline color='primary' className='content-button'>Next</Button>
+            </main>
+
         );
     }
+
 }

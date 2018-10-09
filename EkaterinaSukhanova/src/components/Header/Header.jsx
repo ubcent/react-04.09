@@ -22,16 +22,10 @@ export default class Header extends Component {
             'header-big': size === 'big'
         });
 
-
         return(
             <header className={headerClasses}>
-                Hello from header {size}
-                <div>
-                    Hi! I'm {children}
-                </div>
-                <ul>
-                    {creators.map((creator, idx) => <li key={idx}>{creator}</li>)}
-                </ul>
+                <h1>The Blog</h1>
+                <p>Example template of creating blog</p>
             </header>
         );
     }
