@@ -1,13 +1,12 @@
 export default function callAPIMiddleware({ dispatch, getState }) {
-    console.log('Run callAPIMiddleware')
     return next => action => {
         const {
             types,
             callAPI,
             shouldCallAPI = () => true,
             payload = {}
-        } = action
-        console.log('Run callAPIMiddleware', action)
+        } = action;
+
         if (!types) {
             // Normal action: pass it on
             return next(action)

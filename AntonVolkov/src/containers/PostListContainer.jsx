@@ -28,14 +28,20 @@ class PostListContainer extends PureComponent {
     }
 
     loadPosts = (page = 1) => {
-        const { postIds, userId, limit } = this.props;
+        const { postIds, 
+                userId, 
+                limit,
+                getPostsByIds,
+                getPostsByUid,
+                getPosts,
+        } = this.props;
 
         if (postIds) {
-            this.props.dispatch(loadPostsByIds(limit, page, postIds));
+            getPostsByIds(limit, page, postIds);
         } else if (userId) {
-            this.props.dispatch(loadPostsByUid(limit, page, userId));
+            getPostsByUid(limit, page, userId);
         } else {
-            this.props.dispatch(loadPosts(limit, page));
+            getPosts(limit, page);
         }
     }
 
@@ -63,13 +69,14 @@ function mapStateToProps(state, ownProps) {
         ...state.posts,
     }
 }
-/*
+
 function mapDispatchToProps(dispatch, props) {
     return {
         ...props,
-        mountEvents: () => dispatch(mountEvents()),
-        sendMessage: (message) => dispatch(sendMessage(message)),
+        getPostsByIds: (limit, page, postIds) => dispatch(loadPostsByIds(limit, page, postIds)),
+        getPostsByUid: (limit, page, userId) => dispatch(loadPostsByUid(limit, page, userId)),
+        getPosts: (limit, page) => dispatch(loadPosts(limit, page)),
     }
 }
-*/
-export default connect(mapStateToProps/*, mapDispatchToProps*/)(PostListContainer);
+
+export default connect(mapStateToProps, mapDispatchToProps)(PostListContainer);

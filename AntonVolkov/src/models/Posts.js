@@ -5,8 +5,6 @@ const modelPosts = {
         page = page ? page : 1;
         limit = limit ? `&_limit=${limit}&_page=${page}` : '';
 
-        console.log(limit, page);
-
         const posts = await fetch(`${this.base}/posts?_expand=user${limit}`)
             .then(data => {
                 count = +data.headers.get('X-Total-Count');
