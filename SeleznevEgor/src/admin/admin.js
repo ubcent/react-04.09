@@ -15,6 +15,9 @@ switch (command) {
         category = process.argv[3];
         category ? addCategory(category): console.log('category not entered');
         break;
+    case 'addPost':
+        addPost();
+        break;
     default:
         console.log('unknow command');
 }
@@ -78,5 +81,51 @@ function addUser(login, password, userpic) {
         },
         err => {
             console.log(err);
-        });
+        }
+    );
 }
+
+function addPost() {
+    post = (require('./post.json'));
+    const { Post, User, Category } = require('./models');
+    mongoose.connect('mongodb://localhost:27017/blog', {useNewUrlParser: true}).then(
+        () =>{
+            User.findOne({login: post.autor}, function (err, user) {
+                if (err){
+                    mongoose.disconnect();
+                    return console.log(err);
+                }
+                if (user){
+                    Category.findOne({name: post.category}, function (err, cat) {
+                        if(err){
+                            mongoose.disconnect();
+                            return console.log(err);
+                        }
+                        if(cat){
+                            const newPost = new Post({
+                                title: post.title,
+                                author: user._id,
+                                prevText : post.prevText,
+                                prevImg: post.prevImg,
+                                date : Date.now(),
+                                body : post.body,
+                                category: cat._id,
+                            });
+                            newPost.save(function (err) {
+                                mongoose.disconnect();
+                                if (err) return console.log(err);
+                                console.log('Added sucsesfuul');
+                            });
+                        }
+                    })
+                } else {
+                    console.log('User is not exist');
+                }
+            })
+        },
+        err => {
+            console.log(err);
+        }
+    );
+}
+
