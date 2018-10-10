@@ -59,10 +59,9 @@ module.exports = {
 		extensions: ['.js', '.jsx'],
 		alias:{
 			components: path.resolve(__dirname, 'src', 'Components'),
-<<<<<<< HEAD
-=======
+
 			containers: path.resolve(__dirname, 'src', 'Containers'),
->>>>>>> create_routing
+
 			bootstrap: path.resolve(__dirname, 'node_modules', 'bootstrap', 'js','src'),
 		}
 	},
@@ -76,12 +75,8 @@ module.exports = {
 				{from: './src/image',to: './image'},
 				{from: './src/content', to: './content'}
 			]),
-<<<<<<< HEAD
-	]
-=======
 	],
 	devServer:{
 		historyApiFallback: true,
 	}
->>>>>>> create_routing
-}
+};

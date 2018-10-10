@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const bodyParser= require('body-parser');
 
 const userApi = require('./userApi');
+const postApi = require('./postApi');
 
 const app = express();
 
@@ -27,7 +28,15 @@ app.get('/users/:numbers', async (req,res) =>{
     res.send(users);
 });
 
+app.get('/user/:id', async (req, res) => {
+    const user = await userApi.getUser(req.params.id);
+    res.send(user);
+});
 
+app.get('/posts/:category/:number', async (req, res)=>{
+    const posts = await postApi.getPosts(req.params.category, req.params.number);
+    res.send(posts);
+});
 
 
 function HandleError(error, message) {

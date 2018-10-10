@@ -1,4 +1,6 @@
 const {User, Category, Post} = require('./models');
+const postApi = require('./postApi');
+const commentApi = require('./commentApi');
 
 module.exports.AuthenticationUser =  async function (authData){
     console.log(Date.now(), 'try to auth', authData);
@@ -31,5 +33,16 @@ module.exports.getUsers = async function (numbers) {
             userpic: user.userpic ? user.userpic : false,
         }}),
         finish: (+numbers > users.length) ? true: false,
+    };
+};
+
+module.exports.getUser = async function (id) {
+    const user = await User.findById(id);
+    return {
+        login: user.login,
+        userpic: user.userpic ? user.userpic: false,
+        id: user._id,
+        posts: await postApi.getUserPosts(user._id),
+        comments: await commentApi.getUserComments(user._id),
     };
 };

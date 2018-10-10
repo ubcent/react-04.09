@@ -111,8 +111,15 @@ function addPost() {
                                 body : post.body,
                                 category: cat._id,
                             });
+                            user.posts = user.posts.concat([newPost._id]);
+                            console.log(user.posts);
+
                             newPost.save(function (err) {
-                                mongoose.disconnect();
+                                User.updateOne({_id: user._id},{posts: user.posts}, (err)=>{
+                                    console.log(err);
+                                    mongoose.disconnect();
+                                });
+
                                 if (err) return console.log(err);
                                 console.log('Added sucsesfuul');
                             });
