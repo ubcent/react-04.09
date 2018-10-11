@@ -7,7 +7,7 @@ import {loadUsers} from 'actions/users';
 import {loadComments, addComment} from 'actions/comments';
 import {loadBlogPosts} from 'actions/blog-posts';
 
-//import app from '../index';
+import app from '../index';
 
 class PostPageContainer extends PureComponent {
   static propTypes = {
@@ -48,16 +48,13 @@ class PostPageContainer extends PureComponent {
       text: this.state.commentText,
       timestamp: new Date(),
     };
-    /*app.post('comments', comment).then(res => {
-      res.json().then(comment => {
-        this.setState({
-          comments: this.state.comments.concat(comment),
-          commentText: '',
-        });
-      })
-    });*/
     const {addComment} = this.props;
     addComment(comment);
+  }
+
+  handleDeleteComment = e => {
+    console.log(e.target.name);
+    app.delete('comments', {id: e.target.name});
   }
 
   getPostById(id) {
@@ -89,6 +86,7 @@ class PostPageContainer extends PureComponent {
       return (
         <PostPage post={post} author={author} postComments={postComments} authors={this.props.authors}
           handleCommentInputChange={this.handleCommentInputChange} handleSubmitButton={this.handleSubmitButton}
+          handleDeleteComment={this.handleDeleteComment}
         />
       );
     }

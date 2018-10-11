@@ -13,6 +13,7 @@ export default class PostPage extends PureComponent {
     authors: propTypes.array,
     handleSubmitButton: propTypes.func,
     handleCommentInputChange: propTypes.func,
+    handleDeleteComment: propTypes.func,
   }
 
   state = {
@@ -39,7 +40,7 @@ export default class PostPage extends PureComponent {
           return (
           <div className="comment" key={index}>
             <div className="comment__menu">
-              <button className="comment__delete">X</button>
+              <button name={comment.id} onClick={this.props.handleDeleteComment} className="comment__delete">X</button>
               <button className="comment__edit">
                 <FontAwesomeIcon icon="edit" />
               </button>

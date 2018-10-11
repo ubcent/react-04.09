@@ -42,3 +42,13 @@ app.post('/comments', async (req, res) => {
   await Comment.create(comment);
   res.json(comment);
 });
+
+app.delete('/comments', async (req, res) => {
+  console.log(req.body.id);
+
+  
+  // put mongoose logic here
+
+
+  res.send('OK');
+})
