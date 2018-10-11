@@ -4,6 +4,7 @@ const bodyParser= require('body-parser');
 
 const userApi = require('./userApi');
 const postApi = require('./postApi');
+const commentApi = require('./commentApi');
 
 const app = express();
 
@@ -38,6 +39,19 @@ app.get('/posts/:category/:number', async (req, res)=>{
     res.send(posts);
 });
 
+app.get('/post/:id/:comments', async (req, res) =>{
+    const post = await postApi.getPost(req.params.id,req.params.comments );
+    res.send(post);
+});
+
+app.get('/getLastComments/:numbers', async (req, res)=>{
+   res.send(await commentApi.getLastComments(req.params.numbers));
+});
+
+app.post('addComment', async (req, res) =>{
+    await commentApi.addComment(req.body);
+    res.send ('OK');
+});
 
 function HandleError(error, message) {
     console.log(message);

@@ -4,7 +4,7 @@ const commentApi = require('./commentApi');
 
 module.exports.AuthenticationUser =  async function (authData){
     console.log(Date.now(), 'try to auth', authData);
-    const user = await User.findOne({login:authData.login});
+    const user = await User.findOne({login:new RegExp(`^${authData.login}$`, 'i')});
     if (user){
         if (user.password === authData.password){
             console.log(Date.now(),'sucsessfull');
@@ -45,4 +45,9 @@ module.exports.getUser = async function (id) {
         posts: await postApi.getUserPosts(user._id),
         comments: await commentApi.getUserComments(user._id),
     };
+};
+
+
+module.exports.getCommentAuthor = async function (id) {
+    return await User.findById(id, 'login _id userpic');
 };

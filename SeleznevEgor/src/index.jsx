@@ -60,11 +60,6 @@ class Layout extends Component{
     render(){
         return(
             <Fragment>
-<<<<<<< HEAD
-            <Header user={this.state.user} active={this.state.active} loginActive = {this.loginClick} menuChange={this.changeMenu}/>
-            <Main/>
-            <Footer />
-=======
                 <HeaderContainer user={this.state.user} active={this.state.active} loginActive = {this.loginClick} menuChange={this.changeMenu}/>
                 <Switch>
                     <Route path="/" component={HomeContainer} exact/>
@@ -73,7 +68,6 @@ class Layout extends Component{
                     <Route path="/users" component={UsersContainer} exact/>
                 </Switch>
                 <Footer />
->>>>>>> create_routing
             </Fragment>
         );
     }
