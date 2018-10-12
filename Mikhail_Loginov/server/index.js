@@ -38,17 +38,15 @@ app.post('/comments', async (req, res) => {
   const comment = req.body;
   const count = await Comment.countDocuments();
   comment.id = String(count + 1);
-  console.log(comment);
   await Comment.create(comment);
   res.json(comment);
 });
 
 app.delete('/comments', async (req, res) => {
-  console.log(req.body.id);
-
-  
-  // put mongoose logic here
-
-
+  await Comment.deleteOne({ id: String(req.body.id) }, err => {
+    if (err) {
+      console.log(err);
+    }
+  });
   res.send('OK');
-})
+});

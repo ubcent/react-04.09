@@ -4,6 +4,7 @@ import app from '../index';
 
 export const commentsLoaded = createAction('[Comments] Load');
 export const commentAdded = createAction('[Comments] Add');
+export const commentDeleted = createAction('[Comments] Delete');
 
 export const loadComments = () => (dispatch) => {
   app.get('comments').then(res => {
@@ -18,5 +19,15 @@ export const addComment = (comment) => (dispatch) => {
     res.json().then(comment => {
       dispatch(commentAdded(comment));
     })
+  });
+}
+
+export const deleteComment = (id) => (dispatch) => {
+  app.delete('comments', { id: id }).then(() => {
+    app.get('comments').then(res => {
+      res.json().then(comments => {
+        dispatch(commentDeleted(comments));
+      })
+    });
   });
 }

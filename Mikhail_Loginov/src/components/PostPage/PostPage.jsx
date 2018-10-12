@@ -1,23 +1,25 @@
 import './PostPage.styl';
 
-import React, {PureComponent} from 'react';
-import {Container, Input, Button} from 'reactstrap';
+import React, { PureComponent } from 'react';
+import { Container, Input, Button } from 'reactstrap';
 import propTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export default class PostPage extends PureComponent {
   static propTypes = {
+    commentText: propTypes.string,
+    editableCommentId: propTypes.number,
+    editableCommentInputText: propTypes.string,
     post: propTypes.object,
     author: propTypes.object,
     postComments: propTypes.array,
     authors: propTypes.array,
     handleSubmitButton: propTypes.func,
     handleCommentInputChange: propTypes.func,
+    handleEditComment: propTypes.func,
+    handleEditCommentInput: propTypes.func.isRequired,
+    handleCancelButton: propTypes.func.isRequired,
     handleDeleteComment: propTypes.func,
-  }
-
-  state = {
-    commentText: '',
   }
 
   renderPost(post, author) {
@@ -37,17 +39,30 @@ export default class PostPage extends PureComponent {
       renderedComments =
         postComments.map((comment, index) => {
           let commentAuthor = this.props.authors[comment.authorId-1];
-          return (
-          <div className="comment" key={index}>
-            <div className="comment__menu">
-              <button name={comment.id} onClick={this.props.handleDeleteComment} className="comment__delete">X</button>
-              <button className="comment__edit">
-                <FontAwesomeIcon icon="edit" />
-              </button>
-            </div>
-            <div className="comment__text">{comment.text}</div>
-            <div className="comment__author">Written by {commentAuthor.firstName} {commentAuthor.lastName}</div>
-          </div>)
+          if (this.props.editableCommentId === +comment.id) {
+            return (
+              <div className="comment comment-editable" key={index}>
+                <Input type="textarea" className="comment__text-input" value={this.props.editableCommentInputText}
+                  onChange={this.props.handleEditCommentInput}/>
+                <div className="comment__edit-buttons">
+                  <Button color="secondary" onClick={this.props.handleCancelButton}>Cancel</Button>
+                  <Button name={comment.id} color="primary">Save</Button>
+                </div>
+              </div>)
+          } else {
+            return (
+              <div className="comment" key={index}>
+                <div className="comment__menu">
+                  <button className="comment__delete" name={comment.id} onClick={this.props.handleDeleteComment}>X</button>
+                  <button className="comment__edit" name={comment.id} onClick={this.props.handleEditComment}>
+                    <FontAwesomeIcon icon="edit"/>
+                  </button>
+                </div>
+                <div className="comment__text">{comment.text}</div>
+                <div className="comment__author">Written by {commentAuthor.firstName} {commentAuthor.lastName}</div>
+              </div>)
+          }
+         
         });
     }
     return renderedComments;
@@ -64,7 +79,8 @@ export default class PostPage extends PureComponent {
           <div className="post__comments">
             <h4>Comments</h4>
             <form>
-              <Input name="commentText" onChange={this.props.handleCommentInputChange} type="textarea"/>
+              <Input name="commentText" onChange={this.props.handleCommentInputChange} 
+                value={this.props.commentText} type="textarea"/>
               <Button onClick={this.props.handleSubmitButton}>Submit</Button>
             </form>
             {renderedComments}

@@ -1,13 +1,13 @@
-import React, {PureComponent} from 'react';
+import React, { PureComponent } from 'react';
 import propTypes from 'prop-types';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 
 import PostPage from 'components/PostPage';
-import {loadUsers} from 'actions/users';
-import {loadComments, addComment} from 'actions/comments';
-import {loadBlogPosts} from 'actions/blog-posts';
+import { loadUsers } from 'actions/users';
+import { loadComments, addComment, deleteComment } from 'actions/comments';
+import { loadBlogPosts } from 'actions/blog-posts';
 
-import app from '../index';
+// import app from '../index';
 
 class PostPageContainer extends PureComponent {
   static propTypes = {
@@ -18,6 +18,7 @@ class PostPageContainer extends PureComponent {
     loadUsers: propTypes.func,
     loadComments: propTypes.func,
     addComment: propTypes.func,
+    deleteComment: propTypes.func,
     loadBlogPosts: propTypes.func,
     match: propTypes.object,
   }
@@ -25,10 +26,12 @@ class PostPageContainer extends PureComponent {
   state = {
     comments: [],
     commentText: '',
+    editableCommentId: undefined,
+    editableCommentInputText: '',
   }
 
   componentDidMount() {
-    const {loadUsers, loadComments, loadBlogPosts} = this.props;
+    const { loadUsers, loadComments, loadBlogPosts } = this.props;
     loadUsers();
     loadComments();
     loadBlogPosts();
@@ -48,13 +51,38 @@ class PostPageContainer extends PureComponent {
       text: this.state.commentText,
       timestamp: new Date(),
     };
-    const {addComment} = this.props;
+    this.setState({ commentText: '', });
+    const { addComment } = this.props;
     addComment(comment);
   }
 
+  handleEditComment = e => {
+    const comment = this.getCommentById(e.currentTarget.name);
+    this.setState({ 
+      editableCommentId: +e.currentTarget.name,
+      editableCommentInputText: comment.text,
+    });
+  }
+
+  handleEditCommentInput = e => {
+    this.setState({ editableCommentInputText: e.target.value });
+  }
+
+  handleCancelButton = () => {
+    this.setState({ editableCommentId: undefined });
+  }
+
   handleDeleteComment = e => {
-    console.log(e.target.name);
-    app.delete('comments', {id: e.target.name});
+    const { deleteComment } = this.props;
+    deleteComment(e.target.name);
+  }
+
+  getCommentById(id) {
+    for (let comment of this.props.comments) {
+      if (+comment.id === +id) {
+        return comment;
+      }
+    }
   }
 
   getPostById(id) {
@@ -84,9 +112,12 @@ class PostPageContainer extends PureComponent {
       let author = this.props.authors[+post.authorId-1];
       let postComments = this.getCommentsByPostId(+post.id);
       return (
-        <PostPage post={post} author={author} postComments={postComments} authors={this.props.authors}
-          handleCommentInputChange={this.handleCommentInputChange} handleSubmitButton={this.handleSubmitButton}
-          handleDeleteComment={this.handleDeleteComment}
+        <PostPage post={ post } author={ author } postComments={ postComments } authors={ this.props.authors }
+          handleCommentInputChange={ this.handleCommentInputChange } handleSubmitButton={ this.handleSubmitButton }
+          handleDeleteComment={ this.handleDeleteComment } commentText = { this.state.commentText }
+          editableCommentId={ this.state.editableCommentId } handleEditComment={ this.handleEditComment }
+          handleEditCommentInput={ this.handleEditCommentInput } editableCommentInputText={ this.state.editableCommentInputText }
+          handleCancelButton={ this.handleCancelButton }
         />
       );
     }
@@ -109,6 +140,7 @@ function mapDispatchToProps(dispatch, ownProps) {
     loadComments: () => dispatch(loadComments()),
     loadBlogPosts: () => dispatch(loadBlogPosts()),
     addComment: (comment) => dispatch(addComment(comment)),
+    deleteComment: (id) => dispatch(deleteComment(id)),
   }
 }
 
