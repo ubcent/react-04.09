@@ -1,51 +1,35 @@
 import './Menu.scss';
 
-import React, {PureComponent} from 'react';
-import {Link} from 'react-router-dom';
+import React, {Component} from 'react';
+import {NavLink} from 'react-router-dom';
 
-export default class Menu extends PureComponent {
-    constructor(props){
-        super(props);
-        this.menu = [
-            {
-                display : 'Home',
-                link: '/',
-                id: 'home',
-                icon: 'fa-home'
-            },
-            {
-                display : 'Blog',
-                link: '/blog',
-                id: 'blog',
-                icon: 'fa-book'
-            },
-            {
-                display : 'Comments',
-                link: '/comments',
-                id: 'comments',
-                icon: 'fa-comments-o'
-            },
-            {
-                display : 'Users',
-                link: '/users',
-                id: 'users',
-                icon: 'fa-users'
-            }
-        ];
-    }
-    navClicked = (event) =>{
-        this.props.navClick(event.currentTarget.id);
-    };
-    
+export default class Menu extends Component {
+
     render() {
         const {active,} = this.props;
         return (
             <nav className="col main-menu">
                 <ul>
-                    {this.menu.map((item, index)=>{
-                        return <li key={index} className={item.id === active ? "active":""} id={item.id} onClick={this.navClicked}><Link to={item.link}>
-                            <i className={"fa " + item.icon}></i>{item.display}</Link></li>;
-                    })}
+                    <li>
+                        <NavLink exact to="/" activeClassName={"menu-active"}>
+                            <i className={"fa " + "fa-home"}></i>Home
+                        </NavLink>
+                    </li>
+                    <li>
+                        <NavLink to="/blog" activeClassName={"menu-active"}>
+                            <i className={"fa " + "fa-book"}></i>Blog
+                        </NavLink>
+                    </li>
+                    <li>
+                        <NavLink to="/comments" activeClassName={"menu-active"}>
+                            <i className={"fa " + "fa-comments-o"}></i>Comments
+                        </NavLink>
+                    </li>
+                    <li>
+                        <NavLink to="/users" activeClassName={"menu-active"}>
+                            <i className={"fa " + "fa-users"}></i>Users
+                        </NavLink>
+                    </li>
                 </ul>
             </nav>
         );

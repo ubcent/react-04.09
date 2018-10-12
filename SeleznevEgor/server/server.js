@@ -13,6 +13,7 @@ const DB_ADRESS = 'mongodb://localhost:27017/blog';
 mongoose.connect(DB_ADRESS, {useNewUrlParser: true});
 
 app.use(bodyParser.urlencoded({extended: true}));
+// app.use(bodyParser.json);
 
 
 app.listen(PORT, ()=>{
@@ -20,7 +21,10 @@ app.listen(PORT, ()=>{
 });
 
 app.post('/auth',async (req, res)=>{
+    
     const user = await userApi.AuthenticationUser(req.body);
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Headers', 'origin, content-type, accept');
     res.send(user) ;
 });
 
@@ -35,7 +39,11 @@ app.get('/user/:id', async (req, res) => {
 });
 
 app.get('/posts/:category/:number', async (req, res)=>{
+    console.log('try get post', req.params.category, req.params.number);
     const posts = await postApi.getPosts(req.params.category, req.params.number);
+    console.log('sucses', posts);
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Headers', 'origin, content-type, accept');
     res.send(posts);
 });
 

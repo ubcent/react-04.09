@@ -6,42 +6,56 @@ import './header.scss';
 
 /*import libs*/
 import  React, {Component} from 'react';
-import  PropTypes from 'prop-types';
+import {connect } from 'react-redux';
 
+/*import user code*/
+/*actions*/
+import {userTryLogin} from '../actions/users';
+/*Components*/
 import Logo from 'components/Logo';
 import UserNotLogin from 'components/UserNotLogin/';
 import UserIsLogin from 'components/UserIsLogin/';
 import DecorativeLine from 'components/DecorativeLine';
 import Menu from 'components/Menu';
 
-
-export default class HeaderContainer extends Component{
+class HeaderContainer extends Component{
     
-    static propTypes = {
-        active: PropTypes.oneOf(['home', 'blog', 'comments', 'users']).isRequired,
-        user: PropTypes.object,
-        loginActive: PropTypes.func.isRequired,
-        menuChange: PropTypes.func.isRequired,
+    loginClicked = (username) =>{
+        const {userTryLogin} = this.props;
+        userTryLogin(username);
     };
-  
+    
     render(){
-        const {user, loginActive, active, menuChange,} = this.props;
-        
+        const {user} = this.props;
         return (
             <header className="page-header ">
                 <DecorativeLine />
                 <div className="container header-panel">
                     <div className="row align-items-center" >
                         <Logo />
-                        <Menu active = {active} navClick={menuChange}/>
+                        <Menu/>
                         <div className="col-md-2 user">
-                            {user.logined ? <UserIsLogin user={user}/> :<UserNotLogin onSend={loginActive}/>}
+                            {user.logined ? <UserIsLogin user={user}/> :<UserNotLogin onSend={this.loginClicked}/>}
                         </div>
                     </div>
                 </div>
-            
-            
             </header>
         )
     }
 }
+
+function mapStateToProps(state, ownProps) {
+    return {
+        ...ownProps,
+        user: state.users.useractive,
+    }
+}
+
+function mapDispatchToProps(dispatch, props) {
+    return {
+        ...props,
+        userTryLogin: (data) => dispatch(userTryLogin(data)),
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps, null, {pure:false})(HeaderContainer);

@@ -25,9 +25,11 @@ export default class UserIsLogin extends Component {
         const {user} = this.props;
         return (
             <div className="user-greating">
-                <img src="content/avatar.png" alt="user"/>
+                {user.userpic ?
+                    <img src="content/avatar.png" alt="user"/>:
+                    <span className="user_without_avatar">{user.login[0]}</span>}
                 <p className="user-logined">
-                    Здравствуйте, <span>{user.username}</span>
+                    Здравствуйте, <span>{user.login}</span>
                 </p>
             </div>
         )

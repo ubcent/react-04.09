@@ -26,14 +26,15 @@ import $ from 'jquery';
 export default class UserNotLogin extends Component {
 
     onSubmitClick= () => {
-        const login = document.getElementById('user-login').value;
-        if (login){
-            $('#login-window').modal('toggle');
-            this.props.onSend(login);
-        }
+        this.props.onSend({
+            login: this.logininput.value,
+            password: this.password.value,
+        });
+        this.logininput.value = '';
+        this.password.value = '';
+        $('#login-window').modal('toggle');
     };
-
-
+    
     render() {
         const {onSend} = this.props;
         return (
@@ -52,9 +53,9 @@ export default class UserNotLogin extends Component {
                             <div className="modal-body">
                                 <form action="#">
                                     <label htmlFor="user-login">Введите логин</label><br/>
-                                    <input className="input-login" type="text" placeholder="Login" id="user-login"/><i className="fa fa-envelope-o "></i><br/>
+                                    <input className="input-login" type="text" placeholder="Login" id="user-login" ref={(input) => {this.logininput = input}}/><i className="fa fa-envelope-o "></i><br/>
                                     <label htmlFor="user-password">Введите пароль</label><br/>
-                                    <input className="input-password" type="password" placeholder="Password"  id="user-password"/><i className="fa fa-lock"></i><br/>
+                                    <input className="input-password" type="password" placeholder="Password"  id="user-password" ref={(input) => {this.password = input}}/><i className="fa fa-lock"></i><br/>
                                     <input className="input-submit" type="submit" value="Войти"  onClick={this.onSubmitClick}/>
                                 </form>
                             </div>

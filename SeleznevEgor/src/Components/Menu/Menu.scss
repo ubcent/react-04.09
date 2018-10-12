@@ -20,14 +20,13 @@
                 &:hover{
                     color:$active;
                     cursor: pointer;
-                    text-decoration: none;
                     .fa{
                         color: $active;
                     }
                 }
             }
         }
-        .active{
+        .menu-active{
             text-decoration: underline;
         }
     }

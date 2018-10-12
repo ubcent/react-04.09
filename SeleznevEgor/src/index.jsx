@@ -8,7 +8,12 @@ import './sass/main.scss';
 /*Incude libraries*/ 
 import  React, {Component, Fragment} from 'react';
 import ReactDom from 'react-dom';
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware} from 'redux';
+import thunk from 'redux-thunk';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
+
+import rootReduser from './reducers';
 
 /*Import user components*/
 import Main from 'components/Main/';
@@ -19,6 +24,12 @@ import BlogContainer from 'containers/BlogContainer';
 import CommentContainer from 'containers/CommentContainer';
 import UsersContainer from 'containers/UsersContainer';
 
+
+const store = createStore(
+    rootReduser,
+    applyMiddleware(thunk),
+);
+
 /********************************************************************
 * Main															*
 *********************************************************************/
@@ -28,15 +39,12 @@ import UsersContainer from 'containers/UsersContainer';
   * @param  None
   * @retval None
   */
+
+
 class Layout extends Component{
     constructor(props){
         super(props);
         this.state = {
-            user:{
-                logined: false,
-                username: '',
-                userpic: '',
-            },
             active: 'home',
         }
     }
@@ -60,7 +68,7 @@ class Layout extends Component{
     render(){
         return(
             <Fragment>
-                <HeaderContainer user={this.state.user} active={this.state.active} loginActive = {this.loginClick} menuChange={this.changeMenu}/>
+                <HeaderContainer  active={this.state.active} menuChange={this.changeMenu}/>
                 <Switch>
                     <Route path="/" component={HomeContainer} exact/>
                     <Route path="/blog" component={BlogContainer} exact/>
@@ -75,7 +83,11 @@ class Layout extends Component{
 
 /*Запуск отрисовки*/
 ReactDom.render(
-    <BrowserRouter><Layout/></BrowserRouter>,
+    <Provider store = {store}>
+        <BrowserRouter>
+            <Layout/>
+        </BrowserRouter>
+    </Provider>,
     document.getElementById('webPage'));
 
 
