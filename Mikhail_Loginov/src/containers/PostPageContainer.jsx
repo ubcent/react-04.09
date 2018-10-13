@@ -4,10 +4,8 @@ import { connect } from 'react-redux';
 
 import PostPage from 'components/PostPage';
 import { loadUsers } from 'actions/users';
-import { loadComments, addComment, deleteComment } from 'actions/comments';
+import { loadComments, addComment, editComment, deleteComment } from 'actions/comments';
 import { loadBlogPosts } from 'actions/blog-posts';
-
-// import app from '../index';
 
 class PostPageContainer extends PureComponent {
   static propTypes = {
@@ -18,6 +16,7 @@ class PostPageContainer extends PureComponent {
     loadUsers: propTypes.func,
     loadComments: propTypes.func,
     addComment: propTypes.func,
+    editComment: propTypes.func,
     deleteComment: propTypes.func,
     loadBlogPosts: propTypes.func,
     match: propTypes.object,
@@ -66,6 +65,22 @@ class PostPageContainer extends PureComponent {
 
   handleEditCommentInput = e => {
     this.setState({ editableCommentInputText: e.target.value });
+  }
+
+  handleSaveButton = e => {
+    const comment = {
+      id: e.target.name,
+      postId: this.props.match.params.id,
+      authorId: '1',
+      text: this.state.editableCommentInputText,
+      timestamp: new Date(),
+    };
+    this.setState({ 
+      editableCommentInputText: '', 
+      editableCommentId: undefined,
+    });
+    const { editComment } = this.props;
+    editComment(comment);
   }
 
   handleCancelButton = () => {
@@ -117,7 +132,7 @@ class PostPageContainer extends PureComponent {
           handleDeleteComment={ this.handleDeleteComment } commentText = { this.state.commentText }
           editableCommentId={ this.state.editableCommentId } handleEditComment={ this.handleEditComment }
           handleEditCommentInput={ this.handleEditCommentInput } editableCommentInputText={ this.state.editableCommentInputText }
-          handleCancelButton={ this.handleCancelButton }
+          handleCancelButton={ this.handleCancelButton } handleSaveButton={ this.handleSaveButton }
         />
       );
     }
@@ -140,6 +155,7 @@ function mapDispatchToProps(dispatch, ownProps) {
     loadComments: () => dispatch(loadComments()),
     loadBlogPosts: () => dispatch(loadBlogPosts()),
     addComment: (comment) => dispatch(addComment(comment)),
+    editComment: (comment) => dispatch(editComment(comment)),
     deleteComment: (id) => dispatch(deleteComment(id)),
   }
 }

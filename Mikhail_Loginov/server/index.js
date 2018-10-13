@@ -42,11 +42,25 @@ app.post('/comments', async (req, res) => {
   res.json(comment);
 });
 
+app.put('/comments', async (req, res) => {
+  const comment = req.body;
+  await Comment.updateOne({ id: String(comment.id) }, { text: comment.text }, err => {
+    if (err) {
+      console.log(err);
+      res.send('ERROR');
+    } else {
+      res.send('OK');
+    }
+  });
+})
+
 app.delete('/comments', async (req, res) => {
   await Comment.deleteOne({ id: String(req.body.id) }, err => {
     if (err) {
       console.log(err);
+      res.send('ERROR');
+    } else {
+      res.send('OK');
     }
   });
-  res.send('OK');
 });

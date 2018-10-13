@@ -15,6 +15,7 @@ export default class PostPage extends PureComponent {
     postComments: propTypes.array,
     authors: propTypes.array,
     handleSubmitButton: propTypes.func,
+    handleSaveButton: propTypes.func,
     handleCommentInputChange: propTypes.func,
     handleEditComment: propTypes.func,
     handleEditCommentInput: propTypes.func.isRequired,
@@ -46,7 +47,7 @@ export default class PostPage extends PureComponent {
                   onChange={this.props.handleEditCommentInput}/>
                 <div className="comment__edit-buttons">
                   <Button color="secondary" onClick={this.props.handleCancelButton}>Cancel</Button>
-                  <Button name={comment.id} color="primary">Save</Button>
+                  <Button name={comment.id} color="primary" onClick={this.props.handleSaveButton}>Save</Button>
                 </div>
               </div>)
           } else {

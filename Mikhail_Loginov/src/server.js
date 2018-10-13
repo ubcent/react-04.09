@@ -16,6 +16,15 @@ export default class App {
       body: JSON.stringify(body),
     })
   }
+  put(query, body) {
+    return fetch(`${this.SERVER_ADDRESS}/${query}`, {
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      method: 'PUT',
+      body: JSON.stringify(body),
+    })
+  }
   delete(query, body) {
     return fetch(`${this.SERVER_ADDRESS}/${query}`, {
       headers: {

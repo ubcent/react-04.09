@@ -1,6 +1,6 @@
 import { handleActions } from 'redux-actions';
 
-import { commentsLoaded, commentAdded, commentDeleted } from 'actions/comments';
+import { commentsLoaded, commentAdded, commentDeleted, commentEdited } from 'actions/comments';
 
 const initialState = {
   entities: [],
@@ -19,6 +19,11 @@ export default handleActions({
     }
   },
   [commentDeleted]: (state, actions) => {
+    return {
+      entities: actions.payload,
+    }
+  },
+  [commentEdited]: (state, actions) => {
     return {
       entities: actions.payload,
     }
