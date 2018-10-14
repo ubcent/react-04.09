@@ -6,6 +6,7 @@ import PostPage from 'components/PostPage';
 import { loadUsers } from 'actions/users';
 import { loadComments, addComment, editComment, deleteComment } from 'actions/comments';
 import { loadBlogPosts } from 'actions/blog-posts';
+import getItemById, { getCommentsByPostId } from '../utils';
 
 class PostPageContainer extends PureComponent {
   static propTypes = {
@@ -46,7 +47,6 @@ class PostPageContainer extends PureComponent {
     e.preventDefault();
     const comment = {
       postId: this.props.match.params.id,
-      authorId: '1',
       text: this.state.commentText,
       timestamp: new Date(),
     };
@@ -56,9 +56,9 @@ class PostPageContainer extends PureComponent {
   }
 
   handleEditComment = e => {
-    const comment = this.getCommentById(e.currentTarget.name);
+    const comment = getItemById(this.props.comments, e.currentTarget.name);
     this.setState({ 
-      editableCommentId: +e.currentTarget.name,
+      editableCommentId: e.currentTarget.name,
       editableCommentInputText: comment.text,
     });
   }
@@ -69,9 +69,8 @@ class PostPageContainer extends PureComponent {
 
   handleSaveButton = e => {
     const comment = {
-      id: e.target.name,
+      _id: e.target.name,
       postId: this.props.match.params.id,
-      authorId: '1',
       text: this.state.editableCommentInputText,
       timestamp: new Date(),
     };
@@ -92,40 +91,11 @@ class PostPageContainer extends PureComponent {
     deleteComment(e.target.name);
   }
 
-  getCommentById(id) {
-    for (let comment of this.props.comments) {
-      if (+comment.id === +id) {
-        return comment;
-      }
-    }
-  }
-
-  getPostById(id) {
-    let post = {};
-    for (let blogPost of this.props.blogPosts) {
-      if (+blogPost.id === +id) {
-        post = blogPost;
-        break;
-      }
-    }
-    return post;
-  }
-
-  getCommentsByPostId(id) {
-    let postComments = [];
-    this.props.comments.forEach(comment => {
-      if (+comment.postId === +id) {
-        postComments.push(comment);
-      }
-    });
-    return postComments;
-  }
-
   render() {
-    if (this.props.blogPosts.length !== 0 && this.props.authors.length !== 0 && this.props.authors.length !== 0) {
-      let post = this.getPostById(+this.props.match.params.id);
-      let author = this.props.authors[+post.authorId-1];
-      let postComments = this.getCommentsByPostId(+post.id);
+    if (this.props.blogPosts.length !== 0 && this.props.authors.length !== 0 && this.props.comments.length !== 0) {
+      const post = getItemById(this.props.blogPosts, this.props.match.params.id);
+      const author = getItemById(this.props.authors, post.authorId);
+      const postComments = getCommentsByPostId(this.props.comments, post._id);
       return (
         <PostPage post={ post } author={ author } postComments={ postComments } authors={ this.props.authors }
           handleCommentInputChange={ this.handleCommentInputChange } handleSubmitButton={ this.handleSubmitButton }
@@ -135,6 +105,8 @@ class PostPageContainer extends PureComponent {
           handleCancelButton={ this.handleCancelButton } handleSaveButton={ this.handleSaveButton }
         />
       );
+    } else {
+      return '';
     }
   }
 }

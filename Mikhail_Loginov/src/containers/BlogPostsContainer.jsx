@@ -1,11 +1,12 @@
-import React, {PureComponent} from 'react';
+import React, { PureComponent } from 'react';
 import propTypes from 'prop-types';
-import {Container} from 'reactstrap';
-import {connect} from 'react-redux';
+import { Container } from 'reactstrap';
+import { connect } from 'react-redux';
 
 import BlogPost from 'components/BlogPost';
-import {loadBlogPosts} from 'actions/blog-posts';
-import {loadUsers} from 'actions/users';
+import { loadBlogPosts } from 'actions/blog-posts';
+import { loadUsers } from 'actions/users';
+import getAuthorById from '../utils';
 
 class BlogPostsContainer extends PureComponent {
   static propTypes = {
@@ -16,7 +17,7 @@ class BlogPostsContainer extends PureComponent {
   }
 
   componentDidMount() {
-    const {loadBlogPosts, loadUsers} = this.props;
+    const { loadBlogPosts, loadUsers } = this.props;
     loadBlogPosts();
     loadUsers();
   }
@@ -26,10 +27,10 @@ class BlogPostsContainer extends PureComponent {
       return (
         <main>
           <Container>
-            {this.props.blogPosts.map(post => {
-              let author = this.props.authors[+post.authorId-1];
+            {this.props.blogPosts.map((post, index) => {
+              const author = getAuthorById(this.props.authors, post.authorId);
               return (
-                <div className="blog-posts" key={post.id}>
+                <div className="blog-posts" key={index}>
                   <BlogPost post={post} author={author}/>
                 </div>
               )
@@ -38,9 +39,8 @@ class BlogPostsContainer extends PureComponent {
         </main>
       );
     } else {
-      return null;
+      return '';
     }
-
   }
 }
 

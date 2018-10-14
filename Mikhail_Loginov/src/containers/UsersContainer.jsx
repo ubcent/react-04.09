@@ -7,6 +7,7 @@ import User from 'components/User';
 import {loadUsers} from 'actions/users';
 import {loadComments} from 'actions/comments';
 import {loadBlogPosts} from 'actions/blog-posts';
+import getUserById from '../utils';
 
 class UsersContainer extends PureComponent {
   state = {
@@ -31,14 +32,14 @@ class UsersContainer extends PureComponent {
 
   //Adding user to collapsedUsersIDs array on first click and removing from this array on second click
   handleUsernameClick = e => {
-    let user = this.props.users[e.target.getAttribute('name')-1];
-    if (this.state.collapsedUsersIDs.indexOf(user.id) === -1) {
+    const user = getUserById(this.props.users, e.target.getAttribute('name'));
+    if (this.state.collapsedUsersIDs.indexOf(user._id) === -1) {
       this.setState({
-        collapsedUsersIDs: this.state.collapsedUsersIDs.concat(user.id)
+        collapsedUsersIDs: this.state.collapsedUsersIDs.concat(user._id)
       });
     } else {
       this.setState({
-        collapsedUsersIDs: this.state.collapsedUsersIDs.filter(id => id !== user.id)
+        collapsedUsersIDs: this.state.collapsedUsersIDs.filter(id => id !== user._id)
       });
     }
   }
@@ -46,7 +47,7 @@ class UsersContainer extends PureComponent {
   getUserPosts(user) {
     let userPosts = [];
     this.props.blogPosts.forEach(blogPost => {
-      if (blogPost.authorId === user.id) {
+      if (blogPost.authorId === user._id) {
         userPosts.push(blogPost);
       }
     });
@@ -56,7 +57,7 @@ class UsersContainer extends PureComponent {
   getUserComments(user) {
     let userComments = [];
     this.props.comments.map(comment => {
-      if (comment.authorId === user.id) {
+      if (comment.authorId === user._id) {
         userComments.push(comment);
       }
     });

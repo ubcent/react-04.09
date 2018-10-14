@@ -3,12 +3,15 @@ import './PostPage.styl';
 import React, { PureComponent } from 'react';
 import { Container, Input, Button } from 'reactstrap';
 import propTypes from 'prop-types';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import moment from 'moment';
+
+import getItemById from '../../utils';
 
 export default class PostPage extends PureComponent {
   static propTypes = {
     commentText: propTypes.string,
-    editableCommentId: propTypes.number,
+    editableCommentId: propTypes.string,
     editableCommentInputText: propTypes.string,
     post: propTypes.object,
     author: propTypes.object,
@@ -28,7 +31,7 @@ export default class PostPage extends PureComponent {
       <div className="post">
         <h1 className="post__title">{post.title}</h1>
         <h3 className="post__subtitle">{post.shortDescription}</h3>
-        <p className="post__creds">Posted by {author.firstName} {author.lastName} on {post.date}</p>
+        <p className="post__creds">Posted by {author.firstName} {author.lastName} on {moment(post.date).format('MMMM Do YYYY')}</p>
         <p className="post__text">{post.text}</p>
       </div>
     )
@@ -39,23 +42,23 @@ export default class PostPage extends PureComponent {
     if (postComments.length !== 0) {
       renderedComments =
         postComments.map((comment, index) => {
-          let commentAuthor = this.props.authors[comment.authorId-1];
-          if (this.props.editableCommentId === +comment.id) {
+          const commentAuthor = getItemById(this.props.authors, comment.authorId);
+          if (this.props.editableCommentId === comment._id) {
             return (
               <div className="comment comment-editable" key={index}>
                 <Input type="textarea" className="comment__text-input" value={this.props.editableCommentInputText}
                   onChange={this.props.handleEditCommentInput}/>
                 <div className="comment__edit-buttons">
                   <Button color="secondary" onClick={this.props.handleCancelButton}>Cancel</Button>
-                  <Button name={comment.id} color="primary" onClick={this.props.handleSaveButton}>Save</Button>
+                  <Button name={comment._id} color="primary" onClick={this.props.handleSaveButton}>Save</Button>
                 </div>
               </div>)
           } else {
             return (
               <div className="comment" key={index}>
                 <div className="comment__menu">
-                  <button className="comment__delete" name={comment.id} onClick={this.props.handleDeleteComment}>X</button>
-                  <button className="comment__edit" name={comment.id} onClick={this.props.handleEditComment}>
+                  <button className="comment__delete" name={comment._id} onClick={this.props.handleDeleteComment}>X</button>
+                  <button className="comment__edit" name={comment._id} onClick={this.props.handleEditComment}>
                     <FontAwesomeIcon icon="edit"/>
                   </button>
                 </div>

@@ -1,28 +1,30 @@
+const ObjectId = require('mongodb').ObjectId;
+
 module.exports = {
   async up(db) {
     await db.createCollection('users');
     await db.collection('users').insertMany([{
-      id: '1',
+      _id: new ObjectId('5bb0ac63be662302c80f8412'),
       firstName: 'John',
       lastName: 'Doe'
     }, {
-      id: '2',
+      _id: new ObjectId('5bb0ac63be662302c80f8413'),
       firstName: 'Ivan',
       lastName: 'Ivanov'
     }, {
-      id: '3',
+      _id: new ObjectId('5bb0ac63be662302c80f8414'),
       firstName: 'Vasya',
       lastName: 'Pupkin'
     }, {
-      id: '4',
+      _id: new ObjectId('5bb0ac63be662302c80f8415'),
       firstName: 'Petya',
       lastName: 'Petrov'
     }, {
-      id: '5',
+      _id: new ObjectId('5bb0ac63be662302c80f8416'),
       firstName: 'Troll',
       lastName: 'Lvl100'
     }, {
-      id: '6',
+      _id: new ObjectId('5bb0ac63be662302c80f8417'),
       firstName: 'Elon',
       lastName: 'Mask'
     }, ])

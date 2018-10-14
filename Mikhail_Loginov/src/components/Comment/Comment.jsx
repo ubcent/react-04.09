@@ -15,7 +15,7 @@ export default class Comment extends PureComponent {
     const {post, author, comment} = this.props;
     return (
       <div className="comments__item">
-        <Link className="comments__text" to={`/post/${ + (post.id)}`} post={post}>
+        <Link className="comments__text" to={`/post/${post._id}`} post={post}>
           {comment.text}
         </Link>
         <div className="comments__author">Wrote by {author.firstName}

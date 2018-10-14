@@ -2,10 +2,8 @@
 
 module.exports = {
   mongodb: {
-    // TODO Change (or review) the url to your MongoDB:
-    url: "mongodb://localhost:27017",
+    url: require('../../server/config/keys.js').mongoURI,
 
-    // TODO Change this to your database name:
     databaseName: "react-blog",
 
     options: {

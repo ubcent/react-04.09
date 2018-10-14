@@ -45,7 +45,7 @@ export default class User extends PureComponent {
     // Rendering overall user activity; showing special phrase if there is no user activity
     let activityClass = classNames({
       'user__expanded': true,
-      'hidden': this.props.collapsedUsersIDs.indexOf(user.id) === -1
+      'hidden': this.props.collapsedUsersIDs.indexOf(user._id) === -1
     });
     let renderedActivity = <div className={activityClass}>
       This user has no activity
@@ -67,7 +67,7 @@ export default class User extends PureComponent {
     return (
       <div className="user">
         <span
-          name={user.id}
+          name={user._id}
           onClick={this.props.handleUsernameClick}
           className="user__name">{user.firstName} {user.lastName}</span>
         {renderedActivity}
