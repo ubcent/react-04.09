@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack --mode production",
-    "dev": "webpack-dev-server --mode development",
+    "dev": "concurrently \"npm run server\" \"webpack-dev-server --mode development\"",
     "dev:cc": "node cli/component.js --name",
     "server": "nodemon server",
     "migrate": "migrate-mongo -f ./migrations/mongo/migrate-mongo-config.js",
