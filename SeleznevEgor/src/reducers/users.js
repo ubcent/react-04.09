@@ -1,13 +1,17 @@
 import { handleActions } from 'redux-actions';
 
-import { userLogin } from '../actions/users';
+import { userLogin, usersLoaded } from '../actions/users';
 
 const initialState = {
     useractive:{
         logined:false
     },
     usershow:{},
-    users:[],
+    users:{
+        users:[],
+        finish:false,
+    },
+    STEP:10,
 };
 
 export default handleActions({
@@ -15,6 +19,12 @@ export default handleActions({
         return {
             ...state,
             useractive: action.payload
+        };
+    },
+    [usersLoaded]: (state, action) => {
+        return {
+            ...state,
+            users: action.payload
         };
     }
 }, initialState);

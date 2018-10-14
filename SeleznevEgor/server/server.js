@@ -5,6 +5,7 @@ const bodyParser= require('body-parser');
 const userApi = require('./userApi');
 const postApi = require('./postApi');
 const commentApi = require('./commentApi');
+const categoryApi = require('./categoryApi');
 
 const app = express();
 
@@ -30,6 +31,8 @@ app.post('/auth',async (req, res)=>{
 
 app.get('/users/:numbers', async (req,res) =>{
     const users = await userApi.getUsers(req.params.numbers);
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Headers', 'origin, content-type, accept');
     res.send(users);
 });
 
@@ -41,7 +44,7 @@ app.get('/user/:id', async (req, res) => {
 app.get('/posts/:category/:number', async (req, res)=>{
     console.log('try get post', req.params.category, req.params.number);
     const posts = await postApi.getPosts(req.params.category, req.params.number);
-    console.log('sucses', posts);
+    console.log('sucses');
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Headers', 'origin, content-type, accept');
     res.send(posts);
@@ -49,16 +52,35 @@ app.get('/posts/:category/:number', async (req, res)=>{
 
 app.get('/post/:id/:comments', async (req, res) =>{
     const post = await postApi.getPost(req.params.id,req.params.comments );
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Headers', 'origin, content-type, accept');
     res.send(post);
 });
 
 app.get('/getLastComments/:numbers', async (req, res)=>{
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Headers', 'origin, content-type, accept');
    res.send(await commentApi.getLastComments(req.params.numbers));
 });
+app.get('/getPostComments/:id/:numbers', async (req, res)=>{
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Headers', 'origin, content-type, accept');
+   res.send(await commentApi.getPostComments(req.params.id, req.params.numbers));
+});
 
-app.post('addComment', async (req, res) =>{
+app.post('/addComment', async (req, res) =>{
     await commentApi.addComment(req.body);
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Headers', 'origin, content-type, accept');
     res.send ('OK');
+});
+
+app.get('/getCategories', async (req, res) =>{
+    console.log('get cats');
+    const categories = await categoryApi.getCategories();
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Headers', 'origin, content-type, accept');
+    res.send (categories);
 });
 
 function HandleError(error, message) {

@@ -25,7 +25,7 @@ import $ from 'jquery';
  */
 export default class UserNotLogin extends Component {
 
-    onSubmitClick= () => {
+    onSubmitClick= (event) => {
         this.props.onSend({
             login: this.logininput.value,
             password: this.password.value,
@@ -33,6 +33,7 @@ export default class UserNotLogin extends Component {
         this.logininput.value = '';
         this.password.value = '';
         $('#login-window').modal('toggle');
+        event.preventDefault();
     };
     
     render() {

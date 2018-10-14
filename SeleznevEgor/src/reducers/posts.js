@@ -1,21 +1,36 @@
 import { handleActions } from 'redux-actions';
 
-import { postsLoaded } from '../actions/posts';
+import { postsLoaded, postIdLoaded } from '../actions/posts';
 
 const initialState = {
     posts:[],
+    STEP:10,
     finish: false,
+    postActive : {
+        title:'',
+        author:'',
+        body:[],
+        category:'',
+        date:'',
+        prevImg:'',
+    }
 };
 
 export default handleActions({
     [postsLoaded]: (state, action) => {
-        console.log('Prev State', state);
-        const newSate = {
+        return {
             ...state,
             posts:action.payload.posts,
             finish: action.payload.finish,
         };
-        console.log('New State', newSate);
-        return newSate ;
-    }
+    },
+    [postIdLoaded]: (state, action) => {
+        console.log('prev state', state);
+        const newstate = {
+            ...state,
+            postActive: action.payload.post
+        };
+        console.log('new state',newstate);
+        return newstate;
+    },
 }, initialState);

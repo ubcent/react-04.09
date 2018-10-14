@@ -32,7 +32,7 @@ module.exports.getUsers = async function (numbers) {
             id: user._id,
             userpic: user.userpic ? user.userpic : false,
         }}),
-        finish: (+numbers > users.length) ? true: false,
+        finish: (+numbers > users.length),
     };
 };
 

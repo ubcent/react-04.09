@@ -1,0 +1,20 @@
+@import "../../sass/vars";
+.CommentForm{
+  form{
+    margin: 20px auto;
+    textarea{
+      width: 90%;
+      margin: auto;
+      border: $decoration solid 1px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      padding: 5px;
+    }
+    input{
+      background-color: $decoration;
+      color: white;
+      border-radius: 5px;
+      margin: auto;
+    }
+  }
+}
