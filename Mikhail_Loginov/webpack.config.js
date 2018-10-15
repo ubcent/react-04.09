@@ -1,4 +1,5 @@
 const path = require('path');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlPlugin = require('html-webpack-plugin');
 
@@ -8,7 +9,7 @@ module.exports = {
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: 'bundle.js',
+        filename: 'bundle.[contenthash].js',
     },
     resolve: {
         extensions: ['.js', '.jsx'],
@@ -53,6 +54,7 @@ module.exports = {
         historyApiFallback: true,
     },
     plugins: [
+        new CleanWebpackPlugin(['dist']),
         new ExtractTextPlugin({ filename: 'style.css' }),
         new HtmlPlugin( {
             template: path.resolve(__dirname, 'src', 'index.html'),

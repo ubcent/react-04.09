@@ -16,7 +16,7 @@ app.use('/comments', comments);
 
 const db = require('./config/keys.js').mongoURI;
 
-mongoose.connect(db)
+mongoose.connect(db, { useNewUrlParser: true })
   .then(() => console.log('MongoDB Connected...'))
   .catch(err => console.log(err));
 
