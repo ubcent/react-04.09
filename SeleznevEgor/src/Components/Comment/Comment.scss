@@ -5,18 +5,25 @@
     margin: 30px 0 15px;
     display: flex;
     flex-flow: row nowrap;
-    .userpic{
+    .UserAvatar{
         margin: 5px 20px;
         img{
             width: 70px;
             height: auto;
             border-radius: 50%;
         }
+        .user_without_avatar{
+            width: 70px;
+            height: 70px;
+            font-size: 1.9em;
+            line-height: 70px;
+            border-radius: 50%;
+        }
     }
     .comment-body{
         .user-link{
             font-weight: bold;
-            font-size: 0.9em;
+            font-size: 1.2em;
             color: $text-color;
             text-transform: capitalize;
             margin-right: 15px;
@@ -35,7 +42,7 @@
             color: $text-color;
             line-height: 1.5em;
         }
-        .topik-link{
+        .topic-link{
             color: $category;
             font-size: 0.9em;
             transition: color 0.2s ease;

@@ -9,6 +9,7 @@ export const getComments = (numbers) => (dispatch) => {
     ).then((res) => {
         return res.json();
     }).then((comments) =>{
+        console.log(comments);
         dispatch(commentsLoaded(comments));
     }).catch((err) => console.log('error catch', err));
 };

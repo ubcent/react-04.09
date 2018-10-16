@@ -1,29 +1,30 @@
 import './Comment.scss';
+import moment from 'moment';
 
 import React, { PureComponent } from 'react';
 import {Link} from 'react-router-dom';
+import UserAvatar from "components/UserAvatar";
 
 export default class Comment extends PureComponent {
-    constructor(props) {
-        super(props);
-        this.state = {};
-    }
-    
     render() {
+        const {comment} = this.props;
+        console.log(comment);
+        moment.locale('ru');
+        console.log(moment(comment.date).fromNow());
         return (
             <div className=" row justify-content-center">
                 <div className="col-md-8 comment-in-list">
-                    <div className="userpic">
-                        <Link to="/users"><img src="content/avatar.png" alt="username"/></Link>
-                        
-                    </div>
+                    <UserAvatar userpic={comment.author.userpic} login={comment.author.login}/>
                     <div className="comment-body">
-                        <Link className="user-link" to="/users">userName</Link>
-                        <span className="time">8 minutes ago</span>
+                        <Link className="user-link" to={"/users/"+comment.author._id}>{comment.author.login}</Link><br/>
+                        <span className="time">{moment(comment.date).fromNow()}</span>
                         <p className="comment-text">
-                          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem doloremque dolorum esse, facilis fuga inventore ipsum libero, molestias perferendis placeat quaerat quo recusandae tenetur! Delectus esse impedit magni nesciunt nihil non quidem? Adipisci dolor incidunt laboriosam, odit quia recusandae reiciendis reprehenderit unde. Accusamus aliquam asperiores autem, cum deserunt laborum laudantium molestiae, nemo, nihil numquam odio possimus quam quis repudiandae sequi?
+                            {comment.body}
                         </p>
-                        <Link to="/blog" className="topik-link">Music-forever</Link>
+                        {comment.post ?
+                            <Link to={"/blog/"+comment.post._id} className="topic-link">{comment.post.title}</Link>:
+                            ""
+                        }
                     </div>
                    
                 </div>

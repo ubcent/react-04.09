@@ -8,6 +8,7 @@ export default class LastComments extends PureComponent {
 
     render() {
         const {comments} = this.props;
+        console.log(comments);
         return (
             <div className="LastComments container">
                 {comments.comments.length ?

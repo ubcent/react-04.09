@@ -14,6 +14,7 @@ import CommentForm from "components/CommentForm/";
 
 class PostContainer extends PureComponent{
     componentDidMount() {
+        document.body.scrollTop = document.documentElement.scrollTop = 0;
         console.log('Post blog');
         const { getPost,getPostComments, comments } = this.props;
         const id = this.props.match.params.id;
