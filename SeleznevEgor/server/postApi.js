@@ -5,7 +5,6 @@ const categorytApi = require('./categoryApi');
 module.exports.getUserPosts = async function (userId){
     const posts = await Post.find({author:userId});
     return posts.map(async (post) =>{
-
         return {
             title: post.title,
             prevText: post.prevText,
@@ -42,4 +41,8 @@ module.exports.getPost = async function (id, numbers){
     const comments = await commentApi.getPostComments(post._id, numbers);
     return { post: post, comments: comments};
     
+};
+
+module.exports.getPostParent = async function(id) {
+    return await Post.findById(id , 'title _id');
 };
