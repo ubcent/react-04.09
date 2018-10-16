@@ -1,21 +1,16 @@
 const {Comment, User, Post} = require('./models');
 const userApi = require('./userApi');
+const postApi = require('./postApi');
 
-module.exports.getUserComments = async function (userId){
-    return await Comment.find({author:userId});
-};
-
-
-
-module.exports.getPostComments = async function (postId, numbers){
-    const comments = await Comment.find({postParrent:postId}, null, {limit: +numbers});
-    console.log(numbers);
+module.exports.getLastComments = async function (numbers){
+    const comments = await Comment.find({}, null, {limit: +numbers});
     const finish = (+numbers > comments.length);
-    console.log(finish);
     const res = await Promise.all(comments.map(async (comment) => {
         return {
-            ...comment,
+            body: comment.body,
             author: await userApi.getCommentAuthor(comment.author),
+            post: await postApi.getPostParent(comment.postParrent),
+            date: comment.date,
         }})
     );
     return {
@@ -23,15 +18,25 @@ module.exports.getPostComments = async function (postId, numbers){
         finish: finish};
 };
 
-
-module.exports.getLastComments = async function (numbers){
-    const comments = await Comment.find({}, null, {limit: +numbers});
+module.exports.getPostComments = async function (postId, numbers){
+    const comments = await Comment.find({postParrent:postId}, null, {limit: +numbers});
     const finish = (+numbers > comments.length);
-    return {comments: comments.map(async(item) => {
-            item.author = await userApi.getCommentAuthor(id);
-        }),
+    const res = await Promise.all(comments.map(async (comment) => {
+        return {
+            body: comment.body,
+            author: await userApi.getCommentAuthor(comment.author),
+            date: comment.date,
+        }})
+    );
+    return {
+        comments: res,
         finish: finish};
 };
+
+module.exports.getUserComments = async function (userId){
+    return await Comment.find({author:userId});
+};
+
 
 module.exports.addComment = async function (comment){
     console.log(comment);
