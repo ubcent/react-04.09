@@ -2,6 +2,7 @@ import Home from 'pages/Home';
 import Blog from 'pages/Blog';
 import Comments from 'pages/Comments';
 import Users from 'pages/Users';
+import UserPosts from 'pages/UserPosts';
 import Post from 'pages/Post';
 
 export default [
@@ -28,6 +29,11 @@ export default [
     {
         path: '/users',
         component: Users,
+        exact: true
+    },
+    {
+        path: '/users/:uid/posts',
+        component: UserPosts,
         exact: true
     },
 ]

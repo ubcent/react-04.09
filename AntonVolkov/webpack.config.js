@@ -14,8 +14,11 @@ module.exports = {
         alias: {
             components: path.resolve(__dirname, 'src', 'components'),
             containers: path.resolve(__dirname, 'src', 'containers'),
+            actions: path.resolve(__dirname, 'src', 'actions'),
             pages: path.resolve(__dirname, 'src', 'pages'),
             models: path.resolve(__dirname, 'src', 'models'),
+            reducers: path.resolve(__dirname, 'src', 'reducers'),
+            middleware: path.resolve(__dirname, 'src', 'middleware'),
         }
     },
     module: {

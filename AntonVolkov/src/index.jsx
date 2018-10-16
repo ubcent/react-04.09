@@ -3,10 +3,13 @@ import './scss/main.scss';
 import React, { Component, Fragment } from 'react';
 import ReactDom from 'react-dom';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { Provider } from 'react-redux';
 
 import Layout from 'components/Layout';
 
 import routes from './routes';
+import store from './store';
+
 
 class App extends Component {
     render() {
@@ -23,6 +26,6 @@ class App extends Component {
 }
 
 ReactDom.render(
-    <BrowserRouter><App /></BrowserRouter>,
+    <Provider store={store}><BrowserRouter><App /></BrowserRouter></Provider>,
     document.querySelector('#app')
 );

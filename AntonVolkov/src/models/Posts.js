@@ -21,7 +21,7 @@ const modelPosts = {
         return {post};
     },
 
-    async getPostsByUserId(userId, limit, page) {
+    async getPostsByUserId(limit, page, userId) {
         let count;
 
         page = page ? page : 1;
@@ -35,7 +35,7 @@ const modelPosts = {
         return { posts, count };
     },
     
-    async getPostsById(ids, limit, page) {
+    async getPostsById(limit, page, ids) {
         let count;
 
         page = page ? page : 1;
