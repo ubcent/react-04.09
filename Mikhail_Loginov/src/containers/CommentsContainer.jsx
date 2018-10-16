@@ -1,12 +1,14 @@
-import React, {PureComponent} from 'react';
-import {Container} from 'reactstrap';
+import React, { PureComponent } from 'react';
+import { Container } from 'reactstrap';
 import propTypes from 'prop-types';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 
 import Comment from 'components/comment';
-import {loadUsers} from 'actions/users';
-import {loadComments} from 'actions/comments';
-import {loadBlogPosts} from 'actions/blog-posts';
+import { loadUsers } from 'actions/users';
+import { loadComments } from 'actions/comments';
+import { loadBlogPosts } from 'actions/blog-posts';
+import getAuthorById from '../utils';
+import getPostById from '../utils';
 
 class CommentsContainer extends PureComponent {
   static propTypes = {
@@ -33,8 +35,8 @@ class CommentsContainer extends PureComponent {
             .props
             .comments
             .map((comment, index) => {
-              let author = this.props.users[+ comment.authorId - 1];
-              let post = this.props.blogPosts[+ comment.postId - 1];
+              const author = getAuthorById(this.props.users, comment.authorId);
+              const post = getPostById(this.props.blogPosts, comment.postId);
               return (
                 <Comment key={index} comment={comment} post={post} author={author}/>
               )
@@ -42,7 +44,6 @@ class CommentsContainer extends PureComponent {
         </div>
       )
     }
-
   }
 
   render() {

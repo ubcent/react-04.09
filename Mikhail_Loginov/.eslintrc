@@ -5,5 +5,13 @@
     "env": {
         "browser": true,
         "node": true
-    }
+    },
+    "settings": {
+        "react": {
+          "createClass": "createReactClass",
+          "pragma": "React",
+          "version": "16.5.0"
+        },
+        "propWrapperFunctions": [ "forbidExtraProps" ]
+      }
 }

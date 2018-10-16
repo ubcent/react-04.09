@@ -1,0 +1,64 @@
+.post
+    &__title 
+        margin 200px 0 50px 0
+        font-weight 800
+        font-size 2.5rem
+
+    &__subtitle
+        font-size 1.5rem
+
+    &__creds 
+        margin-bottom 150px
+        font-style italic
+
+    &__comments 
+        margin-top 100px
+
+
+.comment 
+    margin 20px 0
+    position relative
+    padding 20px
+    background rgb(230, 230, 230)
+    border-radius 2px
+
+    &__menu 
+        position absolute
+        right 0
+        top 0
+        display flex
+        flex-direction column
+        height 100%
+        justify-content space-around
+        margin-right 10px
+
+    &__delete 
+        font-size 12px
+        padding 0
+        outline 0
+        border none
+        background none
+        cursor pointer
+
+    &__edit 
+        font-size 14px
+        padding 0
+        outline 0
+        border none
+        background none
+        cursor pointer
+
+    &__text
+        font-size 1em
+        font-weight 700
+
+    &__author
+        font-size 0.75em
+        font-style italic
+
+    &__text-input
+        width 100%
+        height 50px
+
+    &.comment-editable
+        padding 5px

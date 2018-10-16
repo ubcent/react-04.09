@@ -12,17 +12,17 @@ This application is a training project that consists of following technologies:
 
 Requirements:
 - node.js
-- mongodb
 
 To install dependencies run
 ```
 npm i
 ```
 
-Your MongoDB must run on port 27017. The database will be called 'react-blog'. To migrate all data run
+While you can use your local MongoDB, it's no longer necessary since we use remote database that available for everyone. Change /server/config/keys.js if you want to use your local MongoDB. You can migrate demo database by running
 ```
 npm run migration
 ```
+
 
 ## Development
 

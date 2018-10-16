@@ -11,11 +11,13 @@ export default class LayoutContainer extends PureComponent {
     return (
       <BrowserRouter>
         <Fragment>
-          <WelcomeModal/>
-          <Header/>
-          <Switch>
-            {routes.map((route, index) => <Route key={index} {...route}/>)}
-          </Switch>
+          <div className="content">
+            <WelcomeModal/>
+            <Header/>
+            <Switch>
+              {routes.map((route, index) => <Route key={index} {...route}/>)}
+            </Switch>
+          </div>
           <Footer/>
         </Fragment>
       </BrowserRouter>
