@@ -1,0 +1,18 @@
+.comments-form{
+    margin-left: auto;
+    margin-right: auto;
+    width: 700px;
+    text-align: center;
+}
+.comments-form-author{
+    width: 400px;
+    height: 50px;
+    background: lightyellow;
+}
+.comments-form-message{
+    width: 400px;
+    height: 150px;
+    background: lightyellow;
+}
+
+

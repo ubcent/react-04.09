@@ -1,25 +1,25 @@
 import './Content.css';
 
-import React, {Component} from 'react';
+import React, {PureComponent} from 'react';
 import {Button} from 'reactstrap';
+import classNames from 'classnames';
 
-//HW4
-export default class Content extends Component {
+
+export default class Content extends PureComponent {
 
     render(){
-        const {articles} = this.props;
+        const { posts, onLoadMore } = this.props;
 
         return(
             <main className='content'>
-                {articles.map((article) =>
-                    <div key={article.title}>
-                        <h2>{article.title}</h2>
-                        <p className='name-article'>{article.date} by <a href='#'>{article.author}</a></p>
-                        <p>{article.text}</p>
+                {posts.map((post) =>
+                    <div key={post.id}>
+                        <h2>{post.title}</h2>
+                        <p className='name-article'>by <a href='#'>{post.userId}</a></p>
+                        <p>{post.body}</p>
                     </div>
                 )}
-                <Button outline color='primary' className='content-button'>Previous</Button>
-                <Button outline color='primary' className='content-button'>Next</Button>
+                <Button outline color='primary' className='content-button' onClick={onLoadMore}>Load more</Button>
             </main>
 
         );

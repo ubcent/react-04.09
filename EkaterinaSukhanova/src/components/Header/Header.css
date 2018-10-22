@@ -4,6 +4,7 @@
     width: 700px;
     padding: 20px 0;
 }
+
 .header-small {
     font-size: 15px;
     height: 100px;
@@ -20,4 +21,12 @@
 
 .header p{
     color: darkgray;
+}
+.navigation{
+    list-style-type: none;
+    padding-left: 0;
+}
+.navigation li{
+    display: inline;
+    margin-right: 10px;
 }

@@ -1,31 +1,36 @@
 import './Header.css';
 
-import React, { Component } from 'react';
+import React, {PureComponent} from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
+import {Link} from 'react-router-dom';
 
-export default class Header extends Component {
+
+export default class Header extends PureComponent {
     static propTypes = {
         size: PropTypes.oneOf(['small', 'big']),
-        creators: PropTypes.arrayOf(PropTypes.string)
     };
 
     static defaultProps = {
         size: 'small',
-        creators: []
     };
 
     render() {
-        const { size, children, creators } = this.props;
+        const {size, children} = this.props;
+
         const headerClasses = classNames('header', {
             'header-small': size === 'small',
             'header-big': size === 'big'
         });
 
-        return(
+        return (
             <header className={headerClasses}>
                 <h1>The Blog</h1>
                 <p>Example template of creating blog</p>
+
+                <ul className="navigation">
+                    {children.map((link, idx) => <li key={idx}>{link}</li>)}
+                </ul>
             </header>
         );
     }

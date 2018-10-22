@@ -1,9 +1,10 @@
-import './Navbar.css';
+import './BlogNavbar.css';
 import {Collapse, Navbar, NavbarToggler, Nav, NavItem, NavLink} from 'reactstrap';
 
-import React, {Component} from 'react';
+import React, {PureComponent} from 'react';
+import classNames from 'classnames';
 
-export default class Example extends Component {
+export default class BlogNavbar extends PureComponent {
     constructor(props) {
         super(props);
 
