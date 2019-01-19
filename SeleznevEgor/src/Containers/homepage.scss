@@ -1,0 +1,26 @@
+@import "../sass/vars";
+
+.home-page{
+    text-align: center;
+    .greating-message{
+        font-size: 1.2em;
+        font-style: italic;
+        margin: 0;
+        display: flex;
+        span{
+            margin: 0 30px;
+        }
+        &:before, &:after{
+            content: "";
+            display: inline-block;
+            height:1px;
+            flex: 1;
+            background-color:$decoration;
+            transform: translateY(0.75em);
+        }
+    }
+    h1{
+        margin-top: 10px;
+        font-style: italic;
+    }
+}

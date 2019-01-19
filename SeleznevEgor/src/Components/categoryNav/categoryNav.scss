@@ -1,0 +1,12 @@
+@import "../../sass/vars";
+
+
+.categoryNavs{
+  margin: 20px 0;
+}
+.nav-item {
+  &:hover{
+    cursor: pointer;
+    color: $decoration;
+  }
+}

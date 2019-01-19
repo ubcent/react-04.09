@@ -1,18 +1,32 @@
 /********************************************************************
 * Includes															*
 *********************************************************************/
-
 /*Include styles*/
 import './sass/main.scss';
 
 /*Incude libraries*/ 
 import  React, {Component, Fragment} from 'react';
 import ReactDom from 'react-dom';
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware} from 'redux';
+import thunk from 'redux-thunk';
+import {BrowserRouter, Switch, Route} from 'react-router-dom';
+
+import rootReduser from './reducers';
 
 /*Import user components*/
-import Header from 'components/Header/';
-import Main from 'components/Main/';
+import HeaderContainer from 'containers/HeaderContainer';
+import HomeContainer from 'containers/HomeContainer';
+import BlogContainer from 'containers/BlogContainer';
+import CommentContainer from 'containers/CommentContainer';
+import UsersContainer from 'containers/UsersContainer';
+import PostContainer from 'containers/PostContainer'
 import Footer from 'components/Footer/';
+
+const store = createStore(
+    rootReduser,
+    applyMiddleware(thunk),
+);
 
 /********************************************************************
 * Main															*
@@ -23,19 +37,35 @@ import Footer from 'components/Footer/';
   * @param  None
   * @retval None
   */
+
 class Layout extends Component{
+
     render(){
         return(
             <Fragment>
-            <Header isMain={true}/>
-            <Main/>
-            <Footer />
+                <HeaderContainer/>
+                <Switch>
+                    <Route path="/" component={HomeContainer} exact/>
+                    <Route path="/blog" component={BlogContainer} exact/>
+                    <Route path="/blog/:id" component={PostContainer}/>
+                    <Route path="/comments" component={CommentContainer} exact/>
+                    <Route path="/users" component={UsersContainer} exact/>
+                    <Route path="/login" component={UsersContainer} exact/>
+                    <Route/>
+                </Switch>
+                <Footer />
             </Fragment>
         );
     }
 }
 
 /*Запуск отрисовки*/
-ReactDom.render(<Layout/>, document.getElementById('webPage'));
+ReactDom.render(
+    <Provider store = {store}>
+        <BrowserRouter>
+            <Layout/>
+        </BrowserRouter>
+    </Provider>,
+    document.getElementById('webPage'));
 
 

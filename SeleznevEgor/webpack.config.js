@@ -1,7 +1,7 @@
 const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HTMLplugin = require('html-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
 	entry:{
@@ -21,7 +21,7 @@ module.exports = {
 				}	
 			},
 			{
-				test:/\.scss$/,
+				test:/\.s?css$/,
 				use :ExtractTextPlugin.extract({
 					fallback: 'style-loader',
 					use:[
@@ -29,7 +29,7 @@ module.exports = {
 							loader: 'css-loader',
 							options: {
 								sourceMap: true,
-								url: false
+								
 							}
 						},
 						{
@@ -39,20 +39,30 @@ module.exports = {
 							loader: 'sass-loader',
 							options: {
 								sourceMap: true
-
 							}
 						}
 					]
 				})
-			}
-
+			},
+			{
+            	test: /\.(woff|woff2|eot|ttf|otf|svg)$/,
+            	use: {
+            		loader: 'file-loader',
+            		options: {
+            			name: 'fonts/[name].[ext]',
+            		}
+            	}
+			},
 		]
 	},
 	resolve: {
 		extensions: ['.js', '.jsx'],
 		alias:{
 			components: path.resolve(__dirname, 'src', 'Components'),
-			bootstrap: path.resolve(__dirname, 'node_modules', 'bootstrap', 'scss'),
+
+			containers: path.resolve(__dirname, 'src', 'Containers'),
+
+			bootstrap: path.resolve(__dirname, 'node_modules', 'bootstrap', 'js','src'),
 		}
 	},
 	plugins :[
@@ -61,11 +71,12 @@ module.exports = {
 			template: path.resolve(__dirname, 'src', 'index.html'), 
 			filename: 'index.html'
 		}),
-		 new CopyWebpackPlugin([ 
-		 		{from: './src/image',to: './image'},
-		 		{from: './src/fonts', to: './fonts'}
-		 	])
-	]
-		
-	
-}
+		new CopyWebpackPlugin([
+				{from: './src/image',to: './image'},
+				{from: './src/content', to: './content'}
+			]),
+	],
+	devServer:{
+		historyApiFallback: true,
+	}
+};

@@ -3,11 +3,25 @@
 @import "libs";
 
 body {
-	background-color: rgba(green, .2);
-	font-family:$default-font;
-	font-size: 16px;
-
+  font-family: $default-font;
+  font-size: 16px;
+  color: $text-color;
 }
 
+.users-page{
+  text-align: center;
+}
+
+.separator{
+  height: 1px;
+  width: 100%;
+  background-color: $decoration;
+  margin: 30px 0 ;
+}
+
+.no-comments{
+  text-align: center;
+  font-style: italic;
+}
 
 @import "media";

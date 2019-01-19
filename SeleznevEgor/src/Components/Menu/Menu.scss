@@ -1,0 +1,33 @@
+@import "../../sass/vars";
+
+.main-menu{
+    ul{
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        li{
+            display: inline-block;
+            font-size: 19px;
+            margin-right: 25px;
+            a{
+                display: block;
+                color: $text-color;
+                .fa{
+                    color: $decoration;
+                    font-size: 25px;
+                    margin-right: 7px;
+                }
+                &:hover{
+                    color:$active;
+                    cursor: pointer;
+                    .fa{
+                        color: $active;
+                    }
+                }
+            }
+        }
+        .menu-active{
+            text-decoration: underline;
+        }
+    }
+}
